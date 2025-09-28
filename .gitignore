@@ -40,4 +40,15 @@
 # debug information files
 *.dwo
 
-# test comment
+# python virtual environment and cache
+__pycache__/
+*.pyc
+.venv/
+
+# IDEs and editors
+.vscode/
+.idea/
+
+# unused files
+*unused/
+

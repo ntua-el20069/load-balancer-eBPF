@@ -1,0 +1,44 @@
+
+services:
+
+  haproxy-lb:
+    container_name: haproxy-LB
+    image: haproxytech/haproxy-alpine:2.6.6
+    volumes:
+       - "./haproxy/:/usr/local/etc/haproxy:ro"
+    ports:
+       - "1111:80"  # external: internal mapping
+       - "8889:8889"
+    depends_on:
+       - backend-1
+       - backend-2
+    networks:
+      - lb-servers
+
+  backend-1:
+    container_name: backend-1
+    build:
+      context: server/
+    # ports:
+    #   - 8001:8000
+    environment:
+      NUM: "1"
+    networks:
+      - lb-servers
+  
+  backend-2:
+    container_name: backend-2
+    build:
+      context: server/
+    # ports:
+    #   - 8002:8000
+    environment:
+      NUM: "2"
+    networks:
+      - lb-servers
+
+networks:
+  lb-servers:
+    driver: bridge
+
+

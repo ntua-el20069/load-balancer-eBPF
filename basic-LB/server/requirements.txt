@@ -1,0 +1,10 @@
+fastapi[standard]
+uvicorn
+# fastapi-mqtt
+
+# testing
+# pytest
+
+# others
+# python-dotenv
+# requests
