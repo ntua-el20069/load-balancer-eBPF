@@ -1,0 +1,58 @@
+
+services:
+
+  haproxy-lb:
+    container_name: haproxy-LB-mqtt5
+    image: haproxytech/haproxy-alpine:2.6.6
+    networks:
+      - LB-brokers
+    volumes:
+       - "./haproxy/:/usr/local/etc/haproxy:ro"
+    ports:
+       - "1111:1883"
+       - "8889:8889"
+       - "8404:8404"
+    depends_on:
+       - mqtt5-1
+       - mqtt5-2
+  
+  # mqtt5 eclipse-mosquitto instances
+  #
+  mqtt5-1:
+    image: eclipse-mosquitto
+    container_name: mqtt5-1
+    # ports:
+      # when using Load Balancer, do not expose ports
+      # - "1001:1883" #default mqtt port
+      # - "9001:9001" #default mqtt port for websockets
+    volumes:
+      # bind mounts
+      - ./broker-1/config:/mosquitto/config:rw
+      - ./broker-1/data:/mosquitto/data:rw
+      - ./broker-1/log:/mosquitto/log:rw
+    restart: unless-stopped
+    networks:
+      - LB-brokers
+  
+  mqtt5-2:
+    image: eclipse-mosquitto
+    container_name: mqtt5-2
+    # ports:
+      # when using Load Balancer, do not expose ports
+      # - "1002:1883" #default mqtt port
+      # - "9002:9001" #default mqtt port for websockets
+    volumes:
+      # bind mounts
+      - ./broker-2/config:/mosquitto/config:rw
+      - ./broker-2/data:/mosquitto/data:rw
+      - ./broker-2/log:/mosquitto/log:rw
+    restart: unless-stopped
+    networks:
+      - LB-brokers
+
+
+networks:
+  LB-brokers:
+    name: LB-brokers
+    driver: bridge
+
