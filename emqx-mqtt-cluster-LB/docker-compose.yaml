@@ -1,0 +1,87 @@
+services:
+  # EMQX Cluster Node 1
+  emqx1:
+    image: emqx/emqx:5.3.2
+    container_name: emqx1
+    hostname: emqx1.local  # Add hostname
+    environment:
+      - "EMQX_NODE_NAME=emqx@emqx1.local"  # Use FQDN
+      - "EMQX_CLUSTER__DISCOVERY_STRATEGY=static"
+      - "EMQX_CLUSTER__STATIC__SEEDS=[emqx@emqx1.local,emqx@emqx2.local]"  # Use FQDN
+      - "EMQX_HOST=emqx1.local"  # Add host configuration
+    healthcheck:
+      test: ["CMD", "/opt/emqx/bin/emqx", "ctl", "status"]
+      interval: 5s
+      timeout: 25s
+      retries: 5
+    networks:
+      emqx-bridge:
+        aliases:
+          - emqx1.local  # Add network alias
+    volumes:
+      - vol-emqx1:/opt/emqx/data
+    expose:
+      - "1883"
+      - "8083"
+      - "8883"
+      - "8084"
+      - "18083"
+
+  # EMQX Cluster Node 2  
+  emqx2:
+    image: emqx/emqx:5.3.2
+    container_name: emqx2
+    hostname: emqx2.local  # Add hostname
+    environment:
+      - "EMQX_NODE_NAME=emqx@emqx2.local"  # Use FQDN
+      - "EMQX_CLUSTER__DISCOVERY_STRATEGY=static"
+      - "EMQX_CLUSTER__STATIC__SEEDS=[emqx@emqx1.local,emqx@emqx2.local]"  # Use FQDN
+      - "EMQX_HOST=emqx2.local"  # Add host configuration
+    healthcheck:
+      test: ["CMD", "/opt/emqx/bin/emqx", "ctl", "status"]
+      interval: 5s
+      timeout: 25s
+      retries: 5
+    networks:
+      emqx-bridge:
+        aliases:
+          - emqx2.local  # Add network alias
+    volumes:
+      - vol-emqx2:/opt/emqx/data
+    depends_on:
+      - emqx1
+    expose:
+      - "1883"
+      - "8083"
+      - "8883"
+      - "8084"
+      - "18083"
+
+  # HAProxy Load Balancer
+  haproxy:
+    image: haproxytech/haproxy-alpine:2.6.6
+    container_name: haproxy-emqx
+    volumes:
+      - "./haproxy/haproxy-emqx.cfg:/usr/local/etc/haproxy/haproxy.cfg:ro"
+    ports:
+      - "1111:1883"      # MQTT
+      - "8083:8083"      # MQTT over WebSocket  
+      - "18083:18083"    # Dashboard
+      - "8404:8404"      # HAProxy stats
+    networks:
+      - emqx-bridge
+    depends_on:
+      emqx1:
+        condition: service_healthy
+      emqx2:
+        condition: service_healthy
+
+volumes:
+  vol-emqx1:
+    name: vol-emqx1
+  vol-emqx2:
+    name: vol-emqx2
+
+networks:
+  emqx-bridge:
+    driver: bridge
