@@ -56,9 +56,9 @@ exit
 - You can run additional containers / local clients to test the mqtt load balancing:
 ```bash
 # subscribe
-mosquitto_sub -h localhost -p 1001 -t motor -t battery -u labuser  -P labuser
+mosquitto_sub -h localhost -p 1111 -t motor -t battery -u labuser  -P labuser
 ```
 ```bash
 # publish
-mosquitto_pub -h localhost -t battery -p 1001 -m "battery temp, current, ..." -u labuser -P labuser
+mosquitto_pub -h localhost -t battery -p 1111 -m "battery temp, current, ..." -u labuser -P labuser
 ```
