@@ -139,11 +139,81 @@ sudo /usr/sbin/ethtool --offload wlp0s20f3 gro off
 cd ..
 cd _build
 
-sudo ./build/example_grpc/katran_server_grpc -balancer_prog ./deps/bpfprog/bpf/balancer.bpf.o -default_mac 12:34:56:78:9a:bc -forwarding_cores=0 -healthchecker_prog ./deps/bpfprog/bpf/healthchecking_ipip.o -intf=wlp0s20f3 -ipip_intf=ipip0 -ipip6_intf=ipip60 -lru_size=10000
+sudo ./build/example_grpc/katran_server_grpc -balancer_prog ./deps/bpfprog/bpf/balancer.bpf.o  -forwarding_cores=0 -healthchecker_prog ./deps/bpfprog/bpf/healthchecking_ipip.o -intf=wlp0s20f3 -ipip_intf=ipip0 -ipip6_intf=ipip60 -lru_size=10000 -default_mac 12:34:56:78:9a:bc
 ```
 logs should be like
 ```bash
 Starting Katran
 # possibly error and warning logs
 Server listening on 0.0.0.0:50051
+```
+
+
+## Configuring Forwarding plane
+
+### Configure real - server
+
+The following steps are done on the real-server
+
+- Setup the ipip interfaces (katran is using ipip as encapsulation for packet forwarding)
+```bash
+sudo ip link add name ipip0 type ipip external
+sudo ip link add name ipip60 type ip6tnl external
+sudo ip link set up dev ipip0
+sudo ip link set up dev ipip60
+```
+
+- Specific to the linux is that for ipip interface to work - it must have at least single ip configured. We are going to configure an ip from 127.0.0.0/8 network as this is somehow artificial IP (it has local significance) - we could reuse the same IP across the fleet -
+```bash
+sudo ip a a 127.0.0.42/32 dev ipip0
+```
+
+- Since most of the time server is connected w/ a single interface - we don't need rp_filter feature:
+```bash
+sudo su
+for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}'); do  echo $sc ; sudo sysctl ${sc}=0; done
+exit
+```
+
+- We configure the VIP as loopback on server/real
+```bash
+sudo ip a a 192.168.1.219/32 dev lo
+```
+
+# Katran configuration using Go client
+
+The following steps configure a VIP with a real on Katran, using the goclient
+```bash
+cd example_grpc/goclient/src/katranc/main
+```
+
+```bash
+./main -A -t 192.168.1.219:8001
+./main -a -t 192.168.1.219:8001 -r 192.168.1.38
+./main -l
+```
+
+
+
+## Inspect eBPF - XDP program and trace log
+```bash
+sudo su
+bpftool prog list
+```
+
+```txt
+52: xdp  name balancer_ingress  tag c570f82acca29df4  gpl
+	loaded_at 2025-10-11T19:59:25+0300  uid 0
+	xlated 22168B  jited 12650B  memlock 24576B  map_ids 18,10,12,11,19,24,22,14,26,9,15,13,17,16,29
+	btf_id 219
+	pids katran_server_g(9476)
+55: sched_cls  name healthcheck_encap  tag bcdf913b9987caf7  gpl
+	loaded_at 2025-10-11T19:59:25+0300  uid 0
+	xlated 912B  jited 496B  memlock 4096B  map_ids 31,32,33
+	btf_id 220
+	pids katran_server_g(9476)
+```
+
+```bash
+bpftool prog tracelog
 ```
