@@ -180,7 +180,7 @@ exit
 sudo ip a a 192.168.1.219/32 dev lo
 ```
 
-# Katran configuration using Go client
+### Katran configuration using Go client
 
 The following steps configure a VIP with a real on Katran, using the goclient
 ```bash
@@ -193,9 +193,20 @@ cd example_grpc/goclient/src/katranc/main
 ./main -l
 ```
 
+## Test Topology
 
+- Ensure Katran is running and listening on the right interface and has obtained as parameter the right gateway MAC address
+- You have used goclient to configure VIP and real(s) for Katran
+- You have configured real forwarding plane so that it receives IPIP encap packets.
+- Real is running an http server on port `8001` and can reply to `GET /`
 
-## Inspect eBPF - XDP program and trace log
+### Generate traffic from client
+From a 3rd device use this command to send packets to Katran and receive response from real.
+```bash
+curl http://192.168.1.219:8001
+```
+
+### Inspect eBPF - XDP program and trace log
 ```bash
 sudo su
 bpftool prog list
