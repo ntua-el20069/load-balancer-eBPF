@@ -1,0 +1,60 @@
+services:
+
+  katran:
+    container_name: katran-LB
+    build:
+      context: katran/
+    privileged: true                    # recommended for XDP/AF_XDP access
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    volumes:
+      - /lib/modules:/lib/modules:ro
+      - /sys/fs/bpf:/sys/fs/bpf
+    networks:
+      gateway-lb:
+        ipv4_address: 10.1.2.102
+  
+  client:
+    container_name: client
+    build:
+      context: client/
+    depends_on:
+      - katran
+    networks:
+      gateway-client:
+        ipv4_address: 10.1.1.102
+  
+  gateway:
+    container_name: gateway
+    build:
+      context: gateway/
+    cap_add:
+      - NET_ADMIN
+    depends_on:
+      - katran
+      - client
+    networks:
+      gateway-client:
+        ipv4_address: 10.1.1.101
+      gateway-lb:
+        ipv4_address: 10.1.2.101
+      gateway-reals:
+        ipv4_address: 10.1.3.101
+
+networks:
+  gateway-client:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.1.1.0/24
+  gateway-lb:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.1.2.0/24
+  gateway-reals:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.1.3.0/24

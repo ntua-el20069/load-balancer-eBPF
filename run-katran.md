@@ -26,6 +26,14 @@ cd katran/
 ```bash
 ./build_katran.sh
 ```
+or
+```bash
+./build_katran_for_root.sh
+```
+Additionally needed
+```bash
+apt install -y wget vim curl
+```
 
 last logs should be like ...
 ```txt
@@ -47,7 +55,13 @@ sudo sysctl net.core.bpf_jit_enable=1
 ```bash
 cd ~/Downloads
 wget https://go.dev/dl/go1.25.1.linux-amd64.tar.gz
-sudo rm -rf /usr/local/go && sudo tar -C /usr/local -xzf go1.25.1.linux-amd64.tar.gz
+sudo rm -rf /usr/local/go 
+sudo rm -rf /usr/local/go*
+sudo rm -rf /home/username/go
+sudo rm -rf /usr/bin/go
+printenv
+export PATH=... # path var without go path
+sudo tar -C /usr/local -xzf go1.25.1.linux-amd64.tar.gz
 export PATH=$PATH:/usr/local/go/bin
 export PATH="$PATH:$(go env GOPATH)/bin"
 ```
@@ -78,12 +92,22 @@ fi
 # Save the file and run the following
 source ~/.profile
 ```
+
+```bash
+chmod +x ~/.profile
+. ~/.profile
+```
+
 Now check that `go version` outputs the right version
 
 - Install Go plugins for gRPC and protocol buffers
 ```bash
 go install google.golang.org/protobuf/cmd/protoc-gen-go@latest
 go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest
+```
+
+```bash
+cp $(go env GOPATH)/bin/protoc-gen-go-grpc $(go env GOPATH)/bin/protoc-gen-go_grpc
 ```
 
 - Get Go program dependencies / libraries
