@@ -5,11 +5,88 @@ FROM ubuntu:jammy
 # Optional: Set a label to confirm the OS version
 LABEL os.version="Ubuntu 22.04.5 LTS"
 
+# Set a helpful maintainer label
+LABEL maintainer="docker-katran-lb"
+
 # Install necessary network utilities (iproute2 is usually pre-installed but good practice)
 # We also install 'net-tools' for commands like ifconfig, though 'ip' is preferred.
 RUN apt-get update && \
     apt-get install -y iproute2 net-tools && \
+    apt install build-essential -y && \
+    apt install -y git pkg-config libiberty-dev cmake clang-13 libelf-dev libfmt-dev && \
+    apt install -y wget vim curl ethtool protobuf-compiler && \
+    rm -rf /var/lib/apt/lists/* 
+
+# make sure that BPF's jit is enabled
+RUN sysctl net.core.bpf_jit_enable=1
+
+# Create the non-root user 'simple_user'
+# The user ID (1000) and group ID (1000) are common choices for non-root users.
+RUN groupadd --gid 1000 simple_user && \
+    useradd --uid 1000 --gid simple_user --shell /bin/bash --create-home simple_user
+
+# Add 'simple_user' to the 'sudo' group
+# This allows the user to run commands with elevated privileges (if needed).
+# Note: For security, giving sudo access in a container is often discouraged, 
+# but it aligns with your specific request.
+RUN apt update && apt install -y sudo && \
+    usermod -aG sudo simple_user && \
     rm -rf /var/lib/apt/lists/*
+
+
+# Add NOPASSWD setting for simple_user (must be done as root)
+# This uses the 'visudo' utility (via tee) to add a line granting passwordless sudo access.
+RUN echo "simple_user ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+# Perform specific RUN commands as 'simple_user'
+# Use the 'USER' instruction before any command you want to run as this user.
+USER simple_user
+
+# Example: Run a command to create a directory in the user's home and set permissions
+RUN mkdir -p /home/simple_user/data && \
+    touch /home/simple_user/data/testfile.txt
+
+WORKDIR /home/simple_user
+
+RUN git clone https://github.com/ntua-el20069/katran.git
+
+WORKDIR /home/simple_user/katran
+
+RUN chmod +x build_katran.sh && \
+    ./build_katran.sh
+
+WORKDIR /home/simple_user
+
+RUN sudo rm -rf /usr/local/go && \ 
+    sudo rm -rf /usr/local/go* && \
+    sudo rm -rf /home/simple_user/go && \
+    sudo rm -rf /usr/bin/go && \
+    wget https://go.dev/dl/go1.25.1.linux-amd64.tar.gz && \
+    sudo tar -C /usr/local -xzf go1.25.1.linux-amd64.tar.gz && \
+    export PATH=$PATH:/usr/local/go/bin && \
+    export PATH="$PATH:$(go env GOPATH)/bin"
+
+RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@latest && \
+    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest 
+
+WORKDIR /home/simple_user/katran/example_grpc
+
+RUN go mod init example_grpc && \
+    go mod tidy && \
+    ./build_grpc_client.sh
+
+RUN sudo ip link add name ipip0 type ipip external  && \
+    sudo ip link add name ipip60 type ip6tnl external && \
+    sudo ip link set up dev ipip0 && \
+    sudo ip link set up dev ipip60 && \
+    sudo tc qd add  dev eth0 clsact && \
+    sudo apt install ethtool && \
+    sudo /usr/sbin/ethtool --offload eth0 lro off && \
+    sudo /usr/sbin/ethtool --offload eth0 gro off
+
+WORKDIR /home/simple_user/katran/_build
+
+# TODO: run katran here ./build/example_grpc/katran_server_grpc
 
 # The command that will run when the container starts.
 # It simply keeps the container running so you can connect and configure it.
