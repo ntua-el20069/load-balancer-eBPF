@@ -15,9 +15,14 @@ RUN mkdir -p /home/client-folder && \
 
 # Install network tools like iproute2 (for 'ip' command) and ping
 RUN apt-get update && \
-    apt-get install -y iproute2 net-tools curl wget vim && \
+    apt-get install -y iproute2 iputils-ping net-tools curl wget vim && \
     rm -rf /var/lib/apt/lists/*
 
+WORKDIR /home/client-folder
+
+COPY . .
+
+RUN chmod +x setup.sh
 # The command to keep the container running indefinitely
 # so you can connect to it.
-CMD ["sleep", "infinity"]
+ENTRYPOINT [ "/home/client-folder/setup.sh" ]

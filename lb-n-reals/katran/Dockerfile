@@ -14,7 +14,7 @@ RUN apt-get update && \
     apt-get install -y iproute2 net-tools && \
     apt install build-essential -y && \
     apt install -y git pkg-config libiberty-dev cmake clang-13 libelf-dev libfmt-dev && \
-    apt install -y wget vim curl ethtool protobuf-compiler && \
+    apt install -y wget vim curl iputils-ping ethtool protobuf-compiler && \
     rm -rf /var/lib/apt/lists/* 
 
 # RUN ip link add name ipip0 type ipip external  && \
