@@ -17,8 +17,17 @@ RUN apt-get update && \
     apt install -y wget vim curl ethtool protobuf-compiler && \
     rm -rf /var/lib/apt/lists/* 
 
+# RUN ip link add name ipip0 type ipip external  && \
+#     ip link add name ipip60 type ip6tnl external && \
+#     ip link set up dev ipip0 && \
+#     ip link set up dev ipip60 && \
+#     tc qd add  dev eth0 clsact && \
+#     apt install ethtool && \
+#     /usr/sbin/ethtool --offload eth0 lro off && \
+#     /usr/sbin/ethtool --offload eth0 gro off
+
 # make sure that BPF's jit is enabled
-RUN sysctl net.core.bpf_jit_enable=1
+# RUN sysctl net.core.bpf_jit_enable=1
 
 # Create the non-root user 'simple_user'
 # The user ID (1000) and group ID (1000) are common choices for non-root users.
@@ -66,23 +75,15 @@ RUN sudo rm -rf /usr/local/go && \
     export PATH=$PATH:/usr/local/go/bin && \
     export PATH="$PATH:$(go env GOPATH)/bin"
 
-RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@latest && \
-    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest 
+# RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@latest && \
+#     go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest 
 
-WORKDIR /home/simple_user/katran/example_grpc
+# WORKDIR /home/simple_user/katran/example_grpc
 
-RUN go mod init example_grpc && \
-    go mod tidy && \
-    ./build_grpc_client.sh
+# RUN go mod init example_grpc && \
+#     go mod tidy && \
+#     ./build_grpc_client.sh
 
-RUN sudo ip link add name ipip0 type ipip external  && \
-    sudo ip link add name ipip60 type ip6tnl external && \
-    sudo ip link set up dev ipip0 && \
-    sudo ip link set up dev ipip60 && \
-    sudo tc qd add  dev eth0 clsact && \
-    sudo apt install ethtool && \
-    sudo /usr/sbin/ethtool --offload eth0 lro off && \
-    sudo /usr/sbin/ethtool --offload eth0 gro off
 
 WORKDIR /home/simple_user/katran/_build
 

@@ -6,12 +6,12 @@ FROM ubuntu:jammy
 LABEL os.version="Ubuntu 22.04.5 LTS"
 
 # Set a helpful maintainer label
-LABEL maintainer="docker-client"
+LABEL maintainer="docker-real"
 
 
 # Example: Run a command to create a directory in the user's home and set permissions
-RUN mkdir -p /home/client-folder && \
-    touch /home/client-folder/testfile.txt
+RUN mkdir -p /home/real-folder && \
+    touch /home/real-folder/testfile.txt
 
 # Install network tools like iproute2 (for 'ip' command) and ping
 RUN apt-get update && \
