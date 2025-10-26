@@ -7,12 +7,12 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '12.0'
-          memory: 14G
+          cpus: '8.0'
+          memory: 6G
           pids: 4096
         reservations:
-          cpus: '8.0'
-          memory: 12G
+          cpus: '6.0'
+          memory: 6G
     privileged: true                    # recommended for XDP/AF_XDP access
     cap_add:
       - NET_ADMIN
