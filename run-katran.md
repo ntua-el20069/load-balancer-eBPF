@@ -55,9 +55,8 @@ sudo sysctl net.core.bpf_jit_enable=1
 ```bash
 cd ~/Downloads
 wget https://go.dev/dl/go1.25.1.linux-amd64.tar.gz
-sudo rm -rf /usr/local/go 
 sudo rm -rf /usr/local/go*
-sudo rm -rf /home/username/go
+sudo rm -rf /home/simple_user/go
 sudo rm -rf /usr/bin/go
 printenv
 export PATH=... # path var without go path
@@ -75,7 +74,7 @@ protoc --version  # Ensure compiler version is 3+
 - (Optional) If the output of `go version` command does not return the version 1.25 and returns an old version, then some tools may not be supported and the Katran setup process may be disrupted. So, here are some steps to uninstall any older distribution (you should then proceed to the installation of Go step again)
 ```bash
 sudo rm -rf /usr/local/go*
-sudo rm -rf /home/username/go
+sudo rm -rf /home/simple_user/go
 sudo rm -rf /usr/bin/go
 export PATH=... # path var without go path
 
@@ -111,7 +110,7 @@ cp $(go env GOPATH)/bin/protoc-gen-go-grpc $(go env GOPATH)/bin/protoc-gen-go_gr
 ```
 
 - Get Go program dependencies / libraries
-```
+```bash
 cd path/to/katran/example_grpc
 go mod init example_grpc
 go mod tidy
@@ -199,6 +198,10 @@ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}'); do  echo $sc ; sudo sys
 exit
 ```
 
+<!-- ```bash
+for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}'); do  echo $sc ; sysctl ${sc}=0; done
+``` -->
+
 - We configure the VIP as loopback on server/real
 ```bash
 sudo ip a a 192.168.1.219/32 dev lo
@@ -215,6 +218,10 @@ cd example_grpc/goclient/src/katranc/main
 ./main -A -t 192.168.1.219:8001
 ./main -a -t 192.168.1.219:8001 -r 192.168.1.38
 ./main -l
+
+# ./main -A -t 10.1.2.102:8000
+# ./main -a -t 10.1.2.102:8000 -r 10.1.3.102
+# ./main -l
 ```
 
 ## Test Topology
@@ -228,6 +235,8 @@ cd example_grpc/goclient/src/katranc/main
 From a 3rd device use this command to send packets to Katran and receive response from real.
 ```bash
 curl http://192.168.1.219:8001
+
+# curl http://10.1.2.102:8000
 ```
 
 ### Inspect eBPF - XDP program and trace log
@@ -252,3 +261,22 @@ bpftool prog list
 ```bash
 bpftool prog tracelog
 ```
+
+<!-- 
+ip route
+ip route add 10.1.0.0/16 via 10.1.1.102 dev eth0
+ip route add 10.1.0.0/16 via 10.1.2.102 dev eth0
+ip route add 10.1.0.0/16 via 10.1.3.102 dev eth0
+
+
+ip route add 10.1.0.0/16 via 10.1.1.102 dev eth0
+
+
+
+chmod +x /home/simple_user/go/bin/protoc-gen-go-grpc
+
+
+tcpdump -i any -#XXtttt -w 2025_10_28__21_05_capture.pcap -C 3 -G 600
+
+
+tcpdump -i eth1 -nnXXtttt -w /tmp/capture-2.pcap -C 3 -G 600 -->
