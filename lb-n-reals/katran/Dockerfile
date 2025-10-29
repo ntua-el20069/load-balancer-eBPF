@@ -15,7 +15,20 @@ RUN apt-get update && \
     apt install build-essential -y && \
     apt install -y git pkg-config libiberty-dev cmake clang-13 libelf-dev libfmt-dev && \
     apt install -y wget vim curl iputils-ping ethtool protobuf-compiler && \
+    apt install -y tcpdump && \
     rm -rf /var/lib/apt/lists/* 
+
+# need root access for some make install cmds
+RUN git clone --recurse-submodules https://github.com/lizrice/learning-ebpf && \
+    cd learning-ebpf && \
+    cd libbpf/src && \
+    make install && \
+    cd ../.. && \
+    cd ..  && \
+    git clone --recurse-submodules https://github.com/libbpf/bpftool.git && \
+    cd bpftool/src  && \
+    make install  && \
+    cd ..
 
 # RUN ip link add name ipip0 type ipip external  && \
 #     ip link add name ipip60 type ip6tnl external && \
@@ -66,6 +79,10 @@ RUN chmod +x build_katran.sh && \
 
 WORKDIR /home/simple_user
 
+COPY . .
+
+RUN chmod +x setup.sh
+
 RUN sudo rm -rf /usr/local/go && \ 
     sudo rm -rf /usr/local/go* && \
     sudo rm -rf /home/simple_user/go && \
@@ -75,14 +92,15 @@ RUN sudo rm -rf /usr/local/go && \
     export PATH=$PATH:/usr/local/go/bin && \
     export PATH="$PATH:$(go env GOPATH)/bin"
 
-# RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@latest && \
-#     go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest 
+RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@latest && \
+    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@latest && \
+    cp $(go env GOPATH)/bin/protoc-gen-go-grpc $(go env GOPATH)/bin/protoc-gen-go_grpc
 
-# WORKDIR /home/simple_user/katran/example_grpc
+WORKDIR /home/simple_user/katran/example_grpc
 
-# RUN go mod init example_grpc && \
-#     go mod tidy && \
-#     ./build_grpc_client.sh
+RUN go mod init example_grpc && \
+    go mod tidy && \
+    ./build_grpc_client.sh
 
 
 WORKDIR /home/simple_user/katran/_build
@@ -92,7 +110,7 @@ WORKDIR /home/simple_user/katran/_build
 # The command that will run when the container starts.
 # It simply keeps the container running so you can connect and configure it.
 # This prevents the container from immediately exiting.
-CMD ["sleep", "infinity"]
+ENTRYPOINT [ "/home/simple_user/setup.sh" ]
 
 # Optional: Add a script to set up the tunnel automatically
 # COPY setup_tunnel.sh /usr/local/bin/
