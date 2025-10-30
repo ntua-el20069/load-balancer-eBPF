@@ -23,6 +23,7 @@ services:
     networks:
       gateway-lb:
         ipv4_address: 10.1.2.102
+        mac_address: 02:42:0a:00:02:02
   
   client:
     container_name: client
@@ -33,6 +34,7 @@ services:
     networks:
       gateway-client:
         ipv4_address: 10.1.1.102
+        mac_address: 02:42:0a:00:01:02
   
   real:
     container_name: real-server
@@ -45,6 +47,7 @@ services:
     networks:
       gateway-reals:
         ipv4_address: 10.1.3.102
+        mac_address: 02:42:0a:00:03:02
 
   gateway:
     container_name: gateway
@@ -55,10 +58,13 @@ services:
     networks:
       gateway-client:
         ipv4_address: 10.1.1.101
+        mac_address: 02:42:0a:00:01:01
       gateway-lb:
         ipv4_address: 10.1.2.101
+        mac_address: 02:42:0a:00:02:01
       gateway-reals:
         ipv4_address: 10.1.3.101
+        mac_address: 02:42:0a:00:03:01
 
 networks:
   gateway-client:

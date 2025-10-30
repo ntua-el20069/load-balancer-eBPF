@@ -18,3 +18,5 @@ sudo /usr/sbin/ethtool --offload eth0 gro off
 ## add static routes
 sudo ip route add 10.1.0.0/16 via 10.1.2.101 dev eth0
 
+sleep infinity
+
