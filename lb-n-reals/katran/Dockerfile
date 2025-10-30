@@ -76,8 +76,6 @@ RUN chmod +x build_katran.sh && \
     ./build_katran.sh
 
 
-RUN chmod +x setup.sh
-
 RUN sudo rm -rf /usr/local/go && \ 
     sudo rm -rf /usr/local/go* && \
     sudo rm -rf /home/simple_user/go && \
@@ -100,13 +98,10 @@ RUN go mod init example_grpc && \
     ./build_grpc_client.sh
 
 
-WORKDIR /home/simple_user/katran/_build
-
-# TODO: run katran here ./build/example_grpc/katran_server_grpc
-
+WORKDIR /home/simple_user
 
 COPY . .
-RUN chmod +x /home/simple_user/setup.sh
+RUN sudo chmod +x /home/simple_user/setup.sh
 
 # Add a script to set up interfaces or other configurations at container startup
 ENTRYPOINT [ "/home/simple_user/setup.sh" ]
