@@ -12,16 +12,12 @@ $ sudo ip link set up dev ipip60
 $ sudo /usr/sbin/ethtool --offload eth0 lro off
 >> Cannot change large-receive-offload 
 ```
-So, ipip60 interface cannot be set up for healthchecking. I tried to bypass this problem and just run katran with the command (omitting the `-healthchecker_prog` and `-ipip_intf` and `-ipip6_intf` arguments)
+So, ipip60 interface cannot be set up for healthchecking.
 ```bash
-sudo ./build/example_grpc/katran_server_grpc -balancer_prog ./deps/bpfprog/bpf/balancer.bpf.o  -forwarding_cores=0  -intf=eth0  -lru_size=10000 -default_mac 02:42:0a:00:02:01 
->> ....
->>  E1030 21:22:27.986582   121 BaseBpfAdapter.cpp:144] libbpf: elf: failed to open ./healthchecking_ipip.o: -ENOENT
->> E1030 21:22:27.986606   121 BpfLoader.cpp:127] Error while opening bpf object: ./healthchecking_ipip.o, error: No such file or directory
->> terminate called after throwing an instance of 'std::invalid_argument'
->>  what():  can't load healthchecking bpf program, error: No such file or directory
->> *** Aborted at 1761859347 (Unix time, try 'date -d @1761859347') *** ...
+sudo ./build/example_grpc/katran_server_grpc -balancer_prog ./deps/bpfprog/bpf/balancer.bpf.o  -forwarding_cores=0 -hc_forwarding=false -lru_size=10000 -default_mac 02:42:0a:00:02:01
 ```
-However, `TODO`: I should check using `-hc_forwarding`
+Using `-hc_forwarding=false` I bypassed the problem and was able to run the katran server. I observed the readiness log `Server listening on 0.0.0.0:50051`.
+
+
 
 ## Atempt on Ubuntu 22.04 host

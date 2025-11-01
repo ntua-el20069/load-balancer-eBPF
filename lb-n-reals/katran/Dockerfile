@@ -104,4 +104,5 @@ COPY . .
 RUN sudo chmod +x /home/simple_user/setup.sh
 
 # Add a script to set up interfaces or other configurations at container startup
+USER root
 ENTRYPOINT [ "/home/simple_user/setup.sh" ]
