@@ -10,7 +10,7 @@ LABEL maintainer="docker-gateway"
 
 # Install network tools like iproute2 (for 'ip' command) and ping
 RUN apt-get update && \
-    apt-get install -y iproute2 iputils-ping net-tools && \
+    apt-get install -y iproute2 traceroute iputils-ping net-tools && \
     apt install -y tcpdump && \
     rm -rf /var/lib/apt/lists/*
 

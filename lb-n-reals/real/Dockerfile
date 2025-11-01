@@ -16,7 +16,7 @@ RUN apt-get update && \
     # Install Python 3 and pip
     apt-get install -y python3 python3-pip && \
     # Install network tools (iproute2, iputils-ping, etc.) from old-Dockerfile
-    apt-get install -y iproute2 iputils-ping net-tools curl wget vim && \
+    apt-get install -y iproute2 traceroute iputils-ping net-tools curl wget vim && \
     apt install -y tcpdump && \
     # Clean up the apt cache to reduce image size
     rm -rf /var/lib/apt/lists/*

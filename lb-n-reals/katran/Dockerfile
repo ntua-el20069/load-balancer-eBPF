@@ -11,7 +11,7 @@ LABEL maintainer="docker-katran-lb"
 # Install necessary network utilities (iproute2 is usually pre-installed but good practice)
 # We also install 'net-tools' for commands like ifconfig, though 'ip' is preferred.
 RUN apt-get update && \
-    apt-get install -y iproute2 net-tools && \
+    apt-get install -y iproute2 net-tools traceroute && \
     apt install build-essential -y && \
     apt install -y git pkg-config libiberty-dev cmake clang-13 libelf-dev libfmt-dev && \
     apt install -y wget vim curl iputils-ping ethtool protobuf-compiler && \
