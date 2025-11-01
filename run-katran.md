@@ -40,6 +40,7 @@ bpftool prog tracelog
 ### Client container
 In a similar way, open a terminal and execute the shell of client container
 ```bash
+docker exec -it client sh
 ```
 Ensure the following curl to real ip succeeds and returns a welcoming message
 ```bash
