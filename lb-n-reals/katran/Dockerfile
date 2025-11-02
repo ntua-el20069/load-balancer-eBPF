@@ -68,7 +68,8 @@ RUN mkdir -p /home/simple_user/data && \
 
 WORKDIR /home/simple_user
 
-RUN git clone https://github.com/ntua-el20069/katran.git
+RUN git clone https://github.com/ntua-el20069/katran.git && \
+    git config --global --add safe.directory /home/simple_user/katran
 
 WORKDIR /home/simple_user/katran
 

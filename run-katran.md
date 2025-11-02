@@ -283,7 +283,7 @@ tcpdump -i any -#XXtttt -w 2025_10_28__21_05_capture.pcap -C 3 -G 600
 
 tcpdump -n -i eth1 -nnXXtttt -w /tmp/capture.pcap -C 3 -G 600 
 
-
+tcpdump -n -i eth0 -nnXXtttt -w /tmp/capture.pcap -C 3 -G 600 
 
 # ip route del 10.1.1.0/24 dev eth0
 # ip route del 10.1.2.0/24 dev eth1
@@ -301,3 +301,21 @@ tcpdump -n -i eth1 -nnXXtttt -w /tmp/capture.pcap -C 3 -G 600
 
 -->
 
+<!--
+
+- When I run the docker compose on my Ubuntu 22.04 host, sometimes the compose waits infinitely as `Docker Engine stopped` happens and I do not get any log. In fact I have set the resources of Docker Engine as  
+```txt
+- CPU limit: 12 
+- Memory limit: 8 GB
+- Swap: 2GB
+- Disk Usage Limit: 1 TB
+```
+and if I run `free -h`  I got this output once:
+```txt
+               total        used        free      shared  buff/cache   available
+Mem:            15Gi       6,0Gi       352Mi       7,2Gi       9,0Gi       2,4Gi
+Swap:           15Gi       3,0Gi        12Gi
+```
+When not enough memory, Docker stops without any log ? Is this ok ?
+
+-->
