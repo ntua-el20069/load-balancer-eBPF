@@ -7,7 +7,9 @@ This project utilizes [katran](https://github.com/facebookincubator/katran) for 
 On your WSL2 / Linux host execute:
 ```bash
 git clone https://github.com/ntua-el20069/load-balancer-eBPF.git
-cd load-balancer-eBPF/lb-n-reals/
+cd load-balancer-eBPF/
+git checkout issue/katran/docker_setup
+cd lb-n-reals/
 ```
 Ensure Docker Desktop is up and running and then,
 ```bash
