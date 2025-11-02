@@ -59,7 +59,7 @@ This time the command fails (we would expect that this should work)  ( ... `TODO
 ```txt
 bpf_trace_printk: Redirecting packet to real ...
 ```
-Running `tcpdump -n -i eth1 -nnXXtttt -w /tmp/capture.pcap -C 3 -G 600 ` i got the frames shown in `capture_2025_11_02.pcap` (none of them contains tcp segment from katran as I wanted)
+Running `tcpdump -n -i eth1 -nnXXtttt -w /tmp/capture.pcap -C 3 -G 600 ` i got the frames shown in `gateway_2025_11_02.pcap` (none of them contains tcp segment from katran as I wanted)
 
 ### Next steps for debugging
 - Run tcpdump on interfaces of `gateway` and `real` containers
