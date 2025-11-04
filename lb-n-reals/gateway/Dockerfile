@@ -20,4 +20,4 @@ COPY . .
 
 RUN chmod +x setup.sh
 
-ENTRYPOINT [ "/home/client-folder/setup.sh" ]
+ENTRYPOINT [ "/home/gateway-folder/setup.sh" ]

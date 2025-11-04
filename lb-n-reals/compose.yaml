@@ -37,7 +37,7 @@ services:
         mac_address: 02:42:0a:00:01:02
   
   real:
-    container_name: real-server
+    container_name: real
     build:
       context: real/
     privileged: true
@@ -55,6 +55,8 @@ services:
       context: gateway/
     cap_add:
       - NET_ADMIN
+    volumes:
+      - gateway_vol:/home/gateway-folder
     networks:
       gateway-client:
         ipv4_address: 10.1.1.101
@@ -82,3 +84,6 @@ networks:
     ipam:
       config:
         - subnet: 10.1.3.0/24
+
+volumes:
+  gateway_vol:

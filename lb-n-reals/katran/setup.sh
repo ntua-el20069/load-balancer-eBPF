@@ -11,6 +11,7 @@ set -euxo pipefail
 
 ip link add name ipip0 type ipip external
 ip link set up dev ipip0
+ip a a 127.0.0.42/32 dev ipip0
 
 # the following interface type is not supported on WSL
 # ip link add name ipip60 type ip6tnl external
