@@ -222,10 +222,14 @@ cd example_grpc/goclient/src/katranc/main
 ./main -a -t 192.168.1.219:8001 -r 192.168.1.38
 ./main -l
 
-# ./main -A -t 10.1.2.102:8000
-# ./main -a -t 10.1.2.102:8000 -r 10.1.3.102
-# ./main -l
+
 ```
+
+<!--
+./main -A -t 10.1.2.102:8000
+./main -a -t 10.1.2.102:8000 -r 10.1.3.102
+./main -l
+-->
 
 ## Test Topology
 
@@ -238,9 +242,10 @@ cd example_grpc/goclient/src/katranc/main
 From a 3rd device use this command to send packets to Katran and receive response from real.
 ```bash
 curl http://192.168.1.219:8001
-
-# curl http://10.1.2.102:8000
 ```
+<!--
+# curl http://10.1.2.102:8000
+-->
 
 ### Inspect eBPF - XDP program and trace log
 ```bash

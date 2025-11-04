@@ -20,7 +20,7 @@ ip link set up dev ipip0
 ip a a 127.0.0.42/32 dev ipip0
 
 # Katran IP as loopback: TODO change to sth configurable
-ip a a 10.1.2.102/32 dev lo
+ip a a 10.1.50.50/32 dev lo
 
 # remove rp_filter
 for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}'); do  echo $sc ; sysctl ${sc}=0; done

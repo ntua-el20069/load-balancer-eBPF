@@ -14,6 +14,10 @@ RUN apt-get update && \
     apt install -y tcpdump && \
     rm -rf /var/lib/apt/lists/*
 
-# The command to keep the container running indefinitely
-# so you can connect to it.
-CMD ["sleep", "infinity"]
+WORKDIR /home/gateway-folder
+
+COPY . .
+
+RUN chmod +x setup.sh
+
+ENTRYPOINT [ "/home/client-folder/setup.sh" ]
