@@ -30,8 +30,8 @@ sudo ./build/example_grpc/katran_server_grpc -balancer_prog ./deps/bpfprog/bpf/b
 - On `termB`, run client commands to configure VIPs and reals for Katran
 ```bash
 cd /home/simple_user/katran/example_grpc/goclient/src/katranc/main
-./main -A -t 10.1.50.50:8000
-./main -a -t 10.1.50.50:8000 -r 10.1.3.102
+./main -A -t ${VIP_1}:8000
+./main -a -t ${VIP_1}:8000 -r ${REAL_IP}
 ./main -l
 ```
 - On `termC`, use bpftool to inspect the logs of the bpf program
@@ -47,11 +47,11 @@ docker exec -it client sh
 ```
 Ensure the following curl to real ip succeeds and returns a welcoming message
 ```bash
-curl -m 3 http://10.1.3.102:8000
+curl -m 3 http://${REAL_IP}:8000
 ```
 Then try to make the request to katran:
 ```bash
-curl -m 3 http://10.1.50.50:8000
+curl -m 3 http://${VIP_1}:8000
 ```
 This time the command fails (we would expect that this should work)  ( ... `TODO`). However, you can see the katran logs on `termC`
 ```txt

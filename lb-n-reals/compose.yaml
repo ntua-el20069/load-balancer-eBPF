@@ -22,8 +22,10 @@ services:
       - /sys/fs/bpf:/sys/fs/bpf
     networks:
       gateway-lb:
-        ipv4_address: 10.1.2.102
-        mac_address: 02:42:0a:00:02:02
+        ipv4_address: ${KATRAN_IP}
+        mac_address: ${KATRAN_MAC}
+    env_file: .env
+
   
   client:
     container_name: client
@@ -33,8 +35,9 @@ services:
       - NET_ADMIN
     networks:
       gateway-client:
-        ipv4_address: 10.1.1.102
-        mac_address: 02:42:0a:00:01:02
+        ipv4_address: ${CLIENT_IP}
+        mac_address: ${CLIENT_MAC}
+    env_file: .env
   
   real:
     container_name: real
@@ -46,8 +49,9 @@ services:
       - SYS_ADMIN
     networks:
       gateway-reals:
-        ipv4_address: 10.1.3.102
-        mac_address: 02:42:0a:00:03:02
+        ipv4_address: ${REAL_IP}
+        mac_address: ${REAL_MAC}
+    env_file: .env
 
   gateway:
     container_name: gateway
@@ -55,35 +59,31 @@ services:
       context: gateway/
     cap_add:
       - NET_ADMIN
-    volumes:
-      - gateway_vol:/home/gateway-folder
     networks:
       gateway-client:
-        ipv4_address: 10.1.1.101
-        mac_address: 02:42:0a:00:01:01
-      gateway-lb:
-        ipv4_address: 10.1.2.101
-        mac_address: 02:42:0a:00:02:01
+        ipv4_address: ${GATEWAY_CLIENT_IP}
+        mac_address: ${GATEWAY_CLIENT_MAC}
+      gateway-lb: 
+        ipv4_address: ${GATEWAY_KATRAN_IP}
+        mac_address: ${GATEWAY_KATRAN_MAC}
       gateway-reals:
-        ipv4_address: 10.1.3.101
-        mac_address: 02:42:0a:00:03:01
+        ipv4_address: ${GATEWAY_REAL_IP}
+        mac_address:  ${GATEWAY_REAL_MAC}
+    env_file: .env
 
 networks:
   gateway-client:
     driver: bridge
     ipam:
       config:
-        - subnet: 10.1.1.0/24
+        - subnet: ${GATEWAY_CLIENT_SUBNET}
   gateway-lb:
     driver: bridge
     ipam:
       config:
-        - subnet: 10.1.2.0/24
+        - subnet: ${GATEWAY_KATRAN_SUBNET}
   gateway-reals:
     driver: bridge
     ipam:
       config:
-        - subnet: 10.1.3.0/24
-
-volumes:
-  gateway_vol:
+        - subnet: ${GATEWAY_REAL_SUBNET}
