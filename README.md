@@ -25,7 +25,7 @@ docker exec -it katran sh
 - On `termA` terminal, run the katran server
 ```bash
 cd /home/simple_user/katran/_build
-sudo ./build/example_grpc/katran_server_grpc -balancer_prog ./deps/bpfprog/bpf/balancer.bpf.o  -forwarding_cores=0 -hc_forwarding=false -lru_size=10000 -default_mac 02:42:0a:00:02:01
+sudo ./build/example_grpc/katran_server_grpc -balancer_prog ./deps/bpfprog/bpf/balancer.bpf.o  -forwarding_cores=0 -hc_forwarding=false -lru_size=10000 -default_mac ${GATEWAY_KATRAN_MAC}
 ```
 - On `termB`, run client commands to configure VIPs and reals for Katran
 ```bash
