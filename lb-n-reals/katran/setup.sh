@@ -24,7 +24,7 @@ tc qd add  dev eth0 clsact
 # disable LRO and GRO on eth0
 apt install ethtool
 /usr/sbin/ethtool --offload eth0 lro off
-/usr/sbin/ethtool --offload eth0 gro off
+# /usr/sbin/ethtool --offload eth0 gro off
 
 # static route
 ip route add ${GENERAL_SUBNET} via ${GATEWAY_KATRAN_IP} dev eth0

@@ -36,9 +36,19 @@ cd /home/simple_user/katran/example_grpc/goclient/src/katranc/main
 ```
 - On `termC`, use bpftool to inspect the logs of the bpf program
 ```bash
+cat /sys/kernel/debug/tracing/trace_pipe
+```
+<!--
+```bash
 bpftool prog list
 bpftool prog tracelog
+
+sudo bpftrace -e 'tracepoint:xdp:* { @cnt[probe] = count(); }'
+
+bpftrace -e \
+ 'tracepoint:xdp:xdp_bulk_tx{@redir_errno[-args->err] = count();}'
 ```
+-->
 
 ### Client container
 In a similar way, open a terminal and execute the shell of client container
@@ -53,11 +63,11 @@ Then try to make the request to katran:
 ```bash
 curl -m 3 http://${VIP_1}:8000
 ```
-This time the command fails (we would expect that this should work)  ( ... `TODO`). However, you can see the katran logs on `termC`
+You should get the same response from the server and you should be able to see the katran logs on `termC`
 ```txt
 bpf_trace_printk: Redirecting packet to real ...
 ```
 
-### Next steps for debugging
+### Debugging tools-steps
 - Run tcpdump on interfaces of `gateway` and `real` containers
-- Maybe change the docker containers networking that is configured on `compose.yaml`
+- change the docker containers networking that is configured on `compose.yaml` (`macvlan` worked)

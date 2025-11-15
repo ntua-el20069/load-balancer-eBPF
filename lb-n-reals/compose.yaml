@@ -20,6 +20,8 @@ services:
     volumes:
       - /lib/modules:/lib/modules:ro
       - /sys/fs/bpf:/sys/fs/bpf
+      - /sys/kernel/debug:/sys/kernel/debug:rw
+      - /usr/src:/usr/src:ro
     networks:
       gateway-lb:
         ipv4_address: ${KATRAN_IP}
@@ -73,17 +75,17 @@ services:
 
 networks:
   gateway-client:
-    driver: bridge
+    driver: macvlan
     ipam:
       config:
         - subnet: ${GATEWAY_CLIENT_SUBNET}
   gateway-lb:
-    driver: bridge
+    driver: macvlan
     ipam:
       config:
         - subnet: ${GATEWAY_KATRAN_SUBNET}
   gateway-reals:
-    driver: bridge
+    driver: macvlan
     ipam:
       config:
         - subnet: ${GATEWAY_REAL_SUBNET}
