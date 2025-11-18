@@ -30,15 +30,19 @@ sudo ./build/example_grpc/katran_server_grpc -balancer_prog ./deps/bpfprog/bpf/b
 - On `termB`, run client commands to configure VIPs and reals for Katran
 ```bash
 cd /home/simple_user/katran/example_grpc/goclient/src/katranc/main
+
+# configure a VIP that corresponds to all reals
 ./main -A -t ${VIP_ALL}:8000
 ./main -a -t ${VIP_ALL}:8000 -r ${REAL_1_IP}
 ./main -a -t ${VIP_ALL}:8000 -r ${REAL_2_IP}
 ./main -a -t ${VIP_ALL}:8000 -r ${REAL_3_IP}
 
+# this VIP corresponds to reals 1,2
 ./main -A -t ${VIP_AB}:8000
 ./main -a -t ${VIP_AB}:8000 -r ${REAL_1_IP}
 ./main -a -t ${VIP_AB}:8000 -r ${REAL_2_IP}
 
+# this VIP corresponds to reals 2,3
 ./main -A -t ${VIP_BC}:8000
 ./main -a -t ${VIP_BC}:8000 -r ${REAL_2_IP}
 ./main -a -t ${VIP_BC}:8000 -r ${REAL_3_IP}
@@ -72,9 +76,10 @@ curl -m 3 http://${REAL_3_IP}:8000
 ```
 Then try to make the request to katran:
 ```bash
-curl -m 3 http://${VIP_ALL}:8000
-curl -m 3 http://${VIP_AB}:8000
-curl -m 3 http://${VIP_BC}:8000
+# by running the following you expect 
+curl -m 3 http://${VIP_ALL}:8000 # response from one of 1,2,3
+curl -m 3 http://${VIP_AB}:8000 # response from one of 1,2
+curl -m 3 http://${VIP_BC}:8000 # response from one of 2,3
 ```
 You should get the same response from the server and you should be able to see the katran logs on `termC`
 ```txt
