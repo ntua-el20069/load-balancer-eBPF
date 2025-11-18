@@ -41,8 +41,8 @@ services:
         mac_address: ${CLIENT_MAC}
     env_file: .env
   
-  real:
-    container_name: real
+  real_1:
+    container_name: real_1
     build:
       context: real/
     privileged: true
@@ -51,9 +51,43 @@ services:
       - SYS_ADMIN
     networks:
       gateway-reals:
-        ipv4_address: ${REAL_IP}
-        mac_address: ${REAL_MAC}
+        ipv4_address: ${REAL_1_IP}
+        mac_address: ${REAL_1_MAC}
     env_file: .env
+    environment:
+      - NUM=1
+
+  real_2:
+    container_name: real_2
+    build:
+      context: real/
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    networks:
+      gateway-reals:
+        ipv4_address: ${REAL_2_IP}
+        mac_address: ${REAL_2_MAC}
+    env_file: .env
+    environment:
+      - NUM=2
+
+  real_3:
+    container_name: real_3
+    build:
+      context: real/
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    networks:
+      gateway-reals:
+        ipv4_address: ${REAL_3_IP}
+        mac_address: ${REAL_3_MAC}
+    env_file: .env
+    environment:
+      - NUM=3
 
   gateway:
     container_name: gateway

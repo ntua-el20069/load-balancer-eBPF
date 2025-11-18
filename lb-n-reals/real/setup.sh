@@ -17,8 +17,18 @@ ip a a ${LOCAL_IP_FOR_IPIP}/32 dev ipip0
 # ip link add name ipip60 type ip6tnl external
 # ip link set up dev ipip60
 
-# Katran IP as loopback
-ip a a ${VIP_1}/32 dev lo
+# Katran VIPs as loopback
+# NUM env variable needed to distinguish reals
+if [ -z "${NUM}" ]; then
+  echo "NUM env variable is not set"
+  exit 1
+fi
+
+echo "Configuring Real Server NUM=${NUM}"
+
+ip a a ${VIP_SUBNET} dev lo
+echo "Set VIPs as loopback addresses"
+
 
 # remove rp_filter
 for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}'); do  echo $sc ; sysctl ${sc}=0; done

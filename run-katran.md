@@ -288,7 +288,11 @@ tcpdump -i any -#XXtttt -w 2025_10_28__21_05_capture.pcap -C 3 -G 600
 
 tcpdump -n -i eth1 -nnXXtttt -w /tmp/capture.pcap -C 3 -G 600 
 
-tcpdump -n -i eth0 -nnXXtttt -w /tmp/capture.pcap -C 3 -G 600 
+tcpdump -n -i eth0 -nnXXtttt -w /tmp/gateway_eth0_capture.pcap -C 3 -G 600 
+
+tcpdump -n -i eth1 -nnXXtttt -w /tmp/gateway_eth1_capture.pcap -C 3 -G 600 
+
+tcpdump -n -i eth2 -nnXXtttt -w /tmp/gateway_eth2_capture.pcap -C 3 -G 600 
 
 # ip route del 10.1.1.0/24 dev eth0
 # ip route del 10.1.2.0/24 dev eth1
