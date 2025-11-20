@@ -86,6 +86,34 @@ bpftrace -e \
 ```
 -->
 
+
+<!--
+#####  ipip0 and ipip6tnl interfaces on Katran (needed only for healthchecking)
+
+# setup interfaces for ipip encapsulation
+ip link add name ipip0 type ipip external
+ip link set up dev ipip0
+ip a a ${LOCAL_IP_FOR_IPIP}/32 dev ipip0
+
+# if you want to set down and delete interface
+# ip link set down dev ipip0
+# ip link del  ipip0
+
+# the following interface type is not supported on WSL
+# ip link add name ipip60 type ip6tnl external
+# ip link set up dev ipip60
+
+##### Traffic control and Queueing Discipline
+
+# attach clsact qdisc on egress interface for usage in case of health checks
+tc qd add  dev eth0 clsact
+
+# if you want to show or delete the traffic control qdisc
+# tc qd show dev eth0
+# tc qd del dev eth0 clsact
+
+-->
+
 ### Client container
 In a similar way, open a terminal and execute the shell of client container
 ```bash
@@ -99,6 +127,12 @@ Then try to make the request to katran:
 ```bash
 # by running the following you expect 
 curl -m 3 http://${VIP_ALL}:8000 # response from one of 1,2,3
+
+# or just use pytest
+pytest -s
+```
+```bash
+# if you have configured more VIPs you would expect
 curl -m 3 http://${VIP_AB}:8000 # response from one of 1,2
 curl -m 3 http://${VIP_BC}:8000 # response from one of 2,3
 ```

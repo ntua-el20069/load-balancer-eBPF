@@ -77,4 +77,6 @@ RUN sudo chmod +x /home/simple_user/setup.sh
 # Add a script to set up interfaces or other configurations at container startup (need root access)
 USER root
 
+RUN git clone --recurse-submodules https://github.com/libbpf/bpftool.git 
+
 ENTRYPOINT [ "/home/simple_user/setup.sh" ]
