@@ -27,15 +27,38 @@ docker exec -it katran sh
 cd /home/simple_user/katran/_build
 sudo ./build/example_grpc/katran_server_grpc -balancer_prog ./deps/bpfprog/bpf/balancer.bpf.o  -forwarding_cores=0 -hc_forwarding=false -lru_size=10000 -default_mac ${GATEWAY_KATRAN_MAC}
 ```
-- On `termB`, run client commands to configure VIPs and reals for Katran
+- On `termB`, use bpftool to inspect the logs of the bpf program
+```bash
+cat /sys/kernel/debug/tracing/trace_pipe
+```
+- On `termC`, run client commands to configure VIPs and reals for Katran
 ```bash
 cd /home/simple_user/katran/example_grpc/goclient/src/katranc/main
 
 # configure a VIP that corresponds to all reals
 ./main -A -t ${VIP_ALL}:8000
-./main -a -t ${VIP_ALL}:8000 -r ${REAL_1_IP}
-./main -a -t ${VIP_ALL}:8000 -r ${REAL_2_IP}
-./main -a -t ${VIP_ALL}:8000 -r ${REAL_3_IP}
+./main -a -t ${VIP_ALL}:8000 -r ${REAL_1_IP} -w 1
+./main -a -t ${VIP_ALL}:8000 -r ${REAL_2_IP} -w 3
+./main -a -t ${VIP_ALL}:8000 -r ${REAL_3_IP} -w 7
+
+# run `pytest -s` on client container
+# (verify that the percentages of responses from each server
+# align with the weights)
+
+# let's suppose real 3 is down due to maintenance (we drain real 3)
+./main -a -t ${VIP_ALL}:8000 -r ${REAL_3_IP} -w 0
+
+# run again `pytest -s` on client
+# (verfy that real 3 is `drained` from the VIP-group)
+
+# real 3 is up again
+./main -a -t ${VIP_ALL}:8000 -r ${REAL_3_IP} -w 2
+
+# run again `pytest -s` on client ... 
+```
+```bash
+# You could also make other real groups corresponding to VIPs
+# (these are not tested by pytest at this time)
 
 # this VIP corresponds to reals 1,2
 ./main -A -t ${VIP_AB}:8000
@@ -47,12 +70,10 @@ cd /home/simple_user/katran/example_grpc/goclient/src/katranc/main
 ./main -a -t ${VIP_BC}:8000 -r ${REAL_2_IP}
 ./main -a -t ${VIP_BC}:8000 -r ${REAL_3_IP}
 
+# list available services (VIP -> reals mapping)
 ./main -l
 ```
-- On `termC`, use bpftool to inspect the logs of the bpf program
-```bash
-cat /sys/kernel/debug/tracing/trace_pipe
-```
+
 <!--
 ```bash
 bpftool prog list
@@ -81,7 +102,7 @@ curl -m 3 http://${VIP_ALL}:8000 # response from one of 1,2,3
 curl -m 3 http://${VIP_AB}:8000 # response from one of 1,2
 curl -m 3 http://${VIP_BC}:8000 # response from one of 2,3
 ```
-You should get the same response from the server and you should be able to see the katran logs on `termC`
+You should get the same response from the server and you should be able to see the katran logs on `termB`
 ```txt
 bpf_trace_printk: Redirecting packet to real ...
 ```

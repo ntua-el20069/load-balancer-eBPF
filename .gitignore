@@ -51,4 +51,5 @@ __pycache__/
 
 # unused files
 *unused/
+experiments/
 
