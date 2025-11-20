@@ -18,7 +18,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # Set the working directory for the application
-WORKDIR /app
+WORKDIR /home/real-folder
 
 
 # Install Python dependencies. This assumes a 'requirements.txt' file exists in the build context.
@@ -35,4 +35,4 @@ RUN chmod +x setup.sh
 EXPOSE 8000
 
 # setup network interfaces and start the application
-ENTRYPOINT [ "/app/setup.sh" ]
+ENTRYPOINT [ "/home/real-folder/setup.sh" ]
