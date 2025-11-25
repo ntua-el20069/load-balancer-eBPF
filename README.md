@@ -3,8 +3,18 @@ This project utilizes [katran](https://github.com/facebookincubator/katran) for 
 
 <img src="images/topology.png" width="100%"/>
 
+The test was done on 
+```txt
+Operating System: Ubuntu 22.04.5 LTS              
+Kernel: Linux 6.8.0-83-generic
+Architecture: x86-64
+```
+The test was NOT successful on WSL / Windows environments. 
+Be conscious if you try to test this in a host different than Ubuntu.
+
 ## Docker setup
-On your WSL2 / Linux host execute:
+
+On Ubuntu host execute:
 ```bash
 git clone https://github.com/ntua-el20069/load-balancer-eBPF.git
 cd load-balancer-eBPF/lb-n-reals/
