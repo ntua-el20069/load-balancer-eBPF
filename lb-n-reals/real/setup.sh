@@ -34,4 +34,7 @@ echo "Set VIPs as loopback addresses"
 for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}'); do  echo $sc ; sysctl ${sc}=0; done
 
 # run the application
-uvicorn app:app --host 0.0.0.0 --port 8000
+# uvicorn app:app --host 0.0.0.0 --port 8000
+
+# run mosquitto broker
+mosquitto -v -c /etc/mosquitto/conf.d/mosquitto.conf

@@ -3,8 +3,18 @@ This project utilizes [katran](https://github.com/facebookincubator/katran) for 
 
 <img src="images/topology.png" width="100%"/>
 
+The test was done on 
+```txt
+Operating System: Ubuntu 22.04.5 LTS              
+Kernel: Linux 6.8.0-83-generic
+Architecture: x86-64
+```
+The test was NOT successful on WSL / Windows environments. 
+Be conscious if you try to test this in a host different than Ubuntu.
+
 ## Docker setup
-On your WSL2 / Linux host execute:
+
+On Ubuntu host execute:
 ```bash
 git clone https://github.com/ntua-el20069/load-balancer-eBPF.git
 cd load-balancer-eBPF/lb-n-reals/
@@ -35,40 +45,12 @@ cat /sys/kernel/debug/tracing/trace_pipe
 ```bash
 cd /home/simple_user/katran/example_grpc/goclient/src/katranc/main
 
-# configure a VIP that corresponds to all reals
-./main -A -t ${VIP_ALL}:8000
-./main -a -t ${VIP_ALL}:8000 -r ${REAL_1_IP} -w 1
-./main -a -t ${VIP_ALL}:8000 -r ${REAL_2_IP} -w 3
-./main -a -t ${VIP_ALL}:8000 -r ${REAL_3_IP} -w 7
-
-# run `pytest -s` on client container
-# (verify that the percentages of responses from each server
-# align with the weights)
-
-# let's suppose real 3 is down due to maintenance (we drain real 3)
-./main -a -t ${VIP_ALL}:8000 -r ${REAL_3_IP} -w 0
-
-# run again `pytest -s` on client
-# (verfy that real 3 is `drained` from the VIP-group)
-
-# real 3 is up again
-./main -a -t ${VIP_ALL}:8000 -r ${REAL_3_IP} -w 2
-
-# run again `pytest -s` on client ... 
-```
-```bash
-# You could also make other real groups corresponding to VIPs
-# (these are not tested by pytest at this time)
-
-# this VIP corresponds to reals 1,2
-./main -A -t ${VIP_AB}:8000
-./main -a -t ${VIP_AB}:8000 -r ${REAL_1_IP}
-./main -a -t ${VIP_AB}:8000 -r ${REAL_2_IP}
-
-# this VIP corresponds to reals 2,3
-./main -A -t ${VIP_BC}:8000
-./main -a -t ${VIP_BC}:8000 -r ${REAL_2_IP}
-./main -a -t ${VIP_BC}:8000 -r ${REAL_3_IP}
+# configure a VIP that corresponds to all reals/MQTT Brokers
+# Brokers Run on 
+./main -A -t ${VIP_ALL}:${MQTT_PORT}
+./main -a -t ${VIP_ALL}:${MQTT_PORT} -r ${REAL_1_IP} -w 1
+./main -a -t ${VIP_ALL}:${MQTT_PORT} -r ${REAL_2_IP} -w 1
+./main -a -t ${VIP_ALL}:${MQTT_PORT} -r ${REAL_3_IP} -w 1
 
 # list available services (VIP -> reals mapping)
 ./main -l
@@ -119,24 +101,16 @@ In a similar way, open a terminal and execute the shell of client container
 ```bash
 docker exec -it client sh
 ```
-Ensure the following curl to real ip succeeds and returns a welcoming message
+Ensure the following mqtt publish and watch docker container logs to ensure that broker / real_1 gets the message
 ```bash
-curl -m 3 http://${REAL_3_IP}:8000
+mosquitto_pub -h ${REAL_1_IP} -t motor -p ${MQTT_PORT} -m "motor temp, current, ..."
 ```
 Then try to make the request to katran:
 ```bash
-# by running the following you expect 
-curl -m 3 http://${VIP_ALL}:8000 # response from one of 1,2,3
-
-# or just use pytest
-pytest -s
+# by running the following you expect one of the 3 brokers will receive the message
+mosquitto_pub -h ${VIP_ALL} -t motor -p ${MQTT_PORT} -m "motor temp, current, ..."
 ```
-```bash
-# if you have configured more VIPs you would expect
-curl -m 3 http://${VIP_AB}:8000 # response from one of 1,2
-curl -m 3 http://${VIP_BC}:8000 # response from one of 2,3
-```
-You should get the same response from the server and you should be able to see the katran logs on `termB`
+You should see from docker container logs that one of the reals / brokers receives the message and you should be able to see the katran logs on `termB`
 ```txt
 bpf_trace_printk: Redirecting packet to real ...
 ```

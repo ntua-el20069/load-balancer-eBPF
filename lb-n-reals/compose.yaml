@@ -49,6 +49,8 @@ services:
     cap_add:
       - NET_ADMIN
       - SYS_ADMIN
+    volumes:
+      - ./mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf
     networks:
       gateway-reals:
         ipv4_address: ${REAL_1_IP}
@@ -65,6 +67,8 @@ services:
     cap_add:
       - NET_ADMIN
       - SYS_ADMIN
+    volumes:
+      - ./mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf
     networks:
       gateway-reals:
         ipv4_address: ${REAL_2_IP}
@@ -81,6 +85,8 @@ services:
     cap_add:
       - NET_ADMIN
       - SYS_ADMIN
+    volumes:
+      - ./mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf
     networks:
       gateway-reals:
         ipv4_address: ${REAL_3_IP}

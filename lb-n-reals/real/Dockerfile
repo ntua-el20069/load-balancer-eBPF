@@ -12,8 +12,12 @@ ENV PYTHONUNBUFFERED=1
 # Install required system packages
 RUN apt-get update && \
     apt-get install -y python3 python3-pip && \
-    apt-get install -y iproute2 traceroute iputils-ping net-tools curl wget vim && \
-    apt install -y tcpdump && \
+    apt-get install -y iproute2 traceroute iputils-ping net-tools curl wget vim tcpdump \
+                        software-properties-common && \
+    apt-add-repository ppa:mosquitto-dev/mosquitto-ppa && \
+    apt-get update && \
+    apt-get -y install mosquitto && \
+    apt-get -y install mosquitto-clients && \
     # Clean up the apt cache to reduce image size
     rm -rf /var/lib/apt/lists/*
 
