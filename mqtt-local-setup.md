@@ -49,22 +49,22 @@ mosquitto_sub -h localhost -p 1111 -t motor -t battery
 ## Simple quide to understand pub/sub model
 
 1. Start the Mosquitto broker:
-   ```bash
-   mosquitto -v -p 1111
-   ```
+```bash
+mosquitto -v -p 1111
+```
 2. Open a new terminal and subscribe to topics:
-   ```bash
-   mosquitto_sub -h localhost -p 1111 -t motor -t battery
-    ```
-3. On another terminal, subscribe to a specific topic:
-   ```bash
-   mosquitto_sub -h localhost -p 1111 -t motor
+```bash
+mosquitto_sub -h localhost -p 1111 -t motor -t battery
    ```
+3. On another terminal, subscribe to a specific topic:
+```bash
+mosquitto_sub -h localhost -p 1111 -t motor
+```
 4. Open another terminal and publish messages to the topics:
-    ```bash
-    mosquitto_pub -h localhost -t motor -p 1111 -m "motor temp, current, ..."
-    mosquitto_pub -h localhost -t battery -p 1111 -m "battery temp, current, ..."
-    ```
+```bash
+mosquitto_pub -h localhost -t motor -p 1111 -m "motor temp, current, ..."
+mosquitto_pub -h localhost -t battery -p 1111 -m "battery temp, current, ..."
+```
 5. You should see the messages appear in the terminals where you subscribed to the topics.
 
 
