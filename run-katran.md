@@ -21,7 +21,7 @@ sudo apt install git pkg-config libiberty-dev cmake clang-13 libelf-dev libfmt-d
 
 - Clone the forked `katran` repository (this repo contains changes in order the Katran Server to be able to interact with MQTT brokers and clients)
 ```bash
-git clone https://github.com/ntua-el20069/katran.git
+git clone https://github.com/nickpapakon/katran.git
 cd katran/
 ```
 

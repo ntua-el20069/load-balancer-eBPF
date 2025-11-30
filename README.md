@@ -16,7 +16,7 @@ Be conscious if you try to test this in a host different than Ubuntu.
 
 On Ubuntu host execute:
 ```bash
-git clone https://github.com/ntua-el20069/load-balancer-eBPF.git
+git clone https://github.com/nickpapakon/load-balancer-eBPF.git
 cd load-balancer-eBPF/lb-n-reals/
 ```
 Ensure Docker Desktop is up and running and then,
