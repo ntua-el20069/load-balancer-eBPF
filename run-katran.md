@@ -294,6 +294,8 @@ tcpdump -n -i eth1 -nnXXtttt -w /tmp/gateway_eth1_capture.pcap -C 3 -G 600
 
 tcpdump -n -i eth2 -nnXXtttt -w /tmp/gateway_eth2_capture.pcap -C 3 -G 600 
 
+tcpdump -n -i eth3 -nnXXtttt -w /tmp/gateway_eth3_capture.pcap -C 3 -G 600 
+
 # ip route del 10.1.1.0/24 dev eth0
 # ip route del 10.1.2.0/24 dev eth1
 # ip route del 10.1.3.0/24 dev eth2

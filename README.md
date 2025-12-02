@@ -110,6 +110,10 @@ Then try to make the request to katran:
 # by running the following you expect one of the 3 brokers will receive the message
 mosquitto_pub -h ${VIP_ALL} -t motor -p ${MQTT_PORT} -m "motor temp, current, ..."
 ```
+
+<!--
+mosquitto_pub -h ${SCRATCH_LB_IP} -t motor -p ${MQTT_PORT} -m "motor temp, current, ..."
+-->
 You should see from docker container logs that one of the reals / brokers receives the message and you should be able to see the katran logs on `termB`
 ```txt
 bpf_trace_printk: Redirecting packet to real ...
