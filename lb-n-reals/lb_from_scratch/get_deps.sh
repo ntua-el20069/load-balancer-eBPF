@@ -2,7 +2,7 @@
 
 set -xeo pipefail
 
-DEPS_DIR=./deps
+DEPS_DIR="$(pwd)/deps"
 
 get_clang() {
     if [ -f "${DEPS_DIR}/clang_installed" ]; then
@@ -27,5 +27,26 @@ get_clang() {
     touch "${DEPS_DIR}/clang_installed"
 }
 
+get_bpftool() {
+    if [ -f "${DEPS_DIR}/bpftool_installed" ]; then
+        return
+    fi
+    BPFTOOL_DIR="${DEPS_DIR}/bpftool"
+    rm -rf "${BPFTOOL_DIR}"
+    pushd .
+    cd "${DEPS_DIR}"
+    echo -e "${COLOR_GREEN}[ INFO ] Cloning bpftool repo ${COLOR_OFF}"
+    git clone --recurse-submodules https://github.com/libbpf/bpftool.git || true
+    cd "${BPFTOOL_DIR}"/src
+    make
+    mkdir -p "${DEPS_DIR}/bin"
+    cp "${BPFTOOL_DIR}"/src/bpftool "${DEPS_DIR}/bin/bpftool"
+    ln -s "${DEPS_DIR}/bin/bpftool" /usr/local/bin/bpftool
+    echo -e "${COLOR_GREEN}bpftool is installed ${COLOR_OFF}"
+    popd
+    touch "${DEPS_DIR}/bpftool_installed"
+}
+
 # execute functions
 get_clang
+get_bpftool

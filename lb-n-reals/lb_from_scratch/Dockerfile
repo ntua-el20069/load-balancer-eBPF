@@ -9,17 +9,17 @@ RUN apt-get update && \
     apt-get install -y wget vim curl iputils-ping ethtool sudo && \
     rm -rf /var/lib/apt/lists/*
 
-COPY . /lb_from_scratch
+COPY ./get_deps.sh /lb_from_scratch/get_deps.sh
 WORKDIR /lb_from_scratch
 
-RUN chmod +x setup.sh && \
-    chmod +x get_deps.sh && \
+RUN chmod +x get_deps.sh && \
     ./get_deps.sh
 
-RUN git clone --recurse-submodules https://github.com/libbpf/bpftool.git
-    ## install bpftool
-    # cd bpftool/src  && \
-    # make install  && \
-    # cd ../.. 
+# until here, if we do multiple docker builds, 
+# the deps will be cached (Docker Build Cache)
+
+COPY . /lb_from_scratch/
+
+RUN chmod +x setup.sh
 
 ENTRYPOINT [ "/lb_from_scratch/setup.sh" ]

@@ -8,5 +8,8 @@ set -euxo pipefail
 # static route
 ip route add ${GENERAL_SUBNET} via ${GATEWAY_SCRATCH_LB_IP} dev eth0
 
+# make the project (and load the eBPF/XDP program)
+make
+
 # keep container running indefinitely
 sleep infinity

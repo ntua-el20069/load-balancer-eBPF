@@ -8,13 +8,13 @@
 #define GATEWAY_SCRATCH_LB_MAC_LAST_BYTE 0x01
 #define SCRATCH_LB_MAC_LAST_BYTE 0x02
 
-SEC("xdp_lb")
+SEC("xdp")
 int xdp_load_balancer(struct xdp_md *ctx)
 {
     void *data = (void *)(long)ctx->data;
     void *data_end = (void *)(long)ctx->data_end;
 
-    bpf_printk("got something");
+    bpf_printk("got something from NIC");
 
     struct ethhdr *eth = data;
     if (data + sizeof(struct ethhdr) > data_end)
