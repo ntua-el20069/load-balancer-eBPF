@@ -1,4 +1,5 @@
 #include "xdp_lb_kern.h"
+#include "mqtt.h"
 
 #define REAL_1_IP       (unsigned int)(10 + (1 << 8) + (3 << 16) + (201 << 24))
 #define REAL_2_IP       (unsigned int)(10 + (1 << 8) + (3 << 16) + (202 << 24))
@@ -30,7 +31,50 @@ int xdp_load_balancer(struct xdp_md *ctx)
     if (iph->protocol != IPPROTO_TCP)
         return XDP_PASS;
 
+    
+
+    struct tcphdr *tcp = (void *)iph + sizeof(struct iphdr);
+    if ((void *)tcp + sizeof(struct tcphdr) > data_end)
+        return XDP_ABORTED;
+
     bpf_printk("Got TCP packet from %x", iph->saddr);
+    bpf_printk(" src Port: %d, dst Port: %d", bpf_ntohs(tcp->source), bpf_ntohs(tcp->dest));
+
+    // Parse MQTT if dst port is MQTT_PORT
+    if(bpf_ntohs(tcp->dest) != MQTT_PORT){
+        bpf_printk("Not an MQTT packet");
+    }
+    else {
+      unsigned char * mqtt_start_buf = (void *)tcp + tcp->doff * 4;
+      if((void *)(mqtt_start_buf + 1) > data_end){
+          bpf_printk("Does not contain all the required MQTT hdr bytes");
+      } else {
+        bpf_printk("This segment Contains MQTT packet");
+        unsigned int packet_type = 0;
+        MQTTString topicName = MQTTString_initializer;
+        
+        int result = MQTTDeserialize_publish(&packet_type,
+                                            &topicName, 
+                                            mqtt_start_buf, (unsigned char *)data_end);
+        
+        bpf_printk("MQTT Packet type: %d", packet_type);
+        if(packet_type == PUBLISH){
+            bpf_printk("MQTT PUBLISH packet detected");
+        } else {
+            bpf_printk("MQTT packet is not PUBLISH type");
+        }
+        if(result == 1){
+            bpf_printk("MQTT Publish packet parsed successfully");
+            bpf_printk("Topic length: %d", topicName.lenstring.len);
+            bpf_printk("Topic and payload: %s", topicName.lenstring.data);
+            // bpf_printk("Topic: %.*s", topicName.lenstring.len, topicName.lenstring.data);
+        }
+      }
+    } // MQTT_PORT
+    
+    // Parse MQTT packet
+
+
 
     if (iph->saddr == CLIENT_IP){
         iph->daddr = (bpf_ktime_get_ns() % 2)? REAL_1_IP : REAL_2_IP;

@@ -1,10 +1,18 @@
+#ifndef __BPF_PROG_INCLUDES
+#define __BPF_PROG_INCLUDES
+
 #include <stddef.h>
-#include <linux/bpf.h>
+#include <string.h>
+
 #include <linux/in.h>
 #include <linux/if_ether.h>
 #include <linux/ip.h>
-#include <bpf_helpers.h>
-#include <bpf_endian.h>
+#include <linux/tcp.h>
+
+#include "include/bpf.h"
+#include "include/bpf_helpers.h"
+#include "include/bpf_endian.h"
+#include "include/bpf_common.h"
 
 static __always_inline __u16
 csum_fold_helper(__u64 csum)
@@ -26,3 +34,5 @@ iph_csum(struct iphdr *iph)
     unsigned long long csum = bpf_csum_diff(0, 0, (unsigned int *)iph, sizeof(struct iphdr), 0);
     return csum_fold_helper(csum);
 }
+
+#endif /* __BPF_PROG_INCLUDES */
