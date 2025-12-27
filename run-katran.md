@@ -300,6 +300,7 @@ tcpdump -n -i eth3 -nnXXtttt -w /tmp/gateway_eth3_capture.pcap -C 3 -G 600
 # ip route del 10.1.2.0/24 dev eth1
 # ip route del 10.1.3.0/24 dev eth2
 
+tcpdump -n -i eth0 -nnXXtttt -w /tmp/mqtt_client_eth0_capture.pcap -C 3 -G 600 
 
 cat katran/lib/bpf/balancer.bpf.c
 

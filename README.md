@@ -56,6 +56,77 @@ cd /home/simple_user/katran/example_grpc/goclient/src/katranc/main
 ./main -l
 ```
 
+
+### Client container
+In a similar way, open a terminal and execute the shell of client container
+```bash
+docker exec -it client sh
+```
+Ensure the following mqtt publish and watch docker container logs to ensure that broker / real_1 gets the message
+```bash
+mosquitto_pub -h ${REAL_1_IP} -t motor -p ${MQTT_PORT} -m "motor temp, current, ..."
+```
+Then try to make the request to katran:
+```bash
+# by running the following you expect one of the 3 brokers will receive the message
+mosquitto_pub -h ${VIP_ALL} -t motor -p ${MQTT_PORT} -m "motor temp, current, ..."
+```
+
+<!--
+mosquitto_pub -h ${SCRATCH_LB_IP}  -p ${MQTT_PORT} -m "motor temp, current, ..." -t motors23
+-->
+You should see from docker container logs that one of the reals / brokers receives the message and you should be able to see the katran logs on `termB`
+```txt
+bpf_trace_printk: Redirecting packet to real ...
+```
+
+### Debugging tools-steps
+- Run tcpdump on interfaces of `gateway` and `real` containers
+- change the docker containers networking that is configured on `compose.yaml` (`macvlan` worked)
+- use of `bpftool`
+```bash
+
+export PROG_ID=$(bpftool prog list | grep xdp_load | awk -F':' '{ print $1 }')
+export MAP_ID=$(bpftool map list | grep mqtt | awk -F':' '{ print $1 }')
+bpftool prog list
+bpftool prog show name xdp_load_balancer
+bpftool prog show id $PROG_ID
+bpftool prog show 
+bpftool prog dump xlated name xdp_load_balancer
+bpftool map list
+bpftool map show id $MAP_ID
+bpftool map dump id $MAP_ID
+bpftool map lookup id $MAP_ID key 100 0 0 0 0 0 0 0
+bpftool prog tracelog
+# Note that you have to specify each of the 8 bytes of the key individually, starting
+# with the least significant
+
+./user_bpfmap 59 sensors/ 10.1.50.32
+./user_bpfmap $MAP_ID motors99 10.1.50.32
+
+cd xdp-tutorial/basic00-update-map
+./user_bpfmap $MAP_ID sensors/ 10.1.50.32
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!--
 ```bash
 bpftool prog list
@@ -95,30 +166,3 @@ tc qd add  dev eth0 clsact
 # tc qd del dev eth0 clsact
 
 -->
-
-### Client container
-In a similar way, open a terminal and execute the shell of client container
-```bash
-docker exec -it client sh
-```
-Ensure the following mqtt publish and watch docker container logs to ensure that broker / real_1 gets the message
-```bash
-mosquitto_pub -h ${REAL_1_IP} -t motor -p ${MQTT_PORT} -m "motor temp, current, ..."
-```
-Then try to make the request to katran:
-```bash
-# by running the following you expect one of the 3 brokers will receive the message
-mosquitto_pub -h ${VIP_ALL} -t motor -p ${MQTT_PORT} -m "motor temp, current, ..."
-```
-
-<!--
-mosquitto_pub -h ${SCRATCH_LB_IP} -t motor -p ${MQTT_PORT} -m "motor temp, current, ..."
--->
-You should see from docker container logs that one of the reals / brokers receives the message and you should be able to see the katran logs on `termB`
-```txt
-bpf_trace_printk: Redirecting packet to real ...
-```
-
-### Debugging tools-steps
-- Run tcpdump on interfaces of `gateway` and `real` containers
-- change the docker containers networking that is configured on `compose.yaml` (`macvlan` worked)
