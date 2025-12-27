@@ -15,10 +15,26 @@
  *    Xiang Rong - 442039 Add makefile to Embedded C client
  *******************************************************************************/
 
+ /******************************************************************************
+  * Modified by Nikolaos Papakonstantopoulos for load-balancer-eBPF project
+  * 
+  * This header file is used by eBPF - xdp program to parse MQTT packets
+  * Due to eBPF limitations, some modifications were made to the original
+  * MQTTPacket.h file from the Eclipse Paho Embedded C client,
+  * such as 
+  * - 	Functions modified to take less parameters,
+  *   	as eBPF uses only registers r1-r5 for function parameters
+  * - 	Inline functions to avoid function call overhead
+  * - 	Strict bounds checking to avoid out-of-packet memory access (EACCESS errors),
+  *     because eBPF verifier accepts only pointer dereferences within packet bounds
+  ******************************************************************************/
+
 #ifndef MQTTPACKET_H_
 #define MQTTPACKET_H_
 
-#include "StackTrace.h"
+#define MQTT_PORT 1883
+
+#include "MQTTPacket.h"
 
 enum errors
 {
@@ -37,6 +53,13 @@ enum msgTypes
 /**
  * Bitfields for the MQTT header byte.
  */
+// TODO: check REVERSED definition for eBPF - replace with 
+/* 	#if defined(__LITTLE_ENDIAN_BITFIELD)
+	#elif defined(__BIG_ENDIAN_BITFIELD)
+	#else
+	#error	"Adjust your <asm/byteorder.h> defines"
+	#endif
+*/
 typedef union
 {
 	unsigned char byte;	                /**< the whole byte */
@@ -80,17 +103,13 @@ typedef struct
 //
 
 
-
-
-
-
 /**
- * Calculates an integer from two bytes read from the input buffer
+ * Calculates an 16 bit unsigned integer from two bytes read from the input buffer
  * @param pptr pointer to the input buffer - incremented by the number of bytes used & returned
  * @return the integer value calculated
  * returns -1 on error
  */
-int readInt(unsigned char** pptr, unsigned char* enddata)
+__u16 readInt(unsigned char** pptr, unsigned char* enddata)
 {
 	unsigned char* ptr = *pptr;
 	if(ptr + 2 > enddata)
@@ -123,7 +142,6 @@ int readMQTTLenString(MQTTString* mqttstring, unsigned char** pptr, unsigned cha
 {
 	int rc = 0;
 
-	FUNC_ENTRY;
 	/* the first two bytes are the length of the string */
 	if (enddata - (*pptr) > 1) /* enough length to read the integer? */
 	{
@@ -136,7 +154,6 @@ int readMQTTLenString(MQTTString* mqttstring, unsigned char** pptr, unsigned cha
 		}
 	}
 	mqttstring->cstring = NULL;
-	FUNC_EXIT_RC(rc);
 	return rc;
 }
 
@@ -147,14 +164,13 @@ int readMQTTLenString(MQTTString* mqttstring, unsigned char** pptr, unsigned cha
  * @param value the decoded length returned
  * @return the number of bytes read from the socket
  */
-int MQTTPacket_decode(int (*getcharfn)(unsigned char*, int), int* value)
+__attribute__((__always_inline__)) static inline int MQTTPacket_decode(int (*getcharfn)(unsigned char*, int), int* value)
 {
 	unsigned char c;
 	int multiplier = 1;
 	int len = 0;
 #define MAX_NO_OF_REMAINING_LENGTH_BYTES 4
 
-	FUNC_ENTRY;
 	*value = 0;
 	do
 	{
@@ -172,7 +188,6 @@ int MQTTPacket_decode(int (*getcharfn)(unsigned char*, int), int* value)
 		multiplier *= 128;
 	} while ((c & 128) != 0);
 exit:
-	FUNC_EXIT_RC(len);
 	return len;
 }
 
