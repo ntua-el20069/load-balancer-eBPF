@@ -38,6 +38,31 @@ struct vip_definition {
   __u8 proto;
 };
 
+struct ip_addr_union {
+    union {
+        __be32 ipv4;
+        __be32 ipv6[4];
+    };
+};
+
+// a eBPF map just to be able to change the client_IP (use key: 1)
+struct {
+  __uint(type, BPF_MAP_TYPE_HASH);
+  __type(key, unsigned int);
+  __type(value, struct ip_addr_union);
+  __uint(max_entries, 10);
+  __uint(map_flags, NO_FLAGS);
+} client_ips SEC(".maps");
+
+// map the client ip to the last used topic
+struct {
+  __uint(type, BPF_MAP_TYPE_HASH);
+  __type(key, struct ip_addr_union);
+  __type(value, struct mqtt_topic_entry);
+  __uint(max_entries, MAX_VIPS);
+  __uint(map_flags, NO_FLAGS);
+} mqtt_client_ip_to_topic SEC(".maps");
+
 // map the mqtt topic to a vip
 struct {
   __uint(type, BPF_MAP_TYPE_HASH);

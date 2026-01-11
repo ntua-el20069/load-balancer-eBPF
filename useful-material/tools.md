@@ -73,3 +73,10 @@ sudo bpftrace -e 'tracepoint:xdp:* { @cnt[probe] = count(); }'
 bpftrace -e \
  'tracepoint:xdp:xdp_bulk_tx{@redir_errno[-args->err] = count();}'
 ```
+
+- generate `vmlinux.h` file with `bpftool`
+```bash
+# generate the vmlinux.h header file
+mkdir -p include
+bpftool btf dump file /sys/kernel/btf/vmlinux format c > include/vmlinux.h
+```
