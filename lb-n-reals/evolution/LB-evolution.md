@@ -47,7 +47,7 @@ The `lb_from_scratch` container is a simple Load Balancer that supports only one
 - eBPF Map `mqtt_topic_to_vip`: topic `sensors/` key corresponds to VIP that maps to broker `real_1`
 - eBPF Map `client_ips`: client IP      (This map is used because scratch LB is silly - it does not learn client IPs on its own)
                                       (In case of Katran we won't need this Map because Reals send the packets directly to the clients, so Katran receives Packets only from the clients and won't send anything to them)
-- eBPF Map ``
+- eBPF Map `mqtt_client_ip_to_topic` is only modified by the kernel eBPF program. Whenever a MQTT PUBLISH packet is received, this map is updated (key `client src IP` -> value `topic`) so  we maintain the last topic that was published by each client IP and the next time a packet arrives the LB can do a correct prediction of the topic based on src IP and forward to the responsible IP.
 
 
 ### Test Procedure
