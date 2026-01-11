@@ -20,6 +20,14 @@ git clone https://github.com/nickpapakon/load-balancer-eBPF.git
 cd load-balancer-eBPF/lb-n-reals/
 ```
 Ensure Docker Desktop is up and running and then,
+- build the base images (e.g. `bpf_mqtt_base` is an ubuntu img containing most utilities needed for eBPF programs and MQTT messaging)
+```bash
+cd base_images/
+chmod +x build_images.sh
+./build_images.sh
+cd ../
+```
+- build the containers
 ```bash
 docker compose up --build -d
 ```
@@ -72,97 +80,7 @@ Then try to make the request to katran:
 mosquitto_pub -h ${VIP_ALL} -t motor -p ${MQTT_PORT} -m "motor temp, current, ..."
 ```
 
-<!--
-mosquitto_pub -h ${SCRATCH_LB_IP}  -p ${MQTT_PORT} -m "motor temp, current, ..." -t motors23
--->
 You should see from docker container logs that one of the reals / brokers receives the message and you should be able to see the katran logs on `termB`
 ```txt
 bpf_trace_printk: Redirecting packet to real ...
 ```
-
-### Debugging tools-steps
-- Run tcpdump on interfaces of `gateway` and `real` containers
-- change the docker containers networking that is configured on `compose.yaml` (`macvlan` worked)
-- use of `bpftool`
-```bash
-
-export PROG_ID=$(bpftool prog list | grep xdp_load | awk -F':' '{ print $1 }')
-export MAP_ID=$(bpftool map list | grep mqtt | awk -F':' '{ print $1 }')
-bpftool prog list
-bpftool prog show name xdp_load_balancer
-bpftool prog show id $PROG_ID
-bpftool prog show 
-bpftool prog dump xlated name xdp_load_balancer
-bpftool map list
-bpftool map show id $MAP_ID
-bpftool map dump id $MAP_ID
-bpftool map lookup id $MAP_ID key 100 0 0 0 0 0 0 0
-bpftool prog tracelog
-# Note that you have to specify each of the 8 bytes of the key individually, starting
-# with the least significant
-
-./user_bpfmap 59 sensors/ 10.1.50.32
-./user_bpfmap $MAP_ID motors99 10.1.50.32
-
-cd xdp-tutorial/basic00-update-map
-./user_bpfmap $MAP_ID sensors/ 10.1.50.32
-```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-```bash
-bpftool prog list
-bpftool prog tracelog
-
-sudo bpftrace -e 'tracepoint:xdp:* { @cnt[probe] = count(); }'
-
-bpftrace -e \
- 'tracepoint:xdp:xdp_bulk_tx{@redir_errno[-args->err] = count();}'
-```
--->
-
-
-<!--
-#####  ipip0 and ipip6tnl interfaces on Katran (needed only for healthchecking)
-
-# setup interfaces for ipip encapsulation
-ip link add name ipip0 type ipip external
-ip link set up dev ipip0
-ip a a ${LOCAL_IP_FOR_IPIP}/32 dev ipip0
-
-# if you want to set down and delete interface
-# ip link set down dev ipip0
-# ip link del  ipip0
-
-# the following interface type is not supported on WSL
-# ip link add name ipip60 type ip6tnl external
-# ip link set up dev ipip60
-
-##### Traffic control and Queueing Discipline
-
-# attach clsact qdisc on egress interface for usage in case of health checks
-tc qd add  dev eth0 clsact
-
-# if you want to show or delete the traffic control qdisc
-# tc qd show dev eth0
-# tc qd del dev eth0 clsact
-
--->

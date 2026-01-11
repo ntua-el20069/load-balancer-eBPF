@@ -23,11 +23,6 @@ set -euxo pipefail
 # static route
 ip route add ${GENERAL_SUBNET} via ${GATEWAY_KATRAN_IP} dev eth0
 
-## install bpftool
-cd bpftool/src  && \
-make install  && \
-cd ../..
-
 # keep container running indefinitely
 sleep infinity
 

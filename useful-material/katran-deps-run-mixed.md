@@ -1,4 +1,4 @@
-# Run Katran Load Balancer - Server
+# OUTDATED - Run Katran Load Balancer - Server
 
 ## OUTDATED: OLD way - not preferrable
 The following content may be **OUTDATED**.
@@ -269,6 +269,36 @@ bpftool prog list
 ```bash
 bpftool prog tracelog
 ```
+
+
+<!--
+#####  ipip0 and ipip6tnl interfaces on Katran (needed only for healthchecking)
+
+# setup interfaces for ipip encapsulation
+ip link add name ipip0 type ipip external
+ip link set up dev ipip0
+ip a a ${LOCAL_IP_FOR_IPIP}/32 dev ipip0
+
+# if you want to set down and delete interface
+# ip link set down dev ipip0
+# ip link del  ipip0
+
+# the following interface type is not supported on WSL
+# ip link add name ipip60 type ip6tnl external
+# ip link set up dev ipip60
+
+##### Traffic control and Queueing Discipline
+
+# attach clsact qdisc on egress interface for usage in case of health checks
+tc qd add  dev eth0 clsact
+
+# if you want to show or delete the traffic control qdisc
+# tc qd show dev eth0
+# tc qd del dev eth0 clsact
+
+-->
+
+
 
 <!-- 
 ip route

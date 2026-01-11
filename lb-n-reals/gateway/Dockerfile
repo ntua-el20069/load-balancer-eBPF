@@ -5,8 +5,7 @@ LABEL maintainer="docker-gateway"
 
 # Install utilities
 RUN apt-get update && \
-    apt-get install -y iproute2 traceroute iputils-ping net-tools && \
-    apt install -y tcpdump && \
+    apt-get install -y iproute2 traceroute iputils-ping net-tools tcpdump && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /home/gateway-folder
