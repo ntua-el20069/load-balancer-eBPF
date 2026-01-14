@@ -16,12 +16,12 @@ COPY ./get_deps.sh /home/client-folder/get_deps.sh
 RUN chmod +x get_deps.sh && \
     ./get_deps.sh
 
+COPY . .
+
 # Install Python dependencies. This assumes a 'requirements.txt' file exists in the build context.
 RUN --mount=type=cache,target=/root/.cache/pip \
     --mount=type=bind,source=requirements.txt,target=requirements.txt \
     python3 -m pip install -r requirements.txt
-
-COPY . .
 
 RUN chmod +x setup.sh
 
