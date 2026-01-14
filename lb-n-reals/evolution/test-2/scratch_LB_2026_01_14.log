@@ -1,0 +1,1935 @@
+
+
+
+###################################### LOGS #######################################
+
+
+# bpftool prog tracelog
+           <...>-4245    [005] ..s21  2808.102795: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4245    [005] ..s21  2808.102809: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4245    [005] ..s21  2808.102811: bpf_trace_printk:  src Port: 34770, dst Port: 1883
+           <...>-4245    [005] ..s21  2808.102813: bpf_trace_printk: No predicted topic for this client IP
+           <...>-4245    [005] ..s21  2808.102814: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+           <...>-4245    [005] ..s21  2808.102890: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4245    [005] ..s21  2808.102891: bpf_trace_printk: Got TCP packet from 0xcb03010a
+           <...>-4245    [005] ..s21  2808.102892: bpf_trace_printk:  src Port: 1883, dst Port: 34770
+           <...>-4245    [005] ..s21  2808.102892: bpf_trace_printk: Packet is not destined to MQTT port
+           <...>-4245    [005] ..s21  2808.102922: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4245    [005] ..s21  2808.102922: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4245    [005] ..s21  2808.102923: bpf_trace_printk:  src Port: 34770, dst Port: 1883
+   mosquitto_pub-4245    [005] ..s21  2808.102924: bpf_trace_printk: No predicted topic for this client IP
+   mosquitto_pub-4245    [005] ..s21  2808.102925: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+   mosquitto_pub-4245    [005] ..s21  2808.102985: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4245    [005] ..s21  2808.102986: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4245    [005] ..s21  2808.102987: bpf_trace_printk:  src Port: 34770, dst Port: 1883
+   mosquitto_pub-4245    [005] ..s21  2808.102988: bpf_trace_printk: No predicted topic for this client IP
+   mosquitto_pub-4245    [005] ..s21  2808.102989: bpf_trace_printk: This segment Contains MQTT packet
+   mosquitto_pub-4245    [005] ..s21  2808.102990: bpf_trace_printk: MQTT Packet type: 1
+   mosquitto_pub-4245    [005] ..s21  2808.102991: bpf_trace_printk: Not a PUBLISH packet type
+   mosquitto_pub-4245    [005] ..s21  2808.103003: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4245    [005] ..s21  2808.103004: bpf_trace_printk: Got TCP packet from 0xcb03010a
+   mosquitto_pub-4245    [005] ..s21  2808.103005: bpf_trace_printk:  src Port: 1883, dst Port: 34770
+   mosquitto_pub-4245    [005] ..s21  2808.103005: bpf_trace_printk: Packet is not destined to MQTT port
+           <...>-4026    [000] ..s21  2808.110084: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4026    [000] ..s21  2808.110102: bpf_trace_printk: Got TCP packet from 0xcb03010a
+           <...>-4026    [000] ..s21  2808.110104: bpf_trace_printk:  src Port: 1883, dst Port: 34770
+           <...>-4026    [000] ..s21  2808.110105: bpf_trace_printk: Packet is not destined to MQTT port
+           <...>-4026    [000] ..s21  2808.110164: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4026    [000] ..s21  2808.110165: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4026    [000] ..s21  2808.110166: bpf_trace_printk:  src Port: 34770, dst Port: 1883
+       mosquitto-4026    [000] ..s21  2808.110168: bpf_trace_printk: No predicted topic for this client IP
+       mosquitto-4026    [000] ..s21  2808.110169: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+   mosquitto_pub-4245    [005] ..s21  2808.110330: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4245    [005] ..s21  2808.110381: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4245    [005] ..s21  2808.110383: bpf_trace_printk:  src Port: 34770, dst Port: 1883
+   mosquitto_pub-4245    [005] ..s21  2808.110385: bpf_trace_printk: No predicted topic for this client IP
+   mosquitto_pub-4245    [005] ..s21  2808.110386: bpf_trace_printk: This segment Contains MQTT packet
+   mosquitto_pub-4245    [005] ..s21  2808.110387: bpf_trace_printk: MQTT Packet type: 3
+   mosquitto_pub-4245    [005] ..s21  2808.110388: bpf_trace_printk: Topic length: 80
+   mosquitto_pub-4245    [005] ..s21  2808.110391: bpf_trace_printk: Topic: aabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeP
+   mosquitto_pub-4245    [005] ..s21  2808.110393: bpf_trace_printk: Payload: aabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeemotor temp, current, ...
+   mosquitto_pub-4245    [005] ..s21  2808.110395: bpf_trace_printk: Actual Topic does not match the predicted one based on BPF map - We update BPF map
+   mosquitto_pub-4245    [005] ..s21  2808.110400: bpf_trace_printk: Found VIP mapping for actual topic
+   mosquitto_pub-4245    [005] ..s21  2808.110403: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+   mosquitto_pub-4245    [005] ..s21  2808.110528: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4245    [005] ..s21  2808.110530: bpf_trace_printk: Got TCP packet from 0xc903010a
+   mosquitto_pub-4245    [005] ..s21  2808.110531: bpf_trace_printk:  src Port: 1883, dst Port: 34770
+   mosquitto_pub-4245    [005] ..s21  2808.110532: bpf_trace_printk: Packet is not destined to MQTT port
+   mosquitto_pub-4245    [005] ..s21  2808.110580: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4245    [005] ..s21  2808.110581: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4245    [005] ..s21  2808.110583: bpf_trace_printk:  src Port: 34770, dst Port: 1883
+   mosquitto_pub-4245    [005] ..s21  2808.110584: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+   mosquitto_pub-4245    [005] ..s21  2808.110586: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+   mosquitto_pub-4245    [005] ..s21  2808.110587: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+   mosquitto_pub-4245    [005] ..s21  2808.110601: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4245    [005] ..s21  2808.110603: bpf_trace_printk: Got TCP packet from 0xc903010a
+   mosquitto_pub-4245    [005] ..s21  2808.110604: bpf_trace_printk:  src Port: 1883, dst Port: 34770
+   mosquitto_pub-4245    [005] ..s21  2808.110604: bpf_trace_printk: Packet is not destined to MQTT port
+     ksoftirqd/5-52      [005] ..s11  2808.114496: bpf_trace_printk: 
+
+got something from NIC
+     ksoftirqd/5-52      [005] ..s11  2808.114509: bpf_trace_printk: Got TCP packet from 0x6601010a
+     ksoftirqd/5-52      [005] ..s11  2808.114510: bpf_trace_printk:  src Port: 34770, dst Port: 1883
+     ksoftirqd/5-52      [005] ..s11  2808.114513: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+     ksoftirqd/5-52      [005] ..s11  2808.114514: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+     ksoftirqd/5-52      [005] ..s11  2808.114515: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+     ksoftirqd/5-52      [005] ..s11  2808.114558: bpf_trace_printk: 
+
+got something from NIC
+     ksoftirqd/5-52      [005] ..s11  2808.114559: bpf_trace_printk: Got TCP packet from 0xc903010a
+     ksoftirqd/5-52      [005] ..s11  2808.114562: bpf_trace_printk:  src Port: 1883, dst Port: 34770
+     ksoftirqd/5-52      [005] ..s11  2808.114562: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21  2808.319807: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2808.319848: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] ..s21  2808.319851: bpf_trace_printk:  src Port: 34770, dst Port: 1883
+          <idle>-0       [000] ..s21  2808.319857: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] ..s21  2808.319860: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21  2808.319861: bpf_trace_printk: This segment Contains MQTT packet
+          <idle>-0       [000] ..s21  2808.319862: bpf_trace_printk: MQTT Packet type: 3
+          <idle>-0       [000] ..s21  2808.319864: bpf_trace_printk: [xdp_aborted] Remaining length does not match data length
+          <idle>-0       [007] ..s21  2808.727698: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [007] ..s21  2808.727730: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [007] ..s21  2808.727733: bpf_trace_printk:  src Port: 34770, dst Port: 1883
+          <idle>-0       [007] ..s21  2808.727739: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [007] ..s21  2808.727742: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [007] ..s21  2808.727743: bpf_trace_printk: This segment Contains MQTT packet
+          <idle>-0       [007] ..s21  2808.727744: bpf_trace_printk: MQTT Packet type: 3
+          <idle>-0       [007] ..s21  2808.727746: bpf_trace_printk: [xdp_aborted] Remaining length does not match data length
+     kworker/9:2-3344    [009] ..s21  2809.551798: bpf_trace_printk: 
+
+got something from NIC
+     kworker/9:2-3344    [009] ..s21  2809.551828: bpf_trace_printk: Got TCP packet from 0x6601010a
+     kworker/9:2-3344    [009] ..s21  2809.551831: bpf_trace_printk:  src Port: 34770, dst Port: 1883
+     kworker/9:2-3344    [009] ..s21  2809.551836: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+     kworker/9:2-3344    [009] ..s21  2809.551838: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+     kworker/9:2-3344    [009] ..s21  2809.551838: bpf_trace_printk: This segment Contains MQTT packet
+     kworker/9:2-3344    [009] ..s21  2809.551839: bpf_trace_printk: MQTT Packet type: 3
+     kworker/9:2-3344    [009] ..s21  2809.551840: bpf_trace_printk: [xdp_aborted] Remaining length does not match data length
+          <idle>-0       [003] ..s21  2811.215739: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [003] ..s21  2811.215776: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [003] ..s21  2811.215778: bpf_trace_printk:  src Port: 34770, dst Port: 1883
+          <idle>-0       [003] ..s21  2811.215783: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [003] ..s21  2811.215785: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [003] ..s21  2811.215786: bpf_trace_printk: This segment Contains MQTT packet
+          <idle>-0       [003] ..s21  2811.215787: bpf_trace_printk: MQTT Packet type: 3
+          <idle>-0       [003] ..s21  2811.215789: bpf_trace_printk: [xdp_aborted] Remaining length does not match data length
+     ksoftirqd/9-77      [009] ..s11  2813.583776: bpf_trace_printk: 
+
+got something from NIC
+     ksoftirqd/9-77      [009] ..s11  2813.583801: bpf_trace_printk: [xdp_pass] Not an IPv4 packet, passing to network stack
+          <idle>-0       [000] ..s21  2814.479770: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2814.479805: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] ..s21  2814.479807: bpf_trace_printk:  src Port: 34770, dst Port: 1883
+          <idle>-0       [000] ..s21  2814.479812: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] ..s21  2814.479814: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21  2814.479814: bpf_trace_printk: This segment Contains MQTT packet
+          <idle>-0       [000] ..s21  2814.479815: bpf_trace_printk: MQTT Packet type: 3
+          <idle>-0       [000] ..s21  2814.479816: bpf_trace_printk: [xdp_aborted] Remaining length does not match data length
+           <...>-4246    [006] ..s21  2814.733340: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4246    [006] ..s21  2814.733390: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4246    [006] ..s21  2814.733392: bpf_trace_printk:  src Port: 60124, dst Port: 1883
+           <...>-4246    [006] ..s21  2814.733395: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-4246    [006] ..s21  2814.733396: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+           <...>-4246    [006] ..s21  2814.733397: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+           <...>-4246    [006] ..s21  2814.733440: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4246    [006] ..s21  2814.733442: bpf_trace_printk: Got TCP packet from 0xc903010a
+           <...>-4246    [006] ..s21  2814.733443: bpf_trace_printk:  src Port: 1883, dst Port: 60124
+           <...>-4246    [006] ..s21  2814.733444: bpf_trace_printk: Packet is not destined to MQTT port
+           <...>-4246    [006] ..s21  2814.733469: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4246    [006] ..s21  2814.733469: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4246    [006] ..s21  2814.733470: bpf_trace_printk:  src Port: 60124, dst Port: 1883
+           <...>-4246    [006] ..s21  2814.733471: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-4246    [006] ..s21  2814.733472: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+           <...>-4246    [006] ..s21  2814.733473: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+           <...>-4246    [006] ..s21  2814.733535: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4246    [006] ..s21  2814.733536: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4246    [006] ..s21  2814.733537: bpf_trace_printk:  src Port: 60124, dst Port: 1883
+           <...>-4246    [006] ..s21  2814.733538: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-4246    [006] ..s21  2814.733539: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+           <...>-4246    [006] ..s21  2814.733540: bpf_trace_printk: This segment Contains MQTT packet
+           <...>-4246    [006] ..s21  2814.733541: bpf_trace_printk: MQTT Packet type: 1
+           <...>-4246    [006] ..s21  2814.733542: bpf_trace_printk: Not a PUBLISH packet type
+           <...>-4246    [006] ..s21  2814.733558: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4246    [006] ..s21  2814.733559: bpf_trace_printk: Got TCP packet from 0xc903010a
+           <...>-4246    [006] ..s21  2814.733561: bpf_trace_printk:  src Port: 1883, dst Port: 60124
+           <...>-4246    [006] ..s21  2814.733563: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1135    [000] ..s21  2814.736155: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2814.736167: bpf_trace_printk: Got TCP packet from 0xc903010a
+       mosquitto-1135    [000] ..s21  2814.736169: bpf_trace_printk:  src Port: 1883, dst Port: 60124
+       mosquitto-1135    [000] ..s21  2814.736171: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1135    [000] ..s21  2814.736216: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2814.736218: bpf_trace_printk: Got TCP packet from 0x6601010a
+       mosquitto-1135    [000] ..s21  2814.736220: bpf_trace_printk:  src Port: 60124, dst Port: 1883
+       mosquitto-1135    [000] ..s21  2814.736223: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+       mosquitto-1135    [000] ..s21  2814.736225: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+       mosquitto-1135    [000] ..s21  2814.736227: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+   mosquitto_pub-4246    [006] ..s21  2814.736514: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4246    [006] ..s21  2814.736530: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4246    [006] ..s21  2814.736532: bpf_trace_printk:  src Port: 60124, dst Port: 1883
+   mosquitto_pub-4246    [006] ..s21  2814.736534: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+   mosquitto_pub-4246    [006] ..s21  2814.736536: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+   mosquitto_pub-4246    [006] ..s21  2814.736536: bpf_trace_printk: This segment Contains MQTT packet
+   mosquitto_pub-4246    [006] ..s21  2814.736537: bpf_trace_printk: MQTT Packet type: 3
+   mosquitto_pub-4246    [006] ..s21  2814.736538: bpf_trace_printk: Topic length: 80
+   mosquitto_pub-4246    [006] ..s21  2814.736541: bpf_trace_printk: Topic: aabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeP
+   mosquitto_pub-4246    [006] ..s21  2814.736542: bpf_trace_printk: Payload: aabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeemotor temp, current, ...
+   mosquitto_pub-4246    [006] ..s21  2814.736544: bpf_trace_printk: Found VIP mapping for actual topic
+   mosquitto_pub-4246    [006] ..s21  2814.736545: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+   mosquitto_pub-4246    [006] ..s21  2814.736599: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4246    [006] ..s21  2814.736600: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4246    [006] ..s21  2814.736601: bpf_trace_printk:  src Port: 60124, dst Port: 1883
+   mosquitto_pub-4246    [006] ..s21  2814.736602: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+   mosquitto_pub-4246    [006] ..s21  2814.736603: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+   mosquitto_pub-4246    [006] ..s21  2814.736604: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+       mosquitto-1135    [000] ..s21  2814.736917: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2814.736937: bpf_trace_printk: Got TCP packet from 0xc903010a
+       mosquitto-1135    [000] ..s21  2814.736939: bpf_trace_printk:  src Port: 1883, dst Port: 60124
+       mosquitto-1135    [000] ..s21  2814.736940: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1135    [000] .Ns21  2814.737093: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] .Ns21  2814.737109: bpf_trace_printk: Got TCP packet from 0xc903010a
+       mosquitto-1135    [000] .Ns21  2814.737110: bpf_trace_printk:  src Port: 1883, dst Port: 60124
+       mosquitto-1135    [000] .Ns21  2814.737111: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1135    [000] .Ns21  2814.737149: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] .Ns21  2814.737151: bpf_trace_printk: Got TCP packet from 0x6601010a
+       mosquitto-1135    [000] .Ns21  2814.737152: bpf_trace_printk:  src Port: 60124, dst Port: 1883
+       mosquitto-1135    [000] .Ns21  2814.737154: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+       mosquitto-1135    [000] .Ns21  2814.737156: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+       mosquitto-1135    [000] .Ns21  2814.737157: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2814.943550: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2814.943582: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] ..s21  2814.943584: bpf_trace_printk:  src Port: 1883, dst Port: 60124
+          <idle>-0       [000] ..s21  2814.943585: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21  2814.943648: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2814.943650: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] ..s21  2814.943652: bpf_trace_printk:  src Port: 60124, dst Port: 1883
+          <idle>-0       [000] ..s21  2814.943656: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] ..s21  2814.943657: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21  2814.943659: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [009] ..s21  2815.151707: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [009] ..s21  2815.151743: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [009] ..s21  2815.151746: bpf_trace_printk:  src Port: 1883, dst Port: 60124
+          <idle>-0       [009] ..s21  2815.151747: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [009] ..s21  2815.151798: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [009] ..s21  2815.151799: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [009] ..s21  2815.151800: bpf_trace_printk:  src Port: 60124, dst Port: 1883
+          <idle>-0       [009] ..s21  2815.151804: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [009] ..s21  2815.151806: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [009] ..s21  2815.151807: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2815.559527: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2815.559553: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] .Ns21  2815.559555: bpf_trace_printk:  src Port: 1883, dst Port: 60124
+          <idle>-0       [000] .Ns21  2815.559556: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] .Ns21  2815.559609: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2815.559611: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] .Ns21  2815.559612: bpf_trace_printk:  src Port: 60124, dst Port: 1883
+          <idle>-0       [000] .Ns21  2815.559615: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] .Ns21  2815.559617: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21  2815.559618: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2816.399832: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2816.399872: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] .Ns21  2816.399878: bpf_trace_printk:  src Port: 1883, dst Port: 60124
+          <idle>-0       [000] .Ns21  2816.399881: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] .Ns21  2816.399962: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2816.399965: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] .Ns21  2816.399967: bpf_trace_printk:  src Port: 60124, dst Port: 1883
+          <idle>-0       [000] .Ns21  2816.399972: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] .Ns21  2816.399975: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21  2816.399977: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2818.063655: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2818.063694: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] .Ns21  2818.063697: bpf_trace_printk:  src Port: 1883, dst Port: 60124
+          <idle>-0       [000] .Ns21  2818.063699: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] .Ns21  2818.063782: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2818.063784: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] .Ns21  2818.063786: bpf_trace_printk:  src Port: 60124, dst Port: 1883
+          <idle>-0       [000] .Ns21  2818.063792: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] .Ns21  2818.063794: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21  2818.063796: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+           <...>-4247    [001] ..s21  2819.046325: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4247    [001] ..s21  2819.046341: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4247    [001] ..s21  2819.046343: bpf_trace_printk:  src Port: 60130, dst Port: 1883
+           <...>-4247    [001] ..s21  2819.046379: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-4247    [001] ..s21  2819.046381: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+           <...>-4247    [001] ..s21  2819.046381: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+   mosquitto_pub-4247    [001] ..s21  2819.046435: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4247    [001] ..s21  2819.046436: bpf_trace_printk: Got TCP packet from 0xc903010a
+   mosquitto_pub-4247    [001] ..s21  2819.046437: bpf_trace_printk:  src Port: 1883, dst Port: 60130
+   mosquitto_pub-4247    [001] ..s21  2819.046437: bpf_trace_printk: Packet is not destined to MQTT port
+   mosquitto_pub-4247    [001] ..s21  2819.046463: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4247    [001] ..s21  2819.046464: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4247    [001] ..s21  2819.046464: bpf_trace_printk:  src Port: 60130, dst Port: 1883
+   mosquitto_pub-4247    [001] ..s21  2819.046465: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+   mosquitto_pub-4247    [001] ..s21  2819.046466: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+   mosquitto_pub-4247    [001] ..s21  2819.046467: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+   mosquitto_pub-4247    [001] ..s21  2819.046517: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4247    [001] ..s21  2819.046518: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4247    [001] ..s21  2819.046519: bpf_trace_printk:  src Port: 60130, dst Port: 1883
+   mosquitto_pub-4247    [001] ..s21  2819.046520: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+   mosquitto_pub-4247    [001] ..s21  2819.046521: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+   mosquitto_pub-4247    [001] ..s21  2819.046522: bpf_trace_printk: This segment Contains MQTT packet
+   mosquitto_pub-4247    [001] ..s21  2819.046523: bpf_trace_printk: MQTT Packet type: 1
+   mosquitto_pub-4247    [001] ..s21  2819.046523: bpf_trace_printk: Not a PUBLISH packet type
+   mosquitto_pub-4247    [001] ..s21  2819.046536: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4247    [001] ..s21  2819.046537: bpf_trace_printk: Got TCP packet from 0xc903010a
+   mosquitto_pub-4247    [001] ..s21  2819.046538: bpf_trace_printk:  src Port: 1883, dst Port: 60130
+   mosquitto_pub-4247    [001] ..s21  2819.046539: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1135    [007] ..s21  2819.046783: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [007] ..s21  2819.046794: bpf_trace_printk: Got TCP packet from 0xc903010a
+       mosquitto-1135    [007] ..s21  2819.046796: bpf_trace_printk:  src Port: 1883, dst Port: 60130
+       mosquitto-1135    [007] ..s21  2819.046797: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1135    [007] ..s21  2819.046829: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [007] ..s21  2819.046830: bpf_trace_printk: Got TCP packet from 0x6601010a
+       mosquitto-1135    [007] ..s21  2819.046830: bpf_trace_printk:  src Port: 60130, dst Port: 1883
+       mosquitto-1135    [007] ..s21  2819.046832: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+       mosquitto-1135    [007] ..s21  2819.046834: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+       mosquitto-1135    [007] ..s21  2819.046834: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+   mosquitto_pub-4247    [008] ..s21  2819.046962: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4247    [008] ..s21  2819.046979: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4247    [008] ..s21  2819.046981: bpf_trace_printk:  src Port: 60130, dst Port: 1883
+   mosquitto_pub-4247    [008] ..s21  2819.046984: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+   mosquitto_pub-4247    [008] ..s21  2819.046985: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+   mosquitto_pub-4247    [008] ..s21  2819.046986: bpf_trace_printk: This segment Contains MQTT packet
+   mosquitto_pub-4247    [008] ..s21  2819.046987: bpf_trace_printk: MQTT Packet type: 3
+   mosquitto_pub-4247    [008] ..s21  2819.046988: bpf_trace_printk: Topic length: 80
+   mosquitto_pub-4247    [008] ..s21  2819.046990: bpf_trace_printk: Topic: aabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeP
+   mosquitto_pub-4247    [008] ..s21  2819.046993: bpf_trace_printk: Payload: aabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeemotor temp, current, ....containerd.snapshot
+   mosquitto_pub-4247    [008] ..s21  2819.046995: bpf_trace_printk: Found VIP mapping for actual topic
+   mosquitto_pub-4247    [008] ..s21  2819.046996: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+   mosquitto_pub-4247    [008] ..s21  2819.047085: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4247    [008] ..s21  2819.047087: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4247    [008] ..s21  2819.047088: bpf_trace_printk:  src Port: 60130, dst Port: 1883
+   mosquitto_pub-4247    [008] ..s21  2819.047090: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+   mosquitto_pub-4247    [008] ..s21  2819.047091: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+   mosquitto_pub-4247    [008] ..s21  2819.047092: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+       mosquitto-1135    [000] ..s21  2819.047191: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2819.047194: bpf_trace_printk: Got TCP packet from 0xc903010a
+       mosquitto-1135    [000] ..s21  2819.047196: bpf_trace_printk:  src Port: 1883, dst Port: 60130
+       mosquitto-1135    [000] ..s21  2819.047197: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1135    [000] ..s21  2819.047295: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2819.047297: bpf_trace_printk: Got TCP packet from 0xc903010a
+       mosquitto-1135    [000] ..s21  2819.047298: bpf_trace_printk:  src Port: 1883, dst Port: 60130
+       mosquitto-1135    [000] ..s21  2819.047299: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1135    [000] ..s21  2819.047327: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2819.047328: bpf_trace_printk: Got TCP packet from 0x6601010a
+       mosquitto-1135    [000] ..s21  2819.047329: bpf_trace_printk:  src Port: 60130, dst Port: 1883
+       mosquitto-1135    [000] ..s21  2819.047331: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+       mosquitto-1135    [000] ..s21  2819.047333: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+       mosquitto-1135    [000] ..s21  2819.047334: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [007] ..s21  2819.255702: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [007] ..s21  2819.255742: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [007] ..s21  2819.255745: bpf_trace_printk:  src Port: 1883, dst Port: 60130
+          <idle>-0       [007] ..s21  2819.255746: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [007] ..s21  2819.255804: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [007] ..s21  2819.255805: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [007] ..s21  2819.255806: bpf_trace_printk:  src Port: 60130, dst Port: 1883
+          <idle>-0       [007] ..s21  2819.255811: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [007] ..s21  2819.255812: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [007] ..s21  2819.255814: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [007] ..s21  2819.463694: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [007] ..s21  2819.463732: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [007] ..s21  2819.463735: bpf_trace_printk:  src Port: 1883, dst Port: 60130
+          <idle>-0       [007] ..s21  2819.463737: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [007] ..s21  2819.463800: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [007] ..s21  2819.463802: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [007] ..s21  2819.463803: bpf_trace_printk:  src Port: 60130, dst Port: 1883
+          <idle>-0       [007] ..s21  2819.463808: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [007] ..s21  2819.463810: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [007] ..s21  2819.463811: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+     ksoftirqd/7-65      [007] ..s11  2819.871484: bpf_trace_printk: 
+
+got something from NIC
+     ksoftirqd/7-65      [007] ..s11  2819.871501: bpf_trace_printk: Got TCP packet from 0xc903010a
+     ksoftirqd/7-65      [007] ..s11  2819.871503: bpf_trace_printk:  src Port: 1883, dst Port: 60130
+     ksoftirqd/7-65      [007] ..s11  2819.871504: bpf_trace_printk: Packet is not destined to MQTT port
+     ksoftirqd/7-65      [007] ..s11  2819.871558: bpf_trace_printk: 
+
+got something from NIC
+     ksoftirqd/7-65      [007] ..s11  2819.871560: bpf_trace_printk: Got TCP packet from 0x6601010a
+     ksoftirqd/7-65      [007] ..s11  2819.871562: bpf_trace_printk:  src Port: 60130, dst Port: 1883
+     ksoftirqd/7-65      [007] ..s11  2819.871566: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+     ksoftirqd/7-65      [007] ..s11  2819.871568: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+     ksoftirqd/7-65      [007] ..s11  2819.871571: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [009] ..s21  2820.687643: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [009] ..s21  2820.687665: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [009] ..s21  2820.687666: bpf_trace_printk:  src Port: 1883, dst Port: 60130
+          <idle>-0       [009] ..s21  2820.687667: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [009] ..s21  2820.687725: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [009] ..s21  2820.687726: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [009] ..s21  2820.687727: bpf_trace_printk:  src Port: 60130, dst Port: 1883
+          <idle>-0       [009] ..s21  2820.687731: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [009] ..s21  2820.687732: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [009] ..s21  2820.687734: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2821.263766: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2821.263802: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] .Ns21  2821.263805: bpf_trace_printk:  src Port: 34770, dst Port: 1883
+          <idle>-0       [000] .Ns21  2821.263810: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] .Ns21  2821.263812: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21  2821.263813: bpf_trace_printk: This segment Contains MQTT packet
+          <idle>-0       [000] .Ns21  2821.263814: bpf_trace_printk: MQTT Packet type: 3
+          <idle>-0       [000] .Ns21  2821.263816: bpf_trace_printk: [xdp_aborted] Remaining length does not match data length
+          <idle>-0       [000] ..s21  2821.327768: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2821.327818: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] .Ns21  2821.327821: bpf_trace_printk:  src Port: 1883, dst Port: 60124
+          <idle>-0       [000] .Ns21  2821.327823: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] .Ns21  2821.327904: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2821.327906: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] .Ns21  2821.327908: bpf_trace_printk:  src Port: 60124, dst Port: 1883
+          <idle>-0       [000] .Ns21  2821.327913: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] .Ns21  2821.327916: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21  2821.327917: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2822.351625: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2822.351652: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] .Ns21  2822.351654: bpf_trace_printk:  src Port: 1883, dst Port: 60130
+          <idle>-0       [000] .Ns21  2822.351655: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] .Ns21  2822.351723: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2822.351725: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] .Ns21  2822.351727: bpf_trace_printk:  src Port: 60130, dst Port: 1883
+          <idle>-0       [000] .Ns21  2822.351731: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] .Ns21  2822.351733: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21  2822.351734: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [007] ..s21  2825.615594: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [007] ..s21  2825.615629: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [007] ..s21  2825.615632: bpf_trace_printk:  src Port: 1883, dst Port: 60130
+          <idle>-0       [007] ..s21  2825.615633: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [007] ..s21  2825.615708: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [007] ..s21  2825.615710: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [007] ..s21  2825.615712: bpf_trace_printk:  src Port: 60130, dst Port: 1883
+          <idle>-0       [007] ..s21  2825.615716: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [007] ..s21  2825.615718: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [007] ..s21  2825.615720: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [009] ..s21  2827.919566: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [009] ..s21  2827.919596: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [009] ..s21  2827.919599: bpf_trace_printk:  src Port: 1883, dst Port: 60124
+          <idle>-0       [009] ..s21  2827.919600: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [009] ..s21  2827.919646: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [009] ..s21  2827.919648: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [009] ..s21  2827.919649: bpf_trace_printk:  src Port: 60124, dst Port: 1883
+          <idle>-0       [009] ..s21  2827.919653: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [009] ..s21  2827.919656: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [009] ..s21  2827.919657: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [008] ..s21  2832.527694: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [008] ..s21  2832.527735: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [008] ..s21  2832.527738: bpf_trace_printk:  src Port: 1883, dst Port: 60130
+          <idle>-0       [008] ..s21  2832.527740: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [008] ..s21  2832.527827: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [008] ..s21  2832.527829: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [008] ..s21  2832.527831: bpf_trace_printk:  src Port: 60130, dst Port: 1883
+          <idle>-0       [008] ..s21  2832.527837: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [008] ..s21  2832.527839: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [008] ..s21  2832.527841: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+     ksoftirqd/0-17      [000] ..s11  2834.575582: bpf_trace_printk: 
+
+got something from NIC
+     ksoftirqd/0-17      [000] ..s11  2834.575613: bpf_trace_printk: Got TCP packet from 0x6601010a
+     ksoftirqd/0-17      [000] ..s11  2834.575616: bpf_trace_printk:  src Port: 34770, dst Port: 1883
+     ksoftirqd/0-17      [000] ..s11  2834.575621: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+     ksoftirqd/0-17      [000] ..s11  2834.575623: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+     ksoftirqd/0-17      [000] ..s11  2834.575624: bpf_trace_printk: This segment Contains MQTT packet
+     ksoftirqd/0-17      [000] ..s11  2834.575625: bpf_trace_printk: MQTT Packet type: 3
+     ksoftirqd/0-17      [000] ..s11  2834.575626: bpf_trace_printk: [xdp_aborted] Remaining length does not match data length
+           <...>-4248    [004] ..s21  2835.454724: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4248    [004] ..s21  2835.454741: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4248    [004] ..s21  2835.454743: bpf_trace_printk:  src Port: 35526, dst Port: 1883
+           <...>-4248    [004] ..s21  2835.454746: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-4248    [004] ..s21  2835.454747: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+           <...>-4248    [004] ..s21  2835.454748: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+           <...>-4248    [004] ..s21  2835.454788: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4248    [004] ..s21  2835.454790: bpf_trace_printk: Got TCP packet from 0xc903010a
+           <...>-4248    [004] ..s21  2835.454791: bpf_trace_printk:  src Port: 1883, dst Port: 35526
+           <...>-4248    [004] ..s21  2835.454792: bpf_trace_printk: Packet is not destined to MQTT port
+           <...>-4248    [004] ..s21  2835.454817: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4248    [004] ..s21  2835.454818: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4248    [004] ..s21  2835.454819: bpf_trace_printk:  src Port: 35526, dst Port: 1883
+           <...>-4248    [004] ..s21  2835.454820: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-4248    [004] ..s21  2835.454821: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+           <...>-4248    [004] ..s21  2835.454821: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+           <...>-4248    [004] ..s21  2835.454878: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4248    [004] ..s21  2835.454879: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4248    [004] ..s21  2835.454880: bpf_trace_printk:  src Port: 35526, dst Port: 1883
+           <...>-4248    [004] ..s21  2835.454881: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-4248    [004] ..s21  2835.454882: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+           <...>-4248    [004] ..s21  2835.454883: bpf_trace_printk: This segment Contains MQTT packet
+           <...>-4248    [004] ..s21  2835.454884: bpf_trace_printk: MQTT Packet type: 1
+           <...>-4248    [004] ..s21  2835.454885: bpf_trace_printk: Not a PUBLISH packet type
+           <...>-4248    [004] ..s21  2835.454896: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4248    [004] ..s21  2835.454898: bpf_trace_printk: Got TCP packet from 0xc903010a
+           <...>-4248    [004] ..s21  2835.454899: bpf_trace_printk:  src Port: 1883, dst Port: 35526
+           <...>-4248    [004] ..s21  2835.454900: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1135    [000] ..s21  2835.455264: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2835.455286: bpf_trace_printk: Got TCP packet from 0xc903010a
+       mosquitto-1135    [000] ..s21  2835.455288: bpf_trace_printk:  src Port: 1883, dst Port: 35526
+       mosquitto-1135    [000] ..s21  2835.455290: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1135    [000] ..s21  2835.455375: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2835.455377: bpf_trace_printk: Got TCP packet from 0x6601010a
+       mosquitto-1135    [000] ..s21  2835.455379: bpf_trace_printk:  src Port: 35526, dst Port: 1883
+       mosquitto-1135    [000] ..s21  2835.455383: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+       mosquitto-1135    [000] ..s21  2835.455386: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+       mosquitto-1135    [000] ..s21  2835.455387: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+   mosquitto_pub-4248    [004] ..s21  2835.455453: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4248    [004] ..s21  2835.455454: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4248    [004] ..s21  2835.455456: bpf_trace_printk:  src Port: 35526, dst Port: 1883
+   mosquitto_pub-4248    [004] ..s21  2835.455458: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+   mosquitto_pub-4248    [004] ..s21  2835.455459: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+   mosquitto_pub-4248    [004] ..s21  2835.455460: bpf_trace_printk: This segment Contains MQTT packet
+   mosquitto_pub-4248    [004] ..s21  2835.455461: bpf_trace_printk: MQTT Packet type: 3
+   mosquitto_pub-4248    [004] ..s21  2835.455461: bpf_trace_printk: Topic length: 8
+   mosquitto_pub-4248    [004] ..s21  2835.455463: bpf_trace_printk: Topic: sensors/
+   mosquitto_pub-4248    [004] ..s21  2835.455464: bpf_trace_printk: Payload: sensors/motor temp, current, ...
+   mosquitto_pub-4248    [004] ..s21  2835.455465: bpf_trace_printk: Actual Topic does not match the predicted one based on BPF map - We update BPF map
+   mosquitto_pub-4248    [004] ..s21  2835.455468: bpf_trace_printk: Found VIP mapping for actual topic
+   mosquitto_pub-4248    [004] ..s21  2835.455469: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+   mosquitto_pub-4248    [004] ..s21  2835.455514: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4248    [004] ..s21  2835.455515: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4248    [004] ..s21  2835.455516: bpf_trace_printk:  src Port: 35526, dst Port: 1883
+   mosquitto_pub-4248    [004] ..s21  2835.455518: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+   mosquitto_pub-4248    [004] ..s21  2835.455519: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+   mosquitto_pub-4248    [004] ..s21  2835.455520: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+       mosquitto-1135    [000] .ns21  2835.455648: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] .Ns21  2835.455653: bpf_trace_printk: Got TCP packet from 0xc903010a
+       mosquitto-1135    [000] .Ns21  2835.455654: bpf_trace_printk:  src Port: 1883, dst Port: 35526
+       mosquitto-1135    [000] .Ns21  2835.455655: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1135    [000] ..s21  2835.456015: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2835.456041: bpf_trace_printk: Got TCP packet from 0xc903010a
+       mosquitto-1135    [000] ..s21  2835.456042: bpf_trace_printk:  src Port: 1883, dst Port: 35526
+       mosquitto-1135    [000] ..s21  2835.456043: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1135    [000] ..s21  2835.456082: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2835.456084: bpf_trace_printk: Got TCP packet from 0x6601010a
+       mosquitto-1135    [000] ..s21  2835.456086: bpf_trace_printk:  src Port: 35526, dst Port: 1883
+       mosquitto-1135    [000] ..s21  2835.456090: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+       mosquitto-1135    [000] ..s21  2835.456092: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+       mosquitto-1135    [000] ..s21  2835.456095: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2835.663507: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2835.663531: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] ..s21  2835.663533: bpf_trace_printk:  src Port: 1883, dst Port: 35526
+          <idle>-0       [000] ..s21  2835.663534: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21  2835.663590: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2835.663591: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] ..s21  2835.663592: bpf_trace_printk:  src Port: 35526, dst Port: 1883
+          <idle>-0       [000] ..s21  2835.663596: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] ..s21  2835.663597: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21  2835.663598: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2835.871688: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2835.871737: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] ..s21  2835.871741: bpf_trace_printk:  src Port: 1883, dst Port: 35526
+          <idle>-0       [000] ..s21  2835.871743: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21  2835.871844: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2835.871846: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] ..s21  2835.871849: bpf_trace_printk:  src Port: 35526, dst Port: 1883
+          <idle>-0       [000] ..s21  2835.871854: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] ..s21  2835.871857: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21  2835.871859: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2836.279545: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2836.279579: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] ..s21  2836.279582: bpf_trace_printk:  src Port: 1883, dst Port: 35526
+          <idle>-0       [000] ..s21  2836.279583: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21  2836.279639: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2836.279641: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] ..s21  2836.279642: bpf_trace_printk:  src Port: 35526, dst Port: 1883
+          <idle>-0       [000] ..s21  2836.279646: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] ..s21  2836.279648: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21  2836.279649: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] .Ns21  2837.135797: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2837.135841: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] .Ns21  2837.135843: bpf_trace_printk:  src Port: 1883, dst Port: 35526
+          <idle>-0       [000] .Ns21  2837.135845: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] .Ns21  2837.135933: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2837.135935: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] .Ns21  2837.135937: bpf_trace_printk:  src Port: 35526, dst Port: 1883
+          <idle>-0       [000] .Ns21  2837.135943: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] .Ns21  2837.135945: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21  2837.135946: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [008] ..s21  2838.799586: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [008] ..s21  2838.799620: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [008] ..s21  2838.799622: bpf_trace_printk:  src Port: 1883, dst Port: 35526
+          <idle>-0       [008] ..s21  2838.799623: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [008] ..s21  2838.799681: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [008] ..s21  2838.799683: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [008] ..s21  2838.799684: bpf_trace_printk:  src Port: 35526, dst Port: 1883
+          <idle>-0       [008] ..s21  2838.799688: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [008] ..s21  2838.799690: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [008] ..s21  2838.799691: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+           <...>-4249    [003] ..s21  2840.500646: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4249    [003] ..s21  2840.500666: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4249    [003] ..s21  2840.500668: bpf_trace_printk:  src Port: 35534, dst Port: 1883
+           <...>-4249    [003] ..s21  2840.500671: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-4249    [003] ..s21  2840.500672: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+           <...>-4249    [003] ..s21  2840.500673: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+           <...>-4249    [003] ..s21  2840.500718: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4249    [003] ..s21  2840.500719: bpf_trace_printk: Got TCP packet from 0xc903010a
+           <...>-4249    [003] ..s21  2840.500721: bpf_trace_printk:  src Port: 1883, dst Port: 35534
+           <...>-4249    [003] ..s21  2840.500721: bpf_trace_printk: Packet is not destined to MQTT port
+           <...>-4249    [003] ..s21  2840.500749: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4249    [003] ..s21  2840.500749: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4249    [003] ..s21  2840.500750: bpf_trace_printk:  src Port: 35534, dst Port: 1883
+           <...>-4249    [003] ..s21  2840.500751: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-4249    [003] ..s21  2840.500752: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+           <...>-4249    [003] ..s21  2840.500753: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+   mosquitto_pub-4249    [003] ..s21  2840.500813: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4249    [003] ..s21  2840.500814: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4249    [003] ..s21  2840.500814: bpf_trace_printk:  src Port: 35534, dst Port: 1883
+   mosquitto_pub-4249    [003] ..s21  2840.500815: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+   mosquitto_pub-4249    [003] ..s21  2840.500816: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+   mosquitto_pub-4249    [003] ..s21  2840.500816: bpf_trace_printk: This segment Contains MQTT packet
+   mosquitto_pub-4249    [003] ..s21  2840.500817: bpf_trace_printk: MQTT Packet type: 1
+   mosquitto_pub-4249    [003] ..s21  2840.500817: bpf_trace_printk: Not a PUBLISH packet type
+   mosquitto_pub-4249    [003] ..s21  2840.500832: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4249    [003] ..s21  2840.500833: bpf_trace_printk: Got TCP packet from 0xc903010a
+   mosquitto_pub-4249    [003] ..s21  2840.500834: bpf_trace_printk:  src Port: 1883, dst Port: 35534
+   mosquitto_pub-4249    [003] ..s21  2840.500835: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1135    [000] ..s21  2840.501150: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2840.501165: bpf_trace_printk: Got TCP packet from 0xc903010a
+       mosquitto-1135    [000] ..s21  2840.501166: bpf_trace_printk:  src Port: 1883, dst Port: 35534
+       mosquitto-1135    [000] ..s21  2840.501167: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1135    [000] ..s21  2840.501233: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2840.501234: bpf_trace_printk: Got TCP packet from 0x6601010a
+       mosquitto-1135    [000] ..s21  2840.501235: bpf_trace_printk:  src Port: 35534, dst Port: 1883
+       mosquitto-1135    [000] ..s21  2840.501237: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+       mosquitto-1135    [000] ..s21  2840.501239: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+       mosquitto-1135    [000] ..s21  2840.501240: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+   mosquitto_pub-4249    [005] ..s21  2840.501326: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4249    [005] ..s21  2840.501342: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4249    [005] ..s21  2840.501344: bpf_trace_printk:  src Port: 35534, dst Port: 1883
+   mosquitto_pub-4249    [005] ..s21  2840.501346: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+   mosquitto_pub-4249    [005] ..s21  2840.501347: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+   mosquitto_pub-4249    [005] ..s21  2840.501376: bpf_trace_printk: This segment Contains MQTT packet
+   mosquitto_pub-4249    [005] ..s21  2840.501377: bpf_trace_printk: MQTT Packet type: 3
+   mosquitto_pub-4249    [005] ..s21  2840.501378: bpf_trace_printk: Topic length: 8
+   mosquitto_pub-4249    [005] ..s21  2840.501380: bpf_trace_printk: Topic: sensors/
+   mosquitto_pub-4249    [005] ..s21  2840.501381: bpf_trace_printk: Payload: sensors/motor temp, current, ...bbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeemotor temp, current, ...
+   mosquitto_pub-4249    [005] ..s21  2840.501383: bpf_trace_printk: Found VIP mapping for actual topic
+   mosquitto_pub-4249    [005] ..s21  2840.501384: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+   mosquitto_pub-4249    [005] ..s21  2840.501449: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4249    [005] ..s21  2840.501450: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4249    [005] ..s21  2840.501451: bpf_trace_printk:  src Port: 35534, dst Port: 1883
+   mosquitto_pub-4249    [005] ..s21  2840.501452: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+   mosquitto_pub-4249    [005] ..s21  2840.501453: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+   mosquitto_pub-4249    [005] ..s21  2840.501454: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+       mosquitto-1135    [000] ..s21  2840.501759: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2840.501774: bpf_trace_printk: Got TCP packet from 0xc903010a
+       mosquitto-1135    [000] ..s21  2840.501775: bpf_trace_printk:  src Port: 1883, dst Port: 35534
+       mosquitto-1135    [000] ..s21  2840.501776: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1135    [000] ..s21  2840.501854: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2840.501855: bpf_trace_printk: Got TCP packet from 0xc903010a
+       mosquitto-1135    [000] ..s21  2840.501856: bpf_trace_printk:  src Port: 1883, dst Port: 35534
+       mosquitto-1135    [000] ..s21  2840.501857: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1135    [000] ..s21  2840.501887: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2840.501888: bpf_trace_printk: Got TCP packet from 0x6601010a
+       mosquitto-1135    [000] ..s21  2840.501890: bpf_trace_printk:  src Port: 35534, dst Port: 1883
+       mosquitto-1135    [000] ..s21  2840.501892: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+       mosquitto-1135    [000] ..s21  2840.501893: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+       mosquitto-1135    [000] ..s21  2840.501894: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [001] ..s21  2840.703747: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [001] ..s21  2840.703793: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [001] ..s21  2840.703796: bpf_trace_printk:  src Port: 1883, dst Port: 35534
+          <idle>-0       [001] ..s21  2840.703798: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [001] ..s21  2840.703855: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [001] ..s21  2840.703856: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [001] ..s21  2840.703857: bpf_trace_printk:  src Port: 35534, dst Port: 1883
+          <idle>-0       [001] ..s21  2840.703862: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [001] ..s21  2840.703863: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [001] ..s21  2840.703865: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [002] ..s21  2840.911560: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [002] ..s21  2840.911589: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [002] ..s21  2840.911591: bpf_trace_printk:  src Port: 1883, dst Port: 35534
+          <idle>-0       [002] ..s21  2840.911592: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [002] ..s21  2840.911652: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [002] ..s21  2840.911654: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [002] ..s21  2840.911655: bpf_trace_printk:  src Port: 35534, dst Port: 1883
+          <idle>-0       [002] ..s21  2840.911659: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [002] ..s21  2840.911660: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [002] ..s21  2840.911661: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2841.231647: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2841.231688: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] ..s21  2841.231691: bpf_trace_printk:  src Port: 1883, dst Port: 60124
+          <idle>-0       [000] ..s21  2841.231692: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21  2841.231765: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2841.231767: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] ..s21  2841.231769: bpf_trace_printk:  src Port: 60124, dst Port: 1883
+          <idle>-0       [000] ..s21  2841.231774: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] ..s21  2841.231776: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21  2841.231778: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [009] ..s21  2841.319637: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [009] .Ns21  2841.319681: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [009] .Ns21  2841.319684: bpf_trace_printk:  src Port: 1883, dst Port: 35534
+          <idle>-0       [009] .Ns21  2841.319686: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [009] .Ns21  2841.319768: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [009] .Ns21  2841.319770: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [009] .Ns21  2841.319772: bpf_trace_printk:  src Port: 35534, dst Port: 1883
+          <idle>-0       [009] .Ns21  2841.319777: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [009] .Ns21  2841.319779: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [009] .Ns21  2841.319780: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+     ksoftirqd/0-17      [000] ..s11  2842.063766: bpf_trace_printk: 
+
+got something from NIC
+     ksoftirqd/0-17      [000] ..s11  2842.063794: bpf_trace_printk: Got TCP packet from 0xc903010a
+     ksoftirqd/0-17      [000] ..s11  2842.063797: bpf_trace_printk:  src Port: 1883, dst Port: 35526
+     ksoftirqd/0-17      [000] ..s11  2842.063798: bpf_trace_printk: Packet is not destined to MQTT port
+     ksoftirqd/0-17      [000] ..s11  2842.063849: bpf_trace_printk: 
+
+got something from NIC
+     ksoftirqd/0-17      [000] ..s11  2842.063851: bpf_trace_printk: Got TCP packet from 0x6601010a
+     ksoftirqd/0-17      [000] ..s11  2842.063852: bpf_trace_printk:  src Port: 35526, dst Port: 1883
+     ksoftirqd/0-17      [000] ..s11  2842.063855: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+     ksoftirqd/0-17      [000] ..s11  2842.063857: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+     ksoftirqd/0-17      [000] ..s11  2842.063858: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [002] ..s21  2842.127671: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [002] ..s21  2842.127703: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [002] ..s21  2842.127706: bpf_trace_printk:  src Port: 1883, dst Port: 35534
+          <idle>-0       [002] ..s21  2842.127707: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [002] ..s21  2842.127783: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [002] ..s21  2842.127785: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [002] ..s21  2842.127786: bpf_trace_printk:  src Port: 35534, dst Port: 1883
+          <idle>-0       [002] ..s21  2842.127791: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [002] ..s21  2842.127793: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [002] ..s21  2842.127794: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2843.791598: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2843.791635: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] ..s21  2843.791637: bpf_trace_printk:  src Port: 1883, dst Port: 35534
+          <idle>-0       [000] ..s21  2843.791639: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21  2843.791694: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2843.791696: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] ..s21  2843.791697: bpf_trace_printk:  src Port: 35534, dst Port: 1883
+          <idle>-0       [000] ..s21  2843.791700: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] ..s21  2843.791702: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21  2843.791703: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+           <...>-4250    [004] ..s21  2844.326796: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4250    [004] ..s21  2844.326815: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4250    [004] ..s21  2844.326817: bpf_trace_printk:  src Port: 55428, dst Port: 1883
+           <...>-4250    [004] ..s21  2844.326820: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-4250    [004] ..s21  2844.326821: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+           <...>-4250    [004] ..s21  2844.326822: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+           <...>-4250    [004] ..s21  2844.326866: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4250    [004] ..s21  2844.326867: bpf_trace_printk: Got TCP packet from 0xc903010a
+           <...>-4250    [004] ..s21  2844.326869: bpf_trace_printk:  src Port: 1883, dst Port: 55428
+           <...>-4250    [004] ..s21  2844.326870: bpf_trace_printk: Packet is not destined to MQTT port
+           <...>-4250    [004] ..s21  2844.326896: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4250    [004] ..s21  2844.326897: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4250    [004] ..s21  2844.326898: bpf_trace_printk:  src Port: 55428, dst Port: 1883
+           <...>-4250    [004] ..s21  2844.326899: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-4250    [004] ..s21  2844.326899: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+           <...>-4250    [004] ..s21  2844.326900: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+           <...>-4250    [004] ..s21  2844.326966: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4250    [004] ..s21  2844.326967: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4250    [004] ..s21  2844.326968: bpf_trace_printk:  src Port: 55428, dst Port: 1883
+           <...>-4250    [004] ..s21  2844.326970: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-4250    [004] ..s21  2844.326972: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+           <...>-4250    [004] ..s21  2844.326973: bpf_trace_printk: This segment Contains MQTT packet
+           <...>-4250    [004] ..s21  2844.326973: bpf_trace_printk: MQTT Packet type: 1
+           <...>-4250    [004] ..s21  2844.326974: bpf_trace_printk: Not a PUBLISH packet type
+           <...>-4250    [004] ..s21  2844.326992: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4250    [004] ..s21  2844.326994: bpf_trace_printk: Got TCP packet from 0xc903010a
+           <...>-4250    [004] ..s21  2844.326995: bpf_trace_printk:  src Port: 1883, dst Port: 55428
+           <...>-4250    [004] ..s21  2844.326996: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1135    [000] ..s21  2844.327268: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2844.327280: bpf_trace_printk: Got TCP packet from 0xc903010a
+       mosquitto-1135    [000] ..s21  2844.327281: bpf_trace_printk:  src Port: 1883, dst Port: 55428
+       mosquitto-1135    [000] ..s21  2844.327281: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1135    [000] ..s21  2844.327315: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2844.327316: bpf_trace_printk: Got TCP packet from 0x6601010a
+       mosquitto-1135    [000] ..s21  2844.327317: bpf_trace_printk:  src Port: 55428, dst Port: 1883
+       mosquitto-1135    [000] ..s21  2844.327319: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+       mosquitto-1135    [000] ..s21  2844.327321: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+       mosquitto-1135    [000] ..s21  2844.327322: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+   mosquitto_pub-4250    [004] ..s21  2844.327408: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4250    [004] ..s21  2844.327410: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4250    [004] ..s21  2844.327411: bpf_trace_printk:  src Port: 55428, dst Port: 1883
+   mosquitto_pub-4250    [004] ..s21  2844.327412: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+   mosquitto_pub-4250    [004] ..s21  2844.327414: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+   mosquitto_pub-4250    [004] ..s21  2844.327414: bpf_trace_printk: This segment Contains MQTT packet
+   mosquitto_pub-4250    [004] ..s21  2844.327416: bpf_trace_printk: MQTT Packet type: 3
+   mosquitto_pub-4250    [004] ..s21  2844.327417: bpf_trace_printk: Topic length: 8
+   mosquitto_pub-4250    [004] ..s21  2844.327419: bpf_trace_printk: Topic: sensors/
+   mosquitto_pub-4250    [004] ..s21  2844.327420: bpf_trace_printk: Payload: sensors/motor temp, current, ...
+   mosquitto_pub-4250    [004] ..s21  2844.327422: bpf_trace_printk: Found VIP mapping for actual topic
+   mosquitto_pub-4250    [004] ..s21  2844.327423: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+   mosquitto_pub-4250    [004] ..s21  2844.327460: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4250    [004] ..s21  2844.327461: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4250    [004] ..s21  2844.327462: bpf_trace_printk:  src Port: 55428, dst Port: 1883
+   mosquitto_pub-4250    [004] ..s21  2844.327463: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+   mosquitto_pub-4250    [004] ..s21  2844.327465: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+   mosquitto_pub-4250    [004] ..s21  2844.327466: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+       mosquitto-1135    [000] ..s21  2844.327499: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2844.327500: bpf_trace_printk: Got TCP packet from 0xc903010a
+       mosquitto-1135    [000] ..s21  2844.327501: bpf_trace_printk:  src Port: 1883, dst Port: 55428
+       mosquitto-1135    [000] ..s21  2844.327502: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1135    [000] ..s21  2844.327559: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2844.327560: bpf_trace_printk: Got TCP packet from 0xc903010a
+       mosquitto-1135    [000] ..s21  2844.327561: bpf_trace_printk:  src Port: 1883, dst Port: 55428
+       mosquitto-1135    [000] ..s21  2844.327562: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1135    [000] ..s21  2844.327586: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2844.327586: bpf_trace_printk: Got TCP packet from 0x6601010a
+       mosquitto-1135    [000] ..s21  2844.327588: bpf_trace_printk:  src Port: 55428, dst Port: 1883
+       mosquitto-1135    [000] ..s21  2844.327589: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+       mosquitto-1135    [000] ..s21  2844.327590: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+       mosquitto-1135    [000] ..s21  2844.327591: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [005] ..s21  2844.535621: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [005] ..s21  2844.535648: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [005] ..s21  2844.535650: bpf_trace_printk:  src Port: 1883, dst Port: 55428
+          <idle>-0       [005] ..s21  2844.535651: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [005] ..s21  2844.535706: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [005] ..s21  2844.535708: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [005] ..s21  2844.535710: bpf_trace_printk:  src Port: 55428, dst Port: 1883
+          <idle>-0       [005] ..s21  2844.535714: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [005] ..s21  2844.535716: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [005] ..s21  2844.535717: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2844.743660: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2844.743694: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] ..s21  2844.743696: bpf_trace_printk:  src Port: 1883, dst Port: 55428
+          <idle>-0       [000] ..s21  2844.743697: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21  2844.743757: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2844.743759: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] ..s21  2844.743760: bpf_trace_printk:  src Port: 55428, dst Port: 1883
+          <idle>-0       [000] ..s21  2844.743764: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] ..s21  2844.743766: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21  2844.743767: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2845.151857: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2845.151909: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] ..s21  2845.151913: bpf_trace_printk:  src Port: 1883, dst Port: 55428
+          <idle>-0       [000] ..s21  2845.151915: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21  2845.152007: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2845.152010: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] ..s21  2845.152012: bpf_trace_printk:  src Port: 55428, dst Port: 1883
+          <idle>-0       [000] ..s21  2845.152018: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] ..s21  2845.152021: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21  2845.152023: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+     ksoftirqd/8-71      [008] ..s11  2845.839626: bpf_trace_printk: 
+
+got something from NIC
+     ksoftirqd/8-71      [008] ..s11  2845.839642: bpf_trace_printk: Got TCP packet from 0xc903010a
+     ksoftirqd/8-71      [008] ..s11  2845.839644: bpf_trace_printk:  src Port: 1883, dst Port: 60130
+     ksoftirqd/8-71      [008] ..s11  2845.839645: bpf_trace_printk: Packet is not destined to MQTT port
+     ksoftirqd/8-71      [008] ..s11  2845.839683: bpf_trace_printk: 
+
+got something from NIC
+     ksoftirqd/8-71      [008] ..s11  2845.839684: bpf_trace_printk: Got TCP packet from 0x6601010a
+     ksoftirqd/8-71      [008] ..s11  2845.839685: bpf_trace_printk:  src Port: 60130, dst Port: 1883
+     ksoftirqd/8-71      [008] ..s11  2845.839688: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+     ksoftirqd/8-71      [008] ..s11  2845.839689: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+     ksoftirqd/8-71      [008] ..s11  2845.839690: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [008] ..s21  2845.967517: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [008] ..s21  2845.967555: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [008] ..s21  2845.967558: bpf_trace_printk:  src Port: 1883, dst Port: 55428
+          <idle>-0       [008] ..s21  2845.967559: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [008] ..s21  2845.967616: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [008] ..s21  2845.967617: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [008] ..s21  2845.967619: bpf_trace_printk:  src Port: 55428, dst Port: 1883
+          <idle>-0       [008] ..s21  2845.967623: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [008] ..s21  2845.967625: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [008] ..s21  2845.967626: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2847.055546: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2847.055581: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] ..s21  2847.055584: bpf_trace_printk:  src Port: 1883, dst Port: 35534
+          <idle>-0       [000] ..s21  2847.055586: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21  2847.055674: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2847.055676: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] ..s21  2847.055678: bpf_trace_printk:  src Port: 35534, dst Port: 1883
+          <idle>-0       [000] ..s21  2847.055684: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] ..s21  2847.055687: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21  2847.055689: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2847.631690: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2847.631717: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] ..s21  2847.631719: bpf_trace_printk:  src Port: 1883, dst Port: 55428
+          <idle>-0       [000] ..s21  2847.631721: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21  2847.631764: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2847.631765: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] ..s21  2847.631766: bpf_trace_printk:  src Port: 55428, dst Port: 1883
+          <idle>-0       [000] ..s21  2847.631769: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] ..s21  2847.631770: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21  2847.631771: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2848.911523: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2848.911560: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] ..s21  2848.911563: bpf_trace_printk:  src Port: 1883, dst Port: 35526
+          <idle>-0       [000] ..s21  2848.911565: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21  2848.911648: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2848.911650: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] ..s21  2848.911652: bpf_trace_printk:  src Port: 35526, dst Port: 1883
+          <idle>-0       [000] ..s21  2848.911657: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] ..s21  2848.911659: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21  2848.911661: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2850.895564: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2850.895597: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] ..s21  2850.895599: bpf_trace_printk:  src Port: 1883, dst Port: 55428
+          <idle>-0       [000] ..s21  2850.895600: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21  2850.895663: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2850.895664: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] ..s21  2850.895666: bpf_trace_printk:  src Port: 55428, dst Port: 1883
+          <idle>-0       [000] ..s21  2850.895670: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] ..s21  2850.895671: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21  2850.895673: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2853.519608: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2853.519640: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] ..s21  2853.519642: bpf_trace_printk:  src Port: 1883, dst Port: 35534
+          <idle>-0       [000] ..s21  2853.519643: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21  2853.519705: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2853.519708: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] ..s21  2853.519709: bpf_trace_printk:  src Port: 35534, dst Port: 1883
+          <idle>-0       [000] ..s21  2853.519713: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] ..s21  2853.519715: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21  2853.519716: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+     ksoftirqd/0-17      [000] ..s11  2857.615615: bpf_trace_printk: 
+
+got something from NIC
+     ksoftirqd/0-17      [000] ..s11  2857.615646: bpf_trace_printk: Got TCP packet from 0xc903010a
+     ksoftirqd/0-17      [000] ..s11  2857.615648: bpf_trace_printk:  src Port: 1883, dst Port: 55428
+     ksoftirqd/0-17      [000] ..s11  2857.615650: bpf_trace_printk: Packet is not destined to MQTT port
+     ksoftirqd/0-17      [000] ..s11  2857.615717: bpf_trace_printk: 
+
+got something from NIC
+     ksoftirqd/0-17      [000] ..s11  2857.615719: bpf_trace_printk: Got TCP packet from 0x6601010a
+     ksoftirqd/0-17      [000] ..s11  2857.615721: bpf_trace_printk:  src Port: 55428, dst Port: 1883
+     ksoftirqd/0-17      [000] ..s11  2857.615725: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+     ksoftirqd/0-17      [000] ..s11  2857.615726: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+     ksoftirqd/0-17      [000] ..s11  2857.615728: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2860.687610: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2860.687640: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] ..s21  2860.687643: bpf_trace_printk:  src Port: 34770, dst Port: 1883
+          <idle>-0       [000] ..s21  2860.687648: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] ..s21  2860.687649: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21  2860.687650: bpf_trace_printk: This segment Contains MQTT packet
+          <idle>-0       [000] ..s21  2860.687651: bpf_trace_printk: MQTT Packet type: 3
+          <idle>-0       [000] ..s21  2860.687653: bpf_trace_printk: [xdp_aborted] Remaining length does not match data length
+          <idle>-0       [000] ..s21  2862.223525: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2862.223549: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] ..s21  2862.223551: bpf_trace_printk:  src Port: 1883, dst Port: 35526
+          <idle>-0       [000] ..s21  2862.223552: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21  2862.223605: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2862.223607: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] ..s21  2862.223609: bpf_trace_printk:  src Port: 35526, dst Port: 1883
+          <idle>-0       [000] ..s21  2862.223613: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] ..s21  2862.223615: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21  2862.223616: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2866.831456: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2866.831474: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] ..s21  2866.831475: bpf_trace_printk:  src Port: 1883, dst Port: 35534
+          <idle>-0       [000] ..s21  2866.831476: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21  2866.831507: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2866.831508: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] ..s21  2866.831509: bpf_trace_printk:  src Port: 35534, dst Port: 1883
+          <idle>-0       [000] ..s21  2866.831511: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] ..s21  2866.831511: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21  2866.831512: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2867.343610: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2867.343641: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] ..s21  2867.343643: bpf_trace_printk:  src Port: 1883, dst Port: 60124
+          <idle>-0       [000] ..s21  2867.343645: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21  2867.343756: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2867.343758: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] ..s21  2867.343759: bpf_trace_printk:  src Port: 60124, dst Port: 1883
+          <idle>-0       [000] ..s21  2867.343763: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] ..s21  2867.343764: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21  2867.343765: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [004] ..s21  2870.927709: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [004] ..s21  2870.927737: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [004] ..s21  2870.927739: bpf_trace_printk:  src Port: 1883, dst Port: 55428
+          <idle>-0       [004] ..s21  2870.927740: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [004] ..s21  2870.927793: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [004] ..s21  2870.927794: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [004] ..s21  2870.927796: bpf_trace_printk:  src Port: 55428, dst Port: 1883
+          <idle>-0       [004] ..s21  2870.927799: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [004] ..s21  2870.927800: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [004] ..s21  2870.927802: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [007] ..s21  2871.951619: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [007] ..s21  2871.951649: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [007] ..s21  2871.951651: bpf_trace_printk:  src Port: 1883, dst Port: 60130
+          <idle>-0       [007] ..s21  2871.951653: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [007] ..s21  2871.951714: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [007] ..s21  2871.951716: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [007] ..s21  2871.951717: bpf_trace_printk:  src Port: 60130, dst Port: 1883
+          <idle>-0       [007] ..s21  2871.951721: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [007] ..s21  2871.951723: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+          <idle>-0       [007] ..s21  2871.951724: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+           <...>-4251    [004] ..s21  2875.903920: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4251    [004] ..s21  2875.903944: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4251    [004] ..s21  2875.903946: bpf_trace_printk:  src Port: 32900, dst Port: 1883
+           <...>-4251    [004] ..s21  2875.903950: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-4251    [004] ..s21  2875.903951: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+           <...>-4251    [004] ..s21  2875.903952: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+           <...>-4251    [004] ..s21  2875.904033: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4251    [004] ..s21  2875.904034: bpf_trace_printk: Got TCP packet from 0xc903010a
+           <...>-4251    [004] ..s21  2875.904035: bpf_trace_printk:  src Port: 1883, dst Port: 32900
+           <...>-4251    [004] ..s21  2875.904036: bpf_trace_printk: Packet is not destined to MQTT port
+           <...>-4251    [004] ..s21  2875.904075: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4251    [004] ..s21  2875.904078: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4251    [004] ..s21  2875.904080: bpf_trace_printk:  src Port: 32900, dst Port: 1883
+           <...>-4251    [004] ..s21  2875.904082: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-4251    [004] ..s21  2875.904084: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+           <...>-4251    [004] ..s21  2875.904086: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+           <...>-4251    [004] ..s21  2875.904179: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4251    [004] ..s21  2875.904181: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4251    [004] ..s21  2875.904181: bpf_trace_printk:  src Port: 32900, dst Port: 1883
+           <...>-4251    [004] ..s21  2875.904183: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-4251    [004] ..s21  2875.904184: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+           <...>-4251    [004] ..s21  2875.904184: bpf_trace_printk: This segment Contains MQTT packet
+           <...>-4251    [004] ..s21  2875.904185: bpf_trace_printk: MQTT Packet type: 1
+           <...>-4251    [004] ..s21  2875.904186: bpf_trace_printk: Not a PUBLISH packet type
+       mosquitto-1135    [000] ..s21  2875.904264: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2875.904289: bpf_trace_printk: Got TCP packet from 0xc903010a
+       mosquitto-1135    [000] ..s21  2875.904290: bpf_trace_printk:  src Port: 1883, dst Port: 32900
+       mosquitto-1135    [000] ..s21  2875.904292: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1135    [000] ..s21  2875.904650: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2875.904666: bpf_trace_printk: Got TCP packet from 0xc903010a
+       mosquitto-1135    [000] ..s21  2875.904667: bpf_trace_printk:  src Port: 1883, dst Port: 32900
+       mosquitto-1135    [000] ..s21  2875.904668: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1135    [000] ..s21  2875.904707: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1135    [000] ..s21  2875.904708: bpf_trace_printk: Got TCP packet from 0x6601010a
+       mosquitto-1135    [000] ..s21  2875.904710: bpf_trace_printk:  src Port: 32900, dst Port: 1883
+       mosquitto-1135    [000] ..s21  2875.904712: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+       mosquitto-1135    [000] ..s21  2875.904714: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+       mosquitto-1135    [000] ..s21  2875.904715: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+   mosquitto_pub-4251    [004] ..s21  2875.904828: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4251    [004] ..s21  2875.904832: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4251    [004] ..s21  2875.904834: bpf_trace_printk:  src Port: 32900, dst Port: 1883
+   mosquitto_pub-4251    [004] ..s21  2875.904837: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+   mosquitto_pub-4251    [004] ..s21  2875.904838: bpf_trace_printk: VIP: 0xc903010a, port: 1883, proto: 6
+   mosquitto_pub-4251    [004] ..s21  2875.904840: bpf_trace_printk: This segment Contains MQTT packet
+   mosquitto_pub-4251    [004] ..s21  2875.904842: bpf_trace_printk: MQTT Packet type: 3
+   mosquitto_pub-4251    [004] ..s21  2875.904843: bpf_trace_printk: Topic length: 12
+   mosquitto_pub-4251    [004] ..s21  2875.904845: bpf_trace_printk: Topic: living-room/
+   mosquitto_pub-4251    [004] ..s21  2875.904847: bpf_trace_printk: Payload: living-room/motor temp, current, ...0
+   mosquitto_pub-4251    [004] ..s21  2875.904849: bpf_trace_printk: Actual Topic does not match the predicted one based on BPF map - We update BPF map
+   mosquitto_pub-4251    [004] ..s21  2875.904853: bpf_trace_printk: Found VIP mapping for actual topic
+   mosquitto_pub-4251    [004] ..s21  2875.904855: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+   mosquitto_pub-4251    [004] ..s21  2875.904992: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4251    [004] ..s21  2875.905007: bpf_trace_printk: Got TCP packet from 0xca03010a
+   mosquitto_pub-4251    [004] ..s21  2875.905010: bpf_trace_printk:  src Port: 1883, dst Port: 32900
+   mosquitto_pub-4251    [004] ..s21  2875.905011: bpf_trace_printk: Packet is not destined to MQTT port
+   mosquitto_pub-4251    [004] ..s21  2875.905070: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4251    [004] ..s21  2875.905071: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4251    [004] ..s21  2875.905072: bpf_trace_printk:  src Port: 32900, dst Port: 1883
+   mosquitto_pub-4251    [004] ..s21  2875.905074: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+   mosquitto_pub-4251    [004] ..s21  2875.905076: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+   mosquitto_pub-4251    [004] ..s21  2875.905078: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+   mosquitto_pub-4251    [004] ..s21  2875.905101: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4251    [004] ..s21  2875.905103: bpf_trace_printk: Got TCP packet from 0xca03010a
+   mosquitto_pub-4251    [004] ..s21  2875.905103: bpf_trace_printk:  src Port: 1883, dst Port: 32900
+   mosquitto_pub-4251    [004] ..s21  2875.905104: bpf_trace_printk: Packet is not destined to MQTT port
+     ksoftirqd/1-27      [001] ..s11  2875.909490: bpf_trace_printk: 
+
+got something from NIC
+     ksoftirqd/1-27      [001] ..s11  2875.909509: bpf_trace_printk: Got TCP packet from 0x6601010a
+     ksoftirqd/1-27      [001] ..s11  2875.909510: bpf_trace_printk:  src Port: 32900, dst Port: 1883
+     ksoftirqd/1-27      [001] ..s11  2875.909515: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+     ksoftirqd/1-27      [001] ..s11  2875.909516: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+     ksoftirqd/1-27      [001] ..s11  2875.909517: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+     ksoftirqd/1-27      [001] ..s11  2875.909582: bpf_trace_printk: 
+
+got something from NIC
+     ksoftirqd/1-27      [001] ..s11  2875.909584: bpf_trace_printk: Got TCP packet from 0xca03010a
+     ksoftirqd/1-27      [001] ..s11  2875.909585: bpf_trace_printk:  src Port: 1883, dst Port: 32900
+     ksoftirqd/1-27      [001] ..s11  2875.909585: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [002] ..s21  2876.111754: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [002] ..s21  2876.111785: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [002] ..s21  2876.111787: bpf_trace_printk:  src Port: 32900, dst Port: 1883
+          <idle>-0       [002] ..s21  2876.111791: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [002] ..s21  2876.111792: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [002] ..s21  2876.111793: bpf_trace_printk: This segment Contains MQTT packet
+          <idle>-0       [002] ..s21  2876.111794: bpf_trace_printk: MQTT Packet type: 3
+          <idle>-0       [002] ..s21  2876.111795: bpf_trace_printk: [xdp_aborted] Remaining length does not match data length
+          <idle>-0       [003] ..s21  2876.519495: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [003] ..s21  2876.519524: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [003] ..s21  2876.519526: bpf_trace_printk:  src Port: 32900, dst Port: 1883
+          <idle>-0       [003] ..s21  2876.519531: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [003] ..s21  2876.519534: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [003] ..s21  2876.519535: bpf_trace_printk: This segment Contains MQTT packet
+          <idle>-0       [003] ..s21  2876.519536: bpf_trace_printk: MQTT Packet type: 3
+          <idle>-0       [003] ..s21  2876.519538: bpf_trace_printk: [xdp_aborted] Remaining length does not match data length
+          <idle>-0       [003] ..s21  2877.327524: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [003] ..s21  2877.327556: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [003] ..s21  2877.327558: bpf_trace_printk:  src Port: 32900, dst Port: 1883
+          <idle>-0       [003] ..s21  2877.327562: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [003] ..s21  2877.327563: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [003] ..s21  2877.327564: bpf_trace_printk: This segment Contains MQTT packet
+          <idle>-0       [003] ..s21  2877.327565: bpf_trace_printk: MQTT Packet type: 3
+          <idle>-0       [003] ..s21  2877.327566: bpf_trace_printk: [xdp_aborted] Remaining length does not match data length
+          <idle>-0       [002] ..s21  2878.991521: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [002] ..s21  2878.991549: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [002] ..s21  2878.991551: bpf_trace_printk:  src Port: 32900, dst Port: 1883
+          <idle>-0       [002] ..s21  2878.991555: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [002] ..s21  2878.991556: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [002] ..s21  2878.991557: bpf_trace_printk: This segment Contains MQTT packet
+          <idle>-0       [002] ..s21  2878.991558: bpf_trace_printk: MQTT Packet type: 3
+          <idle>-0       [002] ..s21  2878.991559: bpf_trace_printk: [xdp_aborted] Remaining length does not match data length
+           <...>-4252    [006] ..s21  2880.142803: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4252    [006] ..s21  2880.142817: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4252    [006] ..s21  2880.142819: bpf_trace_printk:  src Port: 32910, dst Port: 1883
+           <...>-4252    [006] ..s21  2880.142821: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-4252    [006] ..s21  2880.142823: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+           <...>-4252    [006] ..s21  2880.142824: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+           <...>-4252    [006] ..s21  2880.142864: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4252    [006] ..s21  2880.142865: bpf_trace_printk: Got TCP packet from 0xca03010a
+           <...>-4252    [006] ..s21  2880.142866: bpf_trace_printk:  src Port: 1883, dst Port: 32910
+           <...>-4252    [006] ..s21  2880.142867: bpf_trace_printk: Packet is not destined to MQTT port
+           <...>-4252    [006] ..s21  2880.142894: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4252    [006] ..s21  2880.142894: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4252    [006] ..s21  2880.142895: bpf_trace_printk:  src Port: 32910, dst Port: 1883
+           <...>-4252    [006] ..s21  2880.142896: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-4252    [006] ..s21  2880.142897: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+   mosquitto_pub-4252    [006] ..s21  2880.142898: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+   mosquitto_pub-4252    [006] ..s21  2880.142975: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4252    [006] ..s21  2880.142976: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4252    [006] ..s21  2880.142976: bpf_trace_printk:  src Port: 32910, dst Port: 1883
+   mosquitto_pub-4252    [006] ..s21  2880.142977: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+   mosquitto_pub-4252    [006] ..s21  2880.142978: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+   mosquitto_pub-4252    [006] ..s21  2880.142979: bpf_trace_printk: This segment Contains MQTT packet
+   mosquitto_pub-4252    [006] ..s21  2880.142979: bpf_trace_printk: MQTT Packet type: 1
+   mosquitto_pub-4252    [006] ..s21  2880.142980: bpf_trace_printk: Not a PUBLISH packet type
+   mosquitto_pub-4252    [006] ..s21  2880.142993: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4252    [006] ..s21  2880.142994: bpf_trace_printk: Got TCP packet from 0xca03010a
+   mosquitto_pub-4252    [006] ..s21  2880.142994: bpf_trace_printk:  src Port: 1883, dst Port: 32910
+   mosquitto_pub-4252    [006] ..s21  2880.142995: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1132    [002] ..s21  2880.145832: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1132    [002] ..s21  2880.145843: bpf_trace_printk: Got TCP packet from 0xca03010a
+       mosquitto-1132    [002] ..s21  2880.145844: bpf_trace_printk:  src Port: 1883, dst Port: 32910
+       mosquitto-1132    [002] ..s21  2880.145845: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1132    [002] ..s21  2880.145881: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1132    [002] ..s21  2880.145881: bpf_trace_printk: Got TCP packet from 0x6601010a
+       mosquitto-1132    [002] ..s21  2880.145882: bpf_trace_printk:  src Port: 32910, dst Port: 1883
+       mosquitto-1132    [002] ..s21  2880.145891: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+       mosquitto-1132    [002] ..s21  2880.145892: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+       mosquitto-1132    [002] ..s21  2880.145893: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+   mosquitto_pub-4252    [006] ..s21  2880.146078: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4252    [006] ..s21  2880.146098: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4252    [006] ..s21  2880.146100: bpf_trace_printk:  src Port: 32910, dst Port: 1883
+   mosquitto_pub-4252    [006] ..s21  2880.146104: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+   mosquitto_pub-4252    [006] ..s21  2880.146105: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+   mosquitto_pub-4252    [006] ..s21  2880.146106: bpf_trace_printk: This segment Contains MQTT packet
+   mosquitto_pub-4252    [006] ..s21  2880.146106: bpf_trace_printk: MQTT Packet type: 3
+   mosquitto_pub-4252    [006] ..s21  2880.146108: bpf_trace_printk: Topic length: 12
+   mosquitto_pub-4252    [006] ..s21  2880.146109: bpf_trace_printk: Topic: living-room/
+   mosquitto_pub-4252    [006] ..s21  2880.146110: bpf_trace_printk: Payload: living-room/motor temp, current, ...0
+   mosquitto_pub-4252    [006] ..s21  2880.146111: bpf_trace_printk: Found VIP mapping for actual topic
+   mosquitto_pub-4252    [006] ..s21  2880.146112: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+   mosquitto_pub-4252    [006] ..s21  2880.146189: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4252    [006] ..s21  2880.146205: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4252    [006] ..s21  2880.146206: bpf_trace_printk:  src Port: 32910, dst Port: 1883
+   mosquitto_pub-4252    [006] ..s21  2880.146207: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+   mosquitto_pub-4252    [006] ..s21  2880.146208: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+   mosquitto_pub-4252    [006] ..s21  2880.146209: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+       mosquitto-1132    [002] ..s21  2880.146249: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1132    [002] ..s21  2880.146251: bpf_trace_printk: Got TCP packet from 0xca03010a
+       mosquitto-1132    [002] ..s21  2880.146251: bpf_trace_printk:  src Port: 1883, dst Port: 32910
+       mosquitto-1132    [002] ..s21  2880.146252: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1132    [002] ..s21  2880.146303: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1132    [002] ..s21  2880.146304: bpf_trace_printk: Got TCP packet from 0xca03010a
+       mosquitto-1132    [002] ..s21  2880.146304: bpf_trace_printk:  src Port: 1883, dst Port: 32910
+       mosquitto-1132    [002] ..s21  2880.146305: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1132    [002] ..s21  2880.146323: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1132    [002] ..s21  2880.146324: bpf_trace_printk: Got TCP packet from 0x6601010a
+       mosquitto-1132    [002] ..s21  2880.146324: bpf_trace_printk:  src Port: 32910, dst Port: 1883
+       mosquitto-1132    [002] ..s21  2880.146326: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+       mosquitto-1132    [002] ..s21  2880.146326: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+       mosquitto-1132    [002] ..s21  2880.146329: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2880.351514: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2880.351541: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [000] .Ns21  2880.351543: bpf_trace_printk:  src Port: 1883, dst Port: 32910
+          <idle>-0       [000] .Ns21  2880.351544: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] .Ns21  2880.351584: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2880.351586: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] .Ns21  2880.351587: bpf_trace_printk:  src Port: 32910, dst Port: 1883
+          <idle>-0       [000] .Ns21  2880.351590: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] .Ns21  2880.351591: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21  2880.351592: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [002] ..s21  2880.559539: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [002] ..s21  2880.559571: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [002] ..s21  2880.559574: bpf_trace_printk:  src Port: 1883, dst Port: 32910
+          <idle>-0       [002] ..s21  2880.559576: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [002] ..s21  2880.559628: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [002] ..s21  2880.559629: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [002] ..s21  2880.559630: bpf_trace_printk:  src Port: 32910, dst Port: 1883
+          <idle>-0       [002] ..s21  2880.559634: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [002] ..s21  2880.559636: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [002] ..s21  2880.559637: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [002] ..s21  2880.967801: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [002] ..s21  2880.967842: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [002] ..s21  2880.967846: bpf_trace_printk:  src Port: 1883, dst Port: 32910
+          <idle>-0       [002] ..s21  2880.967847: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [002] ..s21  2880.967907: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [002] ..s21  2880.967909: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [002] ..s21  2880.967911: bpf_trace_printk:  src Port: 32910, dst Port: 1883
+          <idle>-0       [002] ..s21  2880.967915: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [002] ..s21  2880.967917: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [002] ..s21  2880.967919: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [002] ..s21  2881.807710: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [002] ..s21  2881.807742: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [002] ..s21  2881.807744: bpf_trace_printk:  src Port: 1883, dst Port: 32910
+          <idle>-0       [002] ..s21  2881.807745: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [002] ..s21  2881.807789: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [002] ..s21  2881.807790: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [002] ..s21  2881.807791: bpf_trace_printk:  src Port: 32910, dst Port: 1883
+          <idle>-0       [002] ..s21  2881.807795: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [002] ..s21  2881.807796: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [002] ..s21  2881.807797: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+     ksoftirqd/3-39      [003] ..s11  2882.255599: bpf_trace_printk: 
+
+got something from NIC
+     ksoftirqd/3-39      [003] ..s11  2882.255635: bpf_trace_printk: Got TCP packet from 0x6601010a
+     ksoftirqd/3-39      [003] ..s11  2882.255637: bpf_trace_printk:  src Port: 32900, dst Port: 1883
+     ksoftirqd/3-39      [003] ..s11  2882.255643: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+     ksoftirqd/3-39      [003] ..s11  2882.255644: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+     ksoftirqd/3-39      [003] ..s11  2882.255645: bpf_trace_printk: This segment Contains MQTT packet
+     ksoftirqd/3-39      [003] ..s11  2882.255646: bpf_trace_printk: MQTT Packet type: 3
+     ksoftirqd/3-39      [003] ..s11  2882.255647: bpf_trace_printk: [xdp_aborted] Remaining length does not match data length
+          <idle>-0       [000] ..s21  2883.471712: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2883.471738: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [000] .Ns21  2883.471740: bpf_trace_printk:  src Port: 1883, dst Port: 32910
+          <idle>-0       [000] .Ns21  2883.471742: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] .Ns21  2883.471805: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2883.471807: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] .Ns21  2883.471808: bpf_trace_printk:  src Port: 32910, dst Port: 1883
+          <idle>-0       [000] .Ns21  2883.471812: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] .Ns21  2883.471813: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21  2883.471815: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+           <...>-4253    [005] ..s21  2883.918800: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4253    [005] ..s21  2883.918821: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4253    [005] ..s21  2883.918823: bpf_trace_printk:  src Port: 43750, dst Port: 1883
+           <...>-4253    [005] ..s21  2883.918826: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-4253    [005] ..s21  2883.918827: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+           <...>-4253    [005] ..s21  2883.918828: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+           <...>-4253    [005] ..s21  2883.918889: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4253    [005] ..s21  2883.918891: bpf_trace_printk: Got TCP packet from 0xca03010a
+           <...>-4253    [005] ..s21  2883.918893: bpf_trace_printk:  src Port: 1883, dst Port: 43750
+           <...>-4253    [005] ..s21  2883.918895: bpf_trace_printk: Packet is not destined to MQTT port
+           <...>-4253    [005] ..s21  2883.918946: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4253    [005] ..s21  2883.918948: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4253    [005] ..s21  2883.918949: bpf_trace_printk:  src Port: 43750, dst Port: 1883
+           <...>-4253    [005] ..s21  2883.918950: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-4253    [005] ..s21  2883.918951: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+           <...>-4253    [005] ..s21  2883.918952: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+           <...>-4253    [005] ..s21  2883.919035: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4253    [005] ..s21  2883.919036: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-4253    [005] ..s21  2883.919038: bpf_trace_printk:  src Port: 43750, dst Port: 1883
+           <...>-4253    [005] ..s21  2883.919040: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-4253    [005] ..s21  2883.919041: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+           <...>-4253    [005] ..s21  2883.919042: bpf_trace_printk: This segment Contains MQTT packet
+           <...>-4253    [005] ..s21  2883.919043: bpf_trace_printk: MQTT Packet type: 1
+           <...>-4253    [005] ..s21  2883.919044: bpf_trace_printk: Not a PUBLISH packet type
+           <...>-4253    [005] ..s21  2883.919061: bpf_trace_printk: 
+
+got something from NIC
+           <...>-4253    [005] ..s21  2883.919062: bpf_trace_printk: Got TCP packet from 0xca03010a
+           <...>-4253    [005] ..s21  2883.919064: bpf_trace_printk:  src Port: 1883, dst Port: 43750
+           <...>-4253    [005] ..s21  2883.919065: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1132    [002] ..s21  2883.919400: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1132    [002] ..s21  2883.919415: bpf_trace_printk: Got TCP packet from 0xca03010a
+       mosquitto-1132    [002] ..s21  2883.919417: bpf_trace_printk:  src Port: 1883, dst Port: 43750
+       mosquitto-1132    [002] ..s21  2883.919418: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1132    [002] ..s21  2883.919459: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1132    [002] ..s21  2883.919460: bpf_trace_printk: Got TCP packet from 0x6601010a
+       mosquitto-1132    [002] ..s21  2883.919461: bpf_trace_printk:  src Port: 43750, dst Port: 1883
+       mosquitto-1132    [002] ..s21  2883.919463: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+       mosquitto-1132    [002] ..s21  2883.919465: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+       mosquitto-1132    [002] ..s21  2883.919466: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+   mosquitto_pub-4253    [005] ..s21  2883.919594: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4253    [005] ..s21  2883.919618: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4253    [005] ..s21  2883.919619: bpf_trace_printk:  src Port: 43750, dst Port: 1883
+   mosquitto_pub-4253    [005] ..s21  2883.919622: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+   mosquitto_pub-4253    [005] ..s21  2883.919623: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+   mosquitto_pub-4253    [005] ..s21  2883.919624: bpf_trace_printk: This segment Contains MQTT packet
+   mosquitto_pub-4253    [005] ..s21  2883.919625: bpf_trace_printk: MQTT Packet type: 3
+   mosquitto_pub-4253    [005] ..s21  2883.919626: bpf_trace_printk: Topic length: 12
+   mosquitto_pub-4253    [005] ..s21  2883.919627: bpf_trace_printk: Topic: living-room/
+   mosquitto_pub-4253    [005] ..s21  2883.919628: bpf_trace_printk: Payload: living-room/motor temp, current, ...0
+   mosquitto_pub-4253    [005] ..s21  2883.919629: bpf_trace_printk: Found VIP mapping for actual topic
+   mosquitto_pub-4253    [005] ..s21  2883.919630: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+   mosquitto_pub-4253    [005] ..s21  2883.919712: bpf_trace_printk: 
+
+got something from NIC
+   mosquitto_pub-4253    [005] ..s21  2883.919713: bpf_trace_printk: Got TCP packet from 0x6601010a
+   mosquitto_pub-4253    [005] ..s21  2883.919714: bpf_trace_printk:  src Port: 43750, dst Port: 1883
+   mosquitto_pub-4253    [005] ..s21  2883.919716: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+   mosquitto_pub-4253    [005] ..s21  2883.919717: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+   mosquitto_pub-4253    [005] ..s21  2883.919719: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+       mosquitto-1132    [002] ..s21  2883.919842: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1132    [002] ..s21  2883.919845: bpf_trace_printk: Got TCP packet from 0xca03010a
+       mosquitto-1132    [002] ..s21  2883.919846: bpf_trace_printk:  src Port: 1883, dst Port: 43750
+       mosquitto-1132    [002] ..s21  2883.919847: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1132    [002] ..s21  2883.919937: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1132    [002] ..s21  2883.919939: bpf_trace_printk: Got TCP packet from 0xca03010a
+       mosquitto-1132    [002] ..s21  2883.919940: bpf_trace_printk:  src Port: 1883, dst Port: 43750
+       mosquitto-1132    [002] ..s21  2883.919940: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1132    [002] ..s21  2883.919967: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1132    [002] ..s21  2883.919968: bpf_trace_printk: Got TCP packet from 0x6601010a
+       mosquitto-1132    [002] ..s21  2883.919969: bpf_trace_printk:  src Port: 43750, dst Port: 1883
+       mosquitto-1132    [002] ..s21  2883.919971: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+       mosquitto-1132    [002] ..s21  2883.919973: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+       mosquitto-1132    [002] ..s21  2883.919974: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [007] ..s21  2884.127731: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [007] ..s21  2884.127766: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [007] ..s21  2884.127768: bpf_trace_printk:  src Port: 1883, dst Port: 43750
+          <idle>-0       [007] ..s21  2884.127770: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [007] ..s21  2884.127826: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [007] ..s21  2884.127828: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [007] ..s21  2884.127829: bpf_trace_printk:  src Port: 43750, dst Port: 1883
+          <idle>-0       [007] ..s21  2884.127833: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [007] ..s21  2884.127835: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [007] ..s21  2884.127836: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2884.335773: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2884.335818: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [000] .Ns21  2884.335822: bpf_trace_printk:  src Port: 1883, dst Port: 43750
+          <idle>-0       [000] .Ns21  2884.335824: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] .Ns21  2884.335891: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2884.335893: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] .Ns21  2884.335895: bpf_trace_printk:  src Port: 43750, dst Port: 1883
+          <idle>-0       [000] .Ns21  2884.335899: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] .Ns21  2884.335902: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21  2884.335904: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [008] ..s21  2884.743742: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [008] ..s21  2884.743778: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [008] ..s21  2884.743780: bpf_trace_printk:  src Port: 1883, dst Port: 43750
+          <idle>-0       [008] ..s21  2884.743781: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [008] ..s21  2884.743833: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [008] ..s21  2884.743834: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [008] ..s21  2884.743836: bpf_trace_printk:  src Port: 43750, dst Port: 1883
+          <idle>-0       [008] ..s21  2884.743840: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [008] ..s21  2884.743842: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [008] ..s21  2884.743843: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [006] ..s21  2885.583726: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [006] ..s21  2885.583767: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [006] ..s21  2885.583770: bpf_trace_printk:  src Port: 1883, dst Port: 43750
+          <idle>-0       [006] ..s21  2885.583771: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [006] ..s21  2885.583827: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [006] ..s21  2885.583829: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [006] ..s21  2885.583830: bpf_trace_printk:  src Port: 43750, dst Port: 1883
+          <idle>-0       [006] ..s21  2885.583834: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [006] ..s21  2885.583837: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [006] ..s21  2885.583838: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [002] ..s21  2886.735516: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [002] ..s21  2886.735543: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [002] ..s21  2886.735545: bpf_trace_printk:  src Port: 1883, dst Port: 32910
+          <idle>-0       [002] ..s21  2886.735546: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [002] ..s21  2886.735589: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [002] ..s21  2886.735591: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [002] ..s21  2886.735592: bpf_trace_printk:  src Port: 32910, dst Port: 1883
+          <idle>-0       [002] ..s21  2886.735596: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [002] ..s21  2886.735598: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [002] ..s21  2886.735599: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2887.247664: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2887.247701: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [000] .Ns21  2887.247705: bpf_trace_printk:  src Port: 1883, dst Port: 43750
+          <idle>-0       [000] .Ns21  2887.247707: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] .Ns21  2887.247801: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2887.247803: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] .Ns21  2887.247806: bpf_trace_printk:  src Port: 43750, dst Port: 1883
+          <idle>-0       [000] .Ns21  2887.247812: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] .Ns21  2887.247815: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21  2887.247817: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2888.335836: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2888.335873: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] .Ns21  2888.335876: bpf_trace_printk:  src Port: 1883, dst Port: 35526
+          <idle>-0       [000] .Ns21  2888.335878: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] .Ns21  2888.336011: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2888.336014: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] .Ns21  2888.336016: bpf_trace_printk:  src Port: 35526, dst Port: 1883
+          <idle>-0       [000] .Ns21  2888.336021: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] .Ns21  2888.336024: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21  2888.336026: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [006] ..s21  2888.847654: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [006] ..s21  2888.847679: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [006] ..s21  2888.847682: bpf_trace_printk:  src Port: 32900, dst Port: 1883
+          <idle>-0       [006] ..s21  2888.847688: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [006] ..s21  2888.847691: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [006] ..s21  2888.847692: bpf_trace_printk: This segment Contains MQTT packet
+          <idle>-0       [006] ..s21  2888.847694: bpf_trace_printk: MQTT Packet type: 3
+          <idle>-0       [006] ..s21  2888.847697: bpf_trace_printk: [xdp_aborted] Remaining length does not match data length
+          <idle>-0       [007] ..s21  2890.511462: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [007] ..s21  2890.511484: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [007] ..s21  2890.511487: bpf_trace_printk:  src Port: 1883, dst Port: 43750
+          <idle>-0       [007] ..s21  2890.511488: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [007] ..s21  2890.511538: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [007] ..s21  2890.511540: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [007] ..s21  2890.511541: bpf_trace_printk:  src Port: 43750, dst Port: 1883
+          <idle>-0       [007] ..s21  2890.511545: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [007] ..s21  2890.511547: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [007] ..s21  2890.511548: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [007] ..s21  2892.943564: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [007] ..s21  2892.943591: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [007] ..s21  2892.943593: bpf_trace_printk:  src Port: 1883, dst Port: 35534
+          <idle>-0       [007] ..s21  2892.943594: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [007] ..s21  2892.943641: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [007] ..s21  2892.943643: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [007] ..s21  2892.943644: bpf_trace_printk:  src Port: 35534, dst Port: 1883
+          <idle>-0       [007] ..s21  2892.943647: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [007] ..s21  2892.943648: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [007] ..s21  2892.943650: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2893.455531: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2893.455559: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [000] .Ns21  2893.455561: bpf_trace_printk:  src Port: 1883, dst Port: 32910
+          <idle>-0       [000] .Ns21  2893.455562: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] .Ns21  2893.455610: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2893.455611: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] .Ns21  2893.455612: bpf_trace_printk:  src Port: 32910, dst Port: 1883
+          <idle>-0       [000] .Ns21  2893.455616: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] .Ns21  2893.455618: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21  2893.455619: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2897.039705: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [004] ..s21  2897.039705: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2897.039712: bpf_trace_printk: Got TCP packet from 0xc903010a
+          <idle>-0       [000] ..s21  2897.039715: bpf_trace_printk:  src Port: 1883, dst Port: 55428
+          <idle>-0       [000] ..s21  2897.039717: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [004] ..s21  2897.039738: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [004] ..s21  2897.039741: bpf_trace_printk:  src Port: 1883, dst Port: 43750
+          <idle>-0       [004] ..s21  2897.039743: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [004] ..s21  2897.039810: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21  2897.039810: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [004] ..s21  2897.039812: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] .Ns21  2897.039812: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [004] ..s21  2897.039814: bpf_trace_printk:  src Port: 43750, dst Port: 1883
+          <idle>-0       [000] .Ns21  2897.039814: bpf_trace_printk:  src Port: 55428, dst Port: 1883
+          <idle>-0       [004] ..s21  2897.039819: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] .Ns21  2897.039819: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [004] ..s21  2897.039850: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21  2897.039851: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [004] ..s21  2897.039852: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] .Ns21  2897.039854: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+       mosquitto-4026    [000] ..s21  2899.007846: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-4026    [000] ..s21  2899.007871: bpf_trace_printk: Got TCP packet from 0xcb03010a
+       mosquitto-4026    [000] ..s21  2899.007873: bpf_trace_printk:  src Port: 1883, dst Port: 34770
+       mosquitto-4026    [000] ..s21  2899.007874: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-4026    [000] ..s21  2899.007944: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-4026    [000] ..s21  2899.007944: bpf_trace_printk: Got TCP packet from 0x6601010a
+       mosquitto-4026    [000] ..s21  2899.007946: bpf_trace_printk:  src Port: 34770, dst Port: 1883
+       mosquitto-4026    [000] ..s21  2899.007950: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+       mosquitto-4026    [000] ..s21  2899.007951: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+       mosquitto-4026    [000] ..s21  2899.007952: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+       mosquitto-4026    [000] ..s21  2899.007992: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-4026    [000] ..s21  2899.007993: bpf_trace_printk: Got TCP packet from 0xca03010a
+       mosquitto-4026    [000] ..s21  2899.007994: bpf_trace_printk:  src Port: 1883, dst Port: 34770
+       mosquitto-4026    [000] ..s21  2899.007995: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [009] ..s21  2899.215513: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [009] ..s21  2899.215530: bpf_trace_printk: Got TCP packet from 0xcb03010a
+          <idle>-0       [009] ..s21  2899.215531: bpf_trace_printk:  src Port: 1883, dst Port: 34770
+          <idle>-0       [009] ..s21  2899.215532: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [009] ..s21  2899.215556: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [009] ..s21  2899.215556: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [009] ..s21  2899.215557: bpf_trace_printk:  src Port: 34770, dst Port: 1883
+          <idle>-0       [009] ..s21  2899.215559: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [009] ..s21  2899.215560: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [009] ..s21  2899.215560: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [009] ..s21  2899.215595: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [009] ..s21  2899.215595: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [009] ..s21  2899.215596: bpf_trace_printk:  src Port: 1883, dst Port: 34770
+          <idle>-0       [009] ..s21  2899.215596: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [009] ..s21  2899.423574: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [009] ..s21  2899.423614: bpf_trace_printk: Got TCP packet from 0xcb03010a
+          <idle>-0       [009] ..s21  2899.423617: bpf_trace_printk:  src Port: 1883, dst Port: 34770
+          <idle>-0       [009] ..s21  2899.423618: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [009] ..s21  2899.423663: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [009] ..s21  2899.423664: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [009] ..s21  2899.423665: bpf_trace_printk:  src Port: 34770, dst Port: 1883
+          <idle>-0       [009] ..s21  2899.423669: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [009] ..s21  2899.423671: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [009] ..s21  2899.423672: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [009] ..s21  2899.423732: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [009] ..s21  2899.423733: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [009] ..s21  2899.423734: bpf_trace_printk:  src Port: 1883, dst Port: 34770
+          <idle>-0       [009] ..s21  2899.423735: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [005] ..s21  2899.831646: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [005] ..s21  2899.831671: bpf_trace_printk: Got TCP packet from 0xcb03010a
+          <idle>-0       [005] ..s21  2899.831672: bpf_trace_printk:  src Port: 1883, dst Port: 34770
+          <idle>-0       [005] ..s21  2899.831673: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [005] ..s21  2899.831719: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [005] ..s21  2899.831720: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [005] ..s21  2899.831721: bpf_trace_printk:  src Port: 34770, dst Port: 1883
+          <idle>-0       [005] ..s21  2899.831724: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [005] ..s21  2899.831726: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [005] ..s21  2899.831727: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [005] ..s21  2899.831784: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [005] ..s21  2899.831785: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [005] ..s21  2899.831786: bpf_trace_printk:  src Port: 1883, dst Port: 34770
+          <idle>-0       [005] ..s21  2899.831787: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21  2900.687695: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2900.687722: bpf_trace_printk: Got TCP packet from 0xcb03010a
+          <idle>-0       [000] ..s21  2900.687724: bpf_trace_printk:  src Port: 1883, dst Port: 34770
+          <idle>-0       [000] ..s21  2900.687725: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21  2900.687773: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2900.687774: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] ..s21  2900.687775: bpf_trace_printk:  src Port: 34770, dst Port: 1883
+          <idle>-0       [000] ..s21  2900.687778: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] ..s21  2900.687780: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21  2900.687781: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] ..s21  2900.687865: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21  2900.687866: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [000] ..s21  2900.687867: bpf_trace_printk:  src Port: 1883, dst Port: 34770
+          <idle>-0       [000] ..s21  2900.687868: bpf_trace_printk: Packet is not destined to MQTT port
+^C# 
+

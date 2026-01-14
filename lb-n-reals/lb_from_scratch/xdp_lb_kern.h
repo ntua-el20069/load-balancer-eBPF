@@ -14,16 +14,15 @@
 #include "include/bpf_endian.h"
 #include "include/bpf_common.h"
 
-// If you change MAX_TOPIC_LENGTH, 
+// If you change MAX_SUPPORTED_TOPIC_LENGTH, 
 // be careful about the `len` type in mqtt_topic_entry struct below
-#define MAX_TOPIC_LENGTH 256
-#define FIXED_TOPIC_LENGTH 8  // e.g. "sensors/" TODO: adjust for dynamic length topics
+#define MAX_SUPPORTED_TOPIC_LENGTH 80
 #define MAX_VIPS 512
 #define NO_FLAGS 0
 
 struct mqtt_topic_entry {
     // TODO: can I optimize the topic to a variable length array?
-    char topic[MAX_TOPIC_LENGTH];
+    char topic[MAX_SUPPORTED_TOPIC_LENGTH];
     __u16 len;
 };
 

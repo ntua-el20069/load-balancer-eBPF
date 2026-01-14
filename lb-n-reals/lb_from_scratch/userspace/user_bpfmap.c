@@ -6,12 +6,11 @@
 #include <arpa/inet.h>  // For inet_pton
 
 
-#define MAX_TOPIC_LENGTH 256
-#define FIXED_TOPIC_LENGTH 8  // e.g. "sensors/" TODO: adjust
+#define MAX_SUPPORTED_TOPIC_LENGTH 80
 
 struct mqtt_topic_entry {
     // TODO: can I optimize the topic to a variable length array?
-    char topic[MAX_TOPIC_LENGTH];
+    char topic[MAX_SUPPORTED_TOPIC_LENGTH];
     __u16 len;
 };
 
@@ -29,7 +28,7 @@ struct vip_definition {
 /*
     struct mqtt_topic_entry key = {
         .topic = topic_string,
-        .len = FIXED_TOPIC_LENGTH
+        .len = MAX_SUPPORTED_TOPIC_LENGTH
     };
     struct vip_definition value = {
         .vip = bpf_htonl(0x0A0132C8),

@@ -3,6 +3,7 @@
 
 #define REAL_1_IP       (unsigned int)(10 + (1 << 8) + (3 << 16) + (201 << 24))
 #define REAL_2_IP       (unsigned int)(10 + (1 << 8) + (3 << 16) + (202 << 24))
+#define REAL_3_IP       (unsigned int)(10 + (1 << 8) + (3 << 16) + (203 << 24))
 #define DEFAULT_CLIENT_IP       (unsigned int)(10 + (1 << 8) + (1 << 16) + (102 << 24))
 #define SCRATCH_LB_IP   (unsigned int)(10 + (1 << 8) + (5 << 16) + (102 << 24))
 
@@ -63,6 +64,7 @@ int xdp_load_balancer(struct xdp_md *ctx)
     // [TCP payload]: Packet is destined to MQTT port, continue to topic prediction and parsing
     else {
         // [predicted topic based on src IP]: We suppose that the following message will be for the topic that was last sent by this client IP
+        // []: lookup the predicted topic from BPF map based on source IP
         struct mqtt_topic_entry* predicted_topic = NULL;
         struct ip_addr_union src_ip = {};
         src_ip.ipv4 = iph->saddr;
@@ -136,20 +138,15 @@ int xdp_load_balancer(struct xdp_md *ctx)
                 __u16 topic_len = readInt(&curdata, data_end); /* increments pptr to point past length */
                 if (BPF_PRINT) bpf_printk("Topic length: %d", topic_len);
                 
-                // TODO: handle variable length topics
-                if(topic_len > MAX_TOPIC_LENGTH){
-                    if (BPF_PRINT) bpf_printk("[xdp_aborted] Topic length exceeds MAX_TOPIC_LENGTH");
+                if(topic_len > MAX_SUPPORTED_TOPIC_LENGTH){
+                    if (BPF_PRINT) bpf_printk("[xdp_aborted] Topic length exceeds MAX_SUPPORTED_TOPIC_LENGTH");
                     return XDP_ABORTED;
                 } 
                 else if (topic_len <= 0){
                     if (BPF_PRINT) bpf_printk("[xdp_aborted] Topic cannot have zero length");
                     return XDP_ABORTED;
                 }
-                else if (topic_len != FIXED_TOPIC_LENGTH){
-                    if (BPF_PRINT) bpf_printk("[xdp_aborted] Topic length is not equal to FIXED_TOPIC_LENGTH");
-                    return XDP_ABORTED;
-                }
-                else if ((void *)(curdata) + FIXED_TOPIC_LENGTH > (void *)data_end){
+                else if ((void *)(curdata) + topic_len > (void *)data_end){
                     if (BPF_PRINT) bpf_printk("[xdp_aborted] Topic data exceeds packet boundary");
                     return XDP_ABORTED;
                 }
@@ -157,8 +154,16 @@ int xdp_load_balancer(struct xdp_md *ctx)
                     // [MQTT PUBLISH Topic to VIP mapping]: lookup the topic in the BPF map to get the VIP to forward the packet to
                     struct vip_definition *vip_def;
                     struct mqtt_topic_entry topic_entry = {};
-                    memcpy(topic_entry.topic, curdata, FIXED_TOPIC_LENGTH);
                     topic_entry.len = topic_len;
+                    // clear topic_entry topic
+                    memset(topic_entry.topic, 0, sizeof(topic_entry.topic));
+                    // memcpy(topic_entry.topic, curdata, MAX_SUPPORTED_TOPIC_LENGTH);
+                    for (int i = 0; i < MAX_SUPPORTED_TOPIC_LENGTH; i++){
+                        if (i >= topic_len) break;
+                        if ((void *)(curdata + i + 1) > (void *)data_end) break;
+                        memcpy(&topic_entry.topic[i], &curdata[i], 1);
+                    }
+                    
                     
                     if (BPF_PRINT) bpf_printk("Topic: %s", topic_entry.topic);
                     if (BPF_PRINT) bpf_printk("Payload: %s", curdata);
@@ -168,7 +173,8 @@ int xdp_load_balancer(struct xdp_md *ctx)
                     if(!predicted_topic) successful_prediction = 0;
                     else if(topic_entry.len != predicted_topic->len) successful_prediction = 0;
                     else{
-                        for (int i = 0; i < FIXED_TOPIC_LENGTH; i++){
+                        for (int i = 0; i < MAX_SUPPORTED_TOPIC_LENGTH; i++){
+                            if (i >= topic_len) break;
                             if(topic_entry.topic[i] != predicted_topic->topic[i]){
                                 successful_prediction = 0;
                                 break;
@@ -222,7 +228,7 @@ int xdp_load_balancer(struct xdp_md *ctx)
 
     if (iph->saddr == CLIENT_IP){
         if (mqtt_topic_wise_forwarding) iph->daddr = mqtt_topic_wise_forwarding;
-        else                            iph->daddr = REAL_2_IP;
+        else                            iph->daddr = REAL_3_IP;
     }
     else{
         iph->daddr = CLIENT_IP;

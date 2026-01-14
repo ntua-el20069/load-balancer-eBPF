@@ -122,3 +122,84 @@ bpftool map dump id $MAP_ID
 - In `client_SH`, make the MQTT publish messages (again)... (Now client publishes from the new IP)
 - Stop and Copy the trace pipe logs from `lb_SH_1`
 - Stop and save the capture from `gateway_SH`
+
+
+
+
+## Test 2
+
+### Limitations - Modifications since previous test
+
+Feature:
+- Variable Length up to 80 characters is supported in this version
+
+The rest limitations have not been addressed yet.
+
+### MQTT-Topic based forwarding logic 
+
+| topic        | Broker  |
+| ------------ | ------- |
+| sensors/     | real_1  |
+| living-room/ | real_2  |
+| other topics | real_3  |
+
+### Test Procedure
+- Publish 3 times to a big 80-char topic that has broker_1 as the responsible server. The first MQTT PUBLISH will fail (the TCP 3WHS and MQTT connect were forwarded to real_3 as there was no predicted topic). The next two PUBLISH messages will be successfully forwarded to real_1.
+- Publish 3 times to `sensors/` so that the PUBLISH messages go to `real_1`. Now all 3 messages will succeed. In fact, the first one is lucky due to the fact that the previous topic that was sent by the client IP was also intended to be forwarded to real_1 (so although predicted_topic is different - the 3WHS has luckily been done with the right broker - real_1)
+- Publish 3 times to `living-room/` so that the PUBLISH messages go to `real_2`. Here the first PUBLISH will fail (TCP 3WHS with real_1) but the next ones will properly be sent to real_2
+
+### Commands
+
+
+- Docker compose of `client`, `lb_from_scratch`, `real_1`, `real_2`, `gateway` containers 
+
+- 4 terminals open were you will connect to containers `docker exec -it <container_name> sh`: `client_SH`, `lb_SH_1`, `lb_SH_2`, `gateway_SH`
+
+- In `lb_SH_1`, check the trace pipe (where `bpf_printk` commands write their output)
+```bash
+bpftool prog tracelog
+```
+
+- Gateway captures packets on the interface that looks to the `lb_from_scratch`. So, in `gateway_SH`
+```bash
+tcpdump -n -i eth3 -nnXXtttt -w /tmp/gateway_eth3_capture.pcap -C 3 -G 600 
+```
+
+
+```bash
+# LB from Scratch - Update eBPF map from userspace  [topic -> responsible broker]
+export MAP_ID=$(bpftool map list | grep mqtt_topic | awk -F':' '{ print $1 }')
+bpftool map show id $MAP_ID
+cd xdp-tutorial/basic00-update-map
+./user_bpfmap $MAP_ID aabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddee $REAL_1_IP
+./user_bpfmap $MAP_ID qqwweerrttqqwweerrttqqwweerrttqqwweerrttqqwweerrttqqwweerrttqqwweerrttqqwweerrtt $REAL_2_IP
+./user_bpfmap $MAP_ID sensors/ $REAL_1_IP
+./user_bpfmap $MAP_ID living-room/ $REAL_2_IP
+bpftool map dump id $MAP_ID
+
+
+# client
+# expected to be fwd to real 1
+# 3 times
+mosquitto_pub -h ${SCRATCH_LB_IP}  -p ${MQTT_PORT} -m "motor temp, current, ..." -t aabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddee --qos 0
+
+# 3 times
+mosquitto_pub -h ${SCRATCH_LB_IP}  -p ${MQTT_PORT} -m "motor temp, current, ..." -t sensors/ --qos 0
+
+#expected to be fwd to real 2
+# 3 times
+mosquitto_pub -h ${SCRATCH_LB_IP}  -p ${MQTT_PORT} -m "motor temp, current, ..." -t living-room/ --qos 0
+```
+- Stop and Copy the trace pipe logs from `lb_SH_1`
+- Stop and save the capture from `gateway_SH`
+
+
+<!--
+python client_pub_opts.py -H ${SCRATCH_LB_IP} -t sensors/ -P ${MQTT_PORT} -k 5 -N 20 -S 1
+
+python client_pub_opts.py -H 127.0.0.1 -t motor/ -P 1883 -k 5 -N 20 -S 1
+
+
+mosquitto_pub -h ${SCRATCH_LB_IP}  -p ${MQTT_PORT} -m "" -t aabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddee --qos 0
+-->
+
