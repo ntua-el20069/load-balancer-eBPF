@@ -19,19 +19,14 @@ On Ubuntu host execute:
 git clone https://github.com/nickpapakon/load-balancer-eBPF.git
 cd load-balancer-eBPF/lb-n-reals/
 ```
-Ensure Docker Desktop is up and running and then,
-- build the base images (e.g. `bpf_mqtt_base` is an ubuntu img containing most utilities needed for eBPF programs and MQTT messaging)
+Ensure Docker Desktop is up and running and then, use a script that 
+- builds the base images (e.g. `bpf_mqtt_base` is an ubuntu img containing most utilities needed for eBPF programs and MQTT messaging)
+- does docker compose up for the containers
 ```bash
-cd base_images/
-chmod +x build_images.sh
-./build_images.sh
-cd ../
+chmod +x ./docker-script.sh
+./docker-script.sh
 ```
-- build the containers
-```bash
-docker compose up --build -d
-```
-After docker compose command completes (it may take 20-30 minutes), 
+After this script completes (it may take 20-30 minutes), 
 Wait until the entrypoint scripts `setup.sh` finish (watch the logs of each container) and then ensure that all containers are up and running.
 
 ### Katran container Setup
