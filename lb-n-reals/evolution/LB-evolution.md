@@ -195,11 +195,30 @@ mosquitto_pub -h ${SCRATCH_LB_IP}  -p ${MQTT_PORT} -m "motor temp, current, ..."
 
 
 <!--
-python client_pub_opts.py -H ${SCRATCH_LB_IP} -t sensors/ -P ${MQTT_PORT} -k 5 -N 20 -S 1
-
-python client_pub_opts.py -H 127.0.0.1 -t motor/ -P 1883 -k 5 -N 20 -S 1
-
+python3 client_pub_opts.py -H 127.0.0.1 -t motor/ -P 1883 -k 5 -N 20 -S 1
 
 mosquitto_pub -h ${SCRATCH_LB_IP}  -p ${MQTT_PORT} -m "" -t aabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddeeaabbccddee --qos 0
 -->
 
+## Test 3
+
+## Test Procedure
+
+No modifications done on Load Balancer. 
+- Send multiple MQTT PUBLISH messages of the same topic under a single TCP connection using a python `paho.mqtt` client
+- All of them fail (as TCP 3WHS has been sent to a non-responsible server and the PUBLISH messages are sent to another server - the responsible one)
+- Repeat the procedure - rerun the python client that sends multiple MQTT PUBLISH messages with the same topic 
+- Now a new TCP connection is used and thus the messages are all properly forwarded to the same responsible broker.
+
+## Command
+
+```bash
+# keep-alive of 3 sec
+# send 6 messages
+# sleep time between them: 1 sec
+python3 client_pub_opts.py -H ${SCRATCH_LB_IP} -t living-room/ -P ${MQTT_PORT} -k 3 -N 6 -S 1
+
+# first time we expect that no message will be sent correctly to the right browser (TCP 3WHS and connect with real_3 - though message intended for real_2)
+
+# second time we run the command, as a new TCP 3WHS happens to the appropriate broker, all MQTT PUBLISH messages are correctly delivered to broker real_2
+```

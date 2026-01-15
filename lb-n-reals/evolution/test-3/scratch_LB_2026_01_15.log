@@ -1,0 +1,684 @@
+################################# LOGS #########################################
+
+
+# bpftool prog tracelog
+         dockerd-324     [001] ..s21     8.741712: bpf_trace_printk: 
+
+got something from NIC
+         dockerd-324     [001] ..s21     8.741715: bpf_trace_printk: [xdp_pass] Not an IPv4 packet, passing to network stack
+         dockerd-626     [001] ..s21     9.741803: bpf_trace_printk: 
+
+got something from NIC
+         dockerd-626     [001] ..s21     9.741806: bpf_trace_printk: [xdp_pass] Not an IPv4 packet, passing to network stack
+
+
+
+
+
+
+
+
+
+
+
+
+
+           <...>-1123    [005] ..s21   151.082418: bpf_trace_printk: 
+
+got something from NIC
+           <...>-1123    [005] ..s21   151.082425: bpf_trace_printk: [xdp_pass] Not an IPv4 packet, passing to network stack
+           <...>-1123    [005] ..s21   151.082431: bpf_trace_printk: 
+
+got something from NIC
+           <...>-1123    [005] ..s21   151.082431: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-1123    [005] ..s21   151.082432: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+           <...>-1123    [005] ..s21   151.082433: bpf_trace_printk: No predicted topic for this client IP
+           <...>-1123    [005] ..s21   151.082433: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+           <...>-1123    [005] ..s21   151.082463: bpf_trace_printk: 
+
+got something from NIC
+           <...>-1123    [005] ..s21   151.082463: bpf_trace_printk: Got TCP packet from 0xcb03010a
+           <...>-1123    [005] ..s21   151.082463: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+           <...>-1123    [005] ..s21   151.082463: bpf_trace_printk: Packet is not destined to MQTT port
+           <...>-1123    [005] ..s21   151.082477: bpf_trace_printk: 
+
+got something from NIC
+           <...>-1123    [005] ..s21   151.082477: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-1123    [005] ..s21   151.082477: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+           <...>-1123    [005] ..s21   151.082478: bpf_trace_printk: No predicted topic for this client IP
+           <...>-1123    [005] ..s21   151.082478: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+         python3-1123    [005] ..s21   151.083025: bpf_trace_printk: 
+
+got something from NIC
+         python3-1123    [005] ..s21   151.083029: bpf_trace_printk: Got TCP packet from 0x6601010a
+         python3-1123    [005] ..s21   151.083030: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+         python3-1123    [005] ..s21   151.083030: bpf_trace_printk: No predicted topic for this client IP
+         python3-1123    [005] ..s21   151.083031: bpf_trace_printk: This segment Contains MQTT packet
+         python3-1123    [005] ..s21   151.083031: bpf_trace_printk: MQTT Packet type: 1
+         python3-1123    [005] ..s21   151.083031: bpf_trace_printk: Not a PUBLISH packet type
+         python3-1123    [005] ..s21   151.083041: bpf_trace_printk: 
+
+got something from NIC
+         python3-1123    [005] ..s21   151.083041: bpf_trace_printk: Got TCP packet from 0xcb03010a
+         python3-1123    [005] ..s21   151.083042: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+         python3-1123    [005] ..s21   151.083042: bpf_trace_printk: Packet is not destined to MQTT port
+         python3-1124    [001] ..s21   151.083543: bpf_trace_printk: 
+
+got something from NIC
+         python3-1124    [001] ..s21   151.083553: bpf_trace_printk: Got TCP packet from 0x6601010a
+         python3-1124    [001] ..s21   151.083554: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+         python3-1124    [001] ..s21   151.083555: bpf_trace_printk: No predicted topic for this client IP
+         python3-1124    [001] ..s21   151.083556: bpf_trace_printk: This segment Contains MQTT packet
+         python3-1124    [001] ..s21   151.083556: bpf_trace_printk: MQTT Packet type: 3
+         python3-1124    [001] ..s21   151.083556: bpf_trace_printk: Topic length: 12
+         python3-1124    [001] ..s21   151.083557: bpf_trace_printk: Topic: living-room/
+         python3-1124    [001] ..s21   151.083558: bpf_trace_printk: Payload: living-room/{"msgnum": "0"}
+         python3-1124    [001] ..s21   151.083558: bpf_trace_printk: Actual Topic does not match the predicted one based on BPF map - We update BPF map
+         python3-1124    [001] ..s21   151.083562: bpf_trace_printk: Found VIP mapping for actual topic
+         python3-1124    [001] ..s21   151.083563: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+         python3-1124    [001] ..s21   151.083621: bpf_trace_printk: 
+
+got something from NIC
+         python3-1124    [001] ..s21   151.083622: bpf_trace_printk: Got TCP packet from 0xca03010a
+         python3-1124    [001] ..s21   151.083623: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+         python3-1124    [001] ..s21   151.083623: bpf_trace_printk: Packet is not destined to MQTT port
+           <...>-1034    [000] ..s21   151.085652: bpf_trace_printk: 
+
+got something from NIC
+           <...>-1034    [000] ..s21   151.085662: bpf_trace_printk: Got TCP packet from 0xcb03010a
+           <...>-1034    [000] ..s21   151.085663: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+           <...>-1034    [000] ..s21   151.085664: bpf_trace_printk: Packet is not destined to MQTT port
+           <...>-1034    [000] ..s21   151.085687: bpf_trace_printk: 
+
+got something from NIC
+           <...>-1034    [000] ..s21   151.085689: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-1034    [000] ..s21   151.085689: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+           <...>-1034    [000] ..s21   151.085691: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-1034    [000] ..s21   151.085692: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+           <...>-1034    [000] ..s21   151.085692: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+           <...>-1034    [000] ..s21   151.085722: bpf_trace_printk: 
+
+got something from NIC
+           <...>-1034    [000] ..s21   151.085722: bpf_trace_printk: Got TCP packet from 0xca03010a
+           <...>-1034    [000] ..s21   151.085723: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+           <...>-1034    [000] ..s21   151.085723: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [001] ..s21   151.290603: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21   151.290603: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21   151.290607: bpf_trace_printk: Got TCP packet from 0xcb03010a
+          <idle>-0       [000] ..s21   151.290609: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+          <idle>-0       [000] ..s21   151.290610: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [001] .Ns21   151.290623: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [001] .Ns21   151.290625: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+          <idle>-0       [001] .Ns21   151.290628: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [001] .Ns21   151.290630: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [001] .Ns21   151.290630: bpf_trace_printk: This segment Contains MQTT packet
+          <idle>-0       [001] .Ns21   151.290631: bpf_trace_printk: MQTT Packet type: 3
+          <idle>-0       [001] .Ns21   151.290632: bpf_trace_printk: Topic length: 12
+          <idle>-0       [001] .Ns21   151.290634: bpf_trace_printk: Topic: living-room/
+          <idle>-0       [001] .Ns21   151.290635: bpf_trace_printk: Payload: living-room/{"msgnum": "0"}
+          <idle>-0       [001] .Ns21   151.290636: bpf_trace_printk: Found VIP mapping for actual topic
+          <idle>-0       [001] .Ns21   151.290637: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21   151.290646: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21   151.290647: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] ..s21   151.290649: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+          <idle>-0       [000] ..s21   151.290650: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] ..s21   151.290652: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21   151.290653: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [001] .Ns21   151.290699: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [001] .Ns21   151.290700: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [001] .Ns21   151.290701: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+          <idle>-0       [001] .Ns21   151.290702: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21   151.498837: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [001] ..s21   151.498837: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21   151.498845: bpf_trace_printk: Got TCP packet from 0xcb03010a
+          <idle>-0       [000] ..s21   151.498848: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+          <idle>-0       [000] ..s21   151.498850: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [001] .Ns21   151.498876: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [001] .Ns21   151.498880: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+          <idle>-0       [001] .Ns21   151.498886: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [001] .Ns21   151.498888: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [001] .Ns21   151.498890: bpf_trace_printk: This segment Contains MQTT packet
+          <idle>-0       [001] .Ns21   151.498891: bpf_trace_printk: MQTT Packet type: 3
+          <idle>-0       [001] .Ns21   151.498892: bpf_trace_printk: Topic length: 12
+          <idle>-0       [001] .Ns21   151.498896: bpf_trace_printk: Topic: living-room/
+          <idle>-0       [001] .Ns21   151.498898: bpf_trace_printk: Payload: living-room/{"msgnum": "0"}
+          <idle>-0       [001] .Ns21   151.498899: bpf_trace_printk: Found VIP mapping for actual topic
+          <idle>-0       [001] .Ns21   151.498902: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21   151.498919: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21   151.498921: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] ..s21   151.498923: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+          <idle>-0       [000] ..s21   151.498926: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] ..s21   151.498929: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [000] ..s21   151.498931: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [001] .Ns21   151.499003: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [001] .Ns21   151.499005: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [001] .Ns21   151.499008: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+          <idle>-0       [001] .Ns21   151.499009: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [004] ..s21   151.906682: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [006] ..s21   151.906682: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [006] ..s21   151.906688: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [006] ..s21   151.906690: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+          <idle>-0       [006] ..s21   151.906695: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [006] ..s21   151.906696: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [006] ..s21   151.906697: bpf_trace_printk: This segment Contains MQTT packet
+          <idle>-0       [006] ..s21   151.906698: bpf_trace_printk: MQTT Packet type: 3
+          <idle>-0       [006] ..s21   151.906699: bpf_trace_printk: Topic length: 12
+          <idle>-0       [006] ..s21   151.906701: bpf_trace_printk: Topic: living-room/
+          <idle>-0       [006] ..s21   151.906703: bpf_trace_printk: Payload: living-room/{"msgnum": "0"}
+          <idle>-0       [006] ..s21   151.906704: bpf_trace_printk: Found VIP mapping for actual topic
+          <idle>-0       [006] ..s21   151.906705: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [004] ..s21   151.906713: bpf_trace_printk: Got TCP packet from 0xcb03010a
+          <idle>-0       [004] ..s21   151.906714: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+          <idle>-0       [004] ..s21   151.906715: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [004] ..s21   151.906765: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [004] ..s21   151.906767: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [004] ..s21   151.906768: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+          <idle>-0       [004] ..s21   151.906770: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [004] ..s21   151.906772: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [004] ..s21   151.906773: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [006] ..s21   151.906788: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [006] ..s21   151.906789: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [006] ..s21   151.906791: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+          <idle>-0       [006] ..s21   151.906792: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [004] ..s21   151.906816: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [004] ..s21   151.906817: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [004] ..s21   151.906819: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+          <idle>-0       [004] ..s21   151.906820: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21   152.714750: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21   152.714782: bpf_trace_printk: Got TCP packet from 0xcb03010a
+          <idle>-0       [000] .Ns21   152.714784: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+          <idle>-0       [000] .Ns21   152.714785: bpf_trace_printk: Packet is not destined to MQTT port
+     ksoftirqd/5-52      [005] ..s11   152.714803: bpf_trace_printk: 
+
+got something from NIC
+     ksoftirqd/5-52      [005] ..s11   152.714807: bpf_trace_printk: Got TCP packet from 0x6601010a
+     ksoftirqd/5-52      [005] ..s11   152.714810: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+     ksoftirqd/5-52      [005] ..s11   152.714813: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+     ksoftirqd/5-52      [005] ..s11   152.714815: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+     ksoftirqd/5-52      [005] ..s11   152.714816: bpf_trace_printk: This segment Contains MQTT packet
+     ksoftirqd/5-52      [005] ..s11   152.714817: bpf_trace_printk: MQTT Packet type: 3
+     ksoftirqd/5-52      [005] ..s11   152.714818: bpf_trace_printk: Topic length: 12
+     ksoftirqd/5-52      [005] ..s11   152.714820: bpf_trace_printk: Topic: living-room/
+     ksoftirqd/5-52      [005] ..s11   152.714821: bpf_trace_printk: Payload: living-room/{"msgnum": "0"}
+     ksoftirqd/5-52      [005] ..s11   152.714822: bpf_trace_printk: Found VIP mapping for actual topic
+     ksoftirqd/5-52      [005] ..s11   152.714823: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21   152.714829: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21   152.714830: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] .Ns21   152.714831: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+          <idle>-0       [000] .Ns21   152.714835: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] .Ns21   152.714836: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21   152.714837: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+     ksoftirqd/5-52      [005] ..s11   152.714894: bpf_trace_printk: 
+
+got something from NIC
+     ksoftirqd/5-52      [005] ..s11   152.714896: bpf_trace_printk: Got TCP packet from 0xca03010a
+     ksoftirqd/5-52      [005] ..s11   152.714897: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+     ksoftirqd/5-52      [005] ..s11   152.714898: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [001] ..s21   154.378757: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21   154.378772: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] ..s21   154.378777: bpf_trace_printk: Got TCP packet from 0xcb03010a
+          <idle>-0       [001] ..s21   154.378793: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [001] ..s21   154.378797: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+          <idle>-0       [001] ..s21   154.378801: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] .Ns21   154.378802: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+          <idle>-0       [000] .Ns21   154.378804: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [001] ..s21   154.378805: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [001] ..s21   154.378807: bpf_trace_printk: This segment Contains MQTT packet
+          <idle>-0       [001] ..s21   154.378809: bpf_trace_printk: MQTT Packet type: 3
+          <idle>-0       [001] ..s21   154.378810: bpf_trace_printk: Topic length: 12
+          <idle>-0       [001] ..s21   154.378812: bpf_trace_printk: Topic: living-room/
+          <idle>-0       [001] ..s21   154.378813: bpf_trace_printk: Payload: living-room/{"msgnum": "0"}
+          <idle>-0       [001] ..s21   154.378815: bpf_trace_printk: Found VIP mapping for actual topic
+          <idle>-0       [001] ..s21   154.378817: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21   154.378866: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21   154.378868: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] .Ns21   154.378869: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+          <idle>-0       [000] .Ns21   154.378873: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] .Ns21   154.378874: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21   154.378875: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [001] ..s21   154.378912: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [001] ..s21   154.378913: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [001] ..s21   154.378915: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+          <idle>-0       [001] ..s21   154.378915: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] .Ns21   154.378937: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21   154.378938: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [000] .Ns21   154.378939: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+          <idle>-0       [000] .Ns21   154.378940: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [008] .Ns21   157.642775: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [008] .Ns21   157.642812: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [008] .Ns21   157.642814: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+          <idle>-0       [008] .Ns21   157.642819: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [008] .Ns21   157.642821: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [008] .Ns21   157.642822: bpf_trace_printk: This segment Contains MQTT packet
+          <idle>-0       [008] .Ns21   157.642823: bpf_trace_printk: MQTT Packet type: 3
+          <idle>-0       [008] .Ns21   157.642824: bpf_trace_printk: Topic length: 12
+          <idle>-0       [008] .Ns21   157.642827: bpf_trace_printk: Topic: living-room/
+          <idle>-0       [008] .Ns21   157.642828: bpf_trace_printk: Payload: living-room/{"msgnum": "0"}
+          <idle>-0       [008] .Ns21   157.642830: bpf_trace_printk: Found VIP mapping for actual topic
+          <idle>-0       [008] .Ns21   157.642831: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21   157.642888: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21   157.642894: bpf_trace_printk: Got TCP packet from 0xcb03010a
+          <idle>-0       [000] .Ns21   157.642897: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+          <idle>-0       [000] .Ns21   157.642898: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [008] .Ns21   157.642910: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [008] .Ns21   157.642911: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [008] .Ns21   157.642912: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+          <idle>-0       [008] .Ns21   157.642913: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] .Ns21   157.642965: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21   157.642967: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] .Ns21   157.642969: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+          <idle>-0       [000] .Ns21   157.642973: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] .Ns21   157.642975: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21   157.642977: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [000] .Ns21   157.643057: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21   157.643059: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [000] .Ns21   157.643061: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+          <idle>-0       [000] .Ns21   157.643062: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21   164.490608: bpf_trace_printk: 
+
+got something from NIC
+     ksoftirqd/4-46      [004] ..s11   164.490631: bpf_trace_printk: 
+
+got something from NIC
+     ksoftirqd/4-46      [004] ..s11   164.490634: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] .Ns21   164.490636: bpf_trace_printk: Got TCP packet from 0xcb03010a
+     ksoftirqd/4-46      [004] ..s11   164.490636: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+          <idle>-0       [000] .Ns21   164.490639: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+     ksoftirqd/4-46      [004] ..s11   164.490639: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] .Ns21   164.490640: bpf_trace_printk: Packet is not destined to MQTT port
+     ksoftirqd/4-46      [004] ..s11   164.490641: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+     ksoftirqd/4-46      [004] ..s11   164.490641: bpf_trace_printk: This segment Contains MQTT packet
+     ksoftirqd/4-46      [004] ..s11   164.490642: bpf_trace_printk: MQTT Packet type: 3
+     ksoftirqd/4-46      [004] ..s11   164.490643: bpf_trace_printk: Topic length: 12
+     ksoftirqd/4-46      [004] ..s11   164.490645: bpf_trace_printk: Topic: living-room/
+     ksoftirqd/4-46      [004] ..s11   164.490646: bpf_trace_printk: Payload: living-room/{"msgnum": "0"}
+     ksoftirqd/4-46      [004] ..s11   164.490647: bpf_trace_printk: Found VIP mapping for actual topic
+     ksoftirqd/4-46      [004] ..s11   164.490648: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21   164.490696: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21   164.490697: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] .Ns21   164.490698: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+          <idle>-0       [000] .Ns21   164.490701: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] .Ns21   164.490703: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21   164.490704: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+     ksoftirqd/4-46      [004] ..s11   164.490707: bpf_trace_printk: 
+
+got something from NIC
+     ksoftirqd/4-46      [004] ..s11   164.490708: bpf_trace_printk: Got TCP packet from 0xca03010a
+     ksoftirqd/4-46      [004] ..s11   164.490709: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+     ksoftirqd/4-46      [004] ..s11   164.490710: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] .Ns21   164.490758: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21   164.490760: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [000] .Ns21   164.490761: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+          <idle>-0       [000] .Ns21   164.490761: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] ..s21   177.802629: bpf_trace_printk: 
+
+got something from NIC
+     kworker/9:1-239     [009] ..s21   177.802648: bpf_trace_printk: 
+
+got something from NIC
+     kworker/9:1-239     [009] ..s21   177.802652: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] .Ns21   177.802652: bpf_trace_printk: Got TCP packet from 0xcb03010a
+     kworker/9:1-239     [009] ..s21   177.802654: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+          <idle>-0       [000] .Ns21   177.802654: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+          <idle>-0       [000] .Ns21   177.802655: bpf_trace_printk: Packet is not destined to MQTT port
+     kworker/9:1-239     [009] ..s21   177.802658: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+     kworker/9:1-239     [009] ..s21   177.802659: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+     kworker/9:1-239     [009] ..s21   177.802660: bpf_trace_printk: This segment Contains MQTT packet
+     kworker/9:1-239     [009] ..s21   177.802661: bpf_trace_printk: MQTT Packet type: 3
+     kworker/9:1-239     [009] ..s21   177.802662: bpf_trace_printk: Topic length: 12
+     kworker/9:1-239     [009] ..s21   177.802664: bpf_trace_printk: Topic: living-room/
+     kworker/9:1-239     [009] ..s21   177.802665: bpf_trace_printk: Payload: living-room/{"msgnum": "0"}
+     kworker/9:1-239     [009] ..s21   177.802666: bpf_trace_printk: Found VIP mapping for actual topic
+     kworker/9:1-239     [009] ..s21   177.802667: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21   177.802707: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21   177.802708: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [000] .Ns21   177.802710: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+          <idle>-0       [000] .Ns21   177.802712: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [000] .Ns21   177.802713: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [000] .Ns21   177.802714: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+     kworker/9:1-239     [009] ..s21   177.802738: bpf_trace_printk: 
+
+got something from NIC
+     kworker/9:1-239     [009] ..s21   177.802740: bpf_trace_printk: Got TCP packet from 0xca03010a
+     kworker/9:1-239     [009] ..s21   177.802741: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+     kworker/9:1-239     [009] ..s21   177.802742: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [000] .Ns21   177.802751: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [000] .Ns21   177.802752: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [000] .Ns21   177.802753: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+          <idle>-0       [000] .Ns21   177.802754: bpf_trace_printk: Packet is not destined to MQTT port
+           <...>-1125    [002] ..s21   180.658134: bpf_trace_printk: 
+
+got something from NIC
+           <...>-1125    [002] ..s21   180.658150: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-1125    [002] ..s21   180.658151: bpf_trace_printk:  src Port: 36393, dst Port: 1883
+           <...>-1125    [002] ..s21   180.658154: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-1125    [002] ..s21   180.658155: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+           <...>-1125    [002] ..s21   180.658155: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+           <...>-1125    [002] ..s21   180.658227: bpf_trace_printk: 
+
+got something from NIC
+           <...>-1125    [002] ..s21   180.658228: bpf_trace_printk: Got TCP packet from 0xca03010a
+           <...>-1125    [002] ..s21   180.658229: bpf_trace_printk:  src Port: 1883, dst Port: 36393
+           <...>-1125    [002] ..s21   180.658229: bpf_trace_printk: Packet is not destined to MQTT port
+           <...>-1125    [002] ..s21   180.658253: bpf_trace_printk: 
+
+got something from NIC
+           <...>-1125    [002] ..s21   180.658253: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-1125    [002] ..s21   180.658254: bpf_trace_printk:  src Port: 36393, dst Port: 1883
+           <...>-1125    [002] ..s21   180.658255: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-1125    [002] ..s21   180.658256: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+           <...>-1125    [002] ..s21   180.658257: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+           <...>-1125    [002] ..s21   180.658414: bpf_trace_printk: 
+
+got something from NIC
+           <...>-1125    [002] ..s21   180.658415: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-1125    [002] ..s21   180.658417: bpf_trace_printk:  src Port: 36393, dst Port: 1883
+           <...>-1125    [002] ..s21   180.658418: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-1125    [002] ..s21   180.658419: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+           <...>-1125    [002] ..s21   180.658419: bpf_trace_printk: This segment Contains MQTT packet
+           <...>-1125    [002] ..s21   180.658420: bpf_trace_printk: MQTT Packet type: 1
+           <...>-1125    [002] ..s21   180.658420: bpf_trace_printk: Not a PUBLISH packet type
+           <...>-1125    [002] ..s21   180.658432: bpf_trace_printk: 
+
+got something from NIC
+           <...>-1125    [002] ..s21   180.658432: bpf_trace_printk: Got TCP packet from 0xca03010a
+           <...>-1125    [002] ..s21   180.658433: bpf_trace_printk:  src Port: 1883, dst Port: 36393
+           <...>-1125    [002] ..s21   180.658434: bpf_trace_printk: Packet is not destined to MQTT port
+         python3-1126    [005] ..s21   180.659529: bpf_trace_printk: 
+
+got something from NIC
+         python3-1126    [005] ..s21   180.659555: bpf_trace_printk: Got TCP packet from 0x6601010a
+         python3-1126    [005] ..s21   180.659557: bpf_trace_printk:  src Port: 36393, dst Port: 1883
+         python3-1126    [005] ..s21   180.659560: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+         python3-1126    [005] ..s21   180.659562: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+         python3-1126    [005] ..s21   180.659563: bpf_trace_printk: This segment Contains MQTT packet
+         python3-1126    [005] ..s21   180.659564: bpf_trace_printk: MQTT Packet type: 3
+         python3-1126    [005] ..s21   180.659564: bpf_trace_printk: Topic length: 12
+         python3-1126    [005] ..s21   180.659566: bpf_trace_printk: Topic: living-room/
+         python3-1126    [005] ..s21   180.659567: bpf_trace_printk: Payload: living-room/{"msgnum": "0"}
+         python3-1126    [005] ..s21   180.659568: bpf_trace_printk: Found VIP mapping for actual topic
+         python3-1126    [005] ..s21   180.659570: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+         python3-1126    [005] ..s21   180.659608: bpf_trace_printk: 
+
+got something from NIC
+         python3-1126    [005] ..s21   180.659610: bpf_trace_printk: Got TCP packet from 0xca03010a
+         python3-1126    [005] ..s21   180.659612: bpf_trace_printk:  src Port: 1883, dst Port: 36393
+         python3-1126    [005] ..s21   180.659612: bpf_trace_printk: Packet is not destined to MQTT port
+           <...>-1037    [006] ..s21   180.662603: bpf_trace_printk: 
+
+got something from NIC
+           <...>-1037    [006] ..s21   180.662621: bpf_trace_printk: Got TCP packet from 0xca03010a
+           <...>-1037    [006] ..s21   180.662622: bpf_trace_printk:  src Port: 1883, dst Port: 36393
+           <...>-1037    [006] ..s21   180.662623: bpf_trace_printk: Packet is not destined to MQTT port
+           <...>-1037    [006] ..s21   180.662673: bpf_trace_printk: 
+
+got something from NIC
+           <...>-1037    [006] ..s21   180.662674: bpf_trace_printk: Got TCP packet from 0x6601010a
+           <...>-1037    [006] ..s21   180.662676: bpf_trace_printk:  src Port: 36393, dst Port: 1883
+           <...>-1037    [006] ..s21   180.662679: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+           <...>-1037    [006] ..s21   180.662681: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+           <...>-1037    [006] ..s21   180.662682: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+         python3-1126    [005] ..s21   181.662291: bpf_trace_printk: 
+
+got something from NIC
+         python3-1126    [005] ..s21   181.662322: bpf_trace_printk: Got TCP packet from 0x6601010a
+         python3-1126    [005] ..s21   181.662324: bpf_trace_printk:  src Port: 36393, dst Port: 1883
+         python3-1126    [005] ..s21   181.662354: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+         python3-1126    [005] ..s21   181.662356: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+         python3-1126    [005] ..s21   181.662357: bpf_trace_printk: This segment Contains MQTT packet
+         python3-1126    [005] ..s21   181.662358: bpf_trace_printk: MQTT Packet type: 3
+         python3-1126    [005] ..s21   181.662359: bpf_trace_printk: Topic length: 12
+         python3-1126    [005] ..s21   181.662361: bpf_trace_printk: Topic: living-room/
+         python3-1126    [005] ..s21   181.662362: bpf_trace_printk: Payload: living-room/{"msgnum": "1"}
+         python3-1126    [005] ..s21   181.662363: bpf_trace_printk: Found VIP mapping for actual topic
+         python3-1126    [005] ..s21   181.662365: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [001] ..s21   181.703643: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [001] ..s21   181.703673: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [001] ..s21   181.703675: bpf_trace_printk:  src Port: 1883, dst Port: 36393
+          <idle>-0       [001] ..s21   181.703676: bpf_trace_printk: Packet is not destined to MQTT port
+         python3-1126    [005] ..s21   182.665560: bpf_trace_printk: 
+
+got something from NIC
+         python3-1126    [005] ..s21   182.665584: bpf_trace_printk: Got TCP packet from 0x6601010a
+         python3-1126    [005] ..s21   182.665586: bpf_trace_printk:  src Port: 36393, dst Port: 1883
+         python3-1126    [005] ..s21   182.665591: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+         python3-1126    [005] ..s21   182.665592: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+         python3-1126    [005] ..s21   182.665593: bpf_trace_printk: This segment Contains MQTT packet
+         python3-1126    [005] ..s21   182.665594: bpf_trace_printk: MQTT Packet type: 3
+         python3-1126    [005] ..s21   182.665598: bpf_trace_printk: Topic length: 12
+         python3-1126    [005] ..s21   182.665600: bpf_trace_printk: Topic: living-room/
+         python3-1126    [005] ..s21   182.665602: bpf_trace_printk: Payload: living-room/{"msgnum": "2"}
+         python3-1126    [005] ..s21   182.665603: bpf_trace_printk: Found VIP mapping for actual topic
+         python3-1126    [005] ..s21   182.665605: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+         python3-1126    [005] ..s21   182.665685: bpf_trace_printk: 
+
+got something from NIC
+         python3-1126    [005] ..s21   182.665687: bpf_trace_printk: Got TCP packet from 0xca03010a
+         python3-1126    [005] ..s21   182.665688: bpf_trace_printk:  src Port: 1883, dst Port: 36393
+         python3-1126    [005] ..s21   182.665689: bpf_trace_printk: Packet is not destined to MQTT port
+         python3-1126    [005] ..s21   183.668430: bpf_trace_printk: 
+
+got something from NIC
+         python3-1126    [005] ..s21   183.668446: bpf_trace_printk: Got TCP packet from 0x6601010a
+         python3-1126    [005] ..s21   183.668448: bpf_trace_printk:  src Port: 36393, dst Port: 1883
+         python3-1126    [005] ..s21   183.668451: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+         python3-1126    [005] ..s21   183.668452: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+         python3-1126    [005] ..s21   183.668453: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+         python3-1126    [005] ..s21   183.668497: bpf_trace_printk: 
+
+got something from NIC
+         python3-1126    [005] ..s21   183.668499: bpf_trace_printk: Got TCP packet from 0xca03010a
+         python3-1126    [005] ..s21   183.668500: bpf_trace_printk:  src Port: 1883, dst Port: 36393
+         python3-1126    [005] ..s21   183.668502: bpf_trace_printk: Packet is not destined to MQTT port
+         python3-1126    [005] ..s21   183.668560: bpf_trace_printk: 
+
+got something from NIC
+         python3-1126    [005] ..s21   183.668561: bpf_trace_printk: Got TCP packet from 0x6601010a
+         python3-1126    [005] ..s21   183.668562: bpf_trace_printk:  src Port: 36393, dst Port: 1883
+         python3-1126    [005] ..s21   183.668564: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+         python3-1126    [005] ..s21   183.668566: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+         python3-1126    [005] ..s21   183.668567: bpf_trace_printk: This segment Contains MQTT packet
+         python3-1126    [005] ..s21   183.668568: bpf_trace_printk: MQTT Packet type: 3
+         python3-1126    [005] ..s21   183.668569: bpf_trace_printk: Topic length: 12
+         python3-1126    [005] ..s21   183.668571: bpf_trace_printk: Topic: living-room/
+         python3-1126    [005] ..s21   183.668572: bpf_trace_printk: Payload: living-room/{"msgnum": "3"}
+         python3-1126    [005] ..s21   183.668574: bpf_trace_printk: Found VIP mapping for actual topic
+         python3-1126    [005] ..s21   183.668575: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+         python3-1126    [005] ..s21   183.668590: bpf_trace_printk: 
+
+got something from NIC
+         python3-1126    [005] ..s21   183.668592: bpf_trace_printk: Got TCP packet from 0xca03010a
+         python3-1126    [005] ..s21   183.668593: bpf_trace_printk:  src Port: 1883, dst Port: 36393
+         python3-1126    [005] ..s21   183.668594: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1037    [008] ..s21   183.668740: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1037    [008] ..s21   183.668744: bpf_trace_printk: Got TCP packet from 0xca03010a
+       mosquitto-1037    [008] ..s21   183.668746: bpf_trace_printk:  src Port: 1883, dst Port: 36393
+       mosquitto-1037    [008] ..s21   183.668747: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1037    [008] ..s21   183.668791: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1037    [008] ..s21   183.668792: bpf_trace_printk: Got TCP packet from 0x6601010a
+       mosquitto-1037    [008] ..s21   183.668793: bpf_trace_printk:  src Port: 36393, dst Port: 1883
+       mosquitto-1037    [008] ..s21   183.668797: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+       mosquitto-1037    [008] ..s21   183.668798: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+       mosquitto-1037    [008] ..s21   183.668801: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+         python3-1126    [005] ..s21   184.671484: bpf_trace_printk: 
+
+got something from NIC
+         python3-1126    [005] ..s21   184.671506: bpf_trace_printk: Got TCP packet from 0x6601010a
+         python3-1126    [005] ..s21   184.671508: bpf_trace_printk:  src Port: 36393, dst Port: 1883
+         python3-1126    [005] ..s21   184.671513: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+         python3-1126    [005] ..s21   184.671515: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+         python3-1126    [005] ..s21   184.671515: bpf_trace_printk: This segment Contains MQTT packet
+         python3-1126    [005] ..s21   184.671516: bpf_trace_printk: MQTT Packet type: 3
+         python3-1126    [005] ..s21   184.671517: bpf_trace_printk: Topic length: 12
+         python3-1126    [005] ..s21   184.671519: bpf_trace_printk: Topic: living-room/
+         python3-1126    [005] ..s21   184.671520: bpf_trace_printk: Payload: living-room/{"msgnum": "4"}"}�d,
+         python3-1126    [005] ..s21   184.671521: bpf_trace_printk: Found VIP mapping for actual topic
+         python3-1126    [005] ..s21   184.671523: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [004] ..s21   184.712577: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [004] ..s21   184.712604: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [004] ..s21   184.712607: bpf_trace_printk:  src Port: 1883, dst Port: 36393
+          <idle>-0       [004] ..s21   184.712608: bpf_trace_printk: Packet is not destined to MQTT port
+         python3-1126    [001] ..s21   185.673053: bpf_trace_printk: 
+
+got something from NIC
+         python3-1126    [001] ..s21   185.673079: bpf_trace_printk: Got TCP packet from 0x6601010a
+         python3-1126    [001] ..s21   185.673081: bpf_trace_printk:  src Port: 36393, dst Port: 1883
+         python3-1126    [001] ..s21   185.673086: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+         python3-1126    [001] ..s21   185.673087: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+         python3-1126    [001] ..s21   185.673088: bpf_trace_printk: This segment Contains MQTT packet
+         python3-1126    [001] ..s21   185.673089: bpf_trace_printk: MQTT Packet type: 3
+         python3-1126    [001] ..s21   185.673090: bpf_trace_printk: Topic length: 12
+         python3-1126    [001] ..s21   185.673092: bpf_trace_printk: Topic: living-room/
+         python3-1126    [001] ..s21   185.673094: bpf_trace_printk: Payload: living-room/{"msgnum": "5"}
+         python3-1126    [001] ..s21   185.673095: bpf_trace_printk: Found VIP mapping for actual topic
+         python3-1126    [001] ..s21   185.673096: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+         python3-1126    [001] ..s21   185.673158: bpf_trace_printk: 
+
+got something from NIC
+         python3-1126    [001] ..s21   185.673160: bpf_trace_printk: Got TCP packet from 0xca03010a
+         python3-1126    [001] ..s21   185.673161: bpf_trace_printk:  src Port: 1883, dst Port: 36393
+         python3-1126    [001] ..s21   185.673162: bpf_trace_printk: Packet is not destined to MQTT port
+         python3-1126    [001] ..s21   186.676082: bpf_trace_printk: 
+
+got something from NIC
+         python3-1126    [001] ..s21   186.676104: bpf_trace_printk: Got TCP packet from 0x6601010a
+         python3-1126    [001] ..s21   186.676106: bpf_trace_printk:  src Port: 36393, dst Port: 1883
+         python3-1126    [001] ..s21   186.676110: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+         python3-1126    [001] ..s21   186.676112: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+         python3-1126    [001] ..s21   186.676113: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+         python3-1126    [001] ..s21   186.676164: bpf_trace_printk: 
+
+got something from NIC
+         python3-1126    [001] ..s21   186.676166: bpf_trace_printk: Got TCP packet from 0xca03010a
+         python3-1126    [001] ..s21   186.676167: bpf_trace_printk:  src Port: 1883, dst Port: 36393
+         python3-1126    [001] ..s21   186.676168: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1037    [008] ..s21   186.676526: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1037    [008] ..s21   186.676546: bpf_trace_printk: Got TCP packet from 0xca03010a
+       mosquitto-1037    [008] ..s21   186.676549: bpf_trace_printk:  src Port: 1883, dst Port: 36393
+       mosquitto-1037    [008] ..s21   186.676550: bpf_trace_printk: Packet is not destined to MQTT port
+       mosquitto-1037    [008] ..s21   186.676591: bpf_trace_printk: 
+
+got something from NIC
+       mosquitto-1037    [008] ..s21   186.676592: bpf_trace_printk: Got TCP packet from 0x6601010a
+       mosquitto-1037    [008] ..s21   186.676594: bpf_trace_printk:  src Port: 36393, dst Port: 1883
+       mosquitto-1037    [008] ..s21   186.676596: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+       mosquitto-1037    [008] ..s21   186.676598: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+       mosquitto-1037    [008] ..s21   186.676599: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+         python3-1125    [007] ..s21   186.696234: bpf_trace_printk: 
+
+got something from NIC
+         python3-1125    [007] ..s21   186.696244: bpf_trace_printk: Got TCP packet from 0x6601010a
+         python3-1125    [007] ..s21   186.696246: bpf_trace_printk:  src Port: 36393, dst Port: 1883
+         python3-1125    [007] ..s21   186.696249: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+         python3-1125    [007] ..s21   186.696250: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+         python3-1125    [007] ..s21   186.696250: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [005] ..s21   203.914565: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [003] ..s21   203.914565: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [003] ..s21   203.914590: bpf_trace_printk: Got TCP packet from 0xcb03010a
+          <idle>-0       [003] ..s21   203.914592: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+          <idle>-0       [003] ..s21   203.914593: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [005] ..s21   203.914614: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [005] ..s21   203.914616: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+          <idle>-0       [005] ..s21   203.914621: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [005] ..s21   203.914623: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [005] ..s21   203.914623: bpf_trace_printk: This segment Contains MQTT packet
+          <idle>-0       [005] ..s21   203.914624: bpf_trace_printk: MQTT Packet type: 3
+          <idle>-0       [005] ..s21   203.914625: bpf_trace_printk: Topic length: 12
+          <idle>-0       [005] ..s21   203.914627: bpf_trace_printk: Topic: living-room/
+          <idle>-0       [005] ..s21   203.914628: bpf_trace_printk: Payload: living-room/{"msgnum": "0"}"}�d,
+          <idle>-0       [005] ..s21   203.914629: bpf_trace_printk: Found VIP mapping for actual topic
+          <idle>-0       [005] ..s21   203.914631: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [003] ..s21   203.914654: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [003] ..s21   203.914656: bpf_trace_printk: Got TCP packet from 0x6601010a
+          <idle>-0       [003] ..s21   203.914657: bpf_trace_printk:  src Port: 45059, dst Port: 1883
+          <idle>-0       [003] ..s21   203.914659: bpf_trace_printk: Forwarding packet based on predicted topic VIP
+          <idle>-0       [003] ..s21   203.914661: bpf_trace_printk: VIP: 0xca03010a, port: 1883, proto: 6
+          <idle>-0       [003] ..s21   203.914662: bpf_trace_printk: Does not contain all the required MQTT hdr data (fixed header is 2 bytes min)
+          <idle>-0       [003] ..s21   203.914698: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [005] ..s21   203.914700: bpf_trace_printk: 
+
+got something from NIC
+          <idle>-0       [003] ..s21   203.914700: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [005] ..s21   203.914701: bpf_trace_printk: Got TCP packet from 0xca03010a
+          <idle>-0       [003] ..s21   203.914702: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+          <idle>-0       [003] ..s21   203.914702: bpf_trace_printk: Packet is not destined to MQTT port
+          <idle>-0       [005] ..s21   203.914703: bpf_trace_printk:  src Port: 1883, dst Port: 45059
+          <idle>-0       [005] ..s21   203.914704: bpf_trace_printk: Packet is not destined to MQTT port
+^C# 
+
