@@ -12,6 +12,36 @@
 
 #define BPF_PRINT 1
 
+#define ROOT_ARRAY_SIZE 3
+
+struct {
+  __uint(type, BPF_MAP_TYPE_PROG_ARRAY);
+  __type(key, __u32);
+  __type(value, __u32);
+  __uint(max_entries, ROOT_ARRAY_SIZE);
+} root_array SEC(".maps");
+
+SEC("xdp")
+int xdp_root(struct xdp_md* ctx) {
+
+    if (BPF_PRINT) bpf_printk("In root XDP program, performing tail call to program 0\n");
+    bpf_tail_call(ctx, &root_array, 0);
+
+    if (BPF_PRINT) bpf_printk("Tail call failed in root XDP program\n");
+    return XDP_PASS;
+}
+
+SEC("xdp")
+int xdp_dummy_prog(struct xdp_md *ctx)
+{
+    if (BPF_PRINT) bpf_printk("In dummy XDP program\n");
+    bpf_tail_call(ctx, &root_array, 1);
+
+    if (BPF_PRINT) bpf_printk("Tail call failed in dummy XDP program\n");
+    return XDP_PASS;
+}
+
+
 SEC("xdp")
 int xdp_load_balancer(struct xdp_md *ctx)
 {   
@@ -20,6 +50,12 @@ int xdp_load_balancer(struct xdp_md *ctx)
     void *data_end = (void *)(long)ctx->data_end;
 
     if (BPF_PRINT) bpf_printk("\n\ngot something from NIC");
+
+
+
+    // // TODO - CHANGEs
+    // if (BPF_PRINT) bpf_printk("In XDP load balancer - return PASS\n");
+    // return XDP_PASS;
 
     // [Ethernet header parsing]: (Based on EtherType, Pass to network stack any non-IPv4 packet)
     struct ethhdr *eth = data;

@@ -206,7 +206,7 @@ int bufchar(unsigned char* c, int count)
 	return count;
 }
 
-int MQTTPacket_decodeBuf(unsigned char* buf, unsigned char* buf_end, int* value)
+__attribute__((__always_inline__)) static inline int MQTTPacket_decodeBuf(unsigned char* buf, unsigned char* buf_end, int* value)
 {
 	bufptr = buf;
 	bufptr_end = buf_end;

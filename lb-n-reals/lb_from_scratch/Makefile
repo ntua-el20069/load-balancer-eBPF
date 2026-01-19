@@ -2,11 +2,16 @@ TARGET = xdp
 
 BPF_OBJ = ${TARGET:=_lb_kern.bpf.o}
 
+compile: tail_call.c
+	clang -g -O2 -target bpf -c tail_call.c -o tail_call.o
+	bpftool gen skeleton tail_call.o > /lb_from_scratch/xdp-tutorial/basic00-loader/tail_call.skel.h
+
+
 xdp: $(BPF_OBJ)
-	bpftool net detach xdpgeneric dev eth0
-	rm -f /sys/fs/bpf/$(TARGET)
-	bpftool prog load $(BPF_OBJ) /sys/fs/bpf/$(TARGET)
-	bpftool net attach xdpgeneric pinned /sys/fs/bpf/$(TARGET) dev eth0 
+	bpftool net detach xdpgeneric dev eth0 || true
+	rm -f /sys/fs/bpf/$(TARGET) || true
+	chmod +x ./xdp_root.sh
+	./xdp_root.sh
 
 # $(BPF_OBJ): %.o: %.c
 # 	clang -S \
