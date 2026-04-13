@@ -58,8 +58,10 @@ int mqtt_fwd(struct xdp_md *ctx)
         goto call_katran;
     }
 
-    if (BPF_PRINT) bpf_printk("TCP packet\n src IP: 0x%x, dst IP: 0x%x", bpf_ntohl(iph->saddr), bpf_ntohl(iph->daddr));
-    if (BPF_PRINT) bpf_printk(" src Port: %d,    dst Port: %d", bpf_ntohs(tcp->source), bpf_ntohs(tcp->dest));
+    if (BPF_PRINT) bpf_printk("TCP packet");
+    if (BPF_PRINT) bpf_printk(" src IP: 0x%x, dst IP: 0x%x", bpf_ntohl(iph->saddr), bpf_ntohl(iph->daddr));
+    if (BPF_PRINT) bpf_printk(" src Port: %u,    dst Port: %u", bpf_ntohs(tcp->source), bpf_ntohs(tcp->dest));
+    if (BPF_PRINT) bpf_printk("TCP Sequence number: %u", bpf_ntohl(tcp->seq));
 
     unsigned int mqtt_topic_wise_forwarding = 0;
 
@@ -83,12 +85,12 @@ int mqtt_fwd(struct xdp_md *ctx)
         // []: If no predicted topic, no forwarding based on topic
         // []: If the packet is MQTT PUBLISH, the forwarding decision will be updated later based on the actual topic
         if (predicted_topic){
-            if (BPF_PRINT) bpf_printk("Predicted topic: %s\n", predicted_topic->topic);
+            if (BPF_PRINT) bpf_printk("Predicted topic: %s", predicted_topic->topic);
             struct vip_definition *vip_def;
             vip_def = bpf_map_lookup_elem(&mqtt_topic_to_vip, predicted_topic);
             if(vip_def){
                 if (BPF_PRINT) bpf_printk("Forwarding packet based on predicted topic VIP");
-                if (BPF_PRINT) bpf_printk("VIP: 0x%x, port: %d, proto: %d", vip_def->vip, bpf_ntohs(vip_def->port), vip_def->proto);
+                if (BPF_PRINT) bpf_printk("VIP: 0x%x, port: %u, proto: %u", vip_def->vip, bpf_ntohs(vip_def->port), vip_def->proto);
                 mqtt_topic_wise_forwarding = vip_def->vip;
             } else {
                 if (BPF_PRINT) bpf_printk("No VIP mapping found for predicted topic");
@@ -110,13 +112,8 @@ int mqtt_fwd(struct xdp_md *ctx)
             // MQTTHeader (mqtt_h) struct already points to the start of MQTT Fixed Header
             // 1st byte is control header byte (Control header fields parsed)
             if (BPF_PRINT) bpf_printk("This segment Contains MQTT packet");
-            if (BPF_PRINT) bpf_printk("MQTT Packet type: %d", mqtt_h->bits.type);
+            if (BPF_PRINT) bpf_printk("MQTT Packet type: %u", mqtt_h->bits.type);
 
-            // [Check QoS=0]: only QoS = 0 supported
-            if (mqtt_h->bits.qos){
-                if (BPF_PRINT) bpf_printk("[xdp_aborted] Qos > 0 is NOT supported");
-                goto abort;
-            }
             
             // forward pointer by a char (control header)
             readChar(&curdata);
@@ -152,8 +149,14 @@ int mqtt_fwd(struct xdp_md *ctx)
             else {
                 // [MQTT PUBLISH Variable header parsing]: parse the topic len and topic and safety checks
                 __u16 topic_len = readInt(&curdata, data_end); /* increments pptr to point past length */
-                if (BPF_PRINT) bpf_printk("Topic length: %d", topic_len);
+                if (BPF_PRINT) bpf_printk("Topic length: %u", topic_len);
                 
+                // [Check QoS=0]: only QoS = 0 supported
+                if (mqtt_h->bits.qos){
+                    if (BPF_PRINT) bpf_printk("[xdp_aborted] Qos > 0 is NOT supported");
+                    goto abort;
+                }
+
                 if(topic_len > MAX_SUPPORTED_TOPIC_LENGTH){
                     if (BPF_PRINT) bpf_printk("[xdp_aborted] Topic length exceeds MAX_SUPPORTED_TOPIC_LENGTH");
                     goto abort;
@@ -212,7 +215,7 @@ int mqtt_fwd(struct xdp_md *ctx)
                     vip_def = bpf_map_lookup_elem(&mqtt_topic_to_vip, &topic_entry);
                     if(vip_def){
                         if (BPF_PRINT) bpf_printk("Found VIP mapping for actual topic");
-                        if (BPF_PRINT) bpf_printk("VIP: 0x%x, port: %d, proto: %d", vip_def->vip, bpf_ntohs(vip_def->port), vip_def->proto);
+                        if (BPF_PRINT) bpf_printk("VIP: 0x%x, port: %u, proto: %u", vip_def->vip, bpf_ntohs(vip_def->port), vip_def->proto);
                         mqtt_topic_wise_forwarding = vip_def->vip;
                     } else {
                         if (BPF_PRINT) bpf_printk("No VIP mapping found for actual topic");
@@ -241,7 +244,7 @@ call_katran:
     if (BPF_PRINT) bpf_printk("Calling katran XDP program\n");
     bpf_tail_call(ctx, &root_array, KATRAN_XDP_PROG_POS_ROOT_ARRAY);
 
-    if (BPF_PRINT) bpf_printk("Tail call failed in katran XDP program\n Return XDP action: %d", ret);
+    if (BPF_PRINT) bpf_printk("Tail call failed in katran XDP program - Return XDP action: %d", ret);
     return ret;
 
 }
