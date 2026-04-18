@@ -31,6 +31,12 @@ if __name__ == '__main__':
             sent_publish_msgs[client][real_num] += 1
         
     for client, reals in sent_publish_msgs.items():
+        total_LB_messages = 0
         print(f"\n client_{client} sent to ", end="")
         for real_num, count in reals.items():
             print(f"    real_{real_num}: {count}", end="")
+            # dont count publish messages to real_0 as LB, 
+            # real_0 is used only in single broker experiment
+            if real_num > 0:
+                total_LB_messages += count
+        print(f"   Total LB messages (sum): {total_LB_messages}", end="")

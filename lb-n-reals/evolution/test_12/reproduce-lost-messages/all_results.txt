@@ -1,0 +1,15 @@
+####################  Katran-mqtt_fwd LB experiment results:  ####################
+
+
+Experiment 2 (Katran-mqtt_fwd LB) start time: 2026_03_28/21_36_41, end time: 28/03/2026_21:49:49
+
+
+ client_0 sent to     real_1: 2    real_2: 2   Total LB messages (sum): 4
+ client_1 sent to     real_1: 2    real_2: 2   Total LB messages (sum): 4
+ client_2 sent to     real_1: 2    real_2: 2   Total LB messages (sum): 4
+ client_3 sent to     real_1: 1    real_2: 3   Total LB messages (sum): 4
+ client_4 sent to     real_3: 3    real_4: 1   Total LB messages (sum): 4
+ client_5 sent to     real_3: 3    real_4: 1   Total LB messages (sum): 4
+
+
+

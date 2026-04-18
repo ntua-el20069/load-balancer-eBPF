@@ -1,0 +1,844 @@
+x-deploy-configs:
+  LB: &deploy_LB
+    resources:
+      limits:
+        cpus: '1'
+        memory: 2G
+      reservations:
+        cpus: '1'
+        memory: 2G
+
+  clients: &deploy_clients
+    resources:
+      limits:
+        cpus: '0.05'
+        memory: 32M
+      reservations:
+        cpus: '0.05'
+        memory: 32M
+
+  reals: &deploy_reals
+    resources:
+      limits:
+        cpus: '0.01'
+        memory: 8M
+      reservations:
+        cpus: '0.01'
+        memory: 8M
+
+  gateway: &deploy_gateway
+    resources:
+      limits:
+        cpus: '1'
+        memory: 512M
+      reservations:
+        cpus: '1'
+        memory: 512M
+
+services:
+
+#####   KATRAN   ########
+  katran:
+    container_name: katran
+    build:
+      context: katran/
+    deploy: *deploy_LB
+    privileged: true                    # recommended for XDP/AF_XDP access
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    volumes:
+      - /lib/modules:/lib/modules:ro
+      - /sys/fs/bpf:/sys/fs/bpf
+      - /sys/kernel/debug:/sys/kernel/debug:rw
+      - /usr/src:/usr/src:ro
+    networks:
+      gateway-lb:
+        ipv4_address: ${KATRAN_IP}
+        mac_address: ${KATRAN_MAC}
+    env_file: .env
+
+
+###### GATEWAY  #########
+
+  gateway:
+    container_name: gateway
+    build:
+      context: gateway/
+    deploy: *deploy_gateway
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped
+    networks:
+      gateway-client:
+        ipv4_address: ${GATEWAY_CLIENT_IP}
+        mac_address: ${GATEWAY_CLIENT_MAC}
+      gateway-lb: 
+        ipv4_address: ${GATEWAY_KATRAN_IP}
+        mac_address: ${GATEWAY_KATRAN_MAC}
+      gateway-reals:
+        ipv4_address: ${GATEWAY_REAL_IP}
+        mac_address:  ${GATEWAY_REAL_MAC}
+      gateway-shared-subs-broker:
+        ipv4_address: ${GATEWAY_SHARED_SUBS_BROKER_IP}
+        mac_address: ${GATEWAY_SHARED_SUBS_BROKER_MAC}
+      gateway-scratch-lb:
+        ipv4_address: ${GATEWAY_SCRATCH_LB_IP}
+        mac_address:  ${GATEWAY_SCRATCH_LB_MAC}
+    # depends_on:
+    #   - katran
+    env_file: .env
+
+
+######  CLIENTS  #######
+
+  client_0:
+    container_name: client_0
+    build:
+      context: client/
+    deploy: *deploy_clients
+    cap_add:
+      - NET_ADMIN
+    depends_on:
+      - gateway
+    networks:
+      gateway-client:
+        ipv4_address: ${CLIENT_0_IP}
+        mac_address: ${CLIENT_0_MAC}
+    env_file: .env
+    environment:
+      - CLIENT_NUM=0
+
+  client_1:
+    container_name: client_1
+    build:
+      context: client/
+    deploy: *deploy_clients
+    cap_add:
+      - NET_ADMIN
+    depends_on:
+      - gateway
+    networks:
+      gateway-client:
+        ipv4_address: ${CLIENT_1_IP}
+        mac_address: ${CLIENT_1_MAC}
+    env_file: .env
+    environment:
+      - CLIENT_NUM=1
+
+  client_2:
+    container_name: client_2
+    build:
+      context: client/
+    deploy: *deploy_clients
+    cap_add:
+      - NET_ADMIN
+    depends_on:
+      - gateway
+    networks:
+      gateway-client:
+        ipv4_address: ${CLIENT_2_IP}
+        mac_address: ${CLIENT_2_MAC}
+    env_file: .env
+    environment:
+      - CLIENT_NUM=2
+
+  client_3:
+    container_name: client_3
+    build:
+      context: client/
+    deploy: *deploy_clients
+    cap_add:
+      - NET_ADMIN
+    depends_on:
+      - gateway
+    networks:
+      gateway-client:
+        ipv4_address: ${CLIENT_3_IP}
+        mac_address: ${CLIENT_3_MAC}
+    env_file: .env
+    environment:
+      - CLIENT_NUM=3
+
+  client_4:
+    container_name: client_4
+    build:
+      context: client/
+    deploy: *deploy_clients
+    cap_add:
+      - NET_ADMIN
+    depends_on:
+      - gateway
+    networks:
+      gateway-client:
+        ipv4_address: ${CLIENT_4_IP}
+        mac_address: ${CLIENT_4_MAC}
+    env_file: .env
+    environment:
+      - CLIENT_NUM=4
+
+  client_5:
+    container_name: client_5
+    build:
+      context: client/
+    deploy: *deploy_clients
+    cap_add:
+      - NET_ADMIN
+    depends_on:
+      - gateway
+    networks:
+      gateway-client:
+        ipv4_address: ${CLIENT_5_IP}
+        mac_address: ${CLIENT_5_MAC}
+    env_file: .env
+    environment:
+      - CLIENT_NUM=5
+
+  client_6:
+    container_name: client_6
+    build:
+      context: client/
+    deploy: *deploy_clients
+    cap_add:
+      - NET_ADMIN
+    depends_on:
+      - gateway
+    networks:
+      gateway-client:
+        ipv4_address: ${CLIENT_6_IP}
+        mac_address: ${CLIENT_6_MAC}
+    env_file: .env
+    environment:
+      - CLIENT_NUM=6
+
+
+  client_7:
+    container_name: client_7
+    build:
+      context: client/
+    deploy: *deploy_clients
+    cap_add:
+      - NET_ADMIN
+    depends_on:
+      - gateway
+    networks:
+      gateway-client:
+        ipv4_address: ${CLIENT_7_IP}
+        mac_address: ${CLIENT_7_MAC}
+    env_file: .env
+    environment:
+      - CLIENT_NUM=7
+
+
+  client_8:
+    container_name: client_8
+    build:
+      context: client/
+    deploy: *deploy_clients
+    cap_add:
+      - NET_ADMIN
+    depends_on:
+      - gateway
+    networks:
+      gateway-client:
+        ipv4_address: ${CLIENT_8_IP}
+        mac_address: ${CLIENT_8_MAC}
+    env_file: .env
+    environment:
+      - CLIENT_NUM=8
+
+  client_9:
+    container_name: client_9
+    build:
+      context: client/
+    deploy: *deploy_clients
+    cap_add:
+      - NET_ADMIN
+    depends_on:
+      - gateway
+    networks:
+      gateway-client:
+        ipv4_address: ${CLIENT_9_IP}
+        mac_address: ${CLIENT_9_MAC}
+    env_file: .env
+    environment:
+      - CLIENT_NUM=9
+
+  # client_10:
+  #   container_name: client_10
+  #   build:
+  #     context: client/
+  #   deploy: *deploy_clients
+  #   cap_add:
+  #     - NET_ADMIN
+  #   depends_on:
+  #     - gateway
+  #   networks:
+  #     gateway-client:
+  #       ipv4_address: ${CLIENT_10_IP}
+  #       mac_address: ${CLIENT_10_MAC}
+  #   env_file: .env
+  #   environment:
+  #     - CLIENT_NUM=10
+
+  # client_11:
+  #   container_name: client_11
+  #   build:
+  #     context: client/
+  #   deploy: *deploy_clients
+  #   cap_add:
+  #     - NET_ADMIN
+  #   depends_on:
+  #     - gateway
+  #   networks:
+  #     gateway-client:
+  #       ipv4_address: ${CLIENT_11_IP}
+  #       mac_address: ${CLIENT_11_MAC}
+  #   env_file: .env
+  #   environment:
+  #     - CLIENT_NUM=11
+
+  # client_12:
+  #   container_name: client_12
+  #   build:
+  #     context: client/
+  #   deploy: *deploy_clients
+  #   cap_add:
+  #     - NET_ADMIN
+  #   depends_on:
+  #     - gateway
+  #   networks:
+  #     gateway-client:
+  #       ipv4_address: ${CLIENT_12_IP}
+  #       mac_address: ${CLIENT_12_MAC}
+  #   env_file: .env
+  #   environment:
+  #     - CLIENT_NUM=12
+
+  # client_13:
+  #   container_name: client_13
+  #   build:
+  #     context: client/
+  #   deploy: *deploy_clients
+  #   cap_add:
+  #     - NET_ADMIN
+  #   depends_on:
+  #     - gateway
+  #   networks:
+  #     gateway-client:
+  #       ipv4_address: ${CLIENT_13_IP}
+  #       mac_address: ${CLIENT_13_MAC}
+  #   env_file: .env
+  #   environment:
+  #     - CLIENT_NUM=13
+
+  # client_14:
+  #   container_name: client_14
+  #   build:
+  #     context: client/
+  #   deploy: *deploy_clients
+  #   cap_add:
+  #     - NET_ADMIN
+  #   depends_on:
+  #     - gateway
+  #   networks:
+  #     gateway-client:
+  #       ipv4_address: ${CLIENT_14_IP}
+  #       mac_address: ${CLIENT_14_MAC}
+  #   env_file: .env
+  #   environment:
+  #     - CLIENT_NUM=14
+
+  # client_15:
+  #   container_name: client_15
+  #   build:
+  #     context: client/
+  #   deploy: *deploy_clients
+  #   cap_add:
+  #     - NET_ADMIN
+  #   depends_on:
+  #     - gateway
+  #   networks:
+  #     gateway-client:
+  #       ipv4_address: ${CLIENT_15_IP}
+  #       mac_address: ${CLIENT_15_MAC}
+  #   env_file: .env
+  #   environment:
+  #     - CLIENT_NUM=15
+
+  # client_16:
+  #   container_name: client_16
+  #   build:
+  #     context: client/
+  #   deploy: *deploy_clients
+  #   cap_add:
+  #     - NET_ADMIN
+  #   depends_on:
+  #     - gateway
+  #   networks:
+  #     gateway-client:
+  #       ipv4_address: ${CLIENT_16_IP}
+  #       mac_address: ${CLIENT_16_MAC}
+  #   env_file: .env
+  #   environment:
+  #     - CLIENT_NUM=16
+
+  # client_17:
+  #   container_name: client_17
+  #   build:
+  #     context: client/
+  #   deploy: *deploy_clients
+  #   cap_add:
+  #     - NET_ADMIN
+  #   depends_on:
+  #     - gateway
+  #   networks:
+  #     gateway-client:
+  #       ipv4_address: ${CLIENT_17_IP}
+  #       mac_address: ${CLIENT_17_MAC}
+  #   env_file: .env
+  #   environment:
+  #     - CLIENT_NUM=17
+
+  # client_18:
+  #   container_name: client_18
+  #   build:
+  #     context: client/
+  #   deploy: *deploy_clients
+  #   cap_add:
+  #     - NET_ADMIN
+  #   depends_on:
+  #     - gateway
+  #   networks:
+  #     gateway-client:
+  #       ipv4_address: ${CLIENT_18_IP}
+  #       mac_address: ${CLIENT_18_MAC}
+  #   env_file: .env
+  #   environment:
+  #     - CLIENT_NUM=18
+
+  # client_19:
+  #   container_name: client_19
+  #   build:
+  #     context: client/
+  #   deploy: *deploy_clients
+  #   cap_add:
+  #     - NET_ADMIN
+  #   depends_on:
+  #     - gateway
+  #   networks:
+  #     gateway-client:
+  #       ipv4_address: ${CLIENT_19_IP}
+  #       mac_address: ${CLIENT_19_MAC}
+  #   env_file: .env
+  #   environment:
+  #     - CLIENT_NUM=19
+
+  # client_20:
+  #   container_name: client_20
+  #   build:
+  #     context: client/
+  #   deploy: *deploy_clients
+  #   cap_add:
+  #     - NET_ADMIN
+  #   depends_on:
+  #     - gateway
+  #   networks:
+  #     gateway-client:
+  #       ipv4_address: ${CLIENT_20_IP}
+  #       mac_address: ${CLIENT_20_MAC}
+  #   env_file: .env
+  #   environment:
+  #     - CLIENT_NUM=20
+
+  # client_21:
+  #   container_name: client_21
+  #   build:
+  #     context: client/
+  #   deploy: *deploy_clients
+  #   cap_add:
+  #     - NET_ADMIN
+  #   depends_on:
+  #     - gateway
+  #   networks:
+  #     gateway-client:
+  #       ipv4_address: ${CLIENT_21_IP}
+  #       mac_address: ${CLIENT_21_MAC}
+  #   env_file: .env
+  #   environment:
+  #     - CLIENT_NUM=21
+
+  # client_22:
+  #   container_name: client_22
+  #   build:
+  #     context: client/
+  #   deploy: *deploy_clients
+  #   cap_add:
+  #     - NET_ADMIN
+  #   depends_on:
+  #     - gateway
+  #   networks:
+  #     gateway-client:
+  #       ipv4_address: ${CLIENT_22_IP}
+  #       mac_address: ${CLIENT_22_MAC}
+  #   env_file: .env
+  #   environment:
+  #     - CLIENT_NUM=22
+
+  # client_23:
+  #   container_name: client_23
+  #   build:
+  #     context: client/
+  #   deploy: *deploy_clients
+  #   cap_add:
+  #     - NET_ADMIN
+  #   depends_on:
+  #     - gateway
+  #   networks:
+  #     gateway-client:
+  #       ipv4_address: ${CLIENT_23_IP}
+  #       mac_address: ${CLIENT_23_MAC}
+  #   env_file: .env
+  #   environment:
+  #     - CLIENT_NUM=23
+
+  # client_24:
+  #   container_name: client_24
+  #   build:
+  #     context: client/
+  #   deploy: *deploy_clients
+  #   cap_add:
+  #     - NET_ADMIN
+  #   depends_on:
+  #     - gateway
+  #   networks:
+  #     gateway-client:
+  #       ipv4_address: ${CLIENT_24_IP}
+  #       mac_address: ${CLIENT_24_MAC}
+  #   env_file: .env
+  #   environment:
+  #     - CLIENT_NUM=24
+
+  # client_25:
+  #   container_name: client_25
+  #   build:
+  #     context: client/
+  #   deploy: *deploy_clients
+  #   cap_add:
+  #     - NET_ADMIN
+  #   depends_on:
+  #     - gateway
+  #   networks:
+  #     gateway-client:
+  #       ipv4_address: ${CLIENT_25_IP}
+  #       mac_address: ${CLIENT_25_MAC}
+  #   env_file: .env
+  #   environment:
+  #     - CLIENT_NUM=25
+
+  # client_26:
+  #   container_name: client_26
+  #   build:
+  #     context: client/
+  #   deploy: *deploy_clients
+  #   cap_add:
+  #     - NET_ADMIN
+  #   depends_on:
+  #     - gateway
+  #   networks:
+  #     gateway-client:
+  #       ipv4_address: ${CLIENT_26_IP}
+  #       mac_address: ${CLIENT_26_MAC}
+  #   env_file: .env
+  #   environment:
+  #     - CLIENT_NUM=26
+
+  # client_27:
+  #   container_name: client_27
+  #   build:
+  #     context: client/
+  #   deploy: *deploy_clients
+  #   cap_add:
+  #     - NET_ADMIN
+  #   depends_on:
+  #     - gateway
+  #   networks:
+  #     gateway-client:
+  #       ipv4_address: ${CLIENT_27_IP}
+  #       mac_address: ${CLIENT_27_MAC}
+  #   env_file: .env
+  #   environment:
+  #     - CLIENT_NUM=27
+
+  # client_28:
+  #   container_name: client_28
+  #   build:
+  #     context: client/
+  #   deploy: *deploy_clients
+  #   cap_add:
+  #     - NET_ADMIN
+  #   depends_on:
+  #     - gateway
+  #   networks:
+  #     gateway-client:
+  #       ipv4_address: ${CLIENT_28_IP}
+  #       mac_address: ${CLIENT_28_MAC}
+  #   env_file: .env
+  #   environment:
+  #     - CLIENT_NUM=28
+
+  # client_29:
+  #   container_name: client_29
+  #   build:
+  #     context: client/
+  #   deploy: *deploy_clients
+  #   cap_add:
+  #     - NET_ADMIN
+  #   depends_on:
+  #     - gateway
+  #   networks:
+  #     gateway-client:
+  #       ipv4_address: ${CLIENT_29_IP}
+  #       mac_address: ${CLIENT_29_MAC}
+  #   env_file: .env
+  #   environment:
+  #     - CLIENT_NUM=29
+
+
+#####  REALS  #########
+
+  real_0:
+    container_name: real_0
+    build:
+      context: real/
+    deploy: *deploy_reals
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    volumes:
+      - ./mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf
+    networks:
+      gateway-reals:
+        ipv4_address: ${REAL_0_IP}
+        mac_address: ${REAL_0_MAC}
+    env_file: .env
+    environment:
+      - NUM=0
+
+
+
+  real_1:
+    container_name: real_1
+    build:
+      context: real/
+    deploy: *deploy_reals
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    volumes:
+      - ./mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf
+    networks:
+      gateway-reals:
+        ipv4_address: ${REAL_1_IP}
+        mac_address: ${REAL_1_MAC}
+    env_file: .env
+    environment:
+      - NUM=1
+
+  real_2:
+    container_name: real_2
+    build:
+      context: real/
+    deploy: *deploy_reals
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    volumes:
+      - ./mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf
+    networks:
+      gateway-reals:
+        ipv4_address: ${REAL_2_IP}
+        mac_address: ${REAL_2_MAC}
+    env_file: .env
+    environment:
+      - NUM=2
+
+  real_3:
+    container_name: real_3
+    build:
+      context: real/
+    deploy: *deploy_reals
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    volumes:
+      - ./mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf
+    networks:
+      gateway-reals:
+        ipv4_address: ${REAL_3_IP}
+        mac_address: ${REAL_3_MAC}
+    env_file: .env
+    environment:
+      - NUM=3
+
+  real_4:
+    container_name: real_4
+    build:
+      context: real/
+    deploy: *deploy_reals
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    volumes:
+      - ./mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf
+    networks:
+      gateway-reals:
+        ipv4_address: ${REAL_4_IP}
+        mac_address: ${REAL_4_MAC}
+    env_file: .env
+    environment:
+      - NUM=4
+
+
+  real_5:
+    container_name: real_5
+    build:
+      context: real/
+    deploy: *deploy_reals
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    volumes:
+      - ./mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf
+    networks:
+      gateway-reals:
+        ipv4_address: ${REAL_5_IP}
+        mac_address: ${REAL_5_MAC}
+    env_file: .env
+    environment:
+      - NUM=5
+
+
+  real_6:
+    container_name: real_6
+    build:
+      context: real/
+    deploy: *deploy_reals
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    volumes:
+      - ./mosquitto.conf:/etc/mosquitto/conf.d/mosquitto.conf
+    networks:
+      gateway-reals:
+        ipv4_address: ${REAL_6_IP}
+        mac_address: ${REAL_6_MAC}
+    env_file: .env
+    environment:
+      - NUM=6
+
+
+
+###### Central Broker that handles MQTT v5 Shared Subscriptions #######
+
+  shared_subs_broker:
+    container_name: shared_subs_broker
+    build:
+      context: shared_subs_broker/
+    deploy: *deploy_LB   # use same limits as Katran for a fair comparison
+    privileged: true
+    cap_add:
+      - NET_ADMIN
+      - SYS_ADMIN
+    volumes:
+      - ./mosquitto_no_logs.conf:/etc/mosquitto/conf.d/mosquitto.conf
+    networks:
+      gateway-shared-subs-broker:
+        ipv4_address: ${SHARED_SUBS_BROKER_IP}
+        mac_address: ${SHARED_SUBS_BROKER_MAC}
+    env_file: .env
+
+
+###### Monitoring #######
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    ports:
+    - 8080:8080
+    volumes:
+    - /:/rootfs:ro
+    - /var/run:/var/run:rw
+    - /sys:/sys:ro
+    - /var/lib/docker/:/var/lib/docker:ro
+
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+    - 9091:9090
+    command:
+    - --config.file=/etc/prometheus/prometheus.yml
+    - --web.enable-admin-api
+    volumes:
+    - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    - prometheus_data:/prometheus
+    depends_on:
+    - cadvisor
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+
+
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - 3013:3000
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    depends_on:
+      - prometheus
+
+
+########## Volumes and Networks ##########
+
+volumes:
+  grafana-storage: {}
+  prometheus_data:
+
+
+networks:
+  gateway-client:
+    driver: macvlan
+    ipam:
+      config:
+        - subnet: ${GATEWAY_CLIENT_SUBNET}
+  gateway-lb:
+    driver: macvlan
+    ipam:
+      config:
+        - subnet: ${GATEWAY_KATRAN_SUBNET}
+  gateway-reals:
+    driver: macvlan
+    ipam:
+      config:
+        - subnet: ${GATEWAY_REAL_SUBNET}
+  gateway-scratch-lb:
+    driver: macvlan
+    ipam:
+      config:
+        - subnet: ${GATEWAY_SCRATCH_LB_SUBNET}
+  gateway-shared-subs-broker:
+    driver: macvlan
+    ipam:
+      config:
+        - subnet: ${GATEWAY_SHARED_SUBS_BROKER_SUBNET}

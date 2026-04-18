@@ -22,7 +22,7 @@ RUN if [ "$ENABLE_KATRAN_BPF_PRINTK" -eq 1 ]; then \
     fi
 
 
-ENV DISABLE_MQTT_LB=0
+ENV DISABLE_MQTT_LB=1
 
 # enable bpf_printk if env var is set
 RUN if [ "$DISABLE_MQTT_LB" -eq 1 ]; then \

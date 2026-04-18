@@ -1,0 +1,11 @@
+
+ client_0 sent to     real_0: 29234    real_1: 175    real_2: 362   Total LB messages (sum): 537
+ client_1 sent to     real_0: 28877    real_1: 536    real_2: 413   Total LB messages (sum): 949
+ client_2 sent to     real_0: 28772    real_1: 371    real_2: 695   Total LB messages (sum): 1066
+ client_3 sent to     real_0: 29518    real_1: 390    real_2: 141   Total LB messages (sum): 531
+ client_4 sent to     real_0: 29736    real_3: 159    real_4: 325   Total LB messages (sum): 484
+ client_5 sent to     real_0: 29123    real_3: 366    real_4: 266   Total LB messages (sum): 632
+ client_6 sent to     real_0: 29489    real_3: 211    real_4: 695   Total LB messages (sum): 906
+ client_7 sent to     real_0: 28355    real_3: 156    real_4: 890   Total LB messages (sum): 1046
+ client_8 sent to     real_0: 29038    real_3: 143    real_4: 703   Total LB messages (sum): 846
+ client_9 sent to     real_0: 28286    real_5: 146    real_6: 233   Total LB messages (sum): 379

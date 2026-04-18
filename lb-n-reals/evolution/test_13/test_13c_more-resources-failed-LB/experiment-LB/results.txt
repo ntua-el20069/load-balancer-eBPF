@@ -1,0 +1,11 @@
+
+ client_0 sent to     real_1: 55   Total LB messages (sum): 55
+ client_1 sent to     real_2: 4   Total LB messages (sum): 4
+ client_2 sent to     real_1: 2    real_2: 2   Total LB messages (sum): 4
+ client_3 sent to     real_1: 3    real_2: 1   Total LB messages (sum): 4
+ client_4 sent to     real_3: 3    real_4: 1   Total LB messages (sum): 4
+ client_5 sent to     real_3: 3    real_4: 1   Total LB messages (sum): 4
+ client_6 sent to     real_3: 1    real_4: 3   Total LB messages (sum): 4
+ client_7 sent to     real_3: 2    real_4: 2   Total LB messages (sum): 4
+ client_8 sent to     real_3: 2    real_4: 2   Total LB messages (sum): 4
+ client_9 sent to     real_5: 3    real_6: 1   Total LB messages (sum): 4

@@ -1,0 +1,969 @@
++ ip route add 10.1.0.0/16 via 10.1.3.101 dev eth0
++ ip link add name ipip0 type ipip external
++ ip link set up dev ipip0
++ ip a a 127.0.0.42/32 dev ipip0
++ '[' -z 5 ']'
++ echo 'Configuring Real Server NUM=5'
++ ip a a 10.1.50.0/24 dev lo
+Configuring Real Server NUM=5
+Set VIPs as loopback addresses
++ echo 'Set VIPs as loopback addresses'
+++ sysctl -a
+++ awk '/\.rp_filter/ {print $1}'
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.all.rp_filter
++ sysctl net.ipv4.conf.all.rp_filter=0
+net.ipv4.conf.all.rp_filter
+net.ipv4.conf.all.rp_filter = 0
+net.ipv4.conf.default.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.default.rp_filter
++ sysctl net.ipv4.conf.default.rp_filter=0
+net.ipv4.conf.default.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.erspan0.rp_filter
++ sysctl net.ipv4.conf.erspan0.rp_filter=0
+net.ipv4.conf.erspan0.rp_filter
+net.ipv4.conf.erspan0.rp_filter = 0
+net.ipv4.conf.eth0.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.eth0.rp_filter
++ sysctl net.ipv4.conf.eth0.rp_filter=0
+net.ipv4.conf.eth0.rp_filter = 0
+net.ipv4.conf.gre0.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.gre0.rp_filter
++ sysctl net.ipv4.conf.gre0.rp_filter=0
+net.ipv4.conf.gre0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.gretap0.rp_filter
++ sysctl net.ipv4.conf.gretap0.rp_filter=0
+net.ipv4.conf.gretap0.rp_filter
+net.ipv4.conf.gretap0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
+net.ipv4.conf.ip6_vti0.rp_filter
++ echo net.ipv4.conf.ip6_vti0.rp_filter
++ sysctl net.ipv4.conf.ip6_vti0.rp_filter=0
+net.ipv4.conf.ip6_vti0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.ip6gre0.rp_filter
++ sysctl net.ipv4.conf.ip6gre0.rp_filter=0
+net.ipv4.conf.ip6gre0.rp_filter
+net.ipv4.conf.ip6gre0.rp_filter = 0
+net.ipv4.conf.ip6tnl0.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.ip6tnl0.rp_filter
++ sysctl net.ipv4.conf.ip6tnl0.rp_filter=0
+net.ipv4.conf.ip6tnl0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.ip_vti0.rp_filter
++ sysctl net.ipv4.conf.ip_vti0.rp_filter=0
+net.ipv4.conf.ip_vti0.rp_filter
+net.ipv4.conf.ip_vti0.rp_filter = 0
+net.ipv4.conf.ipip0.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.ipip0.rp_filter
++ sysctl net.ipv4.conf.ipip0.rp_filter=0
+net.ipv4.conf.ipip0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
+net.ipv4.conf.lo.rp_filter
++ echo net.ipv4.conf.lo.rp_filter
++ sysctl net.ipv4.conf.lo.rp_filter=0
+net.ipv4.conf.lo.rp_filter = 0
+net.ipv4.conf.sit0.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.sit0.rp_filter
++ sysctl net.ipv4.conf.sit0.rp_filter=0
+net.ipv4.conf.sit0.rp_filter = 0
+net.ipv4.conf.tunl0.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.tunl0.rp_filter
++ sysctl net.ipv4.conf.tunl0.rp_filter=0
+net.ipv4.conf.tunl0.rp_filter = 0
++ topics=("non_existing_topic" "\$share/vip_a/measurements/temperature" "\$share/vip_a/measurements/temperature" "\$share/vip_b/measurements/humidity" "\$share/vip_b/measurements/humidity" "\$share/vip_default/measurements/other" "\$share/vip_default/measurements/other")
++ ping -c 1 -W 1 10.1.3.101
++ '[' 0 -eq 1 ']'
++ mosquitto -v -c /etc/mosquitto/conf.d/mosquitto.conf
+1774840017: mosquitto version 2.0.22 starting
+1774840017: Config loaded from /etc/mosquitto/conf.d/mosquitto.conf.
+1774840017: Opening ipv4 listen socket on port 1883.
+1774840017: Opening ipv6 listen socket on port 1883.
+1774840017: mosquitto version 2.0.22 running
+1774840653: New connection from 10.1.1.219:51397 on port 1883.
+1774840653: New client connected from 10.1.1.219:51397 as client_9 (p2, c1, k4).
+1774840653: No will message specified.
+1774840653: Sending CONNACK to client_9 (0, 0)
+1774840657: Received PINGREQ from client_9
+1774840657: Sending PINGRESP to client_9
+1774840658: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840665: Client client_9 has exceeded timeout, disconnecting.
+1774840674: New connection from 10.1.1.219:51971 on port 1883.
+1774840674: New client connected from 10.1.1.219:51971 as client_9 (p2, c1, k4).
+1774840674: No will message specified.
+1774840674: Sending CONNACK to client_9 (0, 0)
+1774840674: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840681: Client client_9 has exceeded timeout, disconnecting.
+1774840698: New connection from 10.1.1.219:52699 on port 1883.
+1774840698: New client connected from 10.1.1.219:52699 as client_9 (p2, c1, k4).
+1774840698: No will message specified.
+1774840698: Sending CONNACK to client_9 (0, 0)
+1774840698: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840705: Client client_9 has exceeded timeout, disconnecting.
+1774840706: New connection from 10.1.1.219:35965 on port 1883.
+1774840706: New client connected from 10.1.1.219:35965 as client_9 (p2, c1, k4).
+1774840706: No will message specified.
+1774840706: Sending CONNACK to client_9 (0, 0)
+1774840706: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840713: Client client_9 has exceeded timeout, disconnecting.
+1774840722: New connection from 10.1.1.219:40307 on port 1883.
+1774840722: New client connected from 10.1.1.219:40307 as client_9 (p2, c1, k4).
+1774840722: No will message specified.
+1774840722: Sending CONNACK to client_9 (0, 0)
+1774840722: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840729: Client client_9 has exceeded timeout, disconnecting.
+1774840730: New connection from 10.1.1.219:44577 on port 1883.
+1774840730: New client connected from 10.1.1.219:44577 as client_9 (p2, c1, k4).
+1774840730: No will message specified.
+1774840730: Sending CONNACK to client_9 (0, 0)
+1774840730: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840737: Client client_9 has exceeded timeout, disconnecting.
+1774840746: New connection from 10.1.1.219:47445 on port 1883.
+1774840746: New client connected from 10.1.1.219:47445 as client_9 (p2, c1, k4).
+1774840746: No will message specified.
+1774840746: Sending CONNACK to client_9 (0, 0)
+1774840746: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840753: Client client_9 has exceeded timeout, disconnecting.
+1774840762: New connection from 10.1.1.219:39983 on port 1883.
+1774840762: New client connected from 10.1.1.219:39983 as client_9 (p2, c1, k4).
+1774840762: No will message specified.
+1774840762: Sending CONNACK to client_9 (0, 0)
+1774840762: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840769: Client client_9 has exceeded timeout, disconnecting.
+1774840786: New connection from 10.1.1.219:52257 on port 1883.
+1774840786: New client connected from 10.1.1.219:52257 as client_9 (p2, c1, k4).
+1774840786: No will message specified.
+1774840786: Sending CONNACK to client_9 (0, 0)
+1774840786: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840793: Client client_9 has exceeded timeout, disconnecting.
+1774840810: New connection from 10.1.1.219:56559 on port 1883.
+1774840810: New client connected from 10.1.1.219:56559 as client_9 (p2, c1, k4).
+1774840810: No will message specified.
+1774840810: Sending CONNACK to client_9 (0, 0)
+1774840810: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840817: Client client_9 has exceeded timeout, disconnecting.
+1774840818: New connection from 10.1.1.219:46881 on port 1883.
+1774840818: New client connected from 10.1.1.219:46881 as client_9 (p2, c1, k4).
+1774840818: No will message specified.
+1774840818: Sending CONNACK to client_9 (0, 0)
+1774840818: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840825: Client client_9 has exceeded timeout, disconnecting.
+1774840842: New connection from 10.1.1.219:49553 on port 1883.
+1774840842: New client connected from 10.1.1.219:49553 as client_9 (p2, c1, k4).
+1774840842: No will message specified.
+1774840842: Sending CONNACK to client_9 (0, 0)
+1774840842: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840849: Client client_9 has exceeded timeout, disconnecting.
+1774840850: New connection from 10.1.1.219:50097 on port 1883.
+1774840850: New client connected from 10.1.1.219:50097 as client_9 (p2, c1, k4).
+1774840850: No will message specified.
+1774840850: Sending CONNACK to client_9 (0, 0)
+1774840850: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840857: Client client_9 has exceeded timeout, disconnecting.
+1774840858: New connection from 10.1.1.219:58547 on port 1883.
+1774840858: New client connected from 10.1.1.219:58547 as client_9 (p2, c1, k4).
+1774840858: No will message specified.
+1774840858: Sending CONNACK to client_9 (0, 0)
+1774840858: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840865: Client client_9 has exceeded timeout, disconnecting.
+1774840866: New connection from 10.1.1.219:35515 on port 1883.
+1774840866: New client connected from 10.1.1.219:35515 as client_9 (p2, c1, k4).
+1774840866: No will message specified.
+1774840866: Sending CONNACK to client_9 (0, 0)
+1774840866: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840873: Client client_9 has exceeded timeout, disconnecting.
+1774840874: New connection from 10.1.1.219:55181 on port 1883.
+1774840874: New client connected from 10.1.1.219:55181 as client_9 (p2, c1, k4).
+1774840874: No will message specified.
+1774840874: Sending CONNACK to client_9 (0, 0)
+1774840874: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840881: Client client_9 has exceeded timeout, disconnecting.
+1774840882: New connection from 10.1.1.219:58119 on port 1883.
+1774840882: New client connected from 10.1.1.219:58119 as client_9 (p2, c1, k4).
+1774840882: No will message specified.
+1774840882: Sending CONNACK to client_9 (0, 0)
+1774840882: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840889: Client client_9 has exceeded timeout, disconnecting.
+1774840890: New connection from 10.1.1.219:52013 on port 1883.
+1774840890: New client connected from 10.1.1.219:52013 as client_9 (p2, c1, k4).
+1774840890: No will message specified.
+1774840890: Sending CONNACK to client_9 (0, 0)
+1774840890: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840897: Client client_9 has exceeded timeout, disconnecting.
+1774840898: New connection from 10.1.1.219:54233 on port 1883.
+1774840898: New client connected from 10.1.1.219:54233 as client_9 (p2, c1, k4).
+1774840898: No will message specified.
+1774840898: Sending CONNACK to client_9 (0, 0)
+1774840898: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840905: Client client_9 has exceeded timeout, disconnecting.
+1774840914: New connection from 10.1.1.219:49859 on port 1883.
+1774840914: New client connected from 10.1.1.219:49859 as client_9 (p2, c1, k4).
+1774840914: No will message specified.
+1774840914: Sending CONNACK to client_9 (0, 0)
+1774840914: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840921: Client client_9 has exceeded timeout, disconnecting.
+1774840938: New connection from 10.1.1.219:39983 on port 1883.
+1774840938: New client connected from 10.1.1.219:39983 as client_9 (p2, c1, k4).
+1774840938: No will message specified.
+1774840938: Sending CONNACK to client_9 (0, 0)
+1774840938: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840945: Client client_9 has exceeded timeout, disconnecting.
+1774840946: New connection from 10.1.1.219:43029 on port 1883.
+1774840946: New client connected from 10.1.1.219:43029 as client_9 (p2, c1, k4).
+1774840946: No will message specified.
+1774840946: Sending CONNACK to client_9 (0, 0)
+1774840946: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840953: Client client_9 has exceeded timeout, disconnecting.
+1774840954: New connection from 10.1.1.219:45429 on port 1883.
+1774840954: New client connected from 10.1.1.219:45429 as client_9 (p2, c1, k4).
+1774840954: No will message specified.
+1774840954: Sending CONNACK to client_9 (0, 0)
+1774840954: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840961: Client client_9 has exceeded timeout, disconnecting.
+1774840962: New connection from 10.1.1.219:42429 on port 1883.
+1774840962: New client connected from 10.1.1.219:42429 as client_9 (p2, c1, k4).
+1774840962: No will message specified.
+1774840962: Sending CONNACK to client_9 (0, 0)
+1774840962: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840969: Client client_9 has exceeded timeout, disconnecting.
+1774840978: New connection from 10.1.1.219:54741 on port 1883.
+1774840978: New client connected from 10.1.1.219:54741 as client_9 (p2, c1, k4).
+1774840978: No will message specified.
+1774840978: Sending CONNACK to client_9 (0, 0)
+1774840978: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774840985: Client client_9 has exceeded timeout, disconnecting.
+1774841002: New connection from 10.1.1.219:39675 on port 1883.
+1774841002: New client connected from 10.1.1.219:39675 as client_9 (p2, c1, k4).
+1774841002: No will message specified.
+1774841002: Sending CONNACK to client_9 (0, 0)
+1774841002: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841009: Client client_9 has exceeded timeout, disconnecting.
+1774841034: New connection from 10.1.1.219:52225 on port 1883.
+1774841034: New client connected from 10.1.1.219:52225 as client_9 (p2, c1, k4).
+1774841034: No will message specified.
+1774841034: Sending CONNACK to client_9 (0, 0)
+1774841034: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841041: Client client_9 has exceeded timeout, disconnecting.
+1774841042: New connection from 10.1.1.219:59223 on port 1883.
+1774841042: New client connected from 10.1.1.219:59223 as client_9 (p2, c1, k4).
+1774841042: No will message specified.
+1774841042: Sending CONNACK to client_9 (0, 0)
+1774841042: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841049: Client client_9 has exceeded timeout, disconnecting.
+1774841050: New connection from 10.1.1.219:55287 on port 1883.
+1774841050: New client connected from 10.1.1.219:55287 as client_9 (p2, c1, k4).
+1774841050: No will message specified.
+1774841050: Sending CONNACK to client_9 (0, 0)
+1774841050: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841057: Client client_9 has exceeded timeout, disconnecting.
+1774841114: New connection from 10.1.1.219:55193 on port 1883.
+1774841114: New client connected from 10.1.1.219:55193 as client_9 (p2, c1, k4).
+1774841114: No will message specified.
+1774841114: Sending CONNACK to client_9 (0, 0)
+1774841114: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841121: Client client_9 has exceeded timeout, disconnecting.
+1774841122: New connection from 10.1.1.219:35209 on port 1883.
+1774841122: New client connected from 10.1.1.219:35209 as client_9 (p2, c1, k4).
+1774841122: No will message specified.
+1774841122: Sending CONNACK to client_9 (0, 0)
+1774841122: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841129: Client client_9 has exceeded timeout, disconnecting.
+1774841130: New connection from 10.1.1.219:59261 on port 1883.
+1774841130: New client connected from 10.1.1.219:59261 as client_9 (p2, c1, k4).
+1774841130: No will message specified.
+1774841130: Sending CONNACK to client_9 (0, 0)
+1774841130: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841137: Client client_9 has exceeded timeout, disconnecting.
+1774841138: New connection from 10.1.1.219:40783 on port 1883.
+1774841138: New client connected from 10.1.1.219:40783 as client_9 (p2, c1, k4).
+1774841138: No will message specified.
+1774841138: Sending CONNACK to client_9 (0, 0)
+1774841138: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841145: Client client_9 has exceeded timeout, disconnecting.
+1774841170: New connection from 10.1.1.219:48773 on port 1883.
+1774841170: New client connected from 10.1.1.219:48773 as client_9 (p2, c1, k4).
+1774841170: No will message specified.
+1774841170: Sending CONNACK to client_9 (0, 0)
+1774841170: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841177: Client client_9 has exceeded timeout, disconnecting.
+1774841178: New connection from 10.1.1.219:56137 on port 1883.
+1774841178: New client connected from 10.1.1.219:56137 as client_9 (p2, c1, k4).
+1774841178: No will message specified.
+1774841178: Sending CONNACK to client_9 (0, 0)
+1774841178: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841185: Client client_9 has exceeded timeout, disconnecting.
+1774841234: New connection from 10.1.1.219:39619 on port 1883.
+1774841234: New client connected from 10.1.1.219:39619 as client_9 (p2, c1, k4).
+1774841234: No will message specified.
+1774841234: Sending CONNACK to client_9 (0, 0)
+1774841234: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841241: Client client_9 has exceeded timeout, disconnecting.
+1774841258: New connection from 10.1.1.219:59213 on port 1883.
+1774841258: New client connected from 10.1.1.219:59213 as client_9 (p2, c1, k4).
+1774841258: No will message specified.
+1774841258: Sending CONNACK to client_9 (0, 0)
+1774841258: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841265: Client client_9 has exceeded timeout, disconnecting.
+1774841282: New connection from 10.1.1.219:38631 on port 1883.
+1774841282: New client connected from 10.1.1.219:38631 as client_9 (p2, c1, k4).
+1774841282: No will message specified.
+1774841282: Sending CONNACK to client_9 (0, 0)
+1774841282: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841289: Client client_9 has exceeded timeout, disconnecting.
+1774841298: New connection from 10.1.1.219:35697 on port 1883.
+1774841298: New client connected from 10.1.1.219:35697 as client_9 (p2, c1, k4).
+1774841298: No will message specified.
+1774841298: Sending CONNACK to client_9 (0, 0)
+1774841298: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841305: Client client_9 has exceeded timeout, disconnecting.
+1774841354: New connection from 10.1.1.219:45719 on port 1883.
+1774841354: New client connected from 10.1.1.219:45719 as client_9 (p2, c1, k4).
+1774841354: No will message specified.
+1774841354: Sending CONNACK to client_9 (0, 0)
+1774841354: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841361: Client client_9 has exceeded timeout, disconnecting.
+1774841370: New connection from 10.1.1.219:39599 on port 1883.
+1774841370: New client connected from 10.1.1.219:39599 as client_9 (p2, c1, k4).
+1774841370: No will message specified.
+1774841370: Sending CONNACK to client_9 (0, 0)
+1774841370: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841377: Client client_9 has exceeded timeout, disconnecting.
+1774841378: New connection from 10.1.1.219:50369 on port 1883.
+1774841378: New client connected from 10.1.1.219:50369 as client_9 (p2, c1, k4).
+1774841378: No will message specified.
+1774841378: Sending CONNACK to client_9 (0, 0)
+1774841378: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841385: Client client_9 has exceeded timeout, disconnecting.
+1774841402: New connection from 10.1.1.219:33319 on port 1883.
+1774841402: New client connected from 10.1.1.219:33319 as client_9 (p2, c1, k4).
+1774841402: No will message specified.
+1774841402: Sending CONNACK to client_9 (0, 0)
+1774841402: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841409: Client client_9 has exceeded timeout, disconnecting.
+1774841410: New connection from 10.1.1.219:44191 on port 1883.
+1774841410: New client connected from 10.1.1.219:44191 as client_9 (p2, c1, k4).
+1774841410: No will message specified.
+1774841410: Sending CONNACK to client_9 (0, 0)
+1774841410: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841417: Client client_9 has exceeded timeout, disconnecting.
+1774841418: New connection from 10.1.1.219:59403 on port 1883.
+1774841418: New client connected from 10.1.1.219:59403 as client_9 (p2, c1, k4).
+1774841418: No will message specified.
+1774841418: Sending CONNACK to client_9 (0, 0)
+1774841418: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841425: Client client_9 has exceeded timeout, disconnecting.
+1774841426: New connection from 10.1.1.219:51709 on port 1883.
+1774841426: New client connected from 10.1.1.219:51709 as client_9 (p2, c1, k4).
+1774841426: No will message specified.
+1774841426: Sending CONNACK to client_9 (0, 0)
+1774841426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841433: Client client_9 has exceeded timeout, disconnecting.
+1774841442: New connection from 10.1.1.219:53741 on port 1883.
+1774841442: New client connected from 10.1.1.219:53741 as client_9 (p2, c1, k4).
+1774841442: No will message specified.
+1774841442: Sending CONNACK to client_9 (0, 0)
+1774841442: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841449: Client client_9 has exceeded timeout, disconnecting.
+1774841482: New connection from 10.1.1.219:37981 on port 1883.
+1774841482: New client connected from 10.1.1.219:37981 as client_9 (p2, c1, k4).
+1774841482: No will message specified.
+1774841482: Sending CONNACK to client_9 (0, 0)
+1774841482: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841489: Client client_9 has exceeded timeout, disconnecting.
+1774841490: New connection from 10.1.1.219:38235 on port 1883.
+1774841490: New client connected from 10.1.1.219:38235 as client_9 (p2, c1, k4).
+1774841490: No will message specified.
+1774841490: Sending CONNACK to client_9 (0, 0)
+1774841490: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841497: Client client_9 has exceeded timeout, disconnecting.
+1774841498: New connection from 10.1.1.219:52385 on port 1883.
+1774841498: New client connected from 10.1.1.219:52385 as client_9 (p2, c1, k4).
+1774841498: No will message specified.
+1774841498: Sending CONNACK to client_9 (0, 0)
+1774841498: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841505: Client client_9 has exceeded timeout, disconnecting.
+1774841506: New connection from 10.1.1.219:56601 on port 1883.
+1774841506: New client connected from 10.1.1.219:56601 as client_9 (p2, c1, k4).
+1774841506: No will message specified.
+1774841506: Sending CONNACK to client_9 (0, 0)
+1774841506: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841513: Client client_9 has exceeded timeout, disconnecting.
+1774841514: New connection from 10.1.1.219:59009 on port 1883.
+1774841514: New client connected from 10.1.1.219:59009 as client_9 (p2, c1, k4).
+1774841514: No will message specified.
+1774841514: Sending CONNACK to client_9 (0, 0)
+1774841514: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841521: Client client_9 has exceeded timeout, disconnecting.
+1774841554: New connection from 10.1.1.219:37041 on port 1883.
+1774841554: New client connected from 10.1.1.219:37041 as client_9 (p2, c1, k4).
+1774841554: No will message specified.
+1774841554: Sending CONNACK to client_9 (0, 0)
+1774841554: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841561: Client client_9 has exceeded timeout, disconnecting.
+1774841570: New connection from 10.1.1.219:52771 on port 1883.
+1774841570: New client connected from 10.1.1.219:52771 as client_9 (p2, c1, k4).
+1774841570: No will message specified.
+1774841570: Sending CONNACK to client_9 (0, 0)
+1774841570: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841577: Client client_9 has exceeded timeout, disconnecting.
+1774841578: New connection from 10.1.1.219:49201 on port 1883.
+1774841578: New client connected from 10.1.1.219:49201 as client_9 (p2, c1, k4).
+1774841578: No will message specified.
+1774841578: Sending CONNACK to client_9 (0, 0)
+1774841578: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841585: Client client_9 has exceeded timeout, disconnecting.
+1774841594: New connection from 10.1.1.219:47711 on port 1883.
+1774841594: New client connected from 10.1.1.219:47711 as client_9 (p2, c1, k4).
+1774841594: No will message specified.
+1774841594: Sending CONNACK to client_9 (0, 0)
+1774841594: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841601: Client client_9 has exceeded timeout, disconnecting.
+1774841602: New connection from 10.1.1.219:56291 on port 1883.
+1774841602: New client connected from 10.1.1.219:56291 as client_9 (p2, c1, k4).
+1774841602: No will message specified.
+1774841602: Sending CONNACK to client_9 (0, 0)
+1774841602: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841609: Client client_9 has exceeded timeout, disconnecting.
+1774841618: New connection from 10.1.1.219:54139 on port 1883.
+1774841618: New client connected from 10.1.1.219:54139 as client_9 (p2, c1, k4).
+1774841618: No will message specified.
+1774841618: Sending CONNACK to client_9 (0, 0)
+1774841618: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841625: Client client_9 has exceeded timeout, disconnecting.
+1774841642: New connection from 10.1.1.219:36213 on port 1883.
+1774841642: New client connected from 10.1.1.219:36213 as client_9 (p2, c1, k4).
+1774841642: No will message specified.
+1774841642: Sending CONNACK to client_9 (0, 0)
+1774841642: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841649: Client client_9 has exceeded timeout, disconnecting.
+1774841650: New connection from 10.1.1.219:40959 on port 1883.
+1774841650: New client connected from 10.1.1.219:40959 as client_9 (p2, c1, k4).
+1774841650: No will message specified.
+1774841650: Sending CONNACK to client_9 (0, 0)
+1774841650: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841657: Client client_9 has exceeded timeout, disconnecting.
+1774841666: New connection from 10.1.1.219:57391 on port 1883.
+1774841666: New client connected from 10.1.1.219:57391 as client_9 (p2, c1, k4).
+1774841666: No will message specified.
+1774841666: Sending CONNACK to client_9 (0, 0)
+1774841666: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841673: Client client_9 has exceeded timeout, disconnecting.
+1774841674: New connection from 10.1.1.219:52229 on port 1883.
+1774841674: New client connected from 10.1.1.219:52229 as client_9 (p2, c1, k4).
+1774841674: No will message specified.
+1774841674: Sending CONNACK to client_9 (0, 0)
+1774841674: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841681: Client client_9 has exceeded timeout, disconnecting.
+1774841682: New connection from 10.1.1.219:56929 on port 1883.
+1774841682: New client connected from 10.1.1.219:56929 as client_9 (p2, c1, k4).
+1774841682: No will message specified.
+1774841682: Sending CONNACK to client_9 (0, 0)
+1774841682: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841689: Client client_9 has exceeded timeout, disconnecting.
+1774841698: New connection from 10.1.1.219:49063 on port 1883.
+1774841698: New client connected from 10.1.1.219:49063 as client_9 (p2, c1, k4).
+1774841698: No will message specified.
+1774841698: Sending CONNACK to client_9 (0, 0)
+1774841698: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841705: Client client_9 has exceeded timeout, disconnecting.
+1774841714: New connection from 10.1.1.219:48567 on port 1883.
+1774841714: New client connected from 10.1.1.219:48567 as client_9 (p2, c1, k4).
+1774841714: No will message specified.
+1774841714: Sending CONNACK to client_9 (0, 0)
+1774841714: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841721: Client client_9 has exceeded timeout, disconnecting.
+1774841738: New connection from 10.1.1.219:35221 on port 1883.
+1774841738: New client connected from 10.1.1.219:35221 as client_9 (p2, c1, k4).
+1774841738: No will message specified.
+1774841738: Sending CONNACK to client_9 (0, 0)
+1774841738: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841745: Client client_9 has exceeded timeout, disconnecting.
+1774841754: New connection from 10.1.1.219:34547 on port 1883.
+1774841754: New client connected from 10.1.1.219:34547 as client_9 (p2, c1, k4).
+1774841754: No will message specified.
+1774841754: Sending CONNACK to client_9 (0, 0)
+1774841754: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841761: Client client_9 has exceeded timeout, disconnecting.
+1774841770: New connection from 10.1.1.219:55659 on port 1883.
+1774841770: New client connected from 10.1.1.219:55659 as client_9 (p2, c1, k4).
+1774841770: No will message specified.
+1774841770: Sending CONNACK to client_9 (0, 0)
+1774841770: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841777: Client client_9 has exceeded timeout, disconnecting.
+1774841786: New connection from 10.1.1.219:52525 on port 1883.
+1774841786: New client connected from 10.1.1.219:52525 as client_9 (p2, c1, k4).
+1774841786: No will message specified.
+1774841786: Sending CONNACK to client_9 (0, 0)
+1774841786: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841793: Client client_9 has exceeded timeout, disconnecting.
+1774841850: New connection from 10.1.1.219:54097 on port 1883.
+1774841850: New client connected from 10.1.1.219:54097 as client_9 (p2, c1, k4).
+1774841850: No will message specified.
+1774841850: Sending CONNACK to client_9 (0, 0)
+1774841850: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841857: Client client_9 has exceeded timeout, disconnecting.
+1774841882: New connection from 10.1.1.219:56615 on port 1883.
+1774841882: New client connected from 10.1.1.219:56615 as client_9 (p2, c1, k4).
+1774841882: No will message specified.
+1774841882: Sending CONNACK to client_9 (0, 0)
+1774841882: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841889: Client client_9 has exceeded timeout, disconnecting.
+1774841914: New connection from 10.1.1.219:43141 on port 1883.
+1774841914: New client connected from 10.1.1.219:43141 as client_9 (p2, c1, k4).
+1774841914: No will message specified.
+1774841914: Sending CONNACK to client_9 (0, 0)
+1774841914: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841921: Client client_9 has exceeded timeout, disconnecting.
+1774841930: New connection from 10.1.1.219:34215 on port 1883.
+1774841930: New client connected from 10.1.1.219:34215 as client_9 (p2, c1, k4).
+1774841930: No will message specified.
+1774841930: Sending CONNACK to client_9 (0, 0)
+1774841930: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841937: Client client_9 has exceeded timeout, disconnecting.
+1774841938: New connection from 10.1.1.219:39179 on port 1883.
+1774841938: New client connected from 10.1.1.219:39179 as client_9 (p2, c1, k4).
+1774841938: No will message specified.
+1774841938: Sending CONNACK to client_9 (0, 0)
+1774841938: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841945: Client client_9 has exceeded timeout, disconnecting.
+1774841954: New connection from 10.1.1.219:43019 on port 1883.
+1774841954: New client connected from 10.1.1.219:43019 as client_9 (p2, c1, k4).
+1774841954: No will message specified.
+1774841954: Sending CONNACK to client_9 (0, 0)
+1774841954: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841961: Client client_9 has exceeded timeout, disconnecting.
+1774841962: New connection from 10.1.1.219:60873 on port 1883.
+1774841962: New client connected from 10.1.1.219:60873 as client_9 (p2, c1, k4).
+1774841962: No will message specified.
+1774841962: Sending CONNACK to client_9 (0, 0)
+1774841962: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841969: Client client_9 has exceeded timeout, disconnecting.
+1774841970: New connection from 10.1.1.219:51729 on port 1883.
+1774841970: New client connected from 10.1.1.219:51729 as client_9 (p2, c1, k4).
+1774841970: No will message specified.
+1774841970: Sending CONNACK to client_9 (0, 0)
+1774841970: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841977: Client client_9 has exceeded timeout, disconnecting.
+1774841978: New connection from 10.1.1.219:43291 on port 1883.
+1774841978: New client connected from 10.1.1.219:43291 as client_9 (p2, c1, k4).
+1774841978: No will message specified.
+1774841978: Sending CONNACK to client_9 (0, 0)
+1774841978: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774841985: Client client_9 has exceeded timeout, disconnecting.
+1774841994: New connection from 10.1.1.219:57127 on port 1883.
+1774841994: New client connected from 10.1.1.219:57127 as client_9 (p2, c1, k4).
+1774841994: No will message specified.
+1774841994: Sending CONNACK to client_9 (0, 0)
+1774841994: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842001: Client client_9 has exceeded timeout, disconnecting.
+1774842034: New connection from 10.1.1.219:39245 on port 1883.
+1774842034: New client connected from 10.1.1.219:39245 as client_9 (p2, c1, k4).
+1774842034: No will message specified.
+1774842034: Sending CONNACK to client_9 (0, 0)
+1774842034: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842041: Client client_9 has exceeded timeout, disconnecting.
+1774842042: New connection from 10.1.1.219:57867 on port 1883.
+1774842042: New client connected from 10.1.1.219:57867 as client_9 (p2, c1, k4).
+1774842042: No will message specified.
+1774842042: Sending CONNACK to client_9 (0, 0)
+1774842042: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842049: Client client_9 has exceeded timeout, disconnecting.
+1774842066: New connection from 10.1.1.219:54041 on port 1883.
+1774842066: New client connected from 10.1.1.219:54041 as client_9 (p2, c1, k4).
+1774842066: No will message specified.
+1774842066: Sending CONNACK to client_9 (0, 0)
+1774842066: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842073: Client client_9 has exceeded timeout, disconnecting.
+1774842074: New connection from 10.1.1.219:46603 on port 1883.
+1774842074: New client connected from 10.1.1.219:46603 as client_9 (p2, c1, k4).
+1774842074: No will message specified.
+1774842074: Sending CONNACK to client_9 (0, 0)
+1774842074: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842081: Client client_9 has exceeded timeout, disconnecting.
+1774842082: New connection from 10.1.1.219:52679 on port 1883.
+1774842082: New client connected from 10.1.1.219:52679 as client_9 (p2, c1, k4).
+1774842082: No will message specified.
+1774842082: Sending CONNACK to client_9 (0, 0)
+1774842082: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842089: Client client_9 has exceeded timeout, disconnecting.
+1774842090: New connection from 10.1.1.219:45419 on port 1883.
+1774842090: New client connected from 10.1.1.219:45419 as client_9 (p2, c1, k4).
+1774842090: No will message specified.
+1774842090: Sending CONNACK to client_9 (0, 0)
+1774842090: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842097: Client client_9 has exceeded timeout, disconnecting.
+1774842098: New connection from 10.1.1.219:58301 on port 1883.
+1774842098: New client connected from 10.1.1.219:58301 as client_9 (p2, c1, k4).
+1774842098: No will message specified.
+1774842098: Sending CONNACK to client_9 (0, 0)
+1774842098: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842105: Client client_9 has exceeded timeout, disconnecting.
+1774842146: New connection from 10.1.1.219:48283 on port 1883.
+1774842146: New client connected from 10.1.1.219:48283 as client_9 (p2, c1, k4).
+1774842146: No will message specified.
+1774842146: Sending CONNACK to client_9 (0, 0)
+1774842146: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842153: Client client_9 has exceeded timeout, disconnecting.
+1774842154: New connection from 10.1.1.219:43153 on port 1883.
+1774842154: New client connected from 10.1.1.219:43153 as client_9 (p2, c1, k4).
+1774842154: No will message specified.
+1774842154: Sending CONNACK to client_9 (0, 0)
+1774842154: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842161: Client client_9 has exceeded timeout, disconnecting.
+1774842162: New connection from 10.1.1.219:40053 on port 1883.
+1774842162: New client connected from 10.1.1.219:40053 as client_9 (p2, c1, k4).
+1774842162: No will message specified.
+1774842162: Sending CONNACK to client_9 (0, 0)
+1774842162: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842169: Client client_9 has exceeded timeout, disconnecting.
+1774842186: New connection from 10.1.1.219:59739 on port 1883.
+1774842186: New client connected from 10.1.1.219:59739 as client_9 (p2, c1, k4).
+1774842186: No will message specified.
+1774842186: Sending CONNACK to client_9 (0, 0)
+1774842186: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842193: Client client_9 has exceeded timeout, disconnecting.
+1774842210: New connection from 10.1.1.219:39147 on port 1883.
+1774842210: New client connected from 10.1.1.219:39147 as client_9 (p2, c1, k4).
+1774842210: No will message specified.
+1774842210: Sending CONNACK to client_9 (0, 0)
+1774842210: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842217: Client client_9 has exceeded timeout, disconnecting.
+1774842218: New connection from 10.1.1.219:42629 on port 1883.
+1774842218: New client connected from 10.1.1.219:42629 as client_9 (p2, c1, k4).
+1774842218: No will message specified.
+1774842218: Sending CONNACK to client_9 (0, 0)
+1774842218: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842225: Client client_9 has exceeded timeout, disconnecting.
+1774842234: New connection from 10.1.1.219:56849 on port 1883.
+1774842234: New client connected from 10.1.1.219:56849 as client_9 (p2, c1, k4).
+1774842234: No will message specified.
+1774842234: Sending CONNACK to client_9 (0, 0)
+1774842234: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842241: Client client_9 has exceeded timeout, disconnecting.
+1774842242: New connection from 10.1.1.219:42249 on port 1883.
+1774842242: New client connected from 10.1.1.219:42249 as client_9 (p2, c1, k4).
+1774842242: No will message specified.
+1774842242: Sending CONNACK to client_9 (0, 0)
+1774842242: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842249: Client client_9 has exceeded timeout, disconnecting.
+1774842258: New connection from 10.1.1.219:42835 on port 1883.
+1774842258: New client connected from 10.1.1.219:42835 as client_9 (p2, c1, k4).
+1774842258: No will message specified.
+1774842258: Sending CONNACK to client_9 (0, 0)
+1774842258: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842265: Client client_9 has exceeded timeout, disconnecting.
+1774842274: New connection from 10.1.1.219:44541 on port 1883.
+1774842274: New client connected from 10.1.1.219:44541 as client_9 (p2, c1, k4).
+1774842274: No will message specified.
+1774842274: Sending CONNACK to client_9 (0, 0)
+1774842274: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842281: Client client_9 has exceeded timeout, disconnecting.
+1774842298: New connection from 10.1.1.219:39223 on port 1883.
+1774842298: New client connected from 10.1.1.219:39223 as client_9 (p2, c1, k4).
+1774842298: No will message specified.
+1774842298: Sending CONNACK to client_9 (0, 0)
+1774842298: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842305: Client client_9 has exceeded timeout, disconnecting.
+1774842306: New connection from 10.1.1.219:49201 on port 1883.
+1774842306: New client connected from 10.1.1.219:49201 as client_9 (p2, c1, k4).
+1774842306: No will message specified.
+1774842306: Sending CONNACK to client_9 (0, 0)
+1774842306: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842313: Client client_9 has exceeded timeout, disconnecting.
+1774842338: New connection from 10.1.1.219:33213 on port 1883.
+1774842338: New client connected from 10.1.1.219:33213 as client_9 (p2, c1, k4).
+1774842338: No will message specified.
+1774842338: Sending CONNACK to client_9 (0, 0)
+1774842338: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842345: Client client_9 has exceeded timeout, disconnecting.
+1774842370: New connection from 10.1.1.219:59661 on port 1883.
+1774842370: New client connected from 10.1.1.219:59661 as client_9 (p2, c1, k4).
+1774842370: No will message specified.
+1774842370: Sending CONNACK to client_9 (0, 0)
+1774842370: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842377: Client client_9 has exceeded timeout, disconnecting.
+1774842378: New connection from 10.1.1.219:58081 on port 1883.
+1774842378: New client connected from 10.1.1.219:58081 as client_9 (p2, c1, k4).
+1774842378: No will message specified.
+1774842378: Sending CONNACK to client_9 (0, 0)
+1774842378: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842385: Client client_9 has exceeded timeout, disconnecting.
+1774842394: New connection from 10.1.1.219:40163 on port 1883.
+1774842394: New client connected from 10.1.1.219:40163 as client_9 (p2, c1, k4).
+1774842394: No will message specified.
+1774842394: Sending CONNACK to client_9 (0, 0)
+1774842394: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842401: Client client_9 has exceeded timeout, disconnecting.
+1774842402: New connection from 10.1.1.219:50581 on port 1883.
+1774842402: New client connected from 10.1.1.219:50581 as client_9 (p2, c1, k4).
+1774842402: No will message specified.
+1774842402: Sending CONNACK to client_9 (0, 0)
+1774842402: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842409: Client client_9 has exceeded timeout, disconnecting.
+1774842418: New connection from 10.1.1.219:38797 on port 1883.
+1774842418: New client connected from 10.1.1.219:38797 as client_9 (p2, c1, k4).
+1774842418: No will message specified.
+1774842418: Sending CONNACK to client_9 (0, 0)
+1774842418: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842425: Client client_9 has exceeded timeout, disconnecting.
+1774842426: New connection from 10.1.1.219:55411 on port 1883.
+1774842426: New client connected from 10.1.1.219:55411 as client_9 (p2, c1, k4).
+1774842426: No will message specified.
+1774842426: Sending CONNACK to client_9 (0, 0)
+1774842426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842433: Client client_9 has exceeded timeout, disconnecting.
+1774842442: New connection from 10.1.1.219:41659 on port 1883.
+1774842442: New client connected from 10.1.1.219:41659 as client_9 (p2, c1, k4).
+1774842442: No will message specified.
+1774842442: Sending CONNACK to client_9 (0, 0)
+1774842442: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842449: Client client_9 has exceeded timeout, disconnecting.
+1774842476: New connection from 10.1.1.219:53935 on port 1883.
+1774842476: New client connected from 10.1.1.219:53935 as client_9 (p2, c1, k4).
+1774842476: No will message specified.
+1774842476: Sending CONNACK to client_9 (0, 0)
+1774842476: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842483: Client client_9 has exceeded timeout, disconnecting.
+1774842484: New connection from 10.1.1.219:41317 on port 1883.
+1774842484: New client connected from 10.1.1.219:41317 as client_9 (p2, c1, k4).
+1774842484: No will message specified.
+1774842484: Sending CONNACK to client_9 (0, 0)
+1774842484: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842491: Client client_9 has exceeded timeout, disconnecting.
+1774842492: New connection from 10.1.1.219:60335 on port 1883.
+1774842492: New client connected from 10.1.1.219:60335 as client_9 (p2, c1, k4).
+1774842492: No will message specified.
+1774842492: Sending CONNACK to client_9 (0, 0)
+1774842492: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842499: Client client_9 has exceeded timeout, disconnecting.
+1774842508: New connection from 10.1.1.219:46685 on port 1883.
+1774842508: New client connected from 10.1.1.219:46685 as client_9 (p2, c1, k4).
+1774842508: No will message specified.
+1774842508: Sending CONNACK to client_9 (0, 0)
+1774842508: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842515: Client client_9 has exceeded timeout, disconnecting.
+1774842532: New connection from 10.1.1.219:52757 on port 1883.
+1774842532: New client connected from 10.1.1.219:52757 as client_9 (p2, c1, k4).
+1774842532: No will message specified.
+1774842532: Sending CONNACK to client_9 (0, 0)
+1774842532: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842539: Client client_9 has exceeded timeout, disconnecting.
+1774842556: New connection from 10.1.1.219:60587 on port 1883.
+1774842556: New client connected from 10.1.1.219:60587 as client_9 (p2, c1, k4).
+1774842556: No will message specified.
+1774842556: Sending CONNACK to client_9 (0, 0)
+1774842556: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842563: Client client_9 has exceeded timeout, disconnecting.
+1774842564: New connection from 10.1.1.219:33989 on port 1883.
+1774842564: New client connected from 10.1.1.219:33989 as client_9 (p2, c1, k4).
+1774842564: No will message specified.
+1774842564: Sending CONNACK to client_9 (0, 0)
+1774842564: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842571: Client client_9 has exceeded timeout, disconnecting.
+1774842572: New connection from 10.1.1.219:49097 on port 1883.
+1774842572: New client connected from 10.1.1.219:49097 as client_9 (p2, c1, k4).
+1774842572: No will message specified.
+1774842572: Sending CONNACK to client_9 (0, 0)
+1774842572: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842579: Client client_9 has exceeded timeout, disconnecting.
+1774842580: New connection from 10.1.1.219:56535 on port 1883.
+1774842580: New client connected from 10.1.1.219:56535 as client_9 (p2, c1, k4).
+1774842580: No will message specified.
+1774842580: Sending CONNACK to client_9 (0, 0)
+1774842580: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842587: Client client_9 has exceeded timeout, disconnecting.
+1774842596: New connection from 10.1.1.219:55875 on port 1883.
+1774842596: New client connected from 10.1.1.219:55875 as client_9 (p2, c1, k4).
+1774842596: No will message specified.
+1774842596: Sending CONNACK to client_9 (0, 0)
+1774842596: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842603: Client client_9 has exceeded timeout, disconnecting.
+1774842612: New connection from 10.1.1.219:58431 on port 1883.
+1774842612: New client connected from 10.1.1.219:58431 as client_9 (p2, c1, k4).
+1774842612: No will message specified.
+1774842612: Sending CONNACK to client_9 (0, 0)
+1774842612: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842619: Client client_9 has exceeded timeout, disconnecting.
+1774842620: New connection from 10.1.1.219:45755 on port 1883.
+1774842620: New client connected from 10.1.1.219:45755 as client_9 (p2, c1, k4).
+1774842620: No will message specified.
+1774842620: Sending CONNACK to client_9 (0, 0)
+1774842620: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842627: Client client_9 has exceeded timeout, disconnecting.
+1774842628: New connection from 10.1.1.219:54129 on port 1883.
+1774842628: New client connected from 10.1.1.219:54129 as client_9 (p2, c1, k4).
+1774842628: No will message specified.
+1774842628: Sending CONNACK to client_9 (0, 0)
+1774842628: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842635: Client client_9 has exceeded timeout, disconnecting.
+1774842692: New connection from 10.1.1.219:60487 on port 1883.
+1774842692: New client connected from 10.1.1.219:60487 as client_9 (p2, c1, k4).
+1774842692: No will message specified.
+1774842692: Sending CONNACK to client_9 (0, 0)
+1774842692: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842699: Client client_9 has exceeded timeout, disconnecting.
+1774842716: New connection from 10.1.1.219:53199 on port 1883.
+1774842716: New client connected from 10.1.1.219:53199 as client_9 (p2, c1, k4).
+1774842716: No will message specified.
+1774842716: Sending CONNACK to client_9 (0, 0)
+1774842716: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842723: Client client_9 has exceeded timeout, disconnecting.
+1774842724: New connection from 10.1.1.219:60127 on port 1883.
+1774842724: New client connected from 10.1.1.219:60127 as client_9 (p2, c1, k4).
+1774842724: No will message specified.
+1774842724: Sending CONNACK to client_9 (0, 0)
+1774842724: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842731: Client client_9 has exceeded timeout, disconnecting.
+1774842740: New connection from 10.1.1.219:59501 on port 1883.
+1774842740: New client connected from 10.1.1.219:59501 as client_9 (p2, c1, k4).
+1774842740: No will message specified.
+1774842740: Sending CONNACK to client_9 (0, 0)
+1774842740: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842747: Client client_9 has exceeded timeout, disconnecting.
+1774842756: New connection from 10.1.1.219:45179 on port 1883.
+1774842756: New client connected from 10.1.1.219:45179 as client_9 (p2, c1, k4).
+1774842756: No will message specified.
+1774842756: Sending CONNACK to client_9 (0, 0)
+1774842756: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842763: Client client_9 has exceeded timeout, disconnecting.
+1774842772: New connection from 10.1.1.219:42063 on port 1883.
+1774842772: New client connected from 10.1.1.219:42063 as client_9 (p2, c1, k4).
+1774842772: No will message specified.
+1774842772: Sending CONNACK to client_9 (0, 0)
+1774842772: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842779: Client client_9 has exceeded timeout, disconnecting.
+1774842796: New connection from 10.1.1.219:46419 on port 1883.
+1774842796: New client connected from 10.1.1.219:46419 as client_9 (p2, c1, k4).
+1774842796: No will message specified.
+1774842796: Sending CONNACK to client_9 (0, 0)
+1774842796: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842803: Client client_9 has exceeded timeout, disconnecting.
+1774842804: New connection from 10.1.1.219:45153 on port 1883.
+1774842804: New client connected from 10.1.1.219:45153 as client_9 (p2, c1, k4).
+1774842804: No will message specified.
+1774842804: Sending CONNACK to client_9 (0, 0)
+1774842804: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842811: Client client_9 has exceeded timeout, disconnecting.
+1774842812: New connection from 10.1.1.219:38357 on port 1883.
+1774842812: New client connected from 10.1.1.219:38357 as client_9 (p2, c1, k4).
+1774842812: No will message specified.
+1774842812: Sending CONNACK to client_9 (0, 0)
+1774842812: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842819: Client client_9 has exceeded timeout, disconnecting.
+1774842836: New connection from 10.1.1.219:42413 on port 1883.
+1774842836: New client connected from 10.1.1.219:42413 as client_9 (p2, c1, k4).
+1774842836: No will message specified.
+1774842836: Sending CONNACK to client_9 (0, 0)
+1774842836: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842843: Client client_9 has exceeded timeout, disconnecting.
+1774842844: New connection from 10.1.1.219:49727 on port 1883.
+1774842844: New client connected from 10.1.1.219:49727 as client_9 (p2, c1, k4).
+1774842844: No will message specified.
+1774842844: Sending CONNACK to client_9 (0, 0)
+1774842844: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842851: Client client_9 has exceeded timeout, disconnecting.
+1774842884: New connection from 10.1.1.219:47609 on port 1883.
+1774842884: New client connected from 10.1.1.219:47609 as client_9 (p2, c1, k4).
+1774842884: No will message specified.
+1774842884: Sending CONNACK to client_9 (0, 0)
+1774842884: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842891: Client client_9 has exceeded timeout, disconnecting.
+1774842892: New connection from 10.1.1.219:49393 on port 1883.
+1774842892: New client connected from 10.1.1.219:49393 as client_9 (p2, c1, k4).
+1774842892: No will message specified.
+1774842892: Sending CONNACK to client_9 (0, 0)
+1774842892: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842899: Client client_9 has exceeded timeout, disconnecting.
+1774842908: New connection from 10.1.1.219:40575 on port 1883.
+1774842908: New client connected from 10.1.1.219:40575 as client_9 (p2, c1, k4).
+1774842908: No will message specified.
+1774842908: Sending CONNACK to client_9 (0, 0)
+1774842908: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842915: Client client_9 has exceeded timeout, disconnecting.
+1774842916: New connection from 10.1.1.219:34011 on port 1883.
+1774842916: New client connected from 10.1.1.219:34011 as client_9 (p2, c1, k4).
+1774842916: No will message specified.
+1774842916: Sending CONNACK to client_9 (0, 0)
+1774842916: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842923: Client client_9 has exceeded timeout, disconnecting.
+1774842940: New connection from 10.1.1.219:54811 on port 1883.
+1774842940: New client connected from 10.1.1.219:54811 as client_9 (p2, c1, k4).
+1774842940: No will message specified.
+1774842940: Sending CONNACK to client_9 (0, 0)
+1774842940: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842947: Client client_9 has exceeded timeout, disconnecting.
+1774842948: New connection from 10.1.1.219:46481 on port 1883.
+1774842948: New client connected from 10.1.1.219:46481 as client_9 (p2, c1, k4).
+1774842948: No will message specified.
+1774842948: Sending CONNACK to client_9 (0, 0)
+1774842948: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842955: Client client_9 has exceeded timeout, disconnecting.
+1774842988: New connection from 10.1.1.219:53871 on port 1883.
+1774842988: New client connected from 10.1.1.219:53871 as client_9 (p2, c1, k4).
+1774842988: No will message specified.
+1774842988: Sending CONNACK to client_9 (0, 0)
+1774842988: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774842995: Client client_9 has exceeded timeout, disconnecting.
+1774843004: New connection from 10.1.1.219:47413 on port 1883.
+1774843004: New client connected from 10.1.1.219:47413 as client_9 (p2, c1, k4).
+1774843004: No will message specified.
+1774843004: Sending CONNACK to client_9 (0, 0)
+1774843004: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774843011: Client client_9 has exceeded timeout, disconnecting.
+1774843012: New connection from 10.1.1.219:56401 on port 1883.
+1774843012: New client connected from 10.1.1.219:56401 as client_9 (p2, c1, k4).
+1774843012: No will message specified.
+1774843012: Sending CONNACK to client_9 (0, 0)
+1774843012: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774843019: Client client_9 has exceeded timeout, disconnecting.
+1774843020: New connection from 10.1.1.219:58931 on port 1883.
+1774843020: New client connected from 10.1.1.219:58931 as client_9 (p2, c1, k4).
+1774843020: No will message specified.
+1774843020: Sending CONNACK to client_9 (0, 0)
+1774843020: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774843027: Client client_9 has exceeded timeout, disconnecting.
+1774843028: New connection from 10.1.1.219:40891 on port 1883.
+1774843028: New client connected from 10.1.1.219:40891 as client_9 (p2, c1, k4).
+1774843028: No will message specified.
+1774843028: Sending CONNACK to client_9 (0, 0)
+1774843028: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774843035: Client client_9 has exceeded timeout, disconnecting.
+1774843036: New connection from 10.1.1.219:39771 on port 1883.
+1774843036: New client connected from 10.1.1.219:39771 as client_9 (p2, c1, k4).
+1774843036: No will message specified.
+1774843036: Sending CONNACK to client_9 (0, 0)
+1774843036: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774843043: Client client_9 has exceeded timeout, disconnecting.
+1774843084: New connection from 10.1.1.219:44007 on port 1883.
+1774843084: New client connected from 10.1.1.219:44007 as client_9 (p2, c1, k4).
+1774843084: No will message specified.
+1774843084: Sending CONNACK to client_9 (0, 0)
+1774843084: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774843091: Client client_9 has exceeded timeout, disconnecting.
+1774843100: New connection from 10.1.1.219:41529 on port 1883.
+1774843100: New client connected from 10.1.1.219:41529 as client_9 (p2, c1, k4).
+1774843100: No will message specified.
+1774843100: Sending CONNACK to client_9 (0, 0)
+1774843100: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774843107: Client client_9 has exceeded timeout, disconnecting.
+1774843108: New connection from 10.1.1.219:59951 on port 1883.
+1774843108: New client connected from 10.1.1.219:59951 as client_9 (p2, c1, k4).
+1774843108: No will message specified.
+1774843108: Sending CONNACK to client_9 (0, 0)
+1774843108: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774843115: Client client_9 has exceeded timeout, disconnecting.
+1774843116: New connection from 10.1.1.219:44511 on port 1883.
+1774843116: New client connected from 10.1.1.219:44511 as client_9 (p2, c1, k4).
+1774843116: No will message specified.
+1774843116: Sending CONNACK to client_9 (0, 0)
+1774843116: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774843123: Client client_9 has exceeded timeout, disconnecting.

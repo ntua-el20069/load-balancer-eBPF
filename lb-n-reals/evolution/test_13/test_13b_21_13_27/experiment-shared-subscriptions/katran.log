@@ -1,0 +1,91 @@
++ /usr/sbin/ethtool --offload eth0 lro off
++ sysctl -w kernel.bpf_stats_enabled=1
+kernel.bpf_stats_enabled = 1
++ ip route add 10.1.0.0/16 via 10.1.2.101 dev eth0
++ '[' 0 -eq 1 ']'
++ sed -i 's/^#define BPF_PRINT.*/#define BPF_PRINT 0/' /home/simple_user/katran/katran/lib/bpf/mqtt_topic_based_fwd.bpf.c
++ cd /home/simple_user/katran
++ cp ../Makefile .
++ make compile_bpf
+clang -I./usr/include -I./katran/lib/bpf/linus_includes -I./include -I.  \
+-DDEBUG -D__KERNEL__ -Wno-unused-value -Wno-pointer-sign \
+	-Wno-compare-distinct-pointer-types \
+	-O2 -emit-llvm -c -g katran/lib/bpf/mqtt_topic_based_fwd.bpf.c -o -| llc -march=bpf -filetype=obj -o _build/deps/bpfprog/bpf/mqtt_topic_based_fwd.bpf.o
+echo "BPF program compiled: _build/deps/bpfprog/bpf/mqtt_topic_based_fwd.bpf.o"
+BPF program compiled: _build/deps/bpfprog/bpf/mqtt_topic_based_fwd.bpf.o
++ rm -rf /sys/fs/bpf/jmp_eth0
++ '[' 1 -eq 1 ']'
++ cd /home/simple_user/normal_katran_scripts
++ ./loader.sh
++ cd /home/simple_user/katran/_build
++ cd /home/simple_user/normal_katran_scripts
++ echo 'Waiting for katran_server_grpc to start and load the bpf progs...'
++ sleep 15
+Waiting for katran_server_grpc to start and load the bpf progs...
++ sudo ./build/example_grpc/katran_server_grpc -balancer_prog ./deps/bpfprog/bpf/balancer.bpf.o -forwarding_cores=0 -hc_forwarding=false -lru_size=10000 -default_mac 02:42:0a:00:02:01 -intf eth0
+I0330 18:13:35.905683    21 KatranGrpcService.cpp:69] Starting Katran
+E0330 18:13:35.905905    21 BaseBpfAdapter.cpp:144] libbpf: elf: skipping unrecognized data section(17) .eh_frame
+E0330 18:13:35.905922    21 BaseBpfAdapter.cpp:144] libbpf: elf: skipping relo section(18) .rel.eh_frame for section(17) .eh_frame
+E0330 18:13:35.906138    21 BaseBpfAdapter.cpp:144] libbpf: elf: skipping unrecognized data section(17) .eh_frame
+E0330 18:13:35.906152    21 BaseBpfAdapter.cpp:144] libbpf: elf: skipping relo section(18) .rel.eh_frame for section(17) .eh_frame
+E0330 18:13:35.906659    21 BaseBpfAdapter.cpp:144] libbpf: elf: skipping unrecognized data section(17) .eh_frame
+E0330 18:13:35.906678    21 BaseBpfAdapter.cpp:144] libbpf: elf: skipping relo section(18) .rel.eh_frame for section(17) .eh_frame
+Server listening on 0.0.0.0:50051
++ ./userspace.sh
++ SLEEP_TIME=2
++ echo '########################################################'
++ echo 'Configure VIP -> reals mappings via Katran userspace gRPC client'
++ cd /home/simple_user/katran/example_grpc/goclient/src/katranc/main
++ ./main -A -t 10.1.50.1:1883
+########################################################
+Configure VIP -> reals mappings via Katran userspace gRPC client
+2026/03/30 18:13:50 Adding service: 10.1.50.1:1883 6
+exiting
+2026/03/30 18:13:50 Vip modified
++ ./main -a -t 10.1.50.1:1883 -r 10.1.3.201 -w 1
+exiting
+2026/03/30 18:13:51 Reals modified
++ ./main -a -t 10.1.50.1:1883 -r 10.1.3.202 -w 1
+2026/03/30 18:13:51 Reals modified
+exiting
++ ./main -A -t 10.1.50.2:1883
+2026/03/30 18:13:51 Adding service: 10.1.50.2:1883 6
+2026/03/30 18:13:51 Vip modified
+exiting
++ ./main -a -t 10.1.50.2:1883 -r 10.1.3.203 -w 1
+2026/03/30 18:13:52 Reals modified
+exiting
++ ./main -a -t 10.1.50.2:1883 -r 10.1.3.204 -w 1
+2026/03/30 18:13:52 Reals modified
+exiting
++ ./main -A -t 10.1.50.250:1883
+2026/03/30 18:13:53 Adding service: 10.1.50.250:1883 6
+2026/03/30 18:13:53 Vip modified
+exiting
++ ./main -a -t 10.1.50.250:1883 -r 10.1.3.205 -w 1
+2026/03/30 18:13:53 Reals modified
+exiting
++ ./main -a -t 10.1.50.250:1883 -r 10.1.3.206 -w 1
+2026/03/30 18:13:54 Reals modified
+exiting
++ ./main -l
+2026/03/30 18:13:54 vips len 3
+VIP:            10.1.50.2 Port:   1883 Protocol: tcp
+Vip's flags: 
+ ->10.1.3.203        weight: 1 flags: 
+ ->10.1.3.204        weight: 1 flags: 
+VIP:          10.1.50.250 Port:   1883 Protocol: tcp
+Vip's flags: 
+ ->10.1.3.206        weight: 1 flags: 
+ ->10.1.3.205        weight: 1 flags: 
+VIP:            10.1.50.1 Port:   1883 Protocol: tcp
+Vip's flags: 
+ ->10.1.3.202        weight: 1 flags: 
+ ->10.1.3.201        weight: 1 flags: 
+exiting
++ sleep 2
++ ./debug.sh
++ bpftool prog list
++ grep xdp
+3585: xdp  name balancer_ingress  tag 2c0e77cc0cfd5c4e  gpl
++ bpftool prog tracelog

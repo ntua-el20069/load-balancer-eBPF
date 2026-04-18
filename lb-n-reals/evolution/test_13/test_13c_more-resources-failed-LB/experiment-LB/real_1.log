@@ -1,0 +1,197 @@
++ ip route add 10.1.0.0/16 via 10.1.3.101 dev eth0
++ ip link add name ipip0 type ipip external
++ ip link set up dev ipip0
++ ip a a 127.0.0.42/32 dev ipip0
++ '[' -z 1 ']'
++ echo 'Configuring Real Server NUM=1'
++ ip a a 10.1.50.0/24 dev lo
+Configuring Real Server NUM=1
++ echo 'Set VIPs as loopback addresses'
+Set VIPs as loopback addresses
+++ sysctl -a
+++ awk '/\.rp_filter/ {print $1}'
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.all.rp_filter
+net.ipv4.conf.all.rp_filter
++ sysctl net.ipv4.conf.all.rp_filter=0
+net.ipv4.conf.all.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.default.rp_filter
++ sysctl net.ipv4.conf.default.rp_filter=0
+net.ipv4.conf.default.rp_filter
+net.ipv4.conf.default.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.erspan0.rp_filter
++ sysctl net.ipv4.conf.erspan0.rp_filter=0
+net.ipv4.conf.erspan0.rp_filter
+net.ipv4.conf.erspan0.rp_filter = 0
+net.ipv4.conf.eth0.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.eth0.rp_filter
++ sysctl net.ipv4.conf.eth0.rp_filter=0
+net.ipv4.conf.eth0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.gre0.rp_filter
++ sysctl net.ipv4.conf.gre0.rp_filter=0
+net.ipv4.conf.gre0.rp_filter
+net.ipv4.conf.gre0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.gretap0.rp_filter
++ sysctl net.ipv4.conf.gretap0.rp_filter=0
+net.ipv4.conf.gretap0.rp_filter
+net.ipv4.conf.gretap0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.ip6_vti0.rp_filter
++ sysctl net.ipv4.conf.ip6_vti0.rp_filter=0
+net.ipv4.conf.ip6_vti0.rp_filter
+net.ipv4.conf.ip6_vti0.rp_filter = 0
+net.ipv4.conf.ip6gre0.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.ip6gre0.rp_filter
++ sysctl net.ipv4.conf.ip6gre0.rp_filter=0
+net.ipv4.conf.ip6gre0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.ip6tnl0.rp_filter
++ sysctl net.ipv4.conf.ip6tnl0.rp_filter=0
+net.ipv4.conf.ip6tnl0.rp_filter
+net.ipv4.conf.ip6tnl0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.ip_vti0.rp_filter
++ sysctl net.ipv4.conf.ip_vti0.rp_filter=0
+net.ipv4.conf.ip_vti0.rp_filter
+net.ipv4.conf.ip_vti0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.ipip0.rp_filter
++ sysctl net.ipv4.conf.ipip0.rp_filter=0
+net.ipv4.conf.ipip0.rp_filter
+net.ipv4.conf.ipip0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.lo.rp_filter
++ sysctl net.ipv4.conf.lo.rp_filter=0
+net.ipv4.conf.lo.rp_filter
+net.ipv4.conf.lo.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.sit0.rp_filter
++ sysctl net.ipv4.conf.sit0.rp_filter=0
+net.ipv4.conf.sit0.rp_filter
+net.ipv4.conf.sit0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.tunl0.rp_filter
++ sysctl net.ipv4.conf.tunl0.rp_filter=0
+net.ipv4.conf.tunl0.rp_filter
+net.ipv4.conf.tunl0.rp_filter = 0
++ topics=("non_existing_topic" "\$share/vip_a/measurements/temperature" "\$share/vip_a/measurements/temperature" "\$share/vip_b/measurements/humidity" "\$share/vip_b/measurements/humidity" "\$share/vip_default/measurements/other" "\$share/vip_default/measurements/other")
++ ping -c 1 -W 1 10.1.3.101
++ '[' 0 -eq 1 ']'
++ mosquitto -v -c /etc/mosquitto/conf.d/mosquitto.conf
+1774965924: mosquitto version 2.0.22 starting
+1774965924: Config loaded from /etc/mosquitto/conf.d/mosquitto.conf.
+1774965924: Opening ipv4 listen socket on port 1883.
+1774965924: Opening ipv6 listen socket on port 1883.
+1774965924: mosquitto version 2.0.22 running
+1774965976: New connection from 10.1.1.210:43595 on port 1883.
+1774965976: New client connected from 10.1.1.210:43595 as client_0 (p2, c1, k4).
+1774965976: No will message specified.
+1774965976: Sending CONNACK to client_0 (0, 0)
+1774965976: New connection from 10.1.1.212:53787 on port 1883.
+1774965976: New client connected from 10.1.1.212:53787 as client_2 (p2, c1, k4).
+1774965976: No will message specified.
+1774965976: Sending CONNACK to client_2 (0, 0)
+1774965976: New connection from 10.1.1.213:45219 on port 1883.
+1774965976: New client connected from 10.1.1.213:45219 as client_3 (p2, c1, k4).
+1774965976: No will message specified.
+1774965976: Sending CONNACK to client_3 (0, 0)
+1774965980: Received PINGREQ from client_0
+1774965980: Sending PINGRESP to client_0
+1774965980: Received PINGREQ from client_2
+1774965980: Sending PINGRESP to client_2
+1774965980: Received PINGREQ from client_3
+1774965980: Sending PINGRESP to client_3
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_2 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_3 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965981: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965982: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965987: Client client_2 has exceeded timeout, disconnecting.
+1774965988: Client client_3 has exceeded timeout, disconnecting.
+1774965988: Client client_0 has exceeded timeout, disconnecting.
+1774965989: New connection from 10.1.1.213:57957 on port 1883.
+1774965989: New client connected from 10.1.1.213:57957 as client_3 (p2, c1, k4).
+1774965989: No will message specified.
+1774965989: Sending CONNACK to client_3 (0, 0)
+1774965989: New connection from 10.1.1.210:49631 on port 1883.
+1774965989: New client connected from 10.1.1.210:49631 as client_0 (p2, c1, k4).
+1774965989: No will message specified.
+1774965989: Sending CONNACK to client_0 (0, 0)
+1774965990: Received PUBLISH from client_3 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965990: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965996: New connection from 10.1.1.212:59161 on port 1883.
+1774965996: Client client_3 has exceeded timeout, disconnecting.
+1774965996: Client client_0 has exceeded timeout, disconnecting.
+1774965996: New client connected from 10.1.1.212:59161 as client_2 (p2, c1, k4).
+1774965996: No will message specified.
+1774965996: Sending CONNACK to client_2 (0, 0)
+1774965997: Received PUBLISH from client_2 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774965997: New connection from 10.1.1.210:33675 on port 1883.
+1774965997: New client connected from 10.1.1.210:33675 as client_0 (p2, c1, k4).
+1774965997: No will message specified.
+1774965997: Sending CONNACK to client_0 (0, 0)
+1774965998: Received PUBLISH from client_0 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774966003: Client client_2 has exceeded timeout, disconnecting.
+1774966004: Client client_0 has exceeded timeout, disconnecting.
+1774966005: New connection from 10.1.1.213:45953 on port 1883.
+1774966005: New client connected from 10.1.1.213:45953 as client_3 (p2, c1, k4).
+1774966005: No will message specified.
+1774966005: Sending CONNACK to client_3 (0, 0)
+1774966006: Received PUBLISH from client_3 (d0, q0, r0, m0, 'measurements/temperature', ... (1007 bytes))
+1774966012: Client client_3 has exceeded timeout, disconnecting.

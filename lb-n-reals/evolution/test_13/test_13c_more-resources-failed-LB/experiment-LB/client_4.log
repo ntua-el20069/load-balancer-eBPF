@@ -1,0 +1,661 @@
++ ip route add 10.1.0.0/16 via 10.1.1.101 dev eth0
++ topics=("measurements/temperature" "measurements/temperature" "measurements/temperature" "measurements/temperature" "measurements/humidity" "measurements/humidity" "measurements/humidity" "measurements/humidity" "measurements/humidity" "measurements/other")
++ vips=("${VIP_A}" "${VIP_A}" "${VIP_A}" "${VIP_A}" "${VIP_B}" "${VIP_B}" "${VIP_B}" "${VIP_B}" "${VIP_B}" "${VIP_DEFAULT}")
++ sleep 10
++ cd utils
++ TOPIC_INDEX=4
++ DESTINATION_IP=10.1.50.200
++ '[' 1 -eq 1 ']'
++ DESTINATION_IP=10.1.50.2
++ '[' 0 -eq 1 ']'
++ '[' 0 -eq 1 ']'
++ ping -c 1 -W 1 10.1.1.101
++ python3 client_pub_opts.py -H 10.1.50.2 -t measurements/humidity -P 1883 -k 4 -N 300 -S 0.01 -c client_4
+Connecting to 10.1.50.2 port: 1883
+connect reason_code: Success
+Publishing: msgnum: 1
+mid: 1
+Publishing: msgnum: 2
+mid: 2
+Publishing: msgnum: 3
+mid: 3
+Publishing: msgnum: 4
+mid: 4
+Publishing: msgnum: 5
+mid: 5
+Publishing: msgnum: 6
+mid: 6
+Publishing: msgnum: 7
+mid: 7
+Publishing: msgnum: 8
+mid: 8
+Publishing: msgnum: 9
+mid: 9
+Publishing: msgnum: 10
+mid: 10
+Publishing: msgnum: 11
+mid: 11
+Publishing: msgnum: 12
+mid: 12
+Publishing: msgnum: 13
+mid: 13
+Publishing: msgnum: 14
+mid: 14
+Publishing: msgnum: 15
+mid: 15
+Publishing: msgnum: 16
+mid: 16
+Publishing: msgnum: 17
+mid: 17
+Publishing: msgnum: 18
+mid: 18
+Publishing: msgnum: 19
+mid: 19
+Publishing: msgnum: 20
+mid: 20
+Publishing: msgnum: 21
+mid: 21
+Publishing: msgnum: 22
+mid: 22
+Publishing: msgnum: 23
+mid: 23
+Publishing: msgnum: 24
+mid: 24
+Publishing: msgnum: 25
+mid: 25
+Publishing: msgnum: 26
+mid: 26
+Publishing: msgnum: 27
+mid: 27
+Publishing: msgnum: 28
+mid: 28
+Publishing: msgnum: 29
+mid: 29
+Publishing: msgnum: 30
+mid: 30
+Publishing: msgnum: 31
+mid: 31
+Publishing: msgnum: 32
+mid: 32
+Publishing: msgnum: 33
+mid: 33
+Publishing: msgnum: 34
+mid: 34
+Publishing: msgnum: 35
+mid: 35
+Publishing: msgnum: 36
+mid: 36
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.05 seconds.
+Publishing: msgnum: 37
+mid: 37
+Publishing: msgnum: 38
+mid: 38
+Publishing: msgnum: 39
+mid: 39
+Publishing: msgnum: 40
+mid: 40
+Publishing: msgnum: 41
+mid: 41
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.05 seconds.
+Publishing: msgnum: 42
+mid: 42
+Publishing: msgnum: 43
+mid: 43
+Publishing: msgnum: 44
+mid: 44
+Publishing: msgnum: 45
+mid: 45
+Publishing: msgnum: 46
+mid: 46
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.06 seconds.
+Publishing: msgnum: 47
+mid: 47
+Publishing: msgnum: 48
+mid: 48
+Publishing: msgnum: 49
+mid: 49
+Publishing: msgnum: 50
+mid: 50
+Publishing: msgnum: 51
+mid: 51
+Publishing: msgnum: 52
+mid: 52
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.05 seconds.
+Publishing: msgnum: 53
+mid: 53
+Publishing: msgnum: 54
+mid: 54
+Publishing: msgnum: 55
+mid: 55
+Publishing: msgnum: 56
+mid: 56
+Publishing: msgnum: 57
+mid: 57
+Publishing: msgnum: 58
+mid: 58
+Publishing: msgnum: 59
+mid: 59
+Publishing: msgnum: 60
+mid: 60
+Publishing: msgnum: 61
+mid: 61
+Publishing: msgnum: 62
+mid: 62
+Publishing: msgnum: 63
+mid: 63
+Publishing: msgnum: 64
+mid: 64
+Publishing: msgnum: 65
+mid: 65
+Publishing: msgnum: 66
+mid: 66
+Publishing: msgnum: 67
+mid: 67
+Publishing: msgnum: 68
+mid: 68
+Publishing: msgnum: 69
+mid: 69
+Publishing: msgnum: 70
+mid: 70
+Publishing: msgnum: 71
+mid: 71
+Publishing: msgnum: 72
+mid: 72
+Publishing: msgnum: 73
+mid: 73
+Publishing: msgnum: 74
+mid: 74
+Publishing: msgnum: 75
+mid: 75
+Publishing: msgnum: 76
+mid: 76
+Publishing: msgnum: 77
+mid: 77
+Publishing: msgnum: 78
+mid: 78
+Publishing: msgnum: 79
+mid: 79
+Publishing: msgnum: 80
+mid: 80
+Publishing: msgnum: 81
+mid: 81
+Publishing: msgnum: 82
+mid: 82
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.03 seconds.
+Publishing: msgnum: 83
+mid: 83
+Publishing: msgnum: 84
+mid: 84
+Publishing: msgnum: 85
+mid: 85
+Publishing: msgnum: 86
+mid: 86
+Publishing: msgnum: 87
+mid: 87
+Publishing: msgnum: 88
+mid: 88
+Publishing: msgnum: 89
+mid: 89
+Publishing: msgnum: 90
+mid: 90
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.02 seconds.
+Publishing: msgnum: 91
+mid: 91
+Publishing: msgnum: 92
+mid: 92
+Publishing: msgnum: 93
+mid: 93
+Publishing: msgnum: 94
+mid: 94
+Publishing: msgnum: 95
+mid: 95
+Publishing: msgnum: 96
+mid: 96
+Publishing: msgnum: 97
+mid: 97
+Publishing: msgnum: 98
+Client disconnected. userdata: None,  reason_code: Unspecified error
+Publish failed with Exception: Message publish failed: The connection was lost.
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 6.04 seconds.
+Waiting for reconnection (TCP 3WHS in progress)...
+connect reason_code: Success
+Publishing: msgnum: 99
+mid: 99
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.50 seconds.
+Publishing: msgnum: 100
+mid: 100
+Publishing: msgnum: 101
+mid: 101
+Publishing: msgnum: 102
+mid: 102
+Publishing: msgnum: 103
+mid: 103
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.05 seconds.
+Publishing: msgnum: 104
+mid: 104
+Publishing: msgnum: 105
+mid: 105
+Publishing: msgnum: 106
+mid: 106
+Publishing: msgnum: 107
+mid: 107
+Publishing: msgnum: 108
+mid: 108
+Publishing: msgnum: 109
+mid: 109
+Publishing: msgnum: 110
+mid: 110
+Publishing: msgnum: 111
+mid: 111
+Publishing: msgnum: 112
+mid: 112
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.01 seconds.
+Publishing: msgnum: 113
+mid: 113
+Publishing: msgnum: 114
+mid: 114
+Publishing: msgnum: 115
+mid: 115
+Publishing: msgnum: 116
+mid: 116
+Publishing: msgnum: 117
+mid: 117
+Publishing: msgnum: 118
+mid: 118
+Publishing: msgnum: 119
+mid: 119
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.03 seconds.
+Publishing: msgnum: 120
+mid: 120
+Publishing: msgnum: 121
+mid: 121
+Publishing: msgnum: 122
+mid: 122
+Publishing: msgnum: 123
+mid: 123
+Publishing: msgnum: 124
+mid: 124
+Publishing: msgnum: 125
+mid: 125
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.05 seconds.
+Publishing: msgnum: 126
+mid: 126
+Publishing: msgnum: 127
+mid: 127
+Publishing: msgnum: 128
+mid: 128
+Publishing: msgnum: 129
+mid: 129
+Publishing: msgnum: 130
+mid: 130
+Publishing: msgnum: 131
+mid: 131
+Publishing: msgnum: 132
+mid: 132
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.03 seconds.
+Publishing: msgnum: 133
+mid: 133
+Publishing: msgnum: 134
+mid: 134
+Publishing: msgnum: 135
+mid: 135
+Publishing: msgnum: 136
+mid: 136
+Publishing: msgnum: 137
+mid: 137
+Publishing: msgnum: 138
+mid: 138
+Publishing: msgnum: 139
+mid: 139
+Publishing: msgnum: 140
+mid: 140
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.02 seconds.
+Publishing: msgnum: 141
+mid: 141
+Publishing: msgnum: 142
+mid: 142
+Publishing: msgnum: 143
+mid: 143
+Publishing: msgnum: 144
+mid: 144
+Publishing: msgnum: 145
+mid: 145
+Publishing: msgnum: 146
+mid: 146
+Publishing: msgnum: 147
+mid: 147
+Publishing: msgnum: 148
+mid: 148
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.08 seconds.
+Publishing: msgnum: 149
+mid: 149
+Publishing: msgnum: 150
+mid: 150
+Publishing: msgnum: 151
+mid: 151
+Publishing: msgnum: 152
+mid: 152
+Publishing: msgnum: 153
+mid: 153
+Publishing: msgnum: 154
+mid: 154
+Publishing: msgnum: 155
+mid: 155
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.03 seconds.
+Publishing: msgnum: 156
+mid: 156
+Publishing: msgnum: 157
+mid: 157
+Publishing: msgnum: 158
+mid: 158
+Publishing: msgnum: 159
+mid: 159
+Publishing: msgnum: 160
+mid: 160
+Publishing: msgnum: 161
+mid: 161
+Publishing: msgnum: 162
+mid: 162
+Publishing: msgnum: 163
+mid: 163
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.02 seconds.
+Publishing: msgnum: 164
+mid: 164
+Publishing: msgnum: 165
+mid: 165
+Publishing: msgnum: 166
+mid: 166
+Publishing: msgnum: 167
+mid: 167
+Publishing: msgnum: 168
+mid: 168
+Publishing: msgnum: 169
+mid: 169
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.05 seconds.
+Publishing: msgnum: 170
+mid: 170
+Publishing: msgnum: 171
+mid: 171
+Publishing: msgnum: 172
+mid: 172
+Publishing: msgnum: 173
+mid: 173
+Publishing: msgnum: 174
+mid: 174
+Publishing: msgnum: 175
+mid: 175
+Publishing: msgnum: 176
+mid: 176
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.03 seconds.
+Publishing: msgnum: 177
+mid: 177
+Publishing: msgnum: 178
+mid: 178
+Publishing: msgnum: 179
+mid: 179
+Publishing: msgnum: 180
+mid: 180
+Publishing: msgnum: 181
+mid: 181
+Publishing: msgnum: 182
+mid: 182
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.05 seconds.
+Publishing: msgnum: 183
+mid: 183
+Publishing: msgnum: 184
+mid: 184
+Publishing: msgnum: 185
+mid: 185
+Publishing: msgnum: 186
+mid: 186
+Publishing: msgnum: 187
+mid: 187
+Publishing: msgnum: 188
+mid: 188
+Publishing: msgnum: 189
+mid: 189
+Publishing: msgnum: 190
+mid: 190
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.02 seconds.
+Publishing: msgnum: 191
+mid: 191
+Publishing: msgnum: 192
+mid: 192
+Publishing: msgnum: 193
+mid: 193
+Publishing: msgnum: 194
+Client disconnected. userdata: None,  reason_code: Unspecified error
+Publish failed with Exception: Message publish failed: The connection was lost.
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 6.06 seconds.
+Waiting for reconnection (TCP 3WHS in progress)...
+connect reason_code: Success
+Publishing: msgnum: 195
+mid: 195
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.50 seconds.
+Publishing: msgnum: 196
+mid: 196
+Publishing: msgnum: 197
+mid: 197
+Publishing: msgnum: 198
+mid: 198
+Publishing: msgnum: 199
+mid: 199
+Publishing: msgnum: 200
+mid: 200
+Publishing: msgnum: 201
+mid: 201
+Publishing: msgnum: 202
+mid: 202
+Publishing: msgnum: 203
+mid: 203
+Publishing: msgnum: 204
+mid: 204
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.02 seconds.
+Publishing: msgnum: 205
+mid: 205
+Publishing: msgnum: 206
+mid: 206
+Publishing: msgnum: 207
+mid: 207
+Publishing: msgnum: 208
+mid: 208
+Publishing: msgnum: 209
+mid: 209
+Publishing: msgnum: 210
+mid: 210
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.04 seconds.
+Publishing: msgnum: 211
+mid: 211
+Publishing: msgnum: 212
+mid: 212
+Publishing: msgnum: 213
+mid: 213
+Publishing: msgnum: 214
+mid: 214
+Publishing: msgnum: 215
+mid: 215
+Publishing: msgnum: 216
+mid: 216
+Publishing: msgnum: 217
+mid: 217
+Publishing: msgnum: 218
+mid: 218
+Publishing: msgnum: 219
+mid: 219
+Publishing: msgnum: 220
+mid: 220
+Publishing: msgnum: 221
+mid: 221
+Publishing: msgnum: 222
+mid: 222
+Publishing: msgnum: 223
+mid: 223
+Publishing: msgnum: 224
+mid: 224
+Publishing: msgnum: 225
+mid: 225
+Publishing: msgnum: 226
+mid: 226
+Publishing: msgnum: 227
+mid: 227
+Publishing: msgnum: 228
+mid: 228
+Publishing: msgnum: 229
+mid: 229
+Publishing: msgnum: 230
+mid: 230
+Publishing: msgnum: 231
+mid: 231
+Publishing: msgnum: 232
+mid: 232
+Publishing: msgnum: 233
+mid: 233
+Publishing: msgnum: 234
+mid: 234
+Publishing: msgnum: 235
+mid: 235
+Publishing: msgnum: 236
+mid: 236
+Publishing: msgnum: 237
+mid: 237
+Publishing: msgnum: 238
+mid: 238
+Publishing: msgnum: 239
+mid: 239
+Publishing: msgnum: 240
+mid: 240
+Publishing: msgnum: 241
+mid: 241
+Publishing: msgnum: 242
+mid: 242
+Publishing: msgnum: 243
+mid: 243
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.05 seconds.
+Publishing: msgnum: 244
+mid: 244
+Publishing: msgnum: 245
+mid: 245
+Publishing: msgnum: 246
+mid: 246
+Publishing: msgnum: 247
+mid: 247
+Publishing: msgnum: 248
+mid: 248
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.06 seconds.
+Publishing: msgnum: 249
+mid: 249
+Publishing: msgnum: 250
+mid: 250
+Publishing: msgnum: 251
+mid: 251
+Publishing: msgnum: 252
+mid: 252
+Publishing: msgnum: 253
+mid: 253
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.06 seconds.
+Publishing: msgnum: 254
+mid: 254
+Publishing: msgnum: 255
+mid: 255
+Publishing: msgnum: 256
+mid: 256
+Publishing: msgnum: 257
+mid: 257
+Publishing: msgnum: 258
+mid: 258
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.06 seconds.
+Publishing: msgnum: 259
+mid: 259
+Publishing: msgnum: 260
+mid: 260
+Publishing: msgnum: 261
+mid: 261
+Publishing: msgnum: 262
+mid: 262
+Publishing: msgnum: 263
+mid: 263
+Publishing: msgnum: 264
+mid: 264
+Publishing: msgnum: 265
+mid: 265
+Publishing: msgnum: 266
+mid: 266
+Publishing: msgnum: 267
+mid: 267
+Publishing: msgnum: 268
+mid: 268
+Publishing: msgnum: 269
+mid: 269
+Publishing: msgnum: 270
+mid: 270
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.01 seconds.
+Publishing: msgnum: 271
+mid: 271
+Publishing: msgnum: 272
+mid: 272
+Publishing: msgnum: 273
+mid: 273
+Publishing: msgnum: 274
+mid: 274
+Publishing: msgnum: 275
+mid: 275
+Publishing: msgnum: 276
+mid: 276
+Publishing: msgnum: 277
+mid: 277
+Publishing: msgnum: 278
+mid: 278
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.02 seconds.
+Publishing: msgnum: 279
+mid: 279
+Publishing: msgnum: 280
+mid: 280
+Publishing: msgnum: 281
+mid: 281
+Publishing: msgnum: 282
+mid: 282
+Publishing: msgnum: 283
+mid: 283
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.06 seconds.
+Publishing: msgnum: 284
+mid: 284
+Publishing: msgnum: 285
+mid: 285
+Publishing: msgnum: 286
+mid: 286
+Publishing: msgnum: 287
+mid: 287
+Publishing: msgnum: 288
+mid: 288
+Publishing: msgnum: 289
+mid: 289
+Publishing: msgnum: 290
+Client disconnected. userdata: None,  reason_code: Unspecified error
+Publish failed with Exception: Message publish failed: The connection was lost.
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 6.09 seconds.
+Waiting for reconnection (TCP 3WHS in progress)...
+connect reason_code: Success
+Publishing: msgnum: 291
+mid: 291
+Warning: Publishing is taking longer than the specified delay of 0.01 seconds.               Time elapsed since last publish - (elapsed_time): 0.50 seconds.
+Publishing: msgnum: 292
+mid: 292
+Publishing: msgnum: 293
+mid: 293
+Publishing: msgnum: 294
+mid: 294
+Publishing: msgnum: 295
+mid: 295
+Publishing: msgnum: 296
+mid: 296
+Publishing: msgnum: 297
+mid: 297
+Publishing: msgnum: 298
+mid: 298
+Publishing: msgnum: 299
+mid: 299
+Publishing: msgnum: 300
+mid: 300
+Published 300 messages in 23.94 seconds. Average time per message: 0.08 seconds.
+Client disconnected. userdata: None,  reason_code: Normal disconnection
++ '[' 0 -eq 1 ']'

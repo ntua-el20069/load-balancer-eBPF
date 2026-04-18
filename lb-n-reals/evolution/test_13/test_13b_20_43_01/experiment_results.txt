@@ -1,0 +1,45 @@
+####################  Single broker experiment results:  ####################
+
+
+Experiment 1 (Single broker) start time: 2026_03_30/20_43_01, end time: 30/03/2026_20:52:12
+
+
+ client_3 sent to     real_0: 3000   Total LB messages (sum): 0
+
+
+
+####################  Katran-mqtt_fwd LB experiment results:  ####################
+
+
+Experiment 2 (Katran-mqtt_fwd LB) start time: 2026_03_30/20_54_12, end time: 30/03/2026_21:00:05
+
+
+ client_0 sent to     real_1: 3000   Total LB messages (sum): 3000
+ client_1 sent to     real_2: 3000   Total LB messages (sum): 3000
+ client_2 sent to     real_1: 3000   Total LB messages (sum): 3000
+ client_3 sent to     real_0: 3000    real_1: 2211    real_2: 718   Total LB messages (sum): 2929
+ client_4 sent to     real_4: 3000   Total LB messages (sum): 3000
+ client_5 sent to     real_3: 3000   Total LB messages (sum): 3000
+ client_6 sent to     real_4: 3000   Total LB messages (sum): 3000
+ client_7 sent to     real_4: 3000   Total LB messages (sum): 3000
+ client_8 sent to     real_4: 3000   Total LB messages (sum): 3000
+ client_9 sent to     real_6: 3000   Total LB messages (sum): 3000
+
+
+
+####################  Shared Subscription broker experiment results:  ####################
+
+
+Experiment 3 (Shared Subscription broker) start time: 2026_03_30/21_02_05, end time: 30/03/2026_21:08:27
+
+
+ client_0 sent to     real_1: 1493    real_2: 1507   Total LB messages (sum): 3000
+ client_1 sent to     real_1: 1447    real_2: 1553   Total LB messages (sum): 3000
+ client_2 sent to     real_1: 1393    real_2: 1607   Total LB messages (sum): 3000
+ client_3 sent to     real_1: 1667    real_2: 1333   Total LB messages (sum): 3000
+ client_4 sent to     real_3: 1511    real_4: 1489   Total LB messages (sum): 3000
+ client_5 sent to     real_3: 1504    real_4: 1496   Total LB messages (sum): 3000
+ client_6 sent to     real_3: 1486    real_4: 1514   Total LB messages (sum): 3000
+ client_7 sent to     real_3: 1499    real_4: 1501   Total LB messages (sum): 3000
+ client_8 sent to     real_3: 1500    real_4: 1500   Total LB messages (sum): 3000
+ client_9 sent to     real_5: 1500    real_6: 1500   Total LB messages (sum): 3000

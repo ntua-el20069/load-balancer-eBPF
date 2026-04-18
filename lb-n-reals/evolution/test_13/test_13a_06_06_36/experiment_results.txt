@@ -1,0 +1,54 @@
+####################  Single broker experiment results:  ####################
+
+
+Experiment 1 (Single broker) start time: 2026_03_30/06_06_36, end time: 30/03/2026_06:15:13
+
+
+ client_0 sent to     real_0: 29234   Total LB messages (sum): 0
+ client_1 sent to     real_0: 28877   Total LB messages (sum): 0
+ client_2 sent to     real_0: 28772   Total LB messages (sum): 0
+ client_3 sent to     real_0: 29518   Total LB messages (sum): 0
+ client_4 sent to     real_0: 29736   Total LB messages (sum): 0
+ client_5 sent to     real_0: 29123   Total LB messages (sum): 0
+ client_6 sent to     real_0: 29489   Total LB messages (sum): 0
+ client_7 sent to     real_0: 28355   Total LB messages (sum): 0
+ client_8 sent to     real_0: 29038   Total LB messages (sum): 0
+ client_9 sent to     real_0: 28286   Total LB messages (sum): 0
+
+
+
+####################  Katran-mqtt_fwd LB experiment results:  ####################
+
+
+Experiment 2 (Katran-mqtt_fwd LB) start time: 2026_03_30/06_17_13, end time: 30/03/2026_06:59:23
+
+
+ client_0 sent to     real_0: 29234    real_1: 175    real_2: 362   Total LB messages (sum): 537
+ client_1 sent to     real_0: 28877    real_1: 536    real_2: 413   Total LB messages (sum): 949
+ client_2 sent to     real_0: 28772    real_1: 371    real_2: 695   Total LB messages (sum): 1066
+ client_3 sent to     real_0: 29518    real_1: 390    real_2: 141   Total LB messages (sum): 531
+ client_4 sent to     real_0: 29736    real_3: 159    real_4: 325   Total LB messages (sum): 484
+ client_5 sent to     real_0: 29123    real_3: 366    real_4: 266   Total LB messages (sum): 632
+ client_6 sent to     real_0: 29489    real_3: 211    real_4: 695   Total LB messages (sum): 906
+ client_7 sent to     real_0: 28355    real_3: 156    real_4: 890   Total LB messages (sum): 1046
+ client_8 sent to     real_0: 29038    real_3: 143    real_4: 703   Total LB messages (sum): 846
+ client_9 sent to     real_0: 28286    real_5: 146    real_6: 233   Total LB messages (sum): 379
+
+
+
+####################  Shared Subscription broker experiment results:  ####################
+
+
+Experiment 3 (Shared Subscription broker) start time: 2026_03_30/07_01_23, end time: 30/03/2026_07:10:40
+
+
+ client_0 sent to     real_1: 15230    real_2: 14770   Total LB messages (sum): 30000
+ client_1 sent to     real_1: 14776    real_2: 15224   Total LB messages (sum): 30000
+ client_2 sent to     real_1: 14887    real_2: 15113   Total LB messages (sum): 30000
+ client_3 sent to     real_1: 15107    real_2: 14893   Total LB messages (sum): 30000
+ client_4 sent to     real_3: 14950    real_4: 14592   Total LB messages (sum): 29542
+ client_5 sent to     real_3: 15069    real_4: 14474   Total LB messages (sum): 29543
+ client_6 sent to     real_3: 15136    real_4: 14385   Total LB messages (sum): 29521
+ client_7 sent to     real_3: 14927    real_4: 14616   Total LB messages (sum): 29543
+ client_8 sent to     real_3: 15085    real_4: 14406   Total LB messages (sum): 29491
+ client_9 sent to     real_5: 15000    real_6: 15000   Total LB messages (sum): 30000

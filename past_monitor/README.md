@@ -41,3 +41,12 @@ docker compose up --build -d
 - Go to Dashboards > New > Import > (e.g. `test_9.json`) > Select Prometheus as the data source > Import
 - If you have saved the time of the experiment you can use `dashboard_with_xdp_metrics.json` and then Go to the Dashboard and select the time range the experiment was done, else if you just want to re-inspect one of the previously done experiments you can use `tests_dashboards/test_*.json`. (The dashboards differ only in the fields `time`, `title`,`uid`)  
 - You are ready to inspect cpu / memory usage, network traffic of the containers during the experiment 
+
+
+## Inspect Logs
+
+- Go inside a `lb-n-reals/evolution/test_<...>` and check the average MQTT publish period (seconds) of the clients
+```bash
+grep -orP "Average time per message:\s+[0-9]+\.[0-9]+" 
+```
+- Inspect the `experiments_results.txt` to see how many publish messages from each client were successfully delivered to reals (and which reals received them)

@@ -1,0 +1,1763 @@
++ ip route add 10.1.0.0/16 via 10.1.3.101 dev eth0
++ ip link add name ipip0 type ipip external
++ ip link set up dev ipip0
++ ip a a 127.0.0.42/32 dev ipip0
++ '[' -z 5 ']'
+Configuring Real Server NUM=5
++ echo 'Configuring Real Server NUM=5'
++ ip a a 10.1.50.0/24 dev lo
++ echo 'Set VIPs as loopback addresses'
+Set VIPs as loopback addresses
+++ sysctl -a
+++ awk '/\.rp_filter/ {print $1}'
+net.ipv4.conf.all.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.all.rp_filter
++ sysctl net.ipv4.conf.all.rp_filter=0
+net.ipv4.conf.all.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.default.rp_filter
++ sysctl net.ipv4.conf.default.rp_filter=0
+net.ipv4.conf.default.rp_filter
+net.ipv4.conf.default.rp_filter = 0
+net.ipv4.conf.erspan0.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.erspan0.rp_filter
++ sysctl net.ipv4.conf.erspan0.rp_filter=0
+net.ipv4.conf.erspan0.rp_filter = 0
+net.ipv4.conf.eth0.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.eth0.rp_filter
++ sysctl net.ipv4.conf.eth0.rp_filter=0
+net.ipv4.conf.eth0.rp_filter = 0
+net.ipv4.conf.gre0.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.gre0.rp_filter
++ sysctl net.ipv4.conf.gre0.rp_filter=0
+net.ipv4.conf.gre0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.gretap0.rp_filter
++ sysctl net.ipv4.conf.gretap0.rp_filter=0
+net.ipv4.conf.gretap0.rp_filter
+net.ipv4.conf.gretap0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.ip6_vti0.rp_filter
++ sysctl net.ipv4.conf.ip6_vti0.rp_filter=0
+net.ipv4.conf.ip6_vti0.rp_filter
+net.ipv4.conf.ip6_vti0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.ip6gre0.rp_filter
++ sysctl net.ipv4.conf.ip6gre0.rp_filter=0
+net.ipv4.conf.ip6gre0.rp_filter
+net.ipv4.conf.ip6gre0.rp_filter = 0
+net.ipv4.conf.ip6tnl0.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.ip6tnl0.rp_filter
++ sysctl net.ipv4.conf.ip6tnl0.rp_filter=0
+net.ipv4.conf.ip6tnl0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.ip_vti0.rp_filter
++ sysctl net.ipv4.conf.ip_vti0.rp_filter=0
+net.ipv4.conf.ip_vti0.rp_filter
+net.ipv4.conf.ip_vti0.rp_filter = 0
+net.ipv4.conf.ipip0.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.ipip0.rp_filter
++ sysctl net.ipv4.conf.ipip0.rp_filter=0
+net.ipv4.conf.ipip0.rp_filter = 0
+net.ipv4.conf.lo.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.lo.rp_filter
++ sysctl net.ipv4.conf.lo.rp_filter=0
+net.ipv4.conf.lo.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.sit0.rp_filter
++ sysctl net.ipv4.conf.sit0.rp_filter=0
+net.ipv4.conf.sit0.rp_filter
+net.ipv4.conf.sit0.rp_filter = 0
+net.ipv4.conf.tunl0.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.tunl0.rp_filter
++ sysctl net.ipv4.conf.tunl0.rp_filter=0
+net.ipv4.conf.tunl0.rp_filter = 0
++ topics=("non_existing_topic" "\$share/vip_a/measurements/temperature" "\$share/vip_a/measurements/temperature" "\$share/vip_b/measurements/humidity" "\$share/vip_b/measurements/humidity" "\$share/vip_default/measurements/other" "\$share/vip_default/measurements/other")
++ ping -c 1 -W 1 10.1.3.101
++ '[' 0 -eq 1 ']'
++ mosquitto -v -c /etc/mosquitto/conf.d/mosquitto.conf
+1774637487: mosquitto version 2.0.22 starting
+1774637487: Config loaded from /etc/mosquitto/conf.d/mosquitto.conf.
+1774637487: Opening ipv4 listen socket on port 1883.
+1774637487: Opening ipv6 listen socket on port 1883.
+1774637487: mosquitto version 2.0.22 running
+1774638170: New connection from 10.1.1.214:38913 on port 1883.
+1774638170: New client connected from 10.1.1.214:38913 as client_4 (p2, c1, k4).
+1774638170: No will message specified.
+1774638170: Sending CONNACK to client_4 (0, 0)
+1774638170: New connection from 10.1.1.210:52135 on port 1883.
+1774638170: New client connected from 10.1.1.210:52135 as client_0 (p2, c1, k4).
+1774638170: No will message specified.
+1774638170: Sending CONNACK to client_0 (0, 0)
+1774638170: New connection from 10.1.1.211:47641 on port 1883.
+1774638170: New client connected from 10.1.1.211:47641 as client_1 (p2, c1, k4).
+1774638170: No will message specified.
+1774638170: Sending CONNACK to client_1 (0, 0)
+1774638170: New connection from 10.1.1.217:36713 on port 1883.
+1774638170: New client connected from 10.1.1.217:36713 as client_7 (p2, c1, k4).
+1774638170: No will message specified.
+1774638170: Sending CONNACK to client_7 (0, 0)
+1774638170: New connection from 10.1.1.215:50749 on port 1883.
+1774638170: New client connected from 10.1.1.215:50749 as client_5 (p2, c1, k4).
+1774638170: No will message specified.
+1774638170: Sending CONNACK to client_5 (0, 0)
+1774638171: New connection from 10.1.1.219:59939 on port 1883.
+1774638171: New client connected from 10.1.1.219:59939 as client_9 (p2, c1, k4).
+1774638171: No will message specified.
+1774638171: Sending CONNACK to client_9 (0, 0)
+1774638171: New connection from 10.1.1.212:40281 on port 1883.
+1774638171: New client connected from 10.1.1.212:40281 as client_2 (p2, c1, k4).
+1774638171: No will message specified.
+1774638171: Sending CONNACK to client_2 (0, 0)
+1774638174: Received PINGREQ from client_4
+1774638174: Sending PINGRESP to client_4
+1774638174: Received PINGREQ from client_0
+1774638174: Sending PINGRESP to client_0
+1774638174: Received PINGREQ from client_1
+1774638174: Sending PINGRESP to client_1
+1774638174: Received PINGREQ from client_7
+1774638174: Sending PINGRESP to client_7
+1774638174: Received PINGREQ from client_5
+1774638174: Sending PINGRESP to client_5
+1774638175: Received PINGREQ from client_9
+1774638175: Sending PINGRESP to client_9
+1774638175: Received PINGREQ from client_2
+1774638175: Sending PINGRESP to client_2
+1774638176: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638180: Client client_4 has exceeded timeout, disconnecting.
+1774638180: Client client_0 has exceeded timeout, disconnecting.
+1774638181: Client client_1 has exceeded timeout, disconnecting.
+1774638181: Client client_7 has exceeded timeout, disconnecting.
+1774638181: Client client_5 has exceeded timeout, disconnecting.
+1774638181: Client client_2 has exceeded timeout, disconnecting.
+1774638182: Client client_9 has exceeded timeout, disconnecting.
+1774638207: New connection from 10.1.1.219:52861 on port 1883.
+1774638207: New client connected from 10.1.1.219:52861 as client_9 (p2, c1, k4).
+1774638207: No will message specified.
+1774638207: Sending CONNACK to client_9 (0, 0)
+1774638208: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638214: Client client_9 has exceeded timeout, disconnecting.
+1774638263: New connection from 10.1.1.219:60001 on port 1883.
+1774638263: New client connected from 10.1.1.219:60001 as client_9 (p2, c1, k4).
+1774638263: No will message specified.
+1774638263: Sending CONNACK to client_9 (0, 0)
+1774638264: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638270: Client client_9 has exceeded timeout, disconnecting.
+1774638320: New connection from 10.1.1.219:43743 on port 1883.
+1774638320: New client connected from 10.1.1.219:43743 as client_9 (p2, c1, k4).
+1774638320: No will message specified.
+1774638320: Sending CONNACK to client_9 (0, 0)
+1774638321: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638327: Client client_9 has exceeded timeout, disconnecting.
+1774638336: New connection from 10.1.1.219:54091 on port 1883.
+1774638336: New client connected from 10.1.1.219:54091 as client_9 (p2, c1, k4).
+1774638336: No will message specified.
+1774638336: Sending CONNACK to client_9 (0, 0)
+1774638337: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638343: Client client_9 has exceeded timeout, disconnecting.
+1774638344: New connection from 10.1.1.219:48871 on port 1883.
+1774638344: New client connected from 10.1.1.219:48871 as client_9 (p2, c1, k4).
+1774638344: No will message specified.
+1774638344: Sending CONNACK to client_9 (0, 0)
+1774638345: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638351: Client client_9 has exceeded timeout, disconnecting.
+1774638352: New connection from 10.1.1.219:60515 on port 1883.
+1774638352: New client connected from 10.1.1.219:60515 as client_9 (p2, c1, k4).
+1774638352: No will message specified.
+1774638352: Sending CONNACK to client_9 (0, 0)
+1774638353: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638359: Client client_9 has exceeded timeout, disconnecting.
+1774638368: New connection from 10.1.1.219:37893 on port 1883.
+1774638368: New client connected from 10.1.1.219:37893 as client_9 (p2, c1, k4).
+1774638368: No will message specified.
+1774638368: Sending CONNACK to client_9 (0, 0)
+1774638369: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638375: Client client_9 has exceeded timeout, disconnecting.
+1774638392: New connection from 10.1.1.219:34579 on port 1883.
+1774638392: New client connected from 10.1.1.219:34579 as client_9 (p2, c1, k4).
+1774638392: No will message specified.
+1774638392: Sending CONNACK to client_9 (0, 0)
+1774638393: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638399: Client client_9 has exceeded timeout, disconnecting.
+1774638408: New connection from 10.1.1.219:36117 on port 1883.
+1774638408: New client connected from 10.1.1.219:36117 as client_9 (p2, c1, k4).
+1774638408: No will message specified.
+1774638408: Sending CONNACK to client_9 (0, 0)
+1774638409: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638415: Client client_9 has exceeded timeout, disconnecting.
+1774638424: New connection from 10.1.1.219:44517 on port 1883.
+1774638424: New client connected from 10.1.1.219:44517 as client_9 (p2, c1, k4).
+1774638424: No will message specified.
+1774638424: Sending CONNACK to client_9 (0, 0)
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638425: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638426: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638427: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PINGREQ from client_9
+1774638428: Sending PINGRESP to client_9
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638428: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638429: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638430: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638431: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PINGREQ from client_9
+1774638432: Sending PINGRESP to client_9
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638433: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638434: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638435: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638436: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638436: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638436: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638436: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638436: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638436: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638436: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638436: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638436: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638436: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638436: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638436: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638436: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638436: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638436: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638436: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638436: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638436: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638436: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638442: New connection from 10.1.1.219:35793 on port 1883.
+1774638442: Client client_9 already connected, closing old connection.
+1774638442: New client connected from 10.1.1.219:35793 as client_9 (p2, c1, k4).
+1774638442: No will message specified.
+1774638442: Sending CONNACK to client_9 (0, 0)
+1774638442: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638449: Client client_9 has exceeded timeout, disconnecting.
+1774638466: New connection from 10.1.1.219:43555 on port 1883.
+1774638466: New client connected from 10.1.1.219:43555 as client_9 (p2, c1, k4).
+1774638466: No will message specified.
+1774638466: Sending CONNACK to client_9 (0, 0)
+1774638467: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638473: Client client_9 has exceeded timeout, disconnecting.
+1774638490: New connection from 10.1.1.219:34205 on port 1883.
+1774638490: New client connected from 10.1.1.219:34205 as client_9 (p2, c1, k4).
+1774638490: No will message specified.
+1774638490: Sending CONNACK to client_9 (0, 0)
+1774638491: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638497: Client client_9 has exceeded timeout, disconnecting.
+1774638506: New connection from 10.1.1.219:48791 on port 1883.
+1774638506: New client connected from 10.1.1.219:48791 as client_9 (p2, c1, k4).
+1774638506: No will message specified.
+1774638506: Sending CONNACK to client_9 (0, 0)
+1774638507: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638513: Client client_9 has exceeded timeout, disconnecting.
+1774638514: New connection from 10.1.1.219:34443 on port 1883.
+1774638514: New client connected from 10.1.1.219:34443 as client_9 (p2, c1, k4).
+1774638514: No will message specified.
+1774638514: Sending CONNACK to client_9 (0, 0)
+1774638515: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638521: Client client_9 has exceeded timeout, disconnecting.
+1774638538: New connection from 10.1.1.219:38335 on port 1883.
+1774638538: New client connected from 10.1.1.219:38335 as client_9 (p2, c1, k4).
+1774638538: No will message specified.
+1774638538: Sending CONNACK to client_9 (0, 0)
+1774638539: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638545: Client client_9 has exceeded timeout, disconnecting.
+1774638546: New connection from 10.1.1.219:46257 on port 1883.
+1774638546: New client connected from 10.1.1.219:46257 as client_9 (p2, c1, k4).
+1774638546: No will message specified.
+1774638546: Sending CONNACK to client_9 (0, 0)
+1774638546: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638553: Client client_9 has exceeded timeout, disconnecting.
+1774638554: New connection from 10.1.1.219:44543 on port 1883.
+1774638554: New client connected from 10.1.1.219:44543 as client_9 (p2, c1, k4).
+1774638554: No will message specified.
+1774638554: Sending CONNACK to client_9 (0, 0)
+1774638555: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638561: Client client_9 has exceeded timeout, disconnecting.
+1774638562: New connection from 10.1.1.219:44549 on port 1883.
+1774638562: New client connected from 10.1.1.219:44549 as client_9 (p2, c1, k4).
+1774638562: No will message specified.
+1774638562: Sending CONNACK to client_9 (0, 0)
+1774638563: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638569: Client client_9 has exceeded timeout, disconnecting.
+1774638602: New connection from 10.1.1.219:48201 on port 1883.
+1774638602: New client connected from 10.1.1.219:48201 as client_9 (p2, c1, k4).
+1774638602: No will message specified.
+1774638602: Sending CONNACK to client_9 (0, 0)
+1774638603: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638609: Client client_9 has exceeded timeout, disconnecting.
+1774638618: New connection from 10.1.1.219:43517 on port 1883.
+1774638618: New client connected from 10.1.1.219:43517 as client_9 (p2, c1, k4).
+1774638618: No will message specified.
+1774638618: Sending CONNACK to client_9 (0, 0)
+1774638619: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638625: Client client_9 has exceeded timeout, disconnecting.
+1774638634: New connection from 10.1.1.219:53961 on port 1883.
+1774638634: New client connected from 10.1.1.219:53961 as client_9 (p2, c1, k4).
+1774638634: No will message specified.
+1774638634: Sending CONNACK to client_9 (0, 0)
+1774638635: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638641: Client client_9 has exceeded timeout, disconnecting.
+1774638642: New connection from 10.1.1.219:57093 on port 1883.
+1774638642: New client connected from 10.1.1.219:57093 as client_9 (p2, c1, k4).
+1774638642: No will message specified.
+1774638642: Sending CONNACK to client_9 (0, 0)
+1774638643: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638649: Client client_9 has exceeded timeout, disconnecting.
+1774638682: New connection from 10.1.1.219:59403 on port 1883.
+1774638682: New client connected from 10.1.1.219:59403 as client_9 (p2, c1, k4).
+1774638682: No will message specified.
+1774638682: Sending CONNACK to client_9 (0, 0)
+1774638683: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638689: Client client_9 has exceeded timeout, disconnecting.
+1774638698: New connection from 10.1.1.219:47951 on port 1883.
+1774638698: New client connected from 10.1.1.219:47951 as client_9 (p2, c1, k4).
+1774638698: No will message specified.
+1774638698: Sending CONNACK to client_9 (0, 0)
+1774638699: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638705: Client client_9 has exceeded timeout, disconnecting.
+1774638722: New connection from 10.1.1.219:45031 on port 1883.
+1774638722: New client connected from 10.1.1.219:45031 as client_9 (p2, c1, k4).
+1774638722: No will message specified.
+1774638722: Sending CONNACK to client_9 (0, 0)
+1774638723: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638729: Client client_9 has exceeded timeout, disconnecting.
+1774638738: New connection from 10.1.1.219:52905 on port 1883.
+1774638738: New client connected from 10.1.1.219:52905 as client_9 (p2, c1, k4).
+1774638738: No will message specified.
+1774638738: Sending CONNACK to client_9 (0, 0)
+1774638739: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638745: Client client_9 has exceeded timeout, disconnecting.
+1774638746: New connection from 10.1.1.219:38101 on port 1883.
+1774638746: New client connected from 10.1.1.219:38101 as client_9 (p2, c1, k4).
+1774638746: No will message specified.
+1774638746: Sending CONNACK to client_9 (0, 0)
+1774638747: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638753: Client client_9 has exceeded timeout, disconnecting.
+1774638754: New connection from 10.1.1.219:57867 on port 1883.
+1774638754: New client connected from 10.1.1.219:57867 as client_9 (p2, c1, k4).
+1774638754: No will message specified.
+1774638754: Sending CONNACK to client_9 (0, 0)
+1774638755: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638761: Client client_9 has exceeded timeout, disconnecting.
+1774638762: New connection from 10.1.1.219:53541 on port 1883.
+1774638762: New client connected from 10.1.1.219:53541 as client_9 (p2, c1, k4).
+1774638762: No will message specified.
+1774638762: Sending CONNACK to client_9 (0, 0)
+1774638763: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638769: Client client_9 has exceeded timeout, disconnecting.
+1774638778: New connection from 10.1.1.219:49455 on port 1883.
+1774638778: New client connected from 10.1.1.219:49455 as client_9 (p2, c1, k4).
+1774638778: No will message specified.
+1774638778: Sending CONNACK to client_9 (0, 0)
+1774638779: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638785: Client client_9 has exceeded timeout, disconnecting.
+1774638794: New connection from 10.1.1.219:56199 on port 1883.
+1774638794: New client connected from 10.1.1.219:56199 as client_9 (p2, c1, k4).
+1774638794: No will message specified.
+1774638794: Sending CONNACK to client_9 (0, 0)
+1774638795: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638801: Client client_9 has exceeded timeout, disconnecting.
+1774638826: New connection from 10.1.1.219:47691 on port 1883.
+1774638826: New client connected from 10.1.1.219:47691 as client_9 (p2, c1, k4).
+1774638826: No will message specified.
+1774638826: Sending CONNACK to client_9 (0, 0)
+1774638827: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638833: Client client_9 has exceeded timeout, disconnecting.
+1774638850: New connection from 10.1.1.219:58683 on port 1883.
+1774638850: New client connected from 10.1.1.219:58683 as client_9 (p2, c1, k4).
+1774638850: No will message specified.
+1774638850: Sending CONNACK to client_9 (0, 0)
+1774638850: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638857: Client client_9 has exceeded timeout, disconnecting.
+1774638858: New connection from 10.1.1.219:39531 on port 1883.
+1774638858: New client connected from 10.1.1.219:39531 as client_9 (p2, c1, k4).
+1774638858: No will message specified.
+1774638858: Sending CONNACK to client_9 (0, 0)
+1774638859: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638865: Client client_9 has exceeded timeout, disconnecting.
+1774638882: New connection from 10.1.1.219:58841 on port 1883.
+1774638882: New client connected from 10.1.1.219:58841 as client_9 (p2, c1, k4).
+1774638882: No will message specified.
+1774638882: Sending CONNACK to client_9 (0, 0)
+1774638883: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638889: Client client_9 has exceeded timeout, disconnecting.
+1774638890: New connection from 10.1.1.219:35223 on port 1883.
+1774638890: New client connected from 10.1.1.219:35223 as client_9 (p2, c1, k4).
+1774638890: No will message specified.
+1774638890: Sending CONNACK to client_9 (0, 0)
+1774638891: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638897: Client client_9 has exceeded timeout, disconnecting.
+1774638906: New connection from 10.1.1.219:46129 on port 1883.
+1774638906: New client connected from 10.1.1.219:46129 as client_9 (p2, c1, k4).
+1774638906: No will message specified.
+1774638906: Sending CONNACK to client_9 (0, 0)
+1774638907: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638913: Client client_9 has exceeded timeout, disconnecting.
+1774638914: New connection from 10.1.1.219:51397 on port 1883.
+1774638914: New client connected from 10.1.1.219:51397 as client_9 (p2, c1, k4).
+1774638914: No will message specified.
+1774638914: Sending CONNACK to client_9 (0, 0)
+1774638915: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638921: Client client_9 has exceeded timeout, disconnecting.
+1774638922: New connection from 10.1.1.219:37837 on port 1883.
+1774638922: New client connected from 10.1.1.219:37837 as client_9 (p2, c1, k4).
+1774638922: No will message specified.
+1774638922: Sending CONNACK to client_9 (0, 0)
+1774638923: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638929: Client client_9 has exceeded timeout, disconnecting.
+1774638978: New connection from 10.1.1.219:60981 on port 1883.
+1774638978: New client connected from 10.1.1.219:60981 as client_9 (p2, c1, k4).
+1774638978: No will message specified.
+1774638978: Sending CONNACK to client_9 (0, 0)
+1774638979: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638985: Client client_9 has exceeded timeout, disconnecting.
+1774638986: New connection from 10.1.1.219:39315 on port 1883.
+1774638986: New client connected from 10.1.1.219:39315 as client_9 (p2, c1, k4).
+1774638986: No will message specified.
+1774638986: Sending CONNACK to client_9 (0, 0)
+1774638987: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774638993: Client client_9 has exceeded timeout, disconnecting.
+1774639018: New connection from 10.1.1.219:38661 on port 1883.
+1774639018: New client connected from 10.1.1.219:38661 as client_9 (p2, c1, k4).
+1774639018: No will message specified.
+1774639018: Sending CONNACK to client_9 (0, 0)
+1774639019: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639025: Client client_9 has exceeded timeout, disconnecting.
+1774639026: New connection from 10.1.1.219:37565 on port 1883.
+1774639026: New client connected from 10.1.1.219:37565 as client_9 (p2, c1, k4).
+1774639026: No will message specified.
+1774639026: Sending CONNACK to client_9 (0, 0)
+1774639027: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639033: Client client_9 has exceeded timeout, disconnecting.
+1774639034: New connection from 10.1.1.219:42327 on port 1883.
+1774639034: New client connected from 10.1.1.219:42327 as client_9 (p2, c1, k4).
+1774639034: No will message specified.
+1774639034: Sending CONNACK to client_9 (0, 0)
+1774639035: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639041: Client client_9 has exceeded timeout, disconnecting.
+1774639042: New connection from 10.1.1.219:34357 on port 1883.
+1774639042: New client connected from 10.1.1.219:34357 as client_9 (p2, c1, k4).
+1774639042: No will message specified.
+1774639042: Sending CONNACK to client_9 (0, 0)
+1774639043: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639049: Client client_9 has exceeded timeout, disconnecting.
+1774639050: New connection from 10.1.1.219:50905 on port 1883.
+1774639050: New client connected from 10.1.1.219:50905 as client_9 (p2, c1, k4).
+1774639050: No will message specified.
+1774639050: Sending CONNACK to client_9 (0, 0)
+1774639051: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639057: Client client_9 has exceeded timeout, disconnecting.
+1774639058: New connection from 10.1.1.219:50421 on port 1883.
+1774639058: New client connected from 10.1.1.219:50421 as client_9 (p2, c1, k4).
+1774639058: No will message specified.
+1774639058: Sending CONNACK to client_9 (0, 0)
+1774639059: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639065: Client client_9 has exceeded timeout, disconnecting.
+1774639090: New connection from 10.1.1.219:52447 on port 1883.
+1774639090: New client connected from 10.1.1.219:52447 as client_9 (p2, c1, k4).
+1774639090: No will message specified.
+1774639090: Sending CONNACK to client_9 (0, 0)
+1774639091: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639097: Client client_9 has exceeded timeout, disconnecting.
+1774639106: New connection from 10.1.1.219:50469 on port 1883.
+1774639106: New client connected from 10.1.1.219:50469 as client_9 (p2, c1, k4).
+1774639106: No will message specified.
+1774639106: Sending CONNACK to client_9 (0, 0)
+1774639107: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639113: Client client_9 has exceeded timeout, disconnecting.
+1774639114: New connection from 10.1.1.219:58913 on port 1883.
+1774639114: New client connected from 10.1.1.219:58913 as client_9 (p2, c1, k4).
+1774639114: No will message specified.
+1774639114: Sending CONNACK to client_9 (0, 0)
+1774639115: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639121: Client client_9 has exceeded timeout, disconnecting.
+1774639130: New connection from 10.1.1.219:54821 on port 1883.
+1774639130: New client connected from 10.1.1.219:54821 as client_9 (p2, c1, k4).
+1774639130: No will message specified.
+1774639130: Sending CONNACK to client_9 (0, 0)
+1774639131: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639137: Client client_9 has exceeded timeout, disconnecting.
+1774639146: New connection from 10.1.1.219:47981 on port 1883.
+1774639146: New client connected from 10.1.1.219:47981 as client_9 (p2, c1, k4).
+1774639146: No will message specified.
+1774639146: Sending CONNACK to client_9 (0, 0)
+1774639147: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639153: Client client_9 has exceeded timeout, disconnecting.
+1774639154: New connection from 10.1.1.219:39521 on port 1883.
+1774639154: New client connected from 10.1.1.219:39521 as client_9 (p2, c1, k4).
+1774639154: No will message specified.
+1774639154: Sending CONNACK to client_9 (0, 0)
+1774639155: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639161: Client client_9 has exceeded timeout, disconnecting.
+1774639170: New connection from 10.1.1.219:39711 on port 1883.
+1774639170: New client connected from 10.1.1.219:39711 as client_9 (p2, c1, k4).
+1774639170: No will message specified.
+1774639170: Sending CONNACK to client_9 (0, 0)
+1774639171: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639177: Client client_9 has exceeded timeout, disconnecting.
+1774639186: New connection from 10.1.1.219:34367 on port 1883.
+1774639186: New client connected from 10.1.1.219:34367 as client_9 (p2, c1, k4).
+1774639186: No will message specified.
+1774639186: Sending CONNACK to client_9 (0, 0)
+1774639187: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639193: Client client_9 has exceeded timeout, disconnecting.
+1774639194: New connection from 10.1.1.219:54133 on port 1883.
+1774639194: New client connected from 10.1.1.219:54133 as client_9 (p2, c1, k4).
+1774639194: No will message specified.
+1774639194: Sending CONNACK to client_9 (0, 0)
+1774639195: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639201: Client client_9 has exceeded timeout, disconnecting.
+1774639202: New connection from 10.1.1.219:38983 on port 1883.
+1774639202: New client connected from 10.1.1.219:38983 as client_9 (p2, c1, k4).
+1774639202: No will message specified.
+1774639202: Sending CONNACK to client_9 (0, 0)
+1774639203: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639209: Client client_9 has exceeded timeout, disconnecting.
+1774639218: New connection from 10.1.1.219:38273 on port 1883.
+1774639218: New client connected from 10.1.1.219:38273 as client_9 (p2, c1, k4).
+1774639218: No will message specified.
+1774639218: Sending CONNACK to client_9 (0, 0)
+1774639219: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639225: Client client_9 has exceeded timeout, disconnecting.
+1774639226: New connection from 10.1.1.219:57119 on port 1883.
+1774639226: New client connected from 10.1.1.219:57119 as client_9 (p2, c1, k4).
+1774639226: No will message specified.
+1774639226: Sending CONNACK to client_9 (0, 0)
+1774639227: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639233: Client client_9 has exceeded timeout, disconnecting.
+1774639234: New connection from 10.1.1.219:54127 on port 1883.
+1774639234: New client connected from 10.1.1.219:54127 as client_9 (p2, c1, k4).
+1774639234: No will message specified.
+1774639234: Sending CONNACK to client_9 (0, 0)
+1774639235: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639241: Client client_9 has exceeded timeout, disconnecting.
+1774639258: New connection from 10.1.1.219:59051 on port 1883.
+1774639258: New client connected from 10.1.1.219:59051 as client_9 (p2, c1, k4).
+1774639258: No will message specified.
+1774639258: Sending CONNACK to client_9 (0, 0)
+1774639259: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639265: Client client_9 has exceeded timeout, disconnecting.
+1774639266: New connection from 10.1.1.219:46639 on port 1883.
+1774639266: New client connected from 10.1.1.219:46639 as client_9 (p2, c1, k4).
+1774639266: No will message specified.
+1774639266: Sending CONNACK to client_9 (0, 0)
+1774639267: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639273: Client client_9 has exceeded timeout, disconnecting.
+1774639274: New connection from 10.1.1.219:36735 on port 1883.
+1774639274: New client connected from 10.1.1.219:36735 as client_9 (p2, c1, k4).
+1774639274: No will message specified.
+1774639274: Sending CONNACK to client_9 (0, 0)
+1774639275: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639281: Client client_9 has exceeded timeout, disconnecting.
+1774639282: New connection from 10.1.1.219:35537 on port 1883.
+1774639282: New client connected from 10.1.1.219:35537 as client_9 (p2, c1, k4).
+1774639282: No will message specified.
+1774639282: Sending CONNACK to client_9 (0, 0)
+1774639283: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639289: Client client_9 has exceeded timeout, disconnecting.
+1774639290: New connection from 10.1.1.219:35155 on port 1883.
+1774639290: New client connected from 10.1.1.219:35155 as client_9 (p2, c1, k4).
+1774639290: No will message specified.
+1774639290: Sending CONNACK to client_9 (0, 0)
+1774639291: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639297: Client client_9 has exceeded timeout, disconnecting.
+1774639306: New connection from 10.1.1.219:49617 on port 1883.
+1774639306: New client connected from 10.1.1.219:49617 as client_9 (p2, c1, k4).
+1774639306: No will message specified.
+1774639306: Sending CONNACK to client_9 (0, 0)
+1774639307: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639313: Client client_9 has exceeded timeout, disconnecting.
+1774639314: New connection from 10.1.1.219:39147 on port 1883.
+1774639314: New client connected from 10.1.1.219:39147 as client_9 (p2, c1, k4).
+1774639314: No will message specified.
+1774639314: Sending CONNACK to client_9 (0, 0)
+1774639315: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639321: Client client_9 has exceeded timeout, disconnecting.
+1774639338: New connection from 10.1.1.219:32819 on port 1883.
+1774639338: New client connected from 10.1.1.219:32819 as client_9 (p2, c1, k4).
+1774639338: No will message specified.
+1774639338: Sending CONNACK to client_9 (0, 0)
+1774639339: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639345: Client client_9 has exceeded timeout, disconnecting.
+1774639346: New connection from 10.1.1.219:49341 on port 1883.
+1774639346: New client connected from 10.1.1.219:49341 as client_9 (p2, c1, k4).
+1774639346: No will message specified.
+1774639346: Sending CONNACK to client_9 (0, 0)
+1774639347: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639353: Client client_9 has exceeded timeout, disconnecting.
+1774639362: New connection from 10.1.1.219:53929 on port 1883.
+1774639362: New client connected from 10.1.1.219:53929 as client_9 (p2, c1, k4).
+1774639362: No will message specified.
+1774639362: Sending CONNACK to client_9 (0, 0)
+1774639363: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639369: Client client_9 has exceeded timeout, disconnecting.
+1774639370: New connection from 10.1.1.219:53937 on port 1883.
+1774639370: New client connected from 10.1.1.219:53937 as client_9 (p2, c1, k4).
+1774639370: No will message specified.
+1774639370: Sending CONNACK to client_9 (0, 0)
+1774639371: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639377: Client client_9 has exceeded timeout, disconnecting.
+1774639386: New connection from 10.1.1.219:57683 on port 1883.
+1774639386: New client connected from 10.1.1.219:57683 as client_9 (p2, c1, k4).
+1774639386: No will message specified.
+1774639386: Sending CONNACK to client_9 (0, 0)
+1774639387: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639393: Client client_9 has exceeded timeout, disconnecting.
+1774639394: New connection from 10.1.1.219:45359 on port 1883.
+1774639394: New client connected from 10.1.1.219:45359 as client_9 (p2, c1, k4).
+1774639394: No will message specified.
+1774639394: Sending CONNACK to client_9 (0, 0)
+1774639395: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639401: Client client_9 has exceeded timeout, disconnecting.
+1774639463: New connection from 10.1.1.219:38113 on port 1883.
+1774639463: New client connected from 10.1.1.219:38113 as client_9 (p2, c1, k4).
+1774639463: No will message specified.
+1774639463: Sending CONNACK to client_9 (0, 0)
+1774639464: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639470: Client client_9 has exceeded timeout, disconnecting.
+1774639471: New connection from 10.1.1.219:40817 on port 1883.
+1774639471: New client connected from 10.1.1.219:40817 as client_9 (p2, c1, k4).
+1774639471: No will message specified.
+1774639471: Sending CONNACK to client_9 (0, 0)
+1774639472: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639478: Client client_9 has exceeded timeout, disconnecting.
+1774639487: New connection from 10.1.1.219:50561 on port 1883.
+1774639487: New client connected from 10.1.1.219:50561 as client_9 (p2, c1, k4).
+1774639487: No will message specified.
+1774639487: Sending CONNACK to client_9 (0, 0)
+1774639488: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639494: Client client_9 has exceeded timeout, disconnecting.
+1774639495: New connection from 10.1.1.219:59629 on port 1883.
+1774639495: New client connected from 10.1.1.219:59629 as client_9 (p2, c1, k4).
+1774639495: No will message specified.
+1774639495: Sending CONNACK to client_9 (0, 0)
+1774639496: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639502: Client client_9 has exceeded timeout, disconnecting.
+1774639503: New connection from 10.1.1.219:49743 on port 1883.
+1774639503: New client connected from 10.1.1.219:49743 as client_9 (p2, c1, k4).
+1774639503: No will message specified.
+1774639503: Sending CONNACK to client_9 (0, 0)
+1774639504: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639510: Client client_9 has exceeded timeout, disconnecting.
+1774639511: New connection from 10.1.1.219:52673 on port 1883.
+1774639511: New client connected from 10.1.1.219:52673 as client_9 (p2, c1, k4).
+1774639511: No will message specified.
+1774639511: Sending CONNACK to client_9 (0, 0)
+1774639512: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639518: Client client_9 has exceeded timeout, disconnecting.
+1774639519: New connection from 10.1.1.219:38057 on port 1883.
+1774639519: New client connected from 10.1.1.219:38057 as client_9 (p2, c1, k4).
+1774639519: No will message specified.
+1774639519: Sending CONNACK to client_9 (0, 0)
+1774639520: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639526: Client client_9 has exceeded timeout, disconnecting.
+1774639527: New connection from 10.1.1.219:59491 on port 1883.
+1774639527: New client connected from 10.1.1.219:59491 as client_9 (p2, c1, k4).
+1774639527: No will message specified.
+1774639527: Sending CONNACK to client_9 (0, 0)
+1774639528: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639534: Client client_9 has exceeded timeout, disconnecting.
+1774639543: New connection from 10.1.1.219:40303 on port 1883.
+1774639543: New client connected from 10.1.1.219:40303 as client_9 (p2, c1, k4).
+1774639543: No will message specified.
+1774639543: Sending CONNACK to client_9 (0, 0)
+1774639544: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639550: Client client_9 has exceeded timeout, disconnecting.
+1774639575: New connection from 10.1.1.219:41517 on port 1883.
+1774639575: New client connected from 10.1.1.219:41517 as client_9 (p2, c1, k4).
+1774639575: No will message specified.
+1774639575: Sending CONNACK to client_9 (0, 0)
+1774639576: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639582: Client client_9 has exceeded timeout, disconnecting.
+1774639583: New connection from 10.1.1.219:52393 on port 1883.
+1774639583: New client connected from 10.1.1.219:52393 as client_9 (p2, c1, k4).
+1774639583: No will message specified.
+1774639583: Sending CONNACK to client_9 (0, 0)
+1774639584: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639590: Client client_9 has exceeded timeout, disconnecting.
+1774639591: New connection from 10.1.1.219:57221 on port 1883.
+1774639591: New client connected from 10.1.1.219:57221 as client_9 (p2, c1, k4).
+1774639591: No will message specified.
+1774639591: Sending CONNACK to client_9 (0, 0)
+1774639592: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639598: Client client_9 has exceeded timeout, disconnecting.
+1774639607: New connection from 10.1.1.219:42071 on port 1883.
+1774639607: New client connected from 10.1.1.219:42071 as client_9 (p2, c1, k4).
+1774639607: No will message specified.
+1774639607: Sending CONNACK to client_9 (0, 0)
+1774639608: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639614: Client client_9 has exceeded timeout, disconnecting.
+1774639615: New connection from 10.1.1.219:53091 on port 1883.
+1774639615: New client connected from 10.1.1.219:53091 as client_9 (p2, c1, k4).
+1774639615: No will message specified.
+1774639615: Sending CONNACK to client_9 (0, 0)
+1774639616: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639622: Client client_9 has exceeded timeout, disconnecting.
+1774639623: New connection from 10.1.1.219:39679 on port 1883.
+1774639623: New client connected from 10.1.1.219:39679 as client_9 (p2, c1, k4).
+1774639623: No will message specified.
+1774639623: Sending CONNACK to client_9 (0, 0)
+1774639624: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639630: Client client_9 has exceeded timeout, disconnecting.
+1774639655: New connection from 10.1.1.219:36257 on port 1883.
+1774639655: New client connected from 10.1.1.219:36257 as client_9 (p2, c1, k4).
+1774639655: No will message specified.
+1774639655: Sending CONNACK to client_9 (0, 0)
+1774639656: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639662: Client client_9 has exceeded timeout, disconnecting.
+1774639679: New connection from 10.1.1.219:48239 on port 1883.
+1774639679: New client connected from 10.1.1.219:48239 as client_9 (p2, c1, k4).
+1774639679: No will message specified.
+1774639679: Sending CONNACK to client_9 (0, 0)
+1774639680: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639686: Client client_9 has exceeded timeout, disconnecting.
+1774639687: New connection from 10.1.1.219:55835 on port 1883.
+1774639687: New client connected from 10.1.1.219:55835 as client_9 (p2, c1, k4).
+1774639687: No will message specified.
+1774639687: Sending CONNACK to client_9 (0, 0)
+1774639688: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639694: Client client_9 has exceeded timeout, disconnecting.
+1774639695: New connection from 10.1.1.219:41307 on port 1883.
+1774639695: New client connected from 10.1.1.219:41307 as client_9 (p2, c1, k4).
+1774639695: No will message specified.
+1774639695: Sending CONNACK to client_9 (0, 0)
+1774639696: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639702: Client client_9 has exceeded timeout, disconnecting.
+1774639719: New connection from 10.1.1.219:41655 on port 1883.
+1774639719: New client connected from 10.1.1.219:41655 as client_9 (p2, c1, k4).
+1774639719: No will message specified.
+1774639719: Sending CONNACK to client_9 (0, 0)
+1774639720: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639726: Client client_9 has exceeded timeout, disconnecting.
+1774639727: New connection from 10.1.1.219:39281 on port 1883.
+1774639727: New client connected from 10.1.1.219:39281 as client_9 (p2, c1, k4).
+1774639727: No will message specified.
+1774639727: Sending CONNACK to client_9 (0, 0)
+1774639728: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639734: Client client_9 has exceeded timeout, disconnecting.
+1774639735: New connection from 10.1.1.219:59777 on port 1883.
+1774639735: New client connected from 10.1.1.219:59777 as client_9 (p2, c1, k4).
+1774639735: No will message specified.
+1774639735: Sending CONNACK to client_9 (0, 0)
+1774639736: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639742: Client client_9 has exceeded timeout, disconnecting.
+1774639751: New connection from 10.1.1.219:56791 on port 1883.
+1774639751: New client connected from 10.1.1.219:56791 as client_9 (p2, c1, k4).
+1774639751: No will message specified.
+1774639751: Sending CONNACK to client_9 (0, 0)
+1774639752: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639758: Client client_9 has exceeded timeout, disconnecting.
+1774639759: New connection from 10.1.1.219:44625 on port 1883.
+1774639759: New client connected from 10.1.1.219:44625 as client_9 (p2, c1, k4).
+1774639759: No will message specified.
+1774639759: Sending CONNACK to client_9 (0, 0)
+1774639760: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639766: Client client_9 has exceeded timeout, disconnecting.
+1774639767: New connection from 10.1.1.219:43769 on port 1883.
+1774639767: New client connected from 10.1.1.219:43769 as client_9 (p2, c1, k4).
+1774639767: No will message specified.
+1774639767: Sending CONNACK to client_9 (0, 0)
+1774639768: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639774: Client client_9 has exceeded timeout, disconnecting.
+1774639775: New connection from 10.1.1.219:55011 on port 1883.
+1774639775: New client connected from 10.1.1.219:55011 as client_9 (p2, c1, k4).
+1774639775: No will message specified.
+1774639775: Sending CONNACK to client_9 (0, 0)
+1774639776: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639782: Client client_9 has exceeded timeout, disconnecting.
+1774639783: New connection from 10.1.1.219:48945 on port 1883.
+1774639783: New client connected from 10.1.1.219:48945 as client_9 (p2, c1, k4).
+1774639783: No will message specified.
+1774639783: Sending CONNACK to client_9 (0, 0)
+1774639784: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639790: Client client_9 has exceeded timeout, disconnecting.
+1774639791: New connection from 10.1.1.219:58333 on port 1883.
+1774639791: New client connected from 10.1.1.219:58333 as client_9 (p2, c1, k4).
+1774639791: No will message specified.
+1774639791: Sending CONNACK to client_9 (0, 0)
+1774639792: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639798: Client client_9 has exceeded timeout, disconnecting.
+1774639799: New connection from 10.1.1.219:41889 on port 1883.
+1774639799: New client connected from 10.1.1.219:41889 as client_9 (p2, c1, k4).
+1774639799: No will message specified.
+1774639799: Sending CONNACK to client_9 (0, 0)
+1774639800: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639806: Client client_9 has exceeded timeout, disconnecting.
+1774639823: New connection from 10.1.1.219:59331 on port 1883.
+1774639823: New client connected from 10.1.1.219:59331 as client_9 (p2, c1, k4).
+1774639823: No will message specified.
+1774639823: Sending CONNACK to client_9 (0, 0)
+1774639824: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639830: Client client_9 has exceeded timeout, disconnecting.
+1774639839: New connection from 10.1.1.219:49907 on port 1883.
+1774639839: New client connected from 10.1.1.219:49907 as client_9 (p2, c1, k4).
+1774639839: No will message specified.
+1774639839: Sending CONNACK to client_9 (0, 0)
+1774639840: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639846: Client client_9 has exceeded timeout, disconnecting.
+1774639847: New connection from 10.1.1.219:53149 on port 1883.
+1774639847: New client connected from 10.1.1.219:53149 as client_9 (p2, c1, k4).
+1774639847: No will message specified.
+1774639847: Sending CONNACK to client_9 (0, 0)
+1774639848: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639854: Client client_9 has exceeded timeout, disconnecting.
+1774639863: New connection from 10.1.1.219:33563 on port 1883.
+1774639863: New client connected from 10.1.1.219:33563 as client_9 (p2, c1, k4).
+1774639863: No will message specified.
+1774639863: Sending CONNACK to client_9 (0, 0)
+1774639864: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639870: Client client_9 has exceeded timeout, disconnecting.
+1774639871: New connection from 10.1.1.219:35041 on port 1883.
+1774639871: New client connected from 10.1.1.219:35041 as client_9 (p2, c1, k4).
+1774639871: No will message specified.
+1774639871: Sending CONNACK to client_9 (0, 0)
+1774639872: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639878: Client client_9 has exceeded timeout, disconnecting.
+1774639879: New connection from 10.1.1.219:54459 on port 1883.
+1774639879: New client connected from 10.1.1.219:54459 as client_9 (p2, c1, k4).
+1774639879: No will message specified.
+1774639879: Sending CONNACK to client_9 (0, 0)
+1774639880: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639886: Client client_9 has exceeded timeout, disconnecting.
+1774639895: New connection from 10.1.1.219:49717 on port 1883.
+1774639895: New client connected from 10.1.1.219:49717 as client_9 (p2, c1, k4).
+1774639895: No will message specified.
+1774639895: Sending CONNACK to client_9 (0, 0)
+1774639896: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639902: Client client_9 has exceeded timeout, disconnecting.
+1774639903: New connection from 10.1.1.219:35673 on port 1883.
+1774639903: New client connected from 10.1.1.219:35673 as client_9 (p2, c1, k4).
+1774639903: No will message specified.
+1774639903: Sending CONNACK to client_9 (0, 0)
+1774639904: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639910: Client client_9 has exceeded timeout, disconnecting.
+1774639911: New connection from 10.1.1.219:37245 on port 1883.
+1774639911: New client connected from 10.1.1.219:37245 as client_9 (p2, c1, k4).
+1774639911: No will message specified.
+1774639911: Sending CONNACK to client_9 (0, 0)
+1774639912: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639918: Client client_9 has exceeded timeout, disconnecting.
+1774639919: New connection from 10.1.1.219:50469 on port 1883.
+1774639919: New client connected from 10.1.1.219:50469 as client_9 (p2, c1, k4).
+1774639919: No will message specified.
+1774639919: Sending CONNACK to client_9 (0, 0)
+1774639920: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639926: Client client_9 has exceeded timeout, disconnecting.
+1774639927: New connection from 10.1.1.219:52179 on port 1883.
+1774639927: New client connected from 10.1.1.219:52179 as client_9 (p2, c1, k4).
+1774639927: No will message specified.
+1774639927: Sending CONNACK to client_9 (0, 0)
+1774639928: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639934: Client client_9 has exceeded timeout, disconnecting.
+1774639935: New connection from 10.1.1.219:41875 on port 1883.
+1774639935: New client connected from 10.1.1.219:41875 as client_9 (p2, c1, k4).
+1774639935: No will message specified.
+1774639935: Sending CONNACK to client_9 (0, 0)
+1774639936: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639942: Client client_9 has exceeded timeout, disconnecting.
+1774639951: New connection from 10.1.1.219:34369 on port 1883.
+1774639951: New client connected from 10.1.1.219:34369 as client_9 (p2, c1, k4).
+1774639951: No will message specified.
+1774639951: Sending CONNACK to client_9 (0, 0)
+1774639952: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639958: Client client_9 has exceeded timeout, disconnecting.
+1774639983: New connection from 10.1.1.219:33895 on port 1883.
+1774639983: New client connected from 10.1.1.219:33895 as client_9 (p2, c1, k4).
+1774639983: No will message specified.
+1774639983: Sending CONNACK to client_9 (0, 0)
+1774639984: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774639990: Client client_9 has exceeded timeout, disconnecting.
+1774640023: New connection from 10.1.1.219:43367 on port 1883.
+1774640023: New client connected from 10.1.1.219:43367 as client_9 (p2, c1, k4).
+1774640023: No will message specified.
+1774640023: Sending CONNACK to client_9 (0, 0)
+1774640024: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640030: Client client_9 has exceeded timeout, disconnecting.
+1774640031: New connection from 10.1.1.219:59067 on port 1883.
+1774640031: New client connected from 10.1.1.219:59067 as client_9 (p2, c1, k4).
+1774640031: No will message specified.
+1774640031: Sending CONNACK to client_9 (0, 0)
+1774640032: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640038: Client client_9 has exceeded timeout, disconnecting.
+1774640039: New connection from 10.1.1.219:41615 on port 1883.
+1774640039: New client connected from 10.1.1.219:41615 as client_9 (p2, c1, k4).
+1774640039: No will message specified.
+1774640039: Sending CONNACK to client_9 (0, 0)
+1774640040: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640046: Client client_9 has exceeded timeout, disconnecting.
+1774640047: New connection from 10.1.1.219:40303 on port 1883.
+1774640047: New client connected from 10.1.1.219:40303 as client_9 (p2, c1, k4).
+1774640047: No will message specified.
+1774640047: Sending CONNACK to client_9 (0, 0)
+1774640048: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640054: Client client_9 has exceeded timeout, disconnecting.
+1774640071: New connection from 10.1.1.219:33757 on port 1883.
+1774640071: New client connected from 10.1.1.219:33757 as client_9 (p2, c1, k4).
+1774640071: No will message specified.
+1774640071: Sending CONNACK to client_9 (0, 0)
+1774640072: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640078: Client client_9 has exceeded timeout, disconnecting.
+1774640079: New connection from 10.1.1.219:48563 on port 1883.
+1774640079: New client connected from 10.1.1.219:48563 as client_9 (p2, c1, k4).
+1774640079: No will message specified.
+1774640079: Sending CONNACK to client_9 (0, 0)
+1774640080: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640086: Client client_9 has exceeded timeout, disconnecting.
+1774640111: New connection from 10.1.1.219:33089 on port 1883.
+1774640111: New client connected from 10.1.1.219:33089 as client_9 (p2, c1, k4).
+1774640111: No will message specified.
+1774640111: Sending CONNACK to client_9 (0, 0)
+1774640112: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640118: Client client_9 has exceeded timeout, disconnecting.
+1774640119: New connection from 10.1.1.219:43135 on port 1883.
+1774640119: New client connected from 10.1.1.219:43135 as client_9 (p2, c1, k4).
+1774640119: No will message specified.
+1774640119: Sending CONNACK to client_9 (0, 0)
+1774640120: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640126: Client client_9 has exceeded timeout, disconnecting.
+1774640127: New connection from 10.1.1.219:34433 on port 1883.
+1774640127: New client connected from 10.1.1.219:34433 as client_9 (p2, c1, k4).
+1774640127: No will message specified.
+1774640127: Sending CONNACK to client_9 (0, 0)
+1774640128: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640134: Client client_9 has exceeded timeout, disconnecting.
+1774640135: New connection from 10.1.1.219:52027 on port 1883.
+1774640135: New client connected from 10.1.1.219:52027 as client_9 (p2, c1, k4).
+1774640135: No will message specified.
+1774640135: Sending CONNACK to client_9 (0, 0)
+1774640136: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640142: Client client_9 has exceeded timeout, disconnecting.
+1774640143: New connection from 10.1.1.219:41545 on port 1883.
+1774640143: New client connected from 10.1.1.219:41545 as client_9 (p2, c1, k4).
+1774640143: No will message specified.
+1774640143: Sending CONNACK to client_9 (0, 0)
+1774640144: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640150: Client client_9 has exceeded timeout, disconnecting.
+1774640159: New connection from 10.1.1.219:47443 on port 1883.
+1774640159: New client connected from 10.1.1.219:47443 as client_9 (p2, c1, k4).
+1774640159: No will message specified.
+1774640159: Sending CONNACK to client_9 (0, 0)
+1774640160: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640166: Client client_9 has exceeded timeout, disconnecting.
+1774640175: New connection from 10.1.1.219:48901 on port 1883.
+1774640175: New client connected from 10.1.1.219:48901 as client_9 (p2, c1, k4).
+1774640175: No will message specified.
+1774640175: Sending CONNACK to client_9 (0, 0)
+1774640176: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640182: Client client_9 has exceeded timeout, disconnecting.
+1774640199: New connection from 10.1.1.219:53941 on port 1883.
+1774640199: New client connected from 10.1.1.219:53941 as client_9 (p2, c1, k4).
+1774640199: No will message specified.
+1774640199: Sending CONNACK to client_9 (0, 0)
+1774640200: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640206: Client client_9 has exceeded timeout, disconnecting.
+1774640223: New connection from 10.1.1.219:56329 on port 1883.
+1774640223: New client connected from 10.1.1.219:56329 as client_9 (p2, c1, k4).
+1774640223: No will message specified.
+1774640223: Sending CONNACK to client_9 (0, 0)
+1774640224: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640230: Client client_9 has exceeded timeout, disconnecting.
+1774640231: New connection from 10.1.1.219:55653 on port 1883.
+1774640231: New client connected from 10.1.1.219:55653 as client_9 (p2, c1, k4).
+1774640231: No will message specified.
+1774640231: Sending CONNACK to client_9 (0, 0)
+1774640232: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640238: Client client_9 has exceeded timeout, disconnecting.
+1774640239: New connection from 10.1.1.219:48043 on port 1883.
+1774640239: New client connected from 10.1.1.219:48043 as client_9 (p2, c1, k4).
+1774640239: No will message specified.
+1774640239: Sending CONNACK to client_9 (0, 0)
+1774640240: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640246: Client client_9 has exceeded timeout, disconnecting.
+1774640263: New connection from 10.1.1.219:48435 on port 1883.
+1774640263: New client connected from 10.1.1.219:48435 as client_9 (p2, c1, k4).
+1774640263: No will message specified.
+1774640263: Sending CONNACK to client_9 (0, 0)
+1774640264: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640270: Client client_9 has exceeded timeout, disconnecting.
+1774640279: New connection from 10.1.1.219:42987 on port 1883.
+1774640279: New client connected from 10.1.1.219:42987 as client_9 (p2, c1, k4).
+1774640279: No will message specified.
+1774640279: Sending CONNACK to client_9 (0, 0)
+1774640280: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640286: Client client_9 has exceeded timeout, disconnecting.
+1774640295: New connection from 10.1.1.219:58823 on port 1883.
+1774640295: New client connected from 10.1.1.219:58823 as client_9 (p2, c1, k4).
+1774640295: No will message specified.
+1774640295: Sending CONNACK to client_9 (0, 0)
+1774640296: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640302: Client client_9 has exceeded timeout, disconnecting.
+1774640303: New connection from 10.1.1.219:46819 on port 1883.
+1774640303: New client connected from 10.1.1.219:46819 as client_9 (p2, c1, k4).
+1774640303: No will message specified.
+1774640303: Sending CONNACK to client_9 (0, 0)
+1774640304: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640310: Client client_9 has exceeded timeout, disconnecting.
+1774640311: New connection from 10.1.1.219:42251 on port 1883.
+1774640311: New client connected from 10.1.1.219:42251 as client_9 (p2, c1, k4).
+1774640311: No will message specified.
+1774640311: Sending CONNACK to client_9 (0, 0)
+1774640312: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640318: Client client_9 has exceeded timeout, disconnecting.
+1774640319: New connection from 10.1.1.219:50585 on port 1883.
+1774640319: New client connected from 10.1.1.219:50585 as client_9 (p2, c1, k4).
+1774640319: No will message specified.
+1774640319: Sending CONNACK to client_9 (0, 0)
+1774640320: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640326: Client client_9 has exceeded timeout, disconnecting.
+1774640343: New connection from 10.1.1.219:35999 on port 1883.
+1774640343: New client connected from 10.1.1.219:35999 as client_9 (p2, c1, k4).
+1774640343: No will message specified.
+1774640343: Sending CONNACK to client_9 (0, 0)
+1774640344: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640350: Client client_9 has exceeded timeout, disconnecting.
+1774640359: New connection from 10.1.1.219:32855 on port 1883.
+1774640359: New client connected from 10.1.1.219:32855 as client_9 (p2, c1, k4).
+1774640359: No will message specified.
+1774640359: Sending CONNACK to client_9 (0, 0)
+1774640360: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640366: Client client_9 has exceeded timeout, disconnecting.
+1774640367: New connection from 10.1.1.219:46165 on port 1883.
+1774640367: New client connected from 10.1.1.219:46165 as client_9 (p2, c1, k4).
+1774640367: No will message specified.
+1774640367: Sending CONNACK to client_9 (0, 0)
+1774640368: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640374: Client client_9 has exceeded timeout, disconnecting.
+1774640375: New connection from 10.1.1.219:43309 on port 1883.
+1774640375: New client connected from 10.1.1.219:43309 as client_9 (p2, c1, k4).
+1774640375: No will message specified.
+1774640375: Sending CONNACK to client_9 (0, 0)
+1774640376: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640382: Client client_9 has exceeded timeout, disconnecting.
+1774640391: New connection from 10.1.1.219:42775 on port 1883.
+1774640391: New client connected from 10.1.1.219:42775 as client_9 (p2, c1, k4).
+1774640391: No will message specified.
+1774640391: Sending CONNACK to client_9 (0, 0)
+1774640392: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640398: Client client_9 has exceeded timeout, disconnecting.
+1774640423: New connection from 10.1.1.219:39789 on port 1883.
+1774640423: New client connected from 10.1.1.219:39789 as client_9 (p2, c1, k4).
+1774640423: No will message specified.
+1774640423: Sending CONNACK to client_9 (0, 0)
+1774640424: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640430: Client client_9 has exceeded timeout, disconnecting.
+1774640431: New connection from 10.1.1.219:44937 on port 1883.
+1774640431: New client connected from 10.1.1.219:44937 as client_9 (p2, c1, k4).
+1774640431: No will message specified.
+1774640431: Sending CONNACK to client_9 (0, 0)
+1774640432: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640438: Client client_9 has exceeded timeout, disconnecting.
+1774640439: New connection from 10.1.1.219:56131 on port 1883.
+1774640439: New client connected from 10.1.1.219:56131 as client_9 (p2, c1, k4).
+1774640439: No will message specified.
+1774640439: Sending CONNACK to client_9 (0, 0)
+1774640440: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640446: Client client_9 has exceeded timeout, disconnecting.
+1774640447: New connection from 10.1.1.219:52319 on port 1883.
+1774640447: New client connected from 10.1.1.219:52319 as client_9 (p2, c1, k4).
+1774640447: No will message specified.
+1774640447: Sending CONNACK to client_9 (0, 0)
+1774640448: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640454: Client client_9 has exceeded timeout, disconnecting.
+1774640471: New connection from 10.1.1.219:48465 on port 1883.
+1774640471: New client connected from 10.1.1.219:48465 as client_9 (p2, c1, k4).
+1774640471: No will message specified.
+1774640471: Sending CONNACK to client_9 (0, 0)
+1774640472: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640478: Client client_9 has exceeded timeout, disconnecting.
+1774640479: New connection from 10.1.1.219:60135 on port 1883.
+1774640479: New client connected from 10.1.1.219:60135 as client_9 (p2, c1, k4).
+1774640479: No will message specified.
+1774640479: Sending CONNACK to client_9 (0, 0)
+1774640480: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640486: Client client_9 has exceeded timeout, disconnecting.
+1774640487: New connection from 10.1.1.219:51853 on port 1883.
+1774640487: New client connected from 10.1.1.219:51853 as client_9 (p2, c1, k4).
+1774640487: No will message specified.
+1774640487: Sending CONNACK to client_9 (0, 0)
+1774640488: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640494: Client client_9 has exceeded timeout, disconnecting.
+1774640495: New connection from 10.1.1.219:52643 on port 1883.
+1774640495: New client connected from 10.1.1.219:52643 as client_9 (p2, c1, k4).
+1774640495: No will message specified.
+1774640495: Sending CONNACK to client_9 (0, 0)
+1774640496: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640502: Client client_9 has exceeded timeout, disconnecting.
+1774640503: New connection from 10.1.1.219:52777 on port 1883.
+1774640503: New client connected from 10.1.1.219:52777 as client_9 (p2, c1, k4).
+1774640503: No will message specified.
+1774640503: Sending CONNACK to client_9 (0, 0)
+1774640504: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640510: Client client_9 has exceeded timeout, disconnecting.
+1774640519: New connection from 10.1.1.219:58871 on port 1883.
+1774640519: New client connected from 10.1.1.219:58871 as client_9 (p2, c1, k4).
+1774640519: No will message specified.
+1774640519: Sending CONNACK to client_9 (0, 0)
+1774640520: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640526: Client client_9 has exceeded timeout, disconnecting.
+1774640535: New connection from 10.1.1.219:49233 on port 1883.
+1774640535: New client connected from 10.1.1.219:49233 as client_9 (p2, c1, k4).
+1774640535: No will message specified.
+1774640535: Sending CONNACK to client_9 (0, 0)
+1774640536: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640542: Client client_9 has exceeded timeout, disconnecting.
+1774640543: New connection from 10.1.1.219:48001 on port 1883.
+1774640543: New client connected from 10.1.1.219:48001 as client_9 (p2, c1, k4).
+1774640543: No will message specified.
+1774640543: Sending CONNACK to client_9 (0, 0)
+1774640544: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640550: Client client_9 has exceeded timeout, disconnecting.
+1774640567: New connection from 10.1.1.219:37367 on port 1883.
+1774640567: New client connected from 10.1.1.219:37367 as client_9 (p2, c1, k4).
+1774640567: No will message specified.
+1774640567: Sending CONNACK to client_9 (0, 0)
+1774640568: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640574: Client client_9 has exceeded timeout, disconnecting.
+1774640591: New connection from 10.1.1.219:54409 on port 1883.
+1774640591: New client connected from 10.1.1.219:54409 as client_9 (p2, c1, k4).
+1774640591: No will message specified.
+1774640591: Sending CONNACK to client_9 (0, 0)
+1774640592: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640598: Client client_9 has exceeded timeout, disconnecting.
+1774640639: New connection from 10.1.1.219:35617 on port 1883.
+1774640639: New client connected from 10.1.1.219:35617 as client_9 (p2, c1, k4).
+1774640639: No will message specified.
+1774640639: Sending CONNACK to client_9 (0, 0)
+1774640640: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640646: Client client_9 has exceeded timeout, disconnecting.
+1774640647: New connection from 10.1.1.219:34903 on port 1883.
+1774640647: New client connected from 10.1.1.219:34903 as client_9 (p2, c1, k4).
+1774640647: No will message specified.
+1774640647: Sending CONNACK to client_9 (0, 0)
+1774640648: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640654: Client client_9 has exceeded timeout, disconnecting.
+1774640663: New connection from 10.1.1.219:40853 on port 1883.
+1774640663: New client connected from 10.1.1.219:40853 as client_9 (p2, c1, k4).
+1774640663: No will message specified.
+1774640663: Sending CONNACK to client_9 (0, 0)
+1774640664: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640670: Client client_9 has exceeded timeout, disconnecting.
+1774640671: New connection from 10.1.1.219:50031 on port 1883.
+1774640671: New client connected from 10.1.1.219:50031 as client_9 (p2, c1, k4).
+1774640671: No will message specified.
+1774640671: Sending CONNACK to client_9 (0, 0)
+1774640672: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640678: Client client_9 has exceeded timeout, disconnecting.
+1774640679: New connection from 10.1.1.219:40539 on port 1883.
+1774640679: New client connected from 10.1.1.219:40539 as client_9 (p2, c1, k4).
+1774640679: No will message specified.
+1774640679: Sending CONNACK to client_9 (0, 0)
+1774640680: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640686: Client client_9 has exceeded timeout, disconnecting.
+1774640695: New connection from 10.1.1.219:51099 on port 1883.
+1774640695: New client connected from 10.1.1.219:51099 as client_9 (p2, c1, k4).
+1774640695: No will message specified.
+1774640695: Sending CONNACK to client_9 (0, 0)
+1774640696: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640702: Client client_9 has exceeded timeout, disconnecting.
+1774640703: New connection from 10.1.1.219:53621 on port 1883.
+1774640703: New client connected from 10.1.1.219:53621 as client_9 (p2, c1, k4).
+1774640703: No will message specified.
+1774640703: Sending CONNACK to client_9 (0, 0)
+1774640704: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640710: Client client_9 has exceeded timeout, disconnecting.
+1774640727: New connection from 10.1.1.219:35781 on port 1883.
+1774640727: New client connected from 10.1.1.219:35781 as client_9 (p2, c1, k4).
+1774640727: No will message specified.
+1774640727: Sending CONNACK to client_9 (0, 0)
+1774640728: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640734: Client client_9 has exceeded timeout, disconnecting.
+1774640735: New connection from 10.1.1.219:53397 on port 1883.
+1774640735: New client connected from 10.1.1.219:53397 as client_9 (p2, c1, k4).
+1774640735: No will message specified.
+1774640735: Sending CONNACK to client_9 (0, 0)
+1774640736: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640742: Client client_9 has exceeded timeout, disconnecting.
+1774640743: New connection from 10.1.1.219:56943 on port 1883.
+1774640743: New client connected from 10.1.1.219:56943 as client_9 (p2, c1, k4).
+1774640743: No will message specified.
+1774640743: Sending CONNACK to client_9 (0, 0)
+1774640744: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640750: Client client_9 has exceeded timeout, disconnecting.
+1774640751: New connection from 10.1.1.219:36323 on port 1883.
+1774640751: New client connected from 10.1.1.219:36323 as client_9 (p2, c1, k4).
+1774640751: No will message specified.
+1774640751: Sending CONNACK to client_9 (0, 0)
+1774640752: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640758: Client client_9 has exceeded timeout, disconnecting.
+1774640759: New connection from 10.1.1.219:44629 on port 1883.
+1774640759: New client connected from 10.1.1.219:44629 as client_9 (p2, c1, k4).
+1774640759: No will message specified.
+1774640759: Sending CONNACK to client_9 (0, 0)
+1774640760: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640766: Client client_9 has exceeded timeout, disconnecting.
+1774640799: New connection from 10.1.1.219:35263 on port 1883.
+1774640799: New client connected from 10.1.1.219:35263 as client_9 (p2, c1, k4).
+1774640799: No will message specified.
+1774640799: Sending CONNACK to client_9 (0, 0)
+1774640800: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640806: Client client_9 has exceeded timeout, disconnecting.
+1774640807: New connection from 10.1.1.219:57933 on port 1883.
+1774640807: New client connected from 10.1.1.219:57933 as client_9 (p2, c1, k4).
+1774640807: No will message specified.
+1774640807: Sending CONNACK to client_9 (0, 0)
+1774640808: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640814: Client client_9 has exceeded timeout, disconnecting.
+1774640815: New connection from 10.1.1.219:52109 on port 1883.
+1774640815: New client connected from 10.1.1.219:52109 as client_9 (p2, c1, k4).
+1774640815: No will message specified.
+1774640815: Sending CONNACK to client_9 (0, 0)
+1774640816: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640822: Client client_9 has exceeded timeout, disconnecting.
+1774640823: New connection from 10.1.1.219:41463 on port 1883.
+1774640823: New client connected from 10.1.1.219:41463 as client_9 (p2, c1, k4).
+1774640823: No will message specified.
+1774640823: Sending CONNACK to client_9 (0, 0)
+1774640824: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640830: Client client_9 has exceeded timeout, disconnecting.
+1774640855: New connection from 10.1.1.219:56613 on port 1883.
+1774640855: New client connected from 10.1.1.219:56613 as client_9 (p2, c1, k4).
+1774640855: No will message specified.
+1774640855: Sending CONNACK to client_9 (0, 0)
+1774640856: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640862: Client client_9 has exceeded timeout, disconnecting.
+1774640911: New connection from 10.1.1.219:34061 on port 1883.
+1774640911: New client connected from 10.1.1.219:34061 as client_9 (p2, c1, k4).
+1774640911: No will message specified.
+1774640911: Sending CONNACK to client_9 (0, 0)
+1774640912: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640918: Client client_9 has exceeded timeout, disconnecting.
+1774640919: New connection from 10.1.1.219:47789 on port 1883.
+1774640919: New client connected from 10.1.1.219:47789 as client_9 (p2, c1, k4).
+1774640919: No will message specified.
+1774640919: Sending CONNACK to client_9 (0, 0)
+1774640920: Received PUBLISH from client_9 (d0, q0, r0, m0, 'measurements/other', ... (1001 bytes))
+1774640926: Client client_9 has exceeded timeout, disconnecting.

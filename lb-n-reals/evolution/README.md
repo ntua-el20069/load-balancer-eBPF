@@ -835,3 +835,28 @@ sed -i 's/^SCRAPE_XDP=.*/SCRAPE_XDP=0/' .env  && ./test.sh &&  sed -i 's/^SCRAPE
 
 - In phase A, Load Balancer Test: 8 of the clients loose more than the first message [open issue](https://github.com/nickpapakon/load-balancer-eBPF/issues/13) but not more than 50 messages each client.
 - In all other tests the results are pretty similar with Test 9
+
+
+
+## Test 12 
+
+- 10 clients
+- `TOTAL_MESSAGES` = 30000
+- `SLEEP_TIME` = 0.01
+
+### Observations
+
+- Load Balancer **lost the majority of the messages** (received ~ 1000 / 30000  per client - roughly 3%)  whereas in the other experiments more than 95% of the messages are correctly delivered to the brokers. [issue reproduction-explanation](https://github.com/nickpapakon/load-balancer-eBPF/issues/13)
+- Noticed publish period is 0.02 seconds for single-broker and shared_subs_broker  experiments, but 0.1 seconds for LB experiment
+- Use the following time in the json dashboard to inspect the experiment (you can see the slow down and decrease in received network traffic in the LB experiments)
+```bash
+  "time": {
+    "from": "2026-03-27T18:36:12.174Z",
+    "to": "2026-03-27T21:43:53.078Z"
+  },
+```
+
+## Test 13 
+
+Shows that simple Katran also loses the majority of packets when there is increased traffic.
+Related with [issue](https://github.com/nickpapakon/load-balancer-eBPF/issues/13)

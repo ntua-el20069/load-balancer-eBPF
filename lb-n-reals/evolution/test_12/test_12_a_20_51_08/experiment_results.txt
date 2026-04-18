@@ -1,0 +1,54 @@
+####################  Single broker experiment results:  ####################
+
+
+Experiment 1 (Single broker) start time: 2026_03_27/20_51_08, end time: 27/03/2026_21:00:28
+
+
+ client_0 sent to     real_0: 29452
+ client_1 sent to     real_0: 29443
+ client_2 sent to     real_0: 29421
+ client_3 sent to     real_0: 29414
+ client_4 sent to     real_0: 29482
+ client_5 sent to     real_0: 29771
+ client_6 sent to     real_0: 29450
+ client_7 sent to     real_0: 29447
+ client_8 sent to     real_0: 29536
+ client_9 sent to     real_0: 29549
+
+
+
+####################  Katran-mqtt_fwd LB experiment results:  ####################
+
+
+Experiment 2 (Katran-mqtt_fwd LB) start time: 2026_03_27/21_02_28, end time: 27/03/2026_21:52:44
+
+
+ client_0 sent to     real_0: 29452    real_1: 611    real_2: 786
+ client_1 sent to     real_0: 29443    real_1: 274    real_2: 626
+ client_2 sent to     real_0: 29421    real_1: 609    real_2: 255
+ client_3 sent to     real_0: 29414    real_1: 328    real_2: 910
+ client_4 sent to     real_0: 29482    real_3: 369    real_4: 177
+ client_5 sent to     real_0: 29771    real_3: 833    real_4: 625
+ client_6 sent to     real_0: 29450    real_3: 198    real_4: 217
+ client_7 sent to     real_0: 29447    real_3: 303    real_4: 501
+ client_8 sent to     real_0: 29536    real_3: 172    real_4: 587
+ client_9 sent to     real_0: 29549    real_5: 729    real_6: 859
+
+
+
+####################  Shared Subscription broker experiment results:  ####################
+
+
+Experiment 3 (Shared Subscription broker) start time: 2026_03_27/21_54_44, end time: 27/03/2026_22:04:18
+
+
+ client_0 sent to     real_1: 14839    real_2: 15090
+ client_1 sent to     real_1: 15018    real_2: 14905
+ client_2 sent to     real_1: 15068    real_2: 14847
+ client_3 sent to     real_1: 15075    real_2: 14838
+ client_4 sent to     real_3: 14890    real_4: 15110
+ client_5 sent to     real_3: 14970    real_4: 15030
+ client_6 sent to     real_3: 15126    real_4: 14874
+ client_7 sent to     real_3: 14987    real_4: 15013
+ client_8 sent to     real_3: 15027    real_4: 14973
+ client_9 sent to     real_5: 15000    real_6: 15000

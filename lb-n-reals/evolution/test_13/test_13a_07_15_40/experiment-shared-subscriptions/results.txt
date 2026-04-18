@@ -1,0 +1,11 @@
+
+ client_0 sent to     real_1: 15159    real_2: 14841   Total LB messages (sum): 30000
+ client_1 sent to     real_1: 14900    real_2: 15100   Total LB messages (sum): 30000
+ client_2 sent to     real_1: 14797    real_2: 15203   Total LB messages (sum): 30000
+ client_3 sent to     real_1: 15144    real_2: 14856   Total LB messages (sum): 30000
+ client_4 sent to     real_3: 15049    real_4: 14951   Total LB messages (sum): 30000
+ client_5 sent to     real_3: 15079    real_4: 14921   Total LB messages (sum): 30000
+ client_6 sent to     real_3: 14951    real_4: 15049   Total LB messages (sum): 30000
+ client_7 sent to     real_3: 15040    real_4: 14960   Total LB messages (sum): 30000
+ client_8 sent to     real_3: 14880    real_4: 15118   Total LB messages (sum): 29998
+ client_9 sent to     real_5: 15000    real_6: 15000   Total LB messages (sum): 30000

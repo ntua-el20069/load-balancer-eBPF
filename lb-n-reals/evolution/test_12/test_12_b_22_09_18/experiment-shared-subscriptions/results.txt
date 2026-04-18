@@ -1,0 +1,11 @@
+
+ client_0 sent to     real_1: 15118    real_2: 14882
+ client_1 sent to     real_1: 14911    real_2: 15089
+ client_2 sent to     real_1: 14970    real_2: 15030
+ client_3 sent to     real_1: 15001    real_2: 14999
+ client_4 sent to     real_3: 14946    real_4: 15054
+ client_5 sent to     real_3: 14899    real_4: 15101
+ client_6 sent to     real_3: 15008    real_4: 14992
+ client_7 sent to     real_3: 15143    real_4: 14857
+ client_8 sent to     real_3: 15004    real_4: 14996
+ client_9 sent to     real_5: 15000    real_6: 15000

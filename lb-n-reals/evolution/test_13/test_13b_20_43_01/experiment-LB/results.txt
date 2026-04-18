@@ -1,0 +1,11 @@
+
+ client_0 sent to     real_1: 3000   Total LB messages (sum): 3000
+ client_1 sent to     real_2: 3000   Total LB messages (sum): 3000
+ client_2 sent to     real_1: 3000   Total LB messages (sum): 3000
+ client_3 sent to     real_0: 3000    real_1: 2211    real_2: 718   Total LB messages (sum): 2929
+ client_4 sent to     real_4: 3000   Total LB messages (sum): 3000
+ client_5 sent to     real_3: 3000   Total LB messages (sum): 3000
+ client_6 sent to     real_4: 3000   Total LB messages (sum): 3000
+ client_7 sent to     real_4: 3000   Total LB messages (sum): 3000
+ client_8 sent to     real_4: 3000   Total LB messages (sum): 3000
+ client_9 sent to     real_6: 3000   Total LB messages (sum): 3000
