@@ -1076,13 +1076,13 @@
     "list": []
   },
   "time": {
-    "from": "2026-03-23T19:05:07.066Z",
-    "to": "2026-03-23T19:53:42.419Z"
+    "from": "2026-04-17T14:29:36.757Z",
+    "to": "2026-04-17T16:03:30.086Z"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "cAdvisor Docker Metrics for eBPF Load Balancer - Test 11",
-  "uid": "ae3c41d7-cea5-4cca-a918-5708706b011a",
+  "title": "cAdvisor Docker Metrics for eBPF Load Balancer - Test 14",
+  "uid": "ae3c41d7-cea5-4cca-a918-5708706b014a",
   "version": 14,
   "weekStart": "",
   "gnetId": 19908,

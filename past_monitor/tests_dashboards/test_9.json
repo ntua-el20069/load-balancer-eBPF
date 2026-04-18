@@ -168,7 +168,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "(sum by(name) (rate(container_cpu_usage_seconds_total{name=~\"(real_.*|katran|.*broker)\"}[$__rate_interval])) / sum by(name) (container_spec_cpu_quota{name=~\"(real_.*|katran|.*broker)\"} / container_spec_cpu_period{name=~\"(real_.*|katran|.*broker)\"})) * 100",
+          "expr": "(sum by(name) (rate(container_cpu_usage_seconds_total{name=~\"(real_.*|katran|.*broker)\"}[30s])) / sum by(name) (container_spec_cpu_quota{name=~\"(real_.*|katran|.*broker)\"} / container_spec_cpu_period{name=~\"(real_.*|katran|.*broker)\"})) * 100",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -267,7 +267,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "(sum by(name) (rate(container_cpu_usage_seconds_total{name=~\"(real_0|.*broker)\"}[$__rate_interval])) /   sum by(name) (container_spec_cpu_quota{name=~\"(real_0|.*broker)\"} / container_spec_cpu_period{name=~\"(real_0|.*broker)\"})   * 100) OR ( (rate(xdp_program_run_time_ns_total[$__rate_interval]) / (1e9 * 0.1)) * 100 )",
+          "expr": "(sum by(name) (rate(container_cpu_usage_seconds_total{name=~\"(real_0|.*broker)\"}[30s])) /   sum by(name) (container_spec_cpu_quota{name=~\"(real_0|.*broker)\"} / container_spec_cpu_period{name=~\"(real_0|.*broker)\"})   * 100) OR ( (rate(xdp_program_run_time_ns_total[30s]) / (1e9 * 0.1)) * 100 )",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -376,7 +376,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_memory_usage_bytes{name=~\"(real_.*|katran|.*broker)\"}[$__rate_interval])) by (name)",
+          "expr": "sum(rate(container_memory_usage_bytes{name=~\"(real_.*|katran|.*broker)\"}[30s])) by (name)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -473,7 +473,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_memory_cache{name=~\"(real_.*|katran|.*broker)\"}[$__rate_interval])) by (name)",
+          "expr": "sum(rate(container_memory_cache{name=~\"(real_.*|katran|.*broker)\"}[30s])) by (name)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -586,7 +586,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_fs_reads_bytes_total{name=~\"(real_.*|katran|.*broker)\"}[$__rate_interval])) by (name)",
+          "expr": "sum(rate(container_fs_reads_bytes_total{name=~\"(real_.*|katran|.*broker)\"}[30s])) by (name)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -686,7 +686,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_fs_writes_bytes_total{name=~\"(real_.*|katran|.*broker)\"}[$__rate_interval])) by (name)",
+          "expr": "sum(rate(container_fs_writes_bytes_total{name=~\"(real_.*|katran|.*broker)\"}[30s])) by (name)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -799,7 +799,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_network_receive_bytes_total{name=~\"(real_.*|katran|.*broker)\"}[$__rate_interval])) by (name)",
+          "expr": "sum(rate(container_network_receive_bytes_total{name=~\"(real_.*|katran|.*broker)\"}[30s])) by (name)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
@@ -899,7 +899,7 @@
             "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(container_network_transmit_bytes_total{name=~\"(real_.*|katran|.*broker)\"}[$__rate_interval])) by (name)",
+          "expr": "sum(rate(container_network_transmit_bytes_total{name=~\"(real_.*|katran|.*broker)\"}[30s])) by (name)",
           "instant": false,
           "legendFormat": "__auto",
           "range": true,
