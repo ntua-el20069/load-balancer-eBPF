@@ -50,3 +50,35 @@ docker compose up --build -d
 grep -orP "Average time per message:\s+[0-9]+\.[0-9]+" 
 ```
 - Inspect the `experiments_results.txt` to see how many publish messages from each client were successfully delivered to reals (and which reals received them)
+
+
+## Experiments Times
+
+
+
+### 14 A - Whole experiment
+
+{"from":"2026-04-17T14:35:24.596Z","to":"2026-04-17T15:14:39.521Z"}
+
+
+### 14 A - eBPF Load Balancer
+
+{"from":"2026-04-17T14:49:37.000Z","to":"2026-04-17T15:01:00.000Z"}
+
+
+### 14 A - Shared Subs
+
+{"from":"2026-04-17T15:03:31.097Z","to":"2026-04-17T15:14:20.795Z"}
+
+
+
+
+
+
+### 14 B - Whole experiment
+
+{"from":"2026-04-17T15:18:12.325Z","to":"2026-04-17T15:58:50.803Z"}
+
+### 14 B - eBPF Load Balancer & Shared subs
+
+{"from":"2026-04-17T15:32:26.833Z","to":"2026-04-17T15:58:24.732Z"}
