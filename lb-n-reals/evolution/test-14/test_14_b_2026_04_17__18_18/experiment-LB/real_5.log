@@ -1,0 +1,126 @@
++ ip route add 10.1.0.0/16 via 10.1.3.101 dev eth0
++ ip link add name ipip0 type ipip external
++ ip link set up dev ipip0
++ ip a a 127.0.0.42/32 dev ipip0
++ '[' -z 5 ']'
+Configuring Real Server NUM=5
++ echo 'Configuring Real Server NUM=5'
++ ip a a 10.1.50.0/24 dev lo
+Set VIPs as loopback addresses
++ echo 'Set VIPs as loopback addresses'
+++ sysctl -a
+++ awk '/\.rp_filter/ {print $1}'
+net.ipv4.conf.all.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.all.rp_filter
++ sysctl net.ipv4.conf.all.rp_filter=0
+net.ipv4.conf.all.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
+net.ipv4.conf.default.rp_filter
++ echo net.ipv4.conf.default.rp_filter
++ sysctl net.ipv4.conf.default.rp_filter=0
+net.ipv4.conf.default.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.erspan0.rp_filter
++ sysctl net.ipv4.conf.erspan0.rp_filter=0
+net.ipv4.conf.erspan0.rp_filter
+net.ipv4.conf.erspan0.rp_filter = 0
+net.ipv4.conf.eth0.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.eth0.rp_filter
++ sysctl net.ipv4.conf.eth0.rp_filter=0
+net.ipv4.conf.eth0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.gre0.rp_filter
++ sysctl net.ipv4.conf.gre0.rp_filter=0
+net.ipv4.conf.gre0.rp_filter
+net.ipv4.conf.gre0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.gretap0.rp_filter
++ sysctl net.ipv4.conf.gretap0.rp_filter=0
+net.ipv4.conf.gretap0.rp_filter
+net.ipv4.conf.gretap0.rp_filter = 0
+net.ipv4.conf.ip6_vti0.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.ip6_vti0.rp_filter
++ sysctl net.ipv4.conf.ip6_vti0.rp_filter=0
+net.ipv4.conf.ip6_vti0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.ip6gre0.rp_filter
++ sysctl net.ipv4.conf.ip6gre0.rp_filter=0
+net.ipv4.conf.ip6gre0.rp_filter
+net.ipv4.conf.ip6gre0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.ip6tnl0.rp_filter
++ sysctl net.ipv4.conf.ip6tnl0.rp_filter=0
+net.ipv4.conf.ip6tnl0.rp_filter
+net.ipv4.conf.ip6tnl0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.ip_vti0.rp_filter
++ sysctl net.ipv4.conf.ip_vti0.rp_filter=0
+net.ipv4.conf.ip_vti0.rp_filter
+net.ipv4.conf.ip_vti0.rp_filter = 0
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.ipip0.rp_filter
++ sysctl net.ipv4.conf.ipip0.rp_filter=0
+net.ipv4.conf.ipip0.rp_filter
+net.ipv4.conf.ipip0.rp_filter = 0
+net.ipv4.conf.lo.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.lo.rp_filter
++ sysctl net.ipv4.conf.lo.rp_filter=0
+net.ipv4.conf.lo.rp_filter = 0
+net.ipv4.conf.sit0.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.sit0.rp_filter
++ sysctl net.ipv4.conf.sit0.rp_filter=0
+net.ipv4.conf.sit0.rp_filter = 0
+net.ipv4.conf.tunl0.rp_filter
++ for sc in $(sysctl -a | awk '/\.rp_filter/ {print $1}')
++ echo net.ipv4.conf.tunl0.rp_filter
++ sysctl net.ipv4.conf.tunl0.rp_filter=0
+net.ipv4.conf.tunl0.rp_filter = 0
++ topics=("non_existing_topic" "\$share/vip_a/measurements/temperature" "\$share/vip_a/measurements/temperature" "\$share/vip_b/measurements/humidity" "\$share/vip_b/measurements/humidity" "\$share/vip_default/measurements/other" "\$share/vip_default/measurements/other")
++ ping -c 1 -W 1 10.1.3.101
++ '[' 0 -eq 1 ']'
++ mosquitto -v -c /etc/mosquitto/conf.d/mosquitto.conf
+1776439158: mosquitto version 2.0.22 starting
+1776439158: Config loaded from /etc/mosquitto/conf.d/mosquitto.conf.
+1776439158: Opening ipv4 listen socket on port 1883.
+1776439158: Opening ipv6 listen socket on port 1883.
+1776439158: mosquitto version 2.0.22 running
+1776439988: New connection from 10.1.1.215:33363 on port 1883.
+1776439988: New client connected from 10.1.1.215:33363 as client_5 (p2, c1, k4).
+1776439988: No will message specified.
+1776439988: Sending CONNACK to client_5 (0, 0)
+1776439988: New connection from 10.1.1.211:36363 on port 1883.
+1776439988: New client connected from 10.1.1.211:36363 as client_1 (p2, c1, k4).
+1776439988: No will message specified.
+1776439988: Sending CONNACK to client_1 (0, 0)
+1776439988: New connection from 10.1.1.217:51783 on port 1883.
+1776439988: New client connected from 10.1.1.217:51783 as client_7 (p2, c1, k4).
+1776439988: No will message specified.
+1776439988: Sending CONNACK to client_7 (0, 0)
+1776439989: New connection from 10.1.1.212:41235 on port 1883.
+1776439989: New client connected from 10.1.1.212:41235 as client_2 (p2, c1, k4).
+1776439989: No will message specified.
+1776439989: Sending CONNACK to client_2 (0, 0)
+1776439991: New connection from 10.1.1.214:53501 on port 1883.
+1776439991: New client connected from 10.1.1.214:53501 as client_4 (p2, c1, k4).
+1776439991: No will message specified.
+1776439991: Sending CONNACK to client_4 (0, 0)
+1776439992: Received PINGREQ from client_1
+1776439992: Sending PINGRESP to client_1
+1776439992: Received PINGREQ from client_5
+1776439992: Sending PINGRESP to client_5
+1776439992: Received PINGREQ from client_7
+1776439992: Sending PINGRESP to client_7
+1776439993: Received PINGREQ from client_2
+1776439993: Sending PINGRESP to client_2
+1776439995: Received PINGREQ from client_4
+1776439995: Sending PINGRESP to client_4
+1776439999: Client client_1 has exceeded timeout, disconnecting.
+1776439999: Client client_5 has exceeded timeout, disconnecting.
+1776439999: Client client_7 has exceeded timeout, disconnecting.
+1776439999: Client client_2 has exceeded timeout, disconnecting.
+1776440002: Client client_4 has exceeded timeout, disconnecting.
