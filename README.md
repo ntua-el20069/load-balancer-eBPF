@@ -51,7 +51,25 @@ For a quick understanding, read the introduction and the last test done.
 
 You can switch to the appropriate branch to inspect the code and configuration at the time of each experiment. **Caution**: the operation of the setup depends on the `mqtt_LB` branch of the [forked Katran repo](https://github.com/nickpapakon/katran/tree/mqtt_LB) .
 
+
 ## Monitoring
 
 - cAdvisor, Prometheus, Grafana containers can also run to gather and visualize the resources usage data for each container
 - You can inspect measurements from completed experiments using the guide in `past_monitor`
+
+
+## Constraints
+
+- All clients send messages using `MQTT_VIP` as destination IP.
+- Only unencrypted [MQTT](https://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html) over TCP/IPv4 is supported for communication
+- Each client sends MQTT publish messages with only 1 topic. For example, a client cannot send messages to both temperature and humidity topics, else massive packet loss will be observed. Noting that, two clients can publish to the same topic, without any consequences.
+- The first MQTT publish message of each client is expected to be lost whenever. If client changes IP, again the first message of this client will be lost.
+- Clients should inspect the status of the connection and try to re-establish MQTT/TCP connections.
+- Clients should have distinct IP addresses. So, clients cannot be behind the same PAT Gateway.
+- MQTT topics sent in the client messages should not exceed 256 characters length.
+- The number of clients supported by the system is restricted by the amount of [locked memory](https://dl.acm.org/doi/10.1145/3371038) that can be allocated for eBPF Maps. Constant `MAX_CLIENTS` inside  `lb-n-reals/katran/bpf/mqtt_topic_based_fwd.h` can be modified to address the need for more clients, but a significant change the overcomes the locaked memory limit will cause a failure during the loading of the eBPF program. Keep real-time clients below the `MAX_CLIENTS` value, otherwise massive packet-loss may be observed as a result of eBPF Map's `mqtt_client_ip_to_topic` misses.
+- Constants `MAX_VIPS` and `MAX_TOPIC_MAPPINGS` restrict the maximum number of VIPs and mappings between VIPs and topics. Can be modified but as referred, locked memory wall should be kept on mind.
+- [Katran requirements](https://github.com/facebookincubator/katran#environment-requirements-for-katran-to-run) should also be satisfied.
+
+**Deploying the proposed Load Balancer in a real-world production environment requires further testing**, as the experimental network traffic load used in this study does not fully represent a high-intensity use case. In addition, issues concerning packet losses are reported. The most significant one is that, at the time of the development of this Load Balancer, [TCP segmentation](https://datatracker.ietf.org/doc/html/rfc9293#name-segmentation) was ignored and this may cause massive packet loss in some rare circumstances.
+
