@@ -1,5 +1,11 @@
 # eBPF Load Balancer
-This project utilizes [katran](https://github.com/facebookincubator/katran) for use as a load balancer between MQTT clients and an MQTT cluster of brokers. It is currently under development. The used topology includes Katran LB, gateway, some clients and some reals/brokers. These services run into Docker containers that have a specific network connection as shown here.
+This Diploma Thesis project utilizes [katran](https://github.com/facebookincubator/katran) for use as a load balancer between MQTT clients and an MQTT cluster of brokers. The used topology includes Katran LB, gateway, some clients and some reals/brokers. These services run into Docker containers that have a specific network connection as shown here.
+
+[Youtube Presentation](https://youtu.be/FCTBblrGqrQ)
+
+[Presentation Slides](https://docs.google.com/presentation/d/15nqv-i1vXwJNFbbVs2izF6evTuP8CgqsiSJAIS5OtiQ/edit?usp=sharing)
+
+[Thesis Document](https://artemis.ece.ntua.gr/handle/123456789/20307)
 
 <img src="images/new_topology.png" style="display: block; margin: 0 auto; width: 70%; height: 70%;" />
 
