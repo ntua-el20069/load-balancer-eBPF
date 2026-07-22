@@ -17,7 +17,7 @@ For example, an MQTT publish message that has topic `apples` should be forwarded
 Grouping of these IPs can be done by utilizing an existing project `Katran`, that proposes VIPs. So VIP_I can stand for A/B/C, VIP_II for D/E and so on. Load balancing between brokers of a certain VIP is also done by Katran project, so here we will emphasize on deciding the VIP that corresponds to a certain MQTT communication (including TCP 3WHS, MQTT CONNECT/CONNACK, MQTT PUBLISH and MQTT DISCONNECT REQ). Katran also handles the forwarding of a flow of messages (identifies that from the 5-tuple of proto, ports, ip-addrs) to be done to the same real/broker.
 
 As each client sends messages only of one topic, we can predict the topic that the client wants to send based on the client IP. In fact, Load Balancer can maintain a map that correlates client IPs (keys) with the last topic that was sent by them (value).
-However, whenever client sends the first packet or whenever client changes IP, there is no correct corresponding match in this Map and the TCP SYN, ACK and MQTT CONNECT packets may be delivered to a non-responsible VIP (these packets do not contain the MQTT topic - but should be forwarded to the correct VIP). When the MQTT publish packet arrives Load Balancer understands that the previous segments that initiated the connection were not properly forwarded (What to do with this PUBLISH packet is still a **TODO**). Load Balancer updates the Map to correctly identify the last topic published by this client IP (so the next packets by this IP will bw correctly forwarded to the responsible VIP). 
+However, whenever client sends the first packet or whenever client changes IP, there is no correct corresponding match in this Map and the TCP SYN, ACK and MQTT CONNECT packets may be delivered to a non-responsible VIP (these packets do not contain the MQTT topic - but should be forwarded to the correct VIP). When the MQTT publish packet arrives Load Balancer understands that the previous segments that initiated the connection were not properly forwarded. Load Balancer updates the Map to correctly identify the last topic published by this client IP (so the next packets by this IP will bw correctly forwarded to the responsible VIP). 
 
 ## Test 1
 
@@ -860,3 +860,8 @@ sed -i 's/^SCRAPE_XDP=.*/SCRAPE_XDP=0/' .env  && ./test.sh &&  sed -i 's/^SCRAPE
 
 Shows that simple Katran also loses the majority of packets when there is increased traffic.
 Related with [issue](https://github.com/nickpapakon/load-balancer-eBPF/issues/13)
+
+
+## Test 14
+
+Similar to Test 10 but has 5x larger duration in order to ensure stabilized network traffic. Results are as expected based on test 10 and they are described in the Chapter 5 of the Thesis document [here](https://artemis.ece.ntua.gr/handle/123456789/20307).
